@@ -1,13 +1,40 @@
 <template>
-    <div></div>
+    <div class="page_container">
+        <logo class="logo"/>
+        <Tabbar v-model="tabbar.active"/>
+    </div>
 </template>
 
 <script>
 import Logo from "~/components/Logo.vue"
-
+import Tabbar from '~/components/Tabbar/Tabbar.vue'
 export default {
     components: {
-        Logo
-    }
-};
+        Logo,
+        Tabbar
+    },
+    data () {
+        return {
+            tabbar: {
+                active: 0,
+                tabbarData: []
+            }
+        }
+    },
+    // asyncData () {
+    //     return {
+    //         title: '测试'
+    //     }
+    // },
+
+}
 </script>
+<style lang="scss" scoped>
+    .page_container{
+        padding-top: 10px;
+        .logo{
+            display: block;
+            margin: auto;
+        }
+    }
+</style>

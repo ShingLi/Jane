@@ -1,5 +1,5 @@
 {
-    "name": "rudiment",
+    "name": "Nuxt",
     "version": "1.0.0",
     "description": "My bee&#39;s knees Nuxt.js project",
     "author": "shingli",
@@ -11,8 +11,9 @@
         "generate": "nuxt generate"
     },
     "dependencies": {
+        "axios": "^0.19.2",
         "cross-env": "^5.2.0",
-        "express": "^4.16.4",
+        "express": "^4.17.1",
         "node-sass": "^4.14.1",
         "nuxt": "^2.0.0",
         "sass-loader": "^8.0.2",
@@ -23,7 +24,8 @@
     },
     "config": {
         "nuxt": {
-            "port": "4000"
+            "port": "4000",
+            "host": "0.0.0.0"
         }
     }
 }

@@ -1,0 +1,24 @@
+.tabbar{
+    display: flex;
+    position: fixed !important;
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    height: pxrem(50px);
+    background-color: $--color-white;
+    @include border-1px;
+    li{
+        flex: 1;
+        text-align: center;
+        flex-direction: column;
+        .icon{
+            display: inline-block;
+            width: pxrem(22px);
+            height: pxrem(22px);
+        }
+        span{
+            font-size: pxrem(16px);
+            color: $--color-gray-light;
+        }
+    }
+}
