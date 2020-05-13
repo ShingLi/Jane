@@ -15,18 +15,21 @@ export default {
     },
     data () {
         return {
+            title: '首页',
             tabbar: {
                 active: 0,
                 tabbarData: []
             }
         }
     },
-    // asyncData () {
-    //     return {
-    //         title: '测试'
-    //     }
-    // },
+    asyncData () {
 
+    },
+    head () {
+        return {
+            title: this.title
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>
