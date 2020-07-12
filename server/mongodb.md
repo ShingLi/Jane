@@ -21,5 +21,5 @@
     db // rookie
     db.rookie.update({'skill': "nodejs"}) // 改
     db.rookie.find() //查
-    db.dropDatabase() // 删
+    db.dropDatabase() // 删（除数据库）
 ```
