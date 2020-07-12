@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 module.exports = (app) => {
-    app.get('/user/:id', function (req, res, next) {
+    router.get('/user/:id', function (req, res, next) {
         if (req.params.id == '0') next('route')
         else next()
     }, function (req, res, next) {
@@ -13,8 +13,9 @@ module.exports = (app) => {
 
     console.log(1111)
     
-    app.get('/user/:id', function (req, res, next) {
+    router.get('/user/:id', function (req, res, next) {
         console.log(333)
         res.send('special')
     })
+    app.use('/', router)
 }
