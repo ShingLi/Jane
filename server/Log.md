@@ -26,3 +26,10 @@
         res.send('special')
     })
   ```
+
+### mac
+
+```js
+    打开on my zsh
+    open ~/.zshrcs
+```
