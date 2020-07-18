@@ -1,15 +1,22 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import { from } from 'core-js/fn/array'
 
 Vue.use(VueRouter)
 
-const routes = [
+export const constantRoutes = [
     {
         path: '/',
         redirect: {
-            name: 'login'
+            name: 'index'
         }
+    },
+    {
+        path: '/index',
+        name: 'index',
+        meta: {
+            requiresAuth: true
+        },
+        component: () => import('views/index')
     },
     {
         path: '/login',
@@ -18,13 +25,14 @@ const routes = [
     }
 ]
 
+export const asyncRoutes = []
+
+const createRoutes = () => constantRoutes
+
 const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
-    routes
+    routes: createRoutes()
 })
 
-router.beforeEach((to, from, next) => {
-    next()
-})
 export default router

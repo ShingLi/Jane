@@ -9,7 +9,8 @@ module.exports = {
                     views: resolve('src/views'),
                     components: resolve('src/components'),
                     router: resolve('src/router'),
-                    store: resolve('src/store')
+                    store: resolve('src/store'),
+                    utils: resolve('src/utils')
                 }
             }
         }
