@@ -12,7 +12,7 @@ module.exports = {
                     store: resolve('src/store'),
                     utils: resolve('src/utils')
                 }
-            }
+            },
         }
     }
 }

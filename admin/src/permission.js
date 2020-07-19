@@ -6,7 +6,7 @@ import { getCookie } from 'utils/cookie'
 const whitelist = ['login']
 
 router.beforeEach((to, from, next) => {
-    NProgress.start(0)
+    NProgress.start()
     if (getCookie()) {
         if (whitelist.includes(to.name)) {
             next(false)
