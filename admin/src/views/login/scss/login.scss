@@ -24,6 +24,20 @@
             transform: translate(-50%, -50%);
             z-index: 2;
             box-shadow: 0 2px 10px #e6e6e6;
+            &__tips{
+                text-align: center;
+                font-size: 24px;
+            }
+            &__content{
+                padding: 20px 16px 10px;
+                .custom__form--item{
+                    display: flex;
+                    align-items: center;
+                    /deep/.el-form-item__content{
+                        flex: 1;
+                    }
+                }
+            }
         }
     }
 }
