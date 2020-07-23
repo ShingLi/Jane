@@ -11,7 +11,8 @@ module.exports = {
                     components: resolve('src/components'),
                     router: resolve('src/router'),
                     store: resolve('src/store'),
-                    utils: resolve('src/utils')
+                    utils: resolve('src/utils'),
+                    config: resolve('src/config')
                 }
             },
         }

@@ -2,20 +2,25 @@
     <div class="login__wrap">
         <ul class="bubbles__wrap">
         </ul>
-        <el-form :model="formData" ref='formData' class="formData">
+        <el-form ref='formData'
+            class="formData"
+            :rules="rules"
+            :inline="true"
+            :model="formData"
+        >
             <transition name="fade">
                 <div class="sign">
                     <p class="sign__tips">欢迎你～～～</p>
                     <div class="sign__content">
-                        <el-form-item label="账号" class=custom__form--item>
-                            <el-input v-model="formData.username" placeholder="请输入账号" />
+                        <el-form-item class=custom__form--item prop="username">
+                            <el-input v-model="formData.username" placeholder="请输入账号" autofocus/>
                         </el-form-item>
-                        <el-form-item label="密码" class=custom__form--item>
+                        <el-form-item class=custom__form--item prop="password">
                             <el-input v-model="formData.password" placeholder="请输入密码"/>
                         </el-form-item>
                     </div>
                     <div class="sign__btn">
-                        <el-button>sign in</el-button>
+                        <el-button type="primary" size="medium" :loading="loading" @click="signIn">sign in</el-button>
                     </div>
                 </div>
             </transition>
@@ -31,10 +36,38 @@ export default {
                 username: '',
                 password: '',
                 repeatpwd: ''
-            }
+            },
+            loading: false
         }
     },
+    created () {
+        this.initvalidate()
+    },
     methods: {
+        initvalidate () {
+            const errorMessage = ['请输入账号', '请输入密码'], filed = ['username', 'password'], rules = {}
+            filed.forEach((v, i) => {
+                rules[v] = {
+                    required: true,
+                    trigger: 'blur',
+                    validator: (rule, value, callback) => {
+                        if (value == '') {
+                            callback(new Error(errorMessage[i]))
+                        } else {
+                            callback()
+                        }
+                    }
+                }
+            })
+            this.rules = rules
+        },
+        signIn () {
+            this.$refs.formData.validate(valid => {
+                if (!valid) {
+                    // this.$http({})
+                }
+            })
+        }
     }
 }
 </script>

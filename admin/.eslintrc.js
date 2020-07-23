@@ -14,6 +14,8 @@ module.exports = {
         'no-console': 'off',
         'no-debugger': 'off',
         'indent': ['error', 4],
-        'no-trailing-spaces': 'off'
+        'no-trailing-spaces': 'off',
+        'eqeqeq': ['off'],
+        'one-var': ['off']
     }
 }
