@@ -6,6 +6,7 @@ const instance = axios.create({
     timeout: 5000
 })
 
+console.log(process.env.VUE_APP_BASEURL)
 instance.interceptors.request.use(config => {
     return config
 })

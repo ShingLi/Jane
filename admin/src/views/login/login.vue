@@ -16,7 +16,7 @@
                             <el-input v-model="formData.username" placeholder="请输入账号" autofocus/>
                         </el-form-item>
                         <el-form-item class=custom__form--item prop="password">
-                            <el-input v-model="formData.password" placeholder="请输入密码"/>
+                            <el-input v-model="formData.password" placeholder="请输入密码" @keyup.enter.native="signIn"/>
                         </el-form-item>
                     </div>
                     <div class="sign__btn">
@@ -28,6 +28,7 @@
     </div>
 </template>
 <script>
+import urls from 'config/urls'
 export default {
     name: 'login',
     data () {
@@ -63,8 +64,8 @@ export default {
         },
         signIn () {
             this.$refs.formData.validate(valid => {
-                if (!valid) {
-                    // this.$http({})
+                if (valid) {
+                    this.$http.post(urls.login, this.formData)
                 }
             })
         }

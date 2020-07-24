@@ -1,12 +1,15 @@
 const express = require('express')
 const http = require('http')
 const fs = require('fs')
+const cors= require('cors')
 
 const app = express()
-const port = process.env.PORT || '9000'
+const port = process.env.PORT || '4000'
 const host = process.env.HOST || 'localhost'
 
 const routesDir = `${__dirname}/routes`
+
+app.use(cors())
 
 fs.readdirSync(routesDir, 'utf-8').forEach(fileDir => {
     let routesPath = `${routesDir}/${fileDir}`
