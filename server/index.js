@@ -20,6 +20,8 @@ fs.readdirSync(routesDir, 'utf-8').forEach(fileDir => {
     }
 })
 
+require(`${__dirname}/plugins/db`)(app)
+
 http.createServer(app).listen(port, () => {
     console.log(`Server listening on http://${host}:${port}`)
 })

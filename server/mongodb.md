@@ -14,12 +14,11 @@
 
 ```js
     show dbs
-    use rookie
-    show dbs // 此刻是不会显示菜鸟这个数据库
-    db.rookie.insert({"skill": "前端"}) // 增
-    // 这个时候新增了一个集合（表）
-    db // rookie
-    db.rookie.update({'skill': "nodejs"}) // 改
-    db.rookie.find() //查
-    db.dropDatabase() // 删（除数据库）
+    use runoob
+    db // test db可以显示数据库或者集合
+    db.runoobb.insert({"name": "licheng"}) // 在runoob 这个数据库中创建了一个runoobb的集合（表）插入了一条document
+    db.runoobb.deleteMany({}) // 删除集合中所有的文档
+    db.runoobb.update({"name": "licheng"}, {"name": "jane"}) // 修改集合数据
+    db.runoobb.drop()
 ```
+
