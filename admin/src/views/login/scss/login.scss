@@ -31,12 +31,48 @@
             &__content{
                 margin-top: 10px;
                 padding: 20px 50px 10px;
+                img{
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    &.normal{
+                        top: -80px;
+                    }
+                }
                 .custom__form--item{
                     display: flex;
                     align-items: center;
                     margin-right: 0;
                     ::v-deep .el-form-item__content{
                         flex: 1;
+                    }
+                    &.username{
+                        img{
+                            display: none;
+                        }
+                        &:focus-within ~ img {
+                            display: none;
+                        }
+                        &:focus-within{
+                            img{
+                                display: block;
+                                top: -181px;
+                            }
+                        }
+                    }
+                    &.password{
+                        img{
+                            display: none;
+                        }
+                        &:focus-within ~ img {
+                            display: none;
+                        }
+                        &:focus-within{
+                            img{
+                                display: block;
+                                top: -222px;
+                            }
+                        }
                     }
                 }
             }

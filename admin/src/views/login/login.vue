@@ -12,12 +12,15 @@
                 <div class="sign">
                     <p class="sign__tips">欢迎你～～～</p>
                     <div class="sign__content">
-                        <el-form-item class=custom__form--item prop="username">
+                        <el-form-item class="username custom__form--item" prop="username">
                             <el-input v-model="formData.username" placeholder="请输入账号" autofocus/>
+                            <img src="./img/greeting.png" alt="" width="120" height="114">
                         </el-form-item>
-                        <el-form-item class=custom__form--item prop="password">
+                        <el-form-item class="custom__form--item password" prop="password">
                             <el-input v-model="formData.password" placeholder="请输入密码" @keyup.enter.native="signIn"/>
+                            <img src="./img/blindfold.png" alt="" width="103" height="84">
                         </el-form-item>
+                        <img src="./img/normal.png" alt="" width="120" height="95" class="normal">
                     </div>
                     <div class="sign__btn">
                         <el-button type="primary" size="medium" :loading="loading" @click="signIn">sign in</el-button>
