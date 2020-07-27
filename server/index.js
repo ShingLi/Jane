@@ -12,11 +12,11 @@ app.use(cors())
 const routesdir = __dirname + '/routes'
 
 fs.readdirSync(routesdir, 'utf-8').forEach(dir => {
+	dir = routesdir + '/' + dir
 	if (fs.statSync(dir).isDirectory()) {
-		let sycDir = `${routesdir}/${dir}`
-		fs.readdirSync(`${sycDir}`).forEach(route => {
+		fs.readdirSync(dir).forEach(route => {
 			route = route.replace(/\.js$/, '')
-			require(route)(app)
+			require(`${dir}/${route}`)(app)
 		})
 	}
 })
