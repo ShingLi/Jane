@@ -1,27 +1,26 @@
 const express = require('express')
-const http = require('http')
 const fs = require('fs')
-const cors= require('cors')
+const http = require('http')
+const cors = require('cors')
 
 const app = express()
-const port = process.env.PORT || '4000'
+const port = process.env.PORT || 9000
 const host = process.env.HOST || 'localhost'
-
-const routesDir = `${__dirname}/routes`
 
 app.use(cors())
 
-fs.readdirSync(routesDir, 'utf-8').forEach(fileDir => {
-    let routesPath = `${routesDir}/${fileDir}`
-    if (fs.statSync(routesPath).isDirectory()) {
-        fs.readdirSync(routesPath).forEach(router => {
-            require(`${routesPath}/${router}`)(app)
-        })
-    }
+const routesdir = __dirname + '/routes'
+
+fs.readdirSync(routesdir, 'utf-8').forEach(dir => {
+	if (fs.statSync(dir).isDirectory()) {
+		let sycDir = `${routesdir}/${dir}`
+		fs.readdirSync(`${sycDir}`).forEach(route => {
+			route = route.replace(/\.js$/, '')
+			require(route)(app)
+		})
+	}
 })
 
-require(`${__dirname}/plugins/db`)(app)
-
-http.createServer(app).listen(port, () => {
-    console.log(`Server listening on http://${host}:${port}`)
+http.createServer().listen(port, () => {
+	console.log(`serve running ${host}://${port}`)
 })
