@@ -4,7 +4,7 @@ const http = require('http')
 const cors = require('cors')
 
 const app = express()
-const port = process.env.PORT || 9000
+const port = process.env.PORT || 4000
 const host = process.env.HOST || 'localhost'
 
 app.use(cors())
@@ -21,6 +21,6 @@ fs.readdirSync(routesdir, 'utf-8').forEach(dir => {
 	}
 })
 
-http.createServer().listen(port, () => {
-	console.log(`serve running ${host}://${port}`)
+http.createServer(app).listen(port, () => {
+	console.log(`serve running ${host}:${port}`)
 })
