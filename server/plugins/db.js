@@ -2,13 +2,6 @@ const mongoose = require('mongoose')
 
 mongoose.connect('mongodb://127.0.0.1/runoob')
 
-const userSchema = mongoose.Schema({
-	username: String,
-	password: String
-})
-
-const user = mongoose.model('user', userSchema)
-
 module.exports = () => {
 	const db = mongoose.connection
 
