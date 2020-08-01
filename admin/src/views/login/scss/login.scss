@@ -2,6 +2,7 @@
     position: relative;
     height: 100vh;
     width: 100vw;
+    overflow: hidden;
     .bubbles__wrap{
         position: absolute;
         top: 0;
@@ -10,6 +11,36 @@
         height: 100%;
         z-index: 1;
         background: linear-gradient(to bottom right, #50A3A2,#42b983 80%, #53E3A6);
+        li{
+            animation: bubbling 4s linear infinite;
+            position: absolute;
+            bottom: -60px;
+            @keyframes bubbling {
+                0% {
+                    opacity: 0;
+                    bottom: 0;
+                    transform: rotate(0deg);
+                }
+                50%{
+                    opacity: 1;
+                    bottom: 30%;
+                    transform: rotate(120deg);
+                }
+                100%{
+                    opacity: 0;
+                    bottom: 50%;
+                    transform: rotate(240deg);
+                }
+            }
+            &.circle{
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background-color: #53E3A6;
+            }
+            &.rect{
+            }
+        }
     }
     .formData{
         .sign{

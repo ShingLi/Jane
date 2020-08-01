@@ -16,6 +16,11 @@ module.exports = {
         'indent': ['error', 4],
         'no-trailing-spaces': 'off',
         'eqeqeq': ['off'],
-        'one-var': ['off']
+        'one-var': ['off'],
+        'dot-notation': ['off'],
+        'comma-dangle': ['error', {
+            "arrays": "always-multiline",
+            "objects": "always-multiline",
+        }]
     }
 }

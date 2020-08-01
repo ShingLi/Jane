@@ -1,6 +1,11 @@
 <template>
     <div class="login__wrap">
         <ul class="bubbles__wrap">
+            <li v-for="(item, index) of bubbles"
+                :key="index"
+                :style="calcStyle(item)"
+                :class="calcClass(item)"
+            ></li>
         </ul>
         <el-form ref='formData'
             class="formData"
@@ -39,13 +44,15 @@ export default {
             formData: {
                 username: '',
                 password: '',
-                repeatpwd: ''
+                repeatpwd: '',
             },
-            loading: false
+            bubbles: [], // 气泡的随机数
+            loading: false,
         }
     },
     created () {
         this.initvalidate()
+        this.generateRandom()
     },
     methods: {
         initvalidate () {
@@ -64,6 +71,15 @@ export default {
                 }
             })
             this.rules = rules
+        },
+        generateRandom () {
+            
+        },
+        calcStyle () {
+
+        },
+        calcClass () {
+
         },
         signIn () {
             this.$refs.formData.validate(valid => {
