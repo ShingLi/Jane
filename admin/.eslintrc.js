@@ -13,7 +13,11 @@ module.exports = {
     rules: {
         'no-console': 'off',
         'no-debugger': 'off',
-        'indent': ['error', 4],
+        'indent': ['error', 4,
+            {
+                'SwitchCase': 1
+            }
+        ],
         'no-trailing-spaces': 'off',
         'eqeqeq': ['off'],
         'one-var': ['off'],
@@ -21,6 +25,6 @@ module.exports = {
         'comma-dangle': ['error', {
             "arrays": "always-multiline",
             "objects": "always-multiline",
-        }]
+        }],
     }
 }

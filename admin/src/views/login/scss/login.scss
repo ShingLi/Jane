@@ -15,30 +15,102 @@
             animation: bubbling 4s linear infinite;
             position: absolute;
             bottom: -60px;
+            background-color: #53E3A6;
+            z-index: 9;
             @keyframes bubbling {
-                0% {
+                0%{
                     opacity: 0;
                     bottom: 0;
-                    transform: rotate(0deg);
+                    transform: rotate(0);
                 }
                 50%{
                     opacity: 1;
-                    bottom: 30%;
-                    transform: rotate(120deg);
+                    bottom: 27%;
+                    transform: rotate(80deg);
                 }
                 100%{
                     opacity: 0;
-                    bottom: 50%;
-                    transform: rotate(240deg);
+                    bottom: 55%;
+                    transform: rotate(160deg);
                 }
             }
             &.circle{
-                width: 30px;
-                height: 30px;
-                border-radius: 50%;
-                background-color: #53E3A6;
+                border-radius: 50%;  
             }
-            &.rect{
+            &.star-five{
+                // bottom: -100%;
+                width: 0;
+                height: 0;
+                position: relative;
+                display: block;
+                border-left: 70px solid transparent;
+                border-right: 70px solid transparent;
+                border-bottom: 40px solid #53E3A6;
+                transform: rotate(35deg);
+                background-color: transparent;
+                &:before{
+                    width: 0;
+                    height: 0;
+                    border-left: 24px solid transparent;
+                    border-right: 24px solid transparent;
+                    border-bottom: 80px solid #53E3A6;
+                    position: absolute;
+                    top: -45px;
+                    left: -45px;
+                    display: block;
+                    transform: rotate(-35deg);
+                    content: "";
+                }
+                &:after{
+                    width: 0;
+                    height: 0;
+                    display: block;
+                    position: absolute;
+                    top: 3px;
+                    left: -75px;
+                    border-left: 70px solid transparent;
+                    border-right: 70px solid transparent;
+                    border-bottom: 40px solid #53E3A6;
+                    content: "";
+                    transform: rotate(-70deg);
+                }
+            }
+            &.triangle{
+                width: 0;
+                height: 0;
+                border-left-color: transparent;
+                border-right-color: transparent;
+                border-left-style: solid;
+                border-right-style: solid;
+                border-bottom-style: solid;
+                border-bottom-color: #53E3A6;
+                opacity: 0.3;
+                background-color: transparent;
+            }
+            &:first-child{
+                animation-delay: 2s;
+                animation-duration: 7s;
+            }
+            &:nth-of-type(2) {
+                animation-delay: 4s;
+                animation-duration: 10s;
+            }
+            &:nth-of-type(3) {
+                animation-duration: 6s;
+            }
+            &:nth-of-type(4) {
+                animation-delay: 4s;
+                animation-duration: 8s;
+            }
+            &:nth-of-type(5) {
+                animation-delay: 3s;
+            }
+            &:nth-of-type(7) {
+                animation-delay: 1.3s;
+            }
+            &:nth-of-type(9) {
+                animation-delay: 2s;
+                animation-duration: 5s;
             }
         }
     }
