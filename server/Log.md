@@ -27,6 +27,15 @@
     })
   ```
 
+### replace
+
+  ```js
+    // 首字母大写
+    \S 非空字符 \s 空字符
+    var a = 'user'
+    a = a.replace(/\S/, s => s.toUpperCase())
+  ```
+
 ### mac
 
 ```js
