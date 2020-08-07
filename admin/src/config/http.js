@@ -1,10 +1,10 @@
 import axios from 'axios'
 import { getCookie } from 'utils/cookie'
-import { message } from 'element-ui'
+import { Message } from 'element-ui'
 
 const instance = axios.create({
     baseURL: process.env.VUE_APP_BASEURL,
-    timeout: 5000
+    timeout: 5000,
 })
 
 instance.interceptors.request.use(
@@ -21,15 +21,18 @@ instance.interceptors.response.use(
     response => {
         const { data: { responseCode, responseMsg } } = response
         if (responseCode != '0000') {
-            message({
+            Message({
                 message: responseMsg || '返回值错误',
                 type: 'error',
-                duration: 1500
+                duration: 1500,
             })
         } else return response.data
     },
     err => {
-        return Promise.reject(err)
+        Message.error({
+            message: err,
+            duration: 1500,
+        })
     }
 )
 
