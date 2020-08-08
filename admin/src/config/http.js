@@ -24,7 +24,7 @@ instance.interceptors.response.use(
             Message({
                 message: responseMsg || '返回值错误',
                 type: 'error',
-                duration: 1500,
+                duration: 2000,
             })
         } else return response.data
     },

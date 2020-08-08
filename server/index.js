@@ -15,12 +15,12 @@ const routesdir = __dirname + '/routes'
 const global = fs.readdirSync(__dirname, 'utf-8').filter((dir) => presetdir.includes(dir)).reduce((total, cur) => {
 	fs.readdirSync(`${__dirname}/${cur}`, 'utf-8').map(item => {
 		let name = item.replace(/.\js/, '')
+		if (cur === 'models') name = name.replace(/\S/, s => s.toUpperCase())
 		total[cur][name] = require(`${__dirname}/${cur}/${name}`)
 	})
 	return total
 }, { plugins: {}, models: {} })
 
-console.log(global)
 fs.readdirSync(routesdir, 'utf-8').forEach(dir => {
 	dir = routesdir + '/' + dir
 	if (fs.statSync(dir).isDirectory()) {

@@ -124,13 +124,13 @@ export default {
             return style
         },
         signIn () {
-            this.$refs.formData.validate(valid => {
+            this.$refs.formData.validate(async valid => {
                 const DATA = {
                     username: this.formData.username,
-                    password: this.for.password
+                    password: this.formData.password
                 }
                 if (valid) {
-                    this.$http.post(urls.login, DATA)
+                    await this.$http.post(urls.login, DATA)
                 }
             })
         },
