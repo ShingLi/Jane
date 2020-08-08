@@ -1,6 +1,9 @@
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://127.0.0.1/runoob')
+mongoose.connect('mongodb://127.0.0.1/runoob', { 
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+})
 
 module.exports = () => {
 	console.log('执行')

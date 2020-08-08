@@ -1,6 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
+  "private": true,
   "description": "express服务器",
   "main": "index.js",
   "scripts": {

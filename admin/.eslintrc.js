@@ -23,8 +23,8 @@ module.exports = {
         'one-var': ['off'],
         'dot-notation': ['off'],
         'comma-dangle': ['error', {
-            "arrays": "always-multiline",
-            "objects": "always-multiline",
+            "arrays": "only-multiline",
+            "objects": "only-multiline",
         }],
     }
 }

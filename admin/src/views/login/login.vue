@@ -13,7 +13,7 @@
             :inline="true"
             :model="formData"
         >
-            <transition name="fade">
+            <transition name="flip">
                 <div class="sign">
                     <p class="sign__tips">欢迎你～～～</p>
                     <div class="sign__content">
@@ -29,6 +29,9 @@
                     </div>
                     <div class="sign__btn">
                         <el-button type="primary" size="medium" :loading="loading" @click="signIn">sign in</el-button>
+                    </div>
+                    <div class="sign__btn sign__btn--up">
+                        <el-button type="text" size="mini" @click="transform">sing up</el-button>
                     </div>
                 </div>
             </transition>
@@ -84,37 +87,37 @@ export default {
             this.bubbles = className
         },
         calcStyle (item) {
-            const sizeArr = [30, 70, 80, 60, 90], style = {}
+            const sizeArr = [30, 40, 75, 60, 50], style = {}
             const size = sizeArr[Math.floor(Math.random() * sizeArr.length)]
             switch (item) {
-            case 'circle':
-                style['width'] = style['height'] = size
-                style['left'] = Math.random() * 100 + '%'
-                break
-            case 'rectangle':
-                style['width'] = size
-                style['height'] = size / 2
-                style['left'] = Math.random() * 100 + '%'
-                break
-            case 'square':
-                style['width'] = style['height'] = size
-                style['left'] = Math.random() * 100 + '%'
-                break
-            case 'ellipse':
-                style['width'] = size
-                style['height'] = size / 2
-                style['border-radius'] = style['width'] + 'px/' + style['height'] + 'px'
-                style['left'] = Math.random() * 100 + '%'
-                break
-            case 'triangle':
-                style['border-left-width'] = size + 'px'
-                style['border-right-width'] = size + 'px'
-                style['border-bottom-width'] = size * 2 + 'px'
-                style['left'] = Math.random() * 100 + '%'
-                break
-            case 'star-five':
-                style['left'] = Math.random() * 100 + '%'
-                break
+                case 'circle':
+                    style['width'] = style['height'] = size
+                    style['left'] = Math.random() * 100 + '%'
+                    break
+                case 'rectangle':
+                    style['width'] = size
+                    style['height'] = size / 2
+                    style['left'] = Math.random() * 100 + '%'
+                    break
+                case 'square':
+                    style['width'] = style['height'] = size
+                    style['left'] = Math.random() * 100 + '%'
+                    break
+                case 'ellipse':
+                    style['width'] = size
+                    style['height'] = size / 2
+                    style['border-radius'] = style['width'] + 'px/' + style['height'] + 'px'
+                    style['left'] = Math.random() * 100 + '%'
+                    break
+                case 'triangle':
+                    style['border-left-width'] = size + 'px'
+                    style['border-right-width'] = size + 'px'
+                    style['border-bottom-width'] = size * 2 + 'px'
+                    style['left'] = Math.random() * 100 + '%'
+                    break
+                case 'star-five':
+                    style['left'] = Math.random() * 100 + '%'
+                    break
             }
             style.width = style.width + 'px'
             style.height = style.height + 'px'
@@ -122,10 +125,17 @@ export default {
         },
         signIn () {
             this.$refs.formData.validate(valid => {
+                const DATA = {
+                    username: this.formData.username,
+                    password: this.for.password
+                }
                 if (valid) {
-                    this.$http.post(urls.login, this.formData)
+                    this.$http.post(urls.login, DATA)
                 }
             })
+        },
+        transform () {
+
         },
     },
 }

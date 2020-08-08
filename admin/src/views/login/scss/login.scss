@@ -191,6 +191,15 @@
                     }
                 }
             }
+            &__btn--up{
+                margin-top: 2px;
+                ::v-deep .el-button{
+                    span{
+                        text-transform: lowercase;
+                        font-size: 14px;
+                    }
+                }
+            }
         }
     }
 }
