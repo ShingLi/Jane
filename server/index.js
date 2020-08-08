@@ -20,6 +20,7 @@ const global = fs.readdirSync(__dirname, 'utf-8').filter((dir) => presetdir.incl
 	return total
 }, { plugins: {}, models: {} })
 
+console.log(global)
 fs.readdirSync(routesdir, 'utf-8').forEach(dir => {
 	dir = routesdir + '/' + dir
 	if (fs.statSync(dir).isDirectory()) {
