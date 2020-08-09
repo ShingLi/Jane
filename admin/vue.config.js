@@ -21,7 +21,7 @@ module.exports = {
         config
             .plugin('html')
             .tap(args => {
-                args[0].title = '邂逅烟雨浮萍'
+                args[0].title = '珍珍的后花园'
                 return args
             })
     }
