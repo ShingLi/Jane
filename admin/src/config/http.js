@@ -33,6 +33,7 @@ instance.interceptors.response.use(
             message: err,
             duration: 1500,
         })
+        return Promise.reject(err)
     }
 )
 

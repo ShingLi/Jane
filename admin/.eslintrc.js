@@ -26,5 +26,6 @@ module.exports = {
             "arrays": "only-multiline",
             "objects": "only-multiline",
         }],
+        'no-unused-vars': 'off'
     }
 }

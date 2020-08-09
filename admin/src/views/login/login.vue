@@ -9,38 +9,52 @@
         </ul>
         <el-form ref='formData'
             class="formData"
+            status-icon
             :rules="rules"
             :inline="true"
             :model="formData"
         >
             <div class="flip-container">
                 <div class="flipper" :class="{ flip: isFlip }">
+                    <!-- signin -->
                     <div class="sign front" key="signIn">
                         <p class="sign__tips">欢迎你～～～</p>
                         <div class="sign__content">
                             <el-form-item class="username custom__form--item" prop="username">
-                                <el-input v-model="formData.username" placeholder="请输入账号" autofocus/>
+                                <el-input v-model="formData.username" ref="l_uname" placeholder="请输入账号" autofocus/>
                                 <img src="./img/greeting.png" alt="" width="120" height="114">
                             </el-form-item>
                             <el-form-item class="custom__form--item password" prop="password">
                                 <el-input v-model="formData.password"
                                     placeholder="请输入密码"
-                                    @keyup.enter.native="signIn"
+                                    @keyup.enter.native="sign"
                                 />
                                 <img src="./img/blindfold.png" alt="" width="103" height="84">
                             </el-form-item>
                             <img src="./img/normal.png" alt="" width="120" height="95" class="normal">
                         </div>
                         <div class="sign__btn">
-                            <el-button type="primary" size="medium" :loading="loading" @click="signIn">sign in</el-button>
+                            <el-button type="primary" size="medium" :loading="loading" @click="sign">sign in</el-button>
                         </div>
                         <div class="sign__btn sign__btn--up">
                             <el-button type="text" size="mini" @click="isFlip = true">sing up</el-button>
                         </div>
                     </div>
+                    <!-- signup -->
                     <div class="sign back" key="signUp">
                         <i class="el-icon-circle-close" @click="isFlip = false"></i>
                         <p>注册账号</p>
+                        <div class="sign__content">
+                            <el-form-item class="username custom__form--item" prop="username">
+                                <el-input v-model="formData.username" ref="r_uname" placeholder="请输入账号"/>
+                            </el-form-item>
+                            <el-form-item class="custom__form--item password" prop="password">
+                                <el-input v-model="formData.password" placeholder="请输入密码" @keyup.enter.native="sign"/>
+                            </el-form-item>
+                        </div>
+                        <div class="sign__btn">
+                            <el-button type="primary" size="medium" :loading="loading" @click="sign">sign up</el-button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -60,7 +74,15 @@ export default {
             },
             bubbles: [], // 气泡的随机数
             loading: false,
-            isFlip: true
+            isFlip: false
+        }
+    },
+    watch: {
+        isFlip (val) {
+            if (val) this.$refs.r_uname.focus()
+            else this.$refs.l_uname.focus()
+            this.$refs.formData.resetFields()
+            this.loading = false
         }
     },
     created () {
@@ -133,17 +155,22 @@ export default {
             style.height = style.height + 'px'
             return style
         },
-        signIn () {
+        sign () {
             this.$refs.formData.validate(async valid => {
                 const DATA = {
                     username: this.formData.username,
                     password: this.formData.password
                 }
                 if (valid) {
-                    await this.$http.post(urls.login, DATA)
+                    this.loading = true
+                    try {
+                        await this.$http.post(!this.isFlip ? urls.login : urls.signup, DATA)
+                    } catch (error) {
+                        this.loading = false
+                    }
                 }
             })
-        },
+        }
     },
 }
 </script>
