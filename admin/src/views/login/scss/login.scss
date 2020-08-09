@@ -17,6 +17,7 @@
             bottom: -60px;
             background-color: #53E3A6;
             z-index: 9;
+            transition: all .3s ease-in-out;
             @keyframes bubbling {
                 0%{
                     opacity: 0;
@@ -205,6 +206,19 @@
                 }
             }
         }
+        .back{
+            background-color: #fff;
+            .el-icon-circle-close{
+                position: absolute;
+                top: 12px;
+                right: 16px;
+                color: #50A3A2;
+                cursor: pointer;
+                &:hover{
+                    color: #409EFF;
+                }
+            }
+        }
     }
 }
 
@@ -232,6 +246,6 @@
         }
     }
 }
-.flip-container:hover .flipper{
-    transform: rotateY(180deg);
+.flip{
+    transform: rotateY(180deg)
 }

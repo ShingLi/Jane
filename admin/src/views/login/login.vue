@@ -13,11 +13,8 @@
             :inline="true"
             :model="formData"
         >
-            <!-- <transition-group name="flip" tag="div">
-
-            </transition-group> -->
             <div class="flip-container">
-                <div class="flipper">
+                <div class="flipper" :class="{ flip: isFlip }">
                     <div class="sign front" key="signIn">
                         <p class="sign__tips">欢迎你～～～</p>
                         <div class="sign__content">
@@ -38,11 +35,12 @@
                             <el-button type="primary" size="medium" :loading="loading" @click="signIn">sign in</el-button>
                         </div>
                         <div class="sign__btn sign__btn--up">
-                            <el-button type="text" size="mini" @click="transform">sing up</el-button>
+                            <el-button type="text" size="mini" @click="isFlip = true">sing up</el-button>
                         </div>
                     </div>
                     <div class="sign back" key="signUp">
-                        登录
+                        <i class="el-icon-circle-close" @click="isFlip = false"></i>
+                        <p>注册账号</p>
                     </div>
                 </div>
             </div>
@@ -62,6 +60,7 @@ export default {
             },
             bubbles: [], // 气泡的随机数
             loading: false,
+            isFlip: true
         }
     },
     created () {
@@ -144,9 +143,6 @@ export default {
                     await this.$http.post(urls.login, DATA)
                 }
             })
-        },
-        transform () {
-
         },
     },
 }
