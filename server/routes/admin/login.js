@@ -1,13 +1,28 @@
 const express = require('express')
 const router = express.Router()
 
-module.exports = (app, { User }) => {
-	let postData = ''
+let postData
 
+const parsebody = (req) => {
+	return new Promise((resolve, reject) => {
+		postData = ''
+		try {
+			req.on('data', data => {
+				postData += data
+			})
+			req.on('end', ()=> {
+				return resolve(postData)
+			})
+		} catch (error) {
+			return reject(error)
+		}
+	})
+}
+module.exports = (app, { User }) => {
+	
 	router.post('/login', async(req, res) => {
-		req.on('data', data => {
-			postData += data
-		})
+		await parsebody(req)
+		console.log('登录账号数据', postData)
 		const info = {
 			username: postData.username,
 			password: postData.password
@@ -30,8 +45,12 @@ module.exports = (app, { User }) => {
 		})
 	})
 
-	router.post('/sinup', async(req, res) => {
+	router.post('/signup', async(req, res) => {
+		await parsebody(req)
+		console.log('注册账号数据', postData)
+		res.send({
 
+		})
 	})
 	app.use('/admin', router)
 }

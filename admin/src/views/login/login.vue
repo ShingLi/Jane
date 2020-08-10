@@ -166,7 +166,9 @@ export default {
                     try {
                         await this.$http.post(!this.isFlip ? urls.login : urls.signup, DATA)
                     } catch (error) {
-                        this.loading = false
+                        setTimeout(() => {
+                            this.loading = false
+                        }, 1500)
                     }
                 }
             })
