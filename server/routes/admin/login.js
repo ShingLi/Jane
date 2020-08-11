@@ -62,9 +62,6 @@ module.exports = (app, { User }) => {
 			})
 		} else {
 			User.create(postData, (err, doc) => {
-				if (err) {
-					console.log(err)
-				}
 				if (doc) {
 					res.send({
 						responseCode: '0000',
