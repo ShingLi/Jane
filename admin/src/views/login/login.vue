@@ -164,7 +164,10 @@ export default {
                 if (valid) {
                     this.loading = true
                     try {
-                        await this.$http.post(!this.isFlip ? urls.login : urls.signup, DATA)
+                        const { responseCode } = await this.$http.post(!this.isFlip ? urls.login : urls.signup, DATA)
+                        if (responseCode == '0000') {
+                            this.loading = false
+                        }
                     } catch (error) {
                         setTimeout(() => {
                             this.loading = false

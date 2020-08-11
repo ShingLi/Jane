@@ -27,7 +27,16 @@ instance.interceptors.response.use(
                 duration: 2000,
             })
             return Promise.reject(new Error('错误'))
-        } else return response.data
+        } else {
+            if (responseMsg) {
+                Message({
+                    message: responseMsg,
+                    type: 'success',
+                    duration: 2000,
+                })
+            }
+            return response.data
+        }
     },
     err => {
         Message.error({
