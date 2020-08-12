@@ -65,7 +65,8 @@ module.exports = (app, { User }) => {
 				if (doc) {
 					res.send({
 						responseCode: '0000',
-						responseMsg: '注册成功'
+						responseMsg: '注册成功',
+						token: 'jane'
 					})
 				} else {
 					res.send({

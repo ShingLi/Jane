@@ -1,13 +1,21 @@
 const express = require('express')
 const fs = require('fs')
 const http = require('http')
+
 const cors = require('cors')
+const expressJWT = require('express-jwt')
 
 const app = express()
 const port = process.env.PORT || 4000
 const host = process.env.HOST || 'localhost'
 
 app.use(cors())
+app.use(expressJWT({
+	secret: 'jane',
+	algorithms: ['RS256']
+}).unless({
+	path: ['/admin/signup']
+}))
 
 const presetdir = ['models', 'plugins']
 const routesdir = __dirname + '/routes'
