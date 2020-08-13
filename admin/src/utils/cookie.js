@@ -5,7 +5,7 @@ export const setCookie = (name = 'auth', value) => {
 }
 
 export const getCookie = (name = 'auth') => {
-    return Cookies.get(name)
+    return Cookies.get(name) || ''
 }
 
 export const removeCookie = (name = 'auth') => {

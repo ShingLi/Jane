@@ -45,7 +45,8 @@ module.exports = (app, { User }) => {
 				} else {
 					res.json({
 						responseCode: '0000',
-						responseMsg: '登录成功'
+						responseMsg: '登录成功',
+						token: 'jane'
 					})
 				}
 			}
@@ -58,7 +59,7 @@ module.exports = (app, { User }) => {
 		if (len) {
 			res.send({
 				responseCode: '9999',
-				responseMsg: '请勿重复注册'
+				responseMsg: '请勿重复注册',
 			})
 		} else {
 			User.create(postData, (err, doc) => {

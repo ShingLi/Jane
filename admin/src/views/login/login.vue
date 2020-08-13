@@ -63,6 +63,7 @@
 </template>
 <script>
 import urls from 'config/urls'
+import { setCookie } from 'utils/cookie'
 export default {
     name: 'login',
     data () {
@@ -98,7 +99,9 @@ export default {
                     trigger: 'blur',
                     validator: (rule, value, callback) => {
                         if (value == '') {
-                            callback(new Error(errorMessage[i]))
+                            setTimeout(() => {
+                                callback(new Error(errorMessage[i]))
+                            }, 200)
                         } else {
                             callback()
                         }
@@ -164,14 +167,18 @@ export default {
                 if (valid) {
                     this.loading = true
                     try {
-                        const { responseCode } = await this.$http.post(!this.isFlip ? urls.login : urls.signup, DATA)
+                        const { responseCode, token } = await this.$http.post(!this.isFlip ? urls.login : urls.signup, DATA)
                         if (responseCode == '0000') {
                             this.loading = false
+                            token && setCookie('auth', token)
+                            this.$router.push({
+                                path: '/'
+                            })
                         }
                     } catch (error) {
                         setTimeout(() => {
                             this.loading = false
-                        }, 1500)
+                        }, 1000)
                     }
                 }
             })
