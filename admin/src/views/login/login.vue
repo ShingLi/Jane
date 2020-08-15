@@ -166,20 +166,17 @@ export default {
                 }
                 if (valid) {
                     this.loading = true
-                    try {
-                        const { responseCode, token } = await this.$http.post(!this.isFlip ? urls.login : urls.signup, DATA)
-                        if (responseCode == '0000') {
-                            this.loading = false
-                            token && setCookie('auth', token)
+                    this.$store.dispatch(!this.isFlip ? 'user/login' : 'user/signup', DATA)
+                        .then(() => {
                             this.$router.push({
                                 path: '/'
                             })
-                        }
-                    } catch (error) {
-                        setTimeout(() => {
-                            this.loading = false
-                        }, 1000)
-                    }
+                        })
+                        .catch(() => {
+                            setTimeout(() => {
+                                this.loading = false
+                            }, 1000)
+                        })
                 }
             })
         }

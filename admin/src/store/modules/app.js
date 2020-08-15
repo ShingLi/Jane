@@ -1,11 +1,11 @@
 const state = () => {}
 const mutations = {}
 
-const asctions = {}
+const actions = {}
 
 export default {
     namespaced: true,
     state,
     mutations,
-    asctions
+    actions
 }
