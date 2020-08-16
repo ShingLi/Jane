@@ -1,10 +1,21 @@
 <template>
     <div class="index__wrap">
-        首页
+        
     </div>
 </template>
 <script>
 export default {
-    name: 'Index'
+    name: 'Index',
+    beforeRouteEnter (to, from, next) {
+        next()
+    },
+    methods: {
+        fetchData () {
+
+        }
+    }
 }
 </script>
+<style lang= "scss" scoped>
+    @import './scss/index.scss';
+</style>
