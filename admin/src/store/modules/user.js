@@ -15,17 +15,16 @@ const mutations = {
 }
 
 const actions = {
-    login ({ commit }, userinfo, type = 'login') {
+    login ({ commit }, userinfo, type) {
         return new Promise((resolve, reject) => {
-            http.post(urls.login, userinfo).then(({ token }) => {
+            http.post(type == 'login' ? urls.login : urls.signup, userinfo).then(({ token }) => {
                 commit('SETTOKEN', token)
                 resolve()
             }).catch(err => {
                 reject(err)
             })
         })
-    },
-    signup () {}
+    }
 }
 
 export default {

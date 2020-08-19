@@ -1,6 +1,6 @@
 const express = require('express')
-const Eslintrc = require('../../../admin/.eslintrc')
 const router = express.Router()
+const jwt = require('jsonwebtoken')
 
 let postData
 

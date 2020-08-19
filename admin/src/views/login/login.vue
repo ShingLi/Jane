@@ -166,7 +166,7 @@ export default {
                 }
                 if (valid) {
                     this.loading = true
-                    this.$store.dispatch(!this.isFlip ? 'user/login' : 'user/signup', DATA)
+                    this.$store.dispatch('user/login', DATA, !this.isFlip ? 'login' : 'signup')
                         .then(() => {
                             this.$router.push({
                                 path: '/'
