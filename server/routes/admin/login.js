@@ -21,7 +21,6 @@ const parsebody = (req) => {
 	})
 }
 module.exports = (app, { User }) => {
-	
 	router.post('/login', async(req, res) => {
 		await parsebody(req)
 		const info = {
@@ -29,6 +28,7 @@ module.exports = (app, { User }) => {
 			password: postData.password
 		}
 		console.log('登录账号数据', postData)
+		
 		User.find(info, (err, doc) => {
 			console.log('用户查询', doc)
 			if (err) {

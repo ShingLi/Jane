@@ -14,7 +14,9 @@ app.use(cors())
 // token认证
 app.use(expressJWT({
 	secret: 'jane',
-	algorithm: ['rs256']
+	algorithms: ['rs256']
+}).unless({
+	path: ['/admin/login', '/admin/signup']
 }))
 
 const presetdir = ['models', 'plugins']

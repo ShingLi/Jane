@@ -160,13 +160,15 @@ export default {
         },
         sign () {
             this.$refs.formData.validate(async valid => {
-                const DATA = {
+                let DATA = {
                     username: this.formData.username,
                     password: this.formData.password
                 }
                 if (valid) {
                     this.loading = true
-                    this.$store.dispatch('user/login', DATA, !this.isFlip ? 'login' : 'signup')
+                    const url = !this.isFlip ? 'login' : 'signup'
+                    DATA = { ...DATA, url }
+                    this.$store.dispatch('user/login', DATA)
                         .then(() => {
                             this.$router.push({
                                 path: '/'

@@ -15,30 +15,41 @@
 
 + 路由模块代码路由非中间件代码会在服务启动的时候执行一次, 同一个路径的2个路由，路由直接移交控制权是通过`next(route)`, 如果params不为0页面渲染为`regular`否则为`special`
 
-  ```js
-    app.use('/user/:id', (req, res ,next) => {
-        if (req.params.id == '0') next('route')
-        else next()
-    }, (req, res, next) => {
-        res.send('regular')
-    })
-    app.use('/user/:id', (req, res, next) => {
-        res.send('special')
-    })
-  ```
+    ```js
+        app.use('/user/:id', (req, res ,next) => {
+            if (req.params.id == '0') next('route')
+            else next()
+        }, (req, res, next) => {
+            res.send('regular')
+        })
+        app.use('/user/:id', (req, res, next) => {
+            res.send('special')
+        })
+    ```
 
 ### replace
++ 正则替换`replace`
+    ```js
+        // 首字母大写
+        \S 非空字符 \s 空字符
+        var a = 'user'
+        a = a.replace(/\S/, s => s.toUpperCase()) // User
+    ```
 
-  ```js
-    // 首字母大写
-    \S 非空字符 \s 空字符
-    var a = 'user'
-    a = a.replace(/\S/, s => s.toUpperCase())
-  ```
+> 2020-08-22
+### express-jwt
++ 解析`webjsontoken`的中间件
+    ```js
+        // unless 过滤接口不需要携带token
+        .unless({
+            path: ['/admin/login'] // 这里过滤接口的路径要是绝对路径
+        })
+    ```
+    参考 [express-unless](https://github.com/jfromaniello/express-unless)
 
 ### mac
-
-```js
-    打开on my zsh
-    open ~/.zshrcs
-```
++ macos 命令行
+    ```js
+        打开on my zsh
+        open ~/.zshrcs
+    ```
