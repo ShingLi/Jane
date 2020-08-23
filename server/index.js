@@ -42,6 +42,7 @@ fs.readdirSync(routesdir, 'utf-8').forEach(dir => {
 })
 
 require('./plugins/db')()
+
 http.createServer(app).listen(port, () => {
 	console.log(`serve running ${host}:${port}`)
 })

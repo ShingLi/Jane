@@ -20,6 +20,7 @@ const parsebody = (req) => {
 		}
 	})
 }
+
 module.exports = (app, { User }) => {
 	router.post('/login', async(req, res) => {
 		await parsebody(req)
@@ -28,7 +29,11 @@ module.exports = (app, { User }) => {
 			password: postData.password
 		}
 		console.log('登录账号数据', postData)
-		
+		const token = jwt.sign(info, 'shing', {
+			expiresIn: '24h',
+			issuer: 'shing'
+		})
+
 		User.find(info, (err, doc) => {
 			console.log('用户查询', doc)
 			if (err) {
@@ -46,7 +51,7 @@ module.exports = (app, { User }) => {
 					res.json({
 						responseCode: '0000',
 						responseMsg: '登录成功',
-						token: 'jane'
+						token
 					})
 				}
 			}
@@ -62,12 +67,21 @@ module.exports = (app, { User }) => {
 				responseMsg: '请勿重复注册',
 			})
 		} else {
-			User.create(postData, (err, doc) => {
+			const info = {
+				username: postData.username,
+				password: postData.password
+			}
+			const token = jwt.sign(info, 'shing', {
+				expiresIn: '24h',
+				issuer: 'shing'
+			})
+
+			User.create(info, (err, doc) => {
 				if (doc) {
 					res.send({
 						responseCode: '0000',
 						responseMsg: '注册成功',
-						token: 'jane'
+						token
 					})
 				} else {
 					res.send({
