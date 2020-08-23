@@ -1,6 +1,8 @@
 /node_modules
 /server/node_modules
 /admin/node_modules
+/web/node_modules
+
 *.gitignore
 .DS_Store
 # Log files
