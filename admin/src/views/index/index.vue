@@ -1,6 +1,5 @@
 <template>
     <div class="index__wrap">
-        
     </div>
 </template>
 <script>
