@@ -22,6 +22,7 @@ const parsebody = (req) => {
 }
 
 module.exports = (app, { User }) => {
+
 	router.post('/login', async(req, res) => {
 		await parsebody(req)
 		const info = {
@@ -92,5 +93,6 @@ module.exports = (app, { User }) => {
 			})
 		}
 	})
+
 	app.use('/admin', router)
 }
