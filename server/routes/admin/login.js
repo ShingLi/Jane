@@ -76,8 +76,9 @@ module.exports = (app, { User }) => {
 				expiresIn: '24h',
 				issuer: 'shing'
 			})
-
+			const error = User.validate()
 			User.create(info, (err, doc) => {
+				console.log(err)
 				if (doc) {
 					res.send({
 						responseCode: '0000',

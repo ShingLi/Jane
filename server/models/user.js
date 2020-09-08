@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const userSchema = new mongoose.Schema({
 	username: {
 		type: Number,
-		min: [1, '最小一位'],
+		min: [2, '最少一位'],
 		max: [6, '最多六位'],
 		required: true
 	},
@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
 		required: true,
 		validate: {
 			validator: function (val) {
-				return 
+				return val
 			},
 			message: '密码太短'
 		}
