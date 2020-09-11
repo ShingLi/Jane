@@ -76,7 +76,13 @@ module.exports = (app, { User }) => {
 				expiresIn: '24h',
 				issuer: 'shing'
 			})
-			const error = User.validate()
+			const { errors : { username, password } } = User.validate()
+			if (username == '密码长度太多，最少2位') {
+				res.json({
+					responseCode: '0000',
+					responseMsg: username,
+				})
+			}
 			User.create(info, (err, doc) => {
 				console.log(err)
 				if (doc) {
