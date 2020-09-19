@@ -30,13 +30,15 @@ module.exports = (app, { User }) => {
 			password: postData.password
 		}
 		console.log('登录账号数据', postData)
+
 		const token = jwt.sign(info, 'shing', {
 			expiresIn: '24h',
 			issuer: 'shing'
 		})
 
 		User.find(info, (err, doc) => {
-			console.log('用户查询', doc)
+			console.log('用户查询--doc', doc)
+			console.log('用户查询--err')
 			if (err) {
 				res.json({
 					responseCode: "9999",
@@ -76,15 +78,8 @@ module.exports = (app, { User }) => {
 				expiresIn: '24h',
 				issuer: 'shing'
 			})
-			const { errors : { username, password } } = User.validate()
-			if (username == '密码长度太多，最少2位') {
-				res.json({
-					responseCode: '0000',
-					responseMsg: username,
-				})
-			}
+
 			User.create(info, (err, doc) => {
-				console.log(err)
 				if (doc) {
 					res.send({
 						responseCode: '0000',
@@ -92,9 +87,18 @@ module.exports = (app, { User }) => {
 						token
 					})
 				} else {
-					res.send({
+					let message, { errors } = err
+					for (let k in errors) {
+						if (errors.hasOwnProperty(k)) {
+							if (errors[k].message) {
+								message = errors[k].message
+								break
+							}
+						}
+					}
+					res.json({
 						responseCode: '9999',
-						responseMsg: '注册失败'
+						responseMsg: message
 					})
 				}
 			})
