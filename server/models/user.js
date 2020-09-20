@@ -2,13 +2,13 @@ const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema({
 	username: {
-		type: Number,
-		required: [ true, '密码不能为为空'],
+		type: String,
+		required: [ true, '用户名不能为空!'],
 		validate: {
 			validator: username => {
-				return (username + '').length > 2
+				return username.length >= 1
 			},
-			message: '密码长度太多，最少2位'
+			message: `用户名最少1位!`
 		}
 	},
 	password: {
@@ -16,9 +16,9 @@ const userSchema = new mongoose.Schema({
 		required: true,
 		validate: {
 			validator: pwd => {
-				return (pwd + '').length > 6
+				return pwd.length > 6
 			},
-			message: '密码为6位数字'
+			message: '密码不少于6位!'
 		}
 	}
 })
