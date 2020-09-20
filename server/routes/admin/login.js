@@ -81,7 +81,7 @@ module.exports = (app, { User }) => {
 
 			User.create(info, (err, doc) => {
 				if (doc) {
-					res.send({
+					res.json({
 						responseCode: '0000',
 						responseMsg: '注册成功',
 						token
