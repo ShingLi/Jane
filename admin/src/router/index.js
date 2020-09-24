@@ -1,28 +1,27 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Layout from '@/layout/layout'
 
 Vue.use(VueRouter)
 
 export const constantRoutes = [
     {
-        path: '/',
-        redirect: {
-            name: 'index'
-        }
-    },
-    {
-        path: '/index',
-        name: 'index',
-        meta: {
-            requiresAuth: true
-        },
-        component: () => import('views/index')
-    },
-    {
         path: '/login',
         name: 'login',
         component: () => import('views/login/login')
-    }
+    },
+    {
+        path: '/',
+        component: Layout,
+        redirect: '/index',
+        children: [
+            {
+                name: 'index',
+                path: 'index',
+                component: () => import('views/index/index')
+            }
+        ]
+    },
 ]
 
 export const asyncRoutes = []

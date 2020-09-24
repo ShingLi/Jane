@@ -1,6 +1,6 @@
 <template>
     <div class="index__wrap">
-        
+        1111111
     </div>
 </template>
 <script>
