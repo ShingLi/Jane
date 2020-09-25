@@ -19,7 +19,6 @@ export default {
         overflow: hidden;
         margin: 0 auto;
         margin-top: 5vh;
-        background-color: #ccc;
         border-radius: 30px;
     }
 </style>

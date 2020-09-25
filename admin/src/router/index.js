@@ -8,7 +8,10 @@ export const constantRoutes = [
     {
         path: '/login',
         name: 'login',
-        component: () => import('views/login/login')
+        component: () => import('views/login/login'),
+        meta: {
+            title: '一片云'
+        }
     },
     {
         path: '/',
@@ -18,7 +21,10 @@ export const constantRoutes = [
             {
                 name: 'index',
                 path: 'index',
-                component: () => import('views/index/index')
+                component: () => import('views/index/index'),
+                meta: {
+                    title: '首页'
+                }
             }
         ]
     },
