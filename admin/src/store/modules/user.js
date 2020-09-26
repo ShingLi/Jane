@@ -1,4 +1,3 @@
-import urls from 'config/urls'
 import http from 'config/http'
 import { setCookie, getCookie } from 'utils/cookie'
 
@@ -18,7 +17,7 @@ const actions = {
     login ({ commit }, info) {
         const { url, ...userinfo } = info
         return new Promise((resolve, reject) => {
-            http.post(url == 'login' ? urls.login : urls.signup, userinfo).then(({ token }) => {
+            http.post(url == 'login' ? 'login' : 'signup', userinfo).then(({ token }) => {
                 commit('SETTOKEN', token)
                 resolve()
             }).catch(err => {

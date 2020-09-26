@@ -62,7 +62,6 @@
     </div>
 </template>
 <script>
-import urls from 'config/urls'
 import { setCookie } from 'utils/cookie'
 export default {
     name: 'login',
