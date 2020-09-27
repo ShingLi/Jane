@@ -16,5 +16,5 @@ export default {
                 <img src={ props.src } alt="头像" style={ { ...style.avatar } }/>
             </div>
         )
-    }
+    },
 }
