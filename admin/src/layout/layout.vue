@@ -35,7 +35,7 @@ export default {
             display: flex;
             background-color: #0e8bff;
             box-shadow: 0 4px 10px #d2d2d2;
-            background-image: linear-gradient(45deg,#0e8bff,#13adff);
+            background-image: linear-gradient(45deg,#0ea6ff,#13adff);
         }
         &__content{
             flex:1;
