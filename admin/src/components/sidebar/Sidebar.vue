@@ -1,6 +1,10 @@
 <template>
     <div class="sidebar">
-        <Avatar :src="avatar" class="custom--avatar"/>
+        <div id="avatar"
+            class="avatar"
+        >
+            <Avatar :src="avatar" class="custom--avatar"/>
+        </div>
         <ol class="menu">
             <li v-for="(n, i) of menu" :key="i">{{ n }}</li>
         </ol>
@@ -20,9 +24,7 @@ export default {
         }
     },
     methods: {
-        rotate () {
-            console.log(1)
-        }
+
     }
 }
 </script>

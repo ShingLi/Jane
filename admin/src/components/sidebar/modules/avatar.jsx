@@ -3,7 +3,8 @@ const style = {
         width: '80px',
         height: '80px',
         borderRadius: '50%',
-        display: 'block'
+        display: 'block',
+        cursor: 'pointer'
     }
 }
 export default {

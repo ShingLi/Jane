@@ -2,9 +2,20 @@
     height: 100%;
     width: 240px;
     padding: 30px 0 16px 16px;
+    // 头像左右居中
     .custom--avatar{
         margin: auto;
     }
+    .avatar{
+        &:hover{
+            transition-property: transform;
+            transition-duration: 60s;
+            transform: rotate(1000turn);
+            transition-timing-function: linear;
+        }
+    }
+    
+    // 菜单
     .menu{
         display: flex;
         margin-top: 25px;
