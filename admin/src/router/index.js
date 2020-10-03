@@ -4,6 +4,7 @@ import Layout from '@/layout/layout'
 
 Vue.use(VueRouter)
 
+// 通用路由
 export const constantRoutes = [
     {
         path: '/login',
@@ -19,7 +20,7 @@ export const constantRoutes = [
         redirect: '/index',
         children: [
             {
-                name: 'index',
+                name: 'Index',
                 path: 'index',
                 component: () => import('views/index/index'),
                 meta: {
@@ -30,7 +31,21 @@ export const constantRoutes = [
     },
 ]
 
-export const asyncRoutes = []
+// 动态挂载路由需要权限的账号才能访问的
+export const asyncRoutes = [
+    {
+        path: '/layout',
+        component: Layout,
+        children: [
+            {
+                name: 'Setting',
+                path: 'setting',
+                component: () => import('views/setting/setting')
+            }
+        ]
+
+    }
+]
 
 const createRoutes = () => constantRoutes
 

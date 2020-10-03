@@ -8,7 +8,7 @@ export default {
     name: 'App',
     watch: {
         $route (to, from) {
-            document.title = to.meta.title
+            document.title = to.meta.title || '李大锤'
         }
     }
 }

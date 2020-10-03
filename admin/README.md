@@ -9,3 +9,5 @@
 ```js
     transtion-group 内部的元素必须要一个 `key`才显示
 ```
+
+## 思考

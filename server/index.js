@@ -11,12 +11,12 @@ const host = process.env.HOST || 'localhost'
 
 app.use(cors())
 
-// token认证
+
 app.use(expressJWT({
-	secret: 'jane',
-	algorithms: ['rs256']
+	secret: 'jane', // 密钥
+	algorithms: ['rs256'], // 算法
 }).unless({
-	path: ['/admin/login', '/admin/signup']
+	path: ['', '/admin/signup'], // 不经过Token 解析
 }))
 
 const presetdir = ['models', 'plugins']
