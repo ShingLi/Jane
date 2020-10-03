@@ -3,7 +3,7 @@
         <div class="layout__main">
             <Sidebar />
             <div class="layout__content">
-                <router-view />
+                <router-view class="router"/>
             </div>
         </div>
     </div>
@@ -42,6 +42,10 @@ export default {
             background-color: #fff;
             border-radius: 30px;
             overflow: hidden;
+            .router{
+                padding: 15px;
+                overflow-y: auto;
+            }
         }
     }
 </style>
