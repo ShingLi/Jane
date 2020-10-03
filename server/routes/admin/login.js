@@ -30,31 +30,26 @@ module.exports = (app, { User }) => {
 			password: postData.password
 		}
 		console.log('登录账号数据', postData)
-
-		const token = jwt.sign(info, 'shing', {
-			expiresIn: '24h',
-			issuer: 'shing'
-		})
-
+		// 验证token
+		// jwt.verify(req.)
 		User.find(info, (err, doc) => {
 			console.log('用户查询--doc', doc)
 			console.log('用户查询--err')
 			if (err) {
 				res.json({
 					responseCode: "9999",
-					responseMsg: "查询错误"
+					responseMsg: "查询错误",
 				})
 			} else{
 				if (!doc.length) {
 					res.json({
 						responseCode: '9999',
-						responseMsg: '账号不存在!'
+						responseMsg: '账号不存在!',
 					})
 				} else {
 					res.json({
 						responseCode: '0000',
 						responseMsg: '登录成功',
-						token
 					})
 				}
 			}
@@ -74,9 +69,10 @@ module.exports = (app, { User }) => {
 				username: postData.username,
 				password: postData.password
 			}
+
 			const token = jwt.sign(info, 'shing', {
-				expiresIn: '24h',
-				issuer: 'shing'
+				expiresIn: '24h', // 过期时间
+				issuer: 'shing', // 发行者
 			})
 
 			User.create(info, (err, doc) => {

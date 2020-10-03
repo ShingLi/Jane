@@ -29,6 +29,10 @@ export const constantRoutes = [
             }
         ]
     },
+]
+
+// 动态挂载路由需要权限的账号才能访问的
+export const asyncRoutes = [
     {
         path: '/layout',
         component: Layout,
@@ -41,10 +45,6 @@ export const constantRoutes = [
         ]
 
     }
-]
-
-// 动态挂载路由需要权限的账号才能访问的
-export const asyncRoutes = [
 ]
 
 const createRoutes = () => constantRoutes

@@ -8,7 +8,7 @@ const whitelist = ['login']
 
 router.beforeEach((to, from, next) => {
     NProgress.start()
-    if (getCookie()) {
+    if (getCookie('token')) {
         if (whitelist.includes(to.name)) {
             next('/')
         } else {

@@ -11,7 +11,7 @@ const instance = axios.create({
 instance.interceptors.request.use(
     config => {
         // 请求头带上token
-        config.headers['Authorization'] = getCookie()
+        config.headers['Authorization'] = getCookie('token')
         // 判断是相对路径还是绝对路径，以此区分是否走本地url 地址
         config.url = config.url.includes('://') ? config.url : urls[config.url]
         return config

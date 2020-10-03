@@ -9,7 +9,7 @@ const state = {
 const mutations = {
     SETTOKEN (state, token) {
         state.token = token
-        setCookie('auth', token)
+        setCookie('token', token)
     }
 }
 
