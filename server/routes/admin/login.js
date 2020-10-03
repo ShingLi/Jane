@@ -31,7 +31,7 @@ module.exports = (app, { User }) => {
 		}
 		console.log('登录账号数据', postData)
 		// 验证token
-		// jwt.verify(req.)
+		console.log(req)
 		User.find(info, (err, doc) => {
 			console.log('用户查询--doc', doc)
 			console.log('用户查询--err')
