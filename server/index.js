@@ -16,7 +16,7 @@ app.use(expressJWT({
 	secret: 'jane', // 密钥
 	algorithms: ['rs256'], // 算法
 }).unless({
-	path: ['', '/admin/signup'], // 不经过Token 解析
+	path: ['/admin/login', '/admin/signup'], // 不经过Token 解析
 }))
 
 const presetdir = ['models', 'plugins']

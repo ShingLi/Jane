@@ -26,6 +26,7 @@ module.exports = {
             "arrays": "only-multiline",
             "objects": "only-multiline",
         }],
-        'no-unused-vars': 'off'
+        'no-unused-vars': 'off',
+        'curly': ['error', 'multi-line']
     }
 }

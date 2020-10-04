@@ -164,20 +164,34 @@ export default {
                     password: this.formData.password
                 }
                 if (valid) {
-                    this.loading = true
                     const url = !this.isFlip ? 'login' : 'signup'
                     DATA = { ...DATA, url }
-                    this.$store.dispatch('user/login', DATA)
-                        .then(() => {
-                            this.$router.push({
-                                path: '/'
-                            })
+
+                    this.loading = true
+
+                    const Interface = (Data) => {
+                        return new Promise((resolve, reject) => {
+                            this.$store.dispatch('user/login', Data)
+                                .then((token) => {
+                                    if (token) {
+                                        this.$router.push({ path: '/' })
+                                    }
+                                    resolve()
+                                })
+                                .catch(() => {
+                                    setTimeout(() => {
+                                        this.loading = false
+                                    }, 1000)
+                                })
                         })
-                        .catch(() => {
-                            setTimeout(() => {
-                                this.loading = false
-                            }, 1000)
-                        })
+                    }
+                    Interface(DATA).then(() => {
+                        if (this.isFlip) {
+                            // 注册成功需要调用登录接口拉去下token
+                            DATA = Object.assign(DATA, { url: 'login' })
+                            Interface(DATA)
+                        }
+                    })
                 }
             })
         }

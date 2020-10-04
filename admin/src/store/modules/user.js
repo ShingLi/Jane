@@ -14,12 +14,15 @@ const mutations = {
 }
 
 const actions = {
+    // 登录、注册
     login ({ commit }, info) {
         const { url, ...userinfo } = info
         return new Promise((resolve, reject) => {
-            http.post(url == 'login' ? 'login' : 'signup', userinfo).then(({ token }) => {
-                commit('SETTOKEN', token)
-                resolve()
+            http.post(url == 'login' ? 'login' : 'signup', userinfo).then(({ token = '' }) => {
+                if (token) {
+                    commit('SETTOKEN', token)
+                }
+                resolve(token)
             }).catch(err => {
                 reject(err)
             })

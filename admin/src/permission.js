@@ -8,7 +8,7 @@ const whitelist = ['login']
 
 router.beforeEach((to, from, next) => {
     NProgress.start()
-    // bug fix 要验证token是否有效
+    // bug fix 要验证token是否有效.
     if (getCookie('token')) {
         if (whitelist.includes(to.name)) {
             next('/')

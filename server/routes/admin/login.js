@@ -30,8 +30,12 @@ module.exports = (app, { User }) => {
 			password: postData.password
 		}
 		console.log('登录账号数据', postData)
-		// 验证token
-		console.log(req)
+		// 生成token
+		const token = jwt.sign(info, 'jane', {
+			issuer: 'shingli',
+			expiresIn: '1h'
+		})
+		
 		User.find(info, (err, doc) => {
 			console.log('用户查询--doc', doc)
 			console.log('用户查询--err')
@@ -50,6 +54,7 @@ module.exports = (app, { User }) => {
 					res.json({
 						responseCode: '0000',
 						responseMsg: '登录成功',
+						token
 					})
 				}
 			}
@@ -70,17 +75,11 @@ module.exports = (app, { User }) => {
 				password: postData.password
 			}
 
-			const token = jwt.sign(info, 'shing', {
-				expiresIn: '24h', // 过期时间
-				issuer: 'shing', // 发行者
-			})
-
 			User.create(info, (err, doc) => {
 				if (doc) {
 					res.json({
 						responseCode: '0000',
 						responseMsg: '注册成功',
-						token
 					})
 				} else {
 					let message, { errors } = err
