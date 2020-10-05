@@ -174,7 +174,13 @@ export default {
                             this.$store.dispatch('user/login', Data)
                                 .then((token) => {
                                     if (token) {
-                                        this.$router.push({ path: '/' })
+                                        if (this.$route.query.oldpath) {
+                                            this.$router.push({
+                                                path: this.$route.query.oldpath
+                                            })
+                                        } else {
+                                            this.$router.push({ path: '/' })
+                                        }
                                     }
                                     resolve()
                                 })
