@@ -2,8 +2,10 @@ import http from 'config/http'
 import { setCookie, getCookie } from 'utils/cookie'
 
 const state = {
-    token: getCookie('token') || '',
-    roles: []
+    token: getCookie('token') || '', // token
+    roles: [], // 权限
+    avatar: '', // 头像
+    username: '', // 用户名
 }
 
 const mutations = {
@@ -28,9 +30,9 @@ const actions = {
             })
         })
     },
-    userInfo ({ commit }) {
-        http.post('/userinfo').then({
-
+    userInfo ({ commit, state }) {
+        http.post('/userinfo', state.token).then(res => {
+            console.log(res)
         })
     }
 }

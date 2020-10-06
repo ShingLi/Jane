@@ -160,7 +160,7 @@ export default {
         sign () {
             this.$refs.formData.validate(async valid => {
                 let DATA = {
-                    username: this.formData.username,
+                    account: this.formData.username,
                     password: this.formData.password
                 }
                 if (valid) {
