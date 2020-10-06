@@ -14,11 +14,17 @@
             transition-timing-function: cubic-bezier(.39,.01,1,.59);
         }
     }
-    
+    .username{
+        font-size: 14px;
+        color: #fff;
+        text-align: center;
+        margin-top:14px;
+        cursor: pointer;
+    }
     // 菜单
     .menu{
         display: flex;
-        margin-top: 25px;
+        margin-top: 12px;
         flex-direction: column;
         li{
             flex: 1;
