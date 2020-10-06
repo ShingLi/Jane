@@ -1,4 +1,6 @@
 import router from 'router'
+import store from 'store'
+
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
@@ -6,14 +8,15 @@ import { getCookie } from 'utils/cookie'
 
 const whitelist = ['login']
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
     NProgress.start()
     // bug fix 要验证token是否有效.
     if (getCookie('token')) {
         if (whitelist.includes(to.name)) {
             next('/')
         } else {
-            next()
+            // next()
+            store.dispath('user/userInfo')
         }
     } else {
         if (!whitelist.includes(to.name)) {

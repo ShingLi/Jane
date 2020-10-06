@@ -2,7 +2,7 @@ import http from 'config/http'
 import { setCookie, getCookie } from 'utils/cookie'
 
 const state = {
-    token: getCookie() || '',
+    token: getCookie('token') || '',
     roles: []
 }
 
@@ -26,6 +26,11 @@ const actions = {
             }).catch(err => {
                 reject(err)
             })
+        })
+    },
+    userInfo ({ commit }) {
+        http.post('/userinfo').then({
+
         })
     }
 }

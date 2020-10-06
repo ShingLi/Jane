@@ -3,14 +3,16 @@ const fs = require('fs')
 const http = require('http')
 
 const cors = require('cors')
+const bodyParser = require('body-parser')
 const expressJWT = require('express-jwt')
 
 const app = express()
+const router = express.Router()
 const port = process.env.PORT || 4000
 const host = process.env.HOST || 'localhost'
 
 app.use(cors())
-
+app.use(bodyParser.json())
 
 app.use(expressJWT({
 	secret: 'jane', // 密钥
@@ -38,7 +40,7 @@ fs.readdirSync(routesdir, 'utf-8').forEach(dir => {
 	if (fs.statSync(dir).isDirectory()) {
 		fs.readdirSync(dir).forEach(route => {
 			route = route.replace(/\.js$/, '')
-			require(`${dir}/${route}`)(app, global['models'])
+			require(`${dir}/${route}`)(app, router, global['models'])
 		})
 	}
 })

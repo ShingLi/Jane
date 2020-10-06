@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
 			},
 			message: '密码不少于6位!'
 		}
-	}
+	},
 })
 
 module.exports = mongoose.model('user', userSchema)

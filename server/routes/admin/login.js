@@ -1,5 +1,3 @@
-const express = require('express')
-const router = express.Router()
 const jwt = require('jsonwebtoken')
 
 let postData
@@ -21,7 +19,7 @@ const parsebody = (req) => {
 	})
 }
 
-module.exports = (app, { User }) => {
+module.exports = (app, router, { User }) => {
 
 	router.post('/login', async(req, res) => {
 		await parsebody(req)
