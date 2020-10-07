@@ -1,12 +1,17 @@
 import axios from 'axios'
 import urls from 'config/urls'
+import router from '../permission'
+
 import { getCookie, removeCookie } from 'utils/cookie'
 import { Message } from 'element-ui'
-import router from '../permission'
 
 const instance = axios.create({
     baseURL: process.env.VUE_APP_BASEURL,
     timeout: 5000,
+    validateStatus: status => {
+        // 处理下token错误的返回状态码 否则axios直接reject
+        return status >= 200 && status <= 401
+    }
 })
 
 instance.interceptors.request.use(

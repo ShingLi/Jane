@@ -15,8 +15,8 @@ router.beforeEach(async (to, from, next) => {
         if (whitelist.includes(to.name)) {
             next('/')
         } else {
-            // next()
-            store.dispath('user/userInfo')
+            await store.dispatch('user/userInfo')
+            next()
         }
     } else {
         if (!whitelist.includes(to.name)) {

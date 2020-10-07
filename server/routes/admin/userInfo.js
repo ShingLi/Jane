@@ -1,7 +1,10 @@
 module.exports = (app, router) => {
 
     router.post('/userinfo', async (req, res) => {
-        console.log(req.body)
+        res.json({
+            responseCode: '0000',
+            responseMsg: ''
+        })
     })
 
     app.use('/admin', router)

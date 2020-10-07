@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema({
-	username: {
+	account: {
 		type: String,
 		required: [ true, '用户名不能为空!'],
 		validate: {
@@ -21,6 +21,12 @@ const userSchema = new mongoose.Schema({
 			message: '密码不少于6位!'
 		}
 	},
+	avatar: {
+		type: String,
+	},
+	username: {
+		type: String
+	}
 })
 
 module.exports = mongoose.model('user', userSchema)

@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken')
 let postData
 
 const parsebody = (req) => {
+	// 原生解析post 请求
 	return new Promise((resolve, reject) => {
 		postData = ''
 		try {
@@ -22,16 +23,16 @@ const parsebody = (req) => {
 module.exports = (app, router, { User }) => {
 
 	router.post('/login', async(req, res) => {
-		await parsebody(req)
+		const { account, password } = req.body
 		const info = {
-			username: postData.username,
-			password: postData.password
+			account,
+			password
 		}
-		console.log('登录账号数据', postData)
+		console.log('登录账号数据', info)
 		// 生成token
 		const token = jwt.sign(info, 'jane', {
 			issuer: 'shingli',
-			expiresIn: '1h'
+			expiresIn: '30m', // 过期时间30分钟
 		})
 		
 		User.find(info, (err, doc) => {
@@ -60,7 +61,7 @@ module.exports = (app, router, { User }) => {
 	})
 
 	router.post('/signup', async(req, res) => {
-		await parsebody(req)
+		const { account, password } = req.body
 		const len = await User.find().countDocuments()
 		if (len) {
 			res.send({
@@ -69,8 +70,8 @@ module.exports = (app, router, { User }) => {
 			})
 		} else {
 			const info = {
-				username: postData.username,
-				password: postData.password
+				account,
+				password,
 			}
 
 			User.create(info, (err, doc) => {
@@ -99,4 +100,5 @@ module.exports = (app, router, { User }) => {
 	})
 
 	app.use('/admin', router)
+
 }

@@ -1,7 +1,7 @@
-const express = require('express')
 const fs = require('fs')
 const http = require('http')
 
+const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const expressJWT = require('express-jwt')
@@ -14,12 +14,23 @@ const host = process.env.HOST || 'localhost'
 app.use(cors())
 app.use(bodyParser.json())
 
+// 验证token
 app.use(expressJWT({
 	secret: 'jane', // 密钥
-	algorithms: ['rs256'], // 算法
+	algorithms: ['HS256'], // 算法 rs256 有问题 https://stackoverflow.com/questions/39874731/unauthorizederror-invalid-algorithm-express-jwt
 }).unless({
 	path: ['/admin/login', '/admin/signup'], // 不经过Token 解析
 }))
+
+// token 错误自定义
+app.use((err, req, res, next) => {
+	if (err.name == 'UnauthorizedError') {
+		res.status(401).send({
+			responseCode: '5015',
+			responseMsg: 'token失效'
+		})
+	}
+})
 
 const presetdir = ['models', 'plugins']
 const routesdir = __dirname + '/routes'
