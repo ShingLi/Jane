@@ -30,9 +30,14 @@ const actions = {
             })
         })
     },
+<<<<<<< HEAD
     // 获取用户信息
     userInfo ({ commit, state: { token } }) {
         http.post('userinfo').then(res => {
+=======
+    userInfo ({ commit, state }) {
+        http.post('/userinfo', state.token).then(res => {
+>>>>>>> 388029c24e248f95953f9a21978f10d1673b068f
             console.log(res)
         })
     }
