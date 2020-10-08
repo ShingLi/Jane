@@ -4,8 +4,8 @@ import { setCookie, getCookie } from 'utils/cookie'
 const state = {
     token: getCookie('token') || '', // token
     roles: [], // 权限
-    avatar: '', // 头像
-    username: '', // 用户名
+    avatar: require('assets/img/avatar.jpeg'), // 头像
+    username: '路过一片云', // 用户名
 }
 
 const mutations = {
