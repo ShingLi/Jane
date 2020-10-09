@@ -22,15 +22,18 @@ app.use(expressJWT({
 	path: ['/admin/login', '/admin/signup'], // 不经过Token 解析
 }))
 
-// token 错误自定义
+// token 错误自定义 和 token 过期自动刷新
 app.use((err, req, res, next) => {
 	if (err.name == 'UnauthorizedError') {
 		res.status(401).send({
 			responseCode: '5015',
 			responseMsg: 'token失效'
 		})
+	} else {
+		// 活跃用户token过期无感刷新
 	}
 })
+
 
 const presetdir = ['models', 'plugins']
 const routesdir = __dirname + '/routes'
