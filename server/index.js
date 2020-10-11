@@ -31,6 +31,7 @@ app.use((err, req, res, next) => {
 		})
 	} else {
 		// 活跃用户token过期无感刷新
+		next()
 	}
 })
 
