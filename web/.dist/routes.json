@@ -1,0 +1,16 @@
+[
+  {
+    "name": "about",
+    "path": "/about",
+    "component": "/Users/licheng/Code/Nuxt/Jane/web/pages/about.vue",
+    "chunkName": "pages/about",
+    "_name": "_a4238f0a"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/licheng/Code/Nuxt/Jane/web/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_64b3d980"
+  }
+]
