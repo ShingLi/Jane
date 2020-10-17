@@ -1,6 +1,6 @@
 
 const meta = require('./config/meta')
-const projectConfig = require('./config//project')
+const projectConfig = require('./config/project')
 export default {
     buildDir: '.dist',
     ssr: false,
@@ -35,5 +35,7 @@ export default {
         '@nuxtjs/axios'
     ],
     axios: {},
-    build: {}
+    build: {
+        
+    }
 }
