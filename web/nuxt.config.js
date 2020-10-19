@@ -2,11 +2,17 @@
 const meta = require('./config/meta')
 const projectConfig = require('./config/project')
 export default {
+    build: {
+        analyze: true
+    },
     buildDir: '.dist',
     ssr: false,
     router: {
         extendRoutes (routes, resolve) {
-            
+            console.log(routes)
+            for (let i = routes.length; i--;) {
+                // routes[i].component = routes[i].component.replace(/\.vue/, '.html')
+            }
         }
     },
     target: 'server',
@@ -34,8 +40,5 @@ export default {
     modules: [
         '@nuxtjs/axios'
     ],
-    axios: {},
-    build: {
-        
-    }
+    axios: {}
 }
