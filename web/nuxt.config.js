@@ -28,7 +28,9 @@ export default {
         ]
     },
     css: [],
-    plugins: [],
+    plugins: [
+        '~/plugins/axios'
+    ],
     components: true,
     buildModules: [
         // Doc: https://github.com/nuxt-community/eslint-module
@@ -40,5 +42,7 @@ export default {
     modules: [
         '@nuxtjs/axios'
     ],
-    axios: {}
+    axios: {
+
+    }
 }
