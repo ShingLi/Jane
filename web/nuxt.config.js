@@ -5,13 +5,13 @@ export default {
     build: {
         analyze: true
     },
-    buildDir: '.dist',
+    buildDir: './dist',
     ssr: false,
     router: {
         extendRoutes (routes, resolve) {
             console.log(routes)
             for (let i = routes.length; i--;) {
-                // routes[i].component = routes[i].component.replace(/\.vue/, '.html')
+                routes[i].path = routes[i].path + '.html'
             }
         }
     },
