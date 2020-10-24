@@ -3,19 +3,18 @@ const meta = require('./config/meta')
 const projectConfig = require('./config/project')
 export default {
     build: {
-        analyze: true
+        analyze: true, // 编译的时候显示构建包的大小 // https://zh.nuxtjs.org/api/configuration-build/
     },
     buildDir: './dist',
-    ssr: false,
+    // ssr: false,
     router: {
         extendRoutes (routes, resolve) {
-            console.log(routes)
             for (let i = routes.length; i--;) {
                 routes[i].path = routes[i].path + '.html'
             }
         }
     },
-    target: 'server',
+    target: 'server', // default server
     head: {
         title: process.env.npm_package_name || projectConfig.title,
         meta,
@@ -31,14 +30,11 @@ export default {
     plugins: [
         '~/plugins/axios'
     ],
-    components: true,
+    components: true, // 2.13+ // 自动注册组件 https://github.com/nuxt/components
     buildModules: [
         // Doc: https://github.com/nuxt-community/eslint-module
         '@nuxtjs/eslint-module'
     ],
-    /*
-     ** Nuxt.js modules
-     */
     modules: [
         '@nuxtjs/axios'
     ],
