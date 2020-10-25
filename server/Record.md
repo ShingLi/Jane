@@ -47,13 +47,3 @@
     ```
     参考 [express-unless](https://github.com/jfromaniello/express-unless)
 
-### mac
-+ macos 命令行
-    ```js
-        打开on my zsh
-        open ~/.zshrcs
-
-        sudo mongod --dbpath=/Users/licheng/data
-    ```
-+ 显示隐藏的文件
-    + 在要显示的文件目录上 `shift + comman + .`
