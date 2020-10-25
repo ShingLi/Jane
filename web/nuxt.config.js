@@ -38,7 +38,7 @@ export default {
         ]
     },
     css: [
-        '~/assets/scss/index.scss'
+        '~/assets/scss/common.scss'
     ],
     plugins: [
         '~/plugins/axios'

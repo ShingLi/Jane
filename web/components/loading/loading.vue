@@ -4,7 +4,9 @@
         <div class="loading--wap">
             <div class="loading__content">
                 <div class="loading__content--svg">
-                    
+                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" stroke-width="2px">
+                        <circle r = '29' cx="30" cy="30" stroke="#fff" fill="transparent"></circle>
+                    </svg>
                 </div>
                 <!-- <p class="loading__content--text">加载中···</p> -->
             </div>
@@ -43,10 +45,10 @@ export default {
             top: 50%;
             left: 50%;
             transform: translate3d(-50%, -50%,0);
-            width: 80px;
-            height: 80px;
+            // width: 80px;
+            // height: 80px;
             padding: 10px;
-            border-radius: 5px;
+            border-radius: 6px;
             background-color: rgba(0,0,0, .6);
             display: flex;
             flex-direction: column;
