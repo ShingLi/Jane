@@ -2,6 +2,7 @@
 /server/node_modules
 /admin/node_modules
 /web/node_modules
+/web/dist
 
 *.gitignore
 .DS_Store

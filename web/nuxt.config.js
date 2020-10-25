@@ -1,6 +1,7 @@
 
 const meta = require('./config/meta')
 const projectConfig = require('./config/project')
+
 export default {
     build: {
         analyze: true, // 编译的时候显示构建包的大小 // https://zh.nuxtjs.org/api/configuration-build/
@@ -10,8 +11,18 @@ export default {
     router: {
         extendRoutes (routes, resolve) {
             for (let i = routes.length; i--;) {
-                routes[i].path = routes[i].path + '.html'
+                if (routes[i].path == '/') {
+                    routes[i].path = '/index.html'
+                } else {
+                    routes[i].path = routes[i].path + '.html'
+                }
             }
+            routes.push({
+                path: '/',
+                redirect: {
+                    path: '/index.html'
+                }
+            })
         }
     },
     target: 'server', // default server
@@ -40,5 +51,12 @@ export default {
     ],
     axios: {
 
+    },
+    // 运行时配置
+    publicRuntimeConfig: {
+        baseURL: process.env.baseURL
+    },
+    privateRuntimeConfig: {
+        baseURL: '${PUBLIC_URL}${BASE_URL}'
     }
 }
