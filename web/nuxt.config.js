@@ -52,7 +52,8 @@ export default {
     axios: {
 
     },
-    // 运行时配置
+    loading: true, // 全局加载loading
+    // 运行时配置 https://zh.nuxtjs.org/blog/moving-from-nuxtjs-dotenv-to-runtime-config/
     publicRuntimeConfig: {
         baseURL: process.env.baseURL
     },
