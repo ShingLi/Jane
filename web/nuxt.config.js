@@ -37,7 +37,9 @@ export default {
             }
         ]
     },
-    css: [],
+    css: [
+        '~/assets/scss/index.scss'
+    ],
     plugins: [
         '~/plugins/axios'
     ],
@@ -52,7 +54,7 @@ export default {
     axios: {
 
     },
-    loading: true, // 全局加载loading
+    loading: '~/components/loading', // 全局加载loading
     // 运行时配置 https://zh.nuxtjs.org/blog/moving-from-nuxtjs-dotenv-to-runtime-config/
     publicRuntimeConfig: {
         baseURL: process.env.baseURL

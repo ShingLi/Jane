@@ -67,4 +67,9 @@
 *:before,
 *:after {
   box-sizing: border-box;
+  user-select: none;
+}
+
+html, body{
+  font-family: PingFangSC-Regular,"PingFang SC","Helvetica Neue",Helvetica,STHeiTi,sans-serif;
 }
