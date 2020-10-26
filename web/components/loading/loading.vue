@@ -4,7 +4,11 @@
         <div class="loading--wap">
             <div class="loading__content">
                 <div class="loading__content--svg">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" stroke-width="2px">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        width="60"
+                        height="60"
+                        stroke-width="2px"
+                        viewBox="0,0,60,60">
                         <circle r = '29' cx="30" cy="30" stroke="#fff" fill="transparent"></circle>
                     </svg>
                 </div>
