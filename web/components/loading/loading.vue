@@ -5,14 +5,18 @@
             <div class="loading__content">
                 <div class="loading__content--svg">
                     <svg xmlns="http://www.w3.org/2000/svg"
-                        width="60"
-                        height="60"
-                        
-                        viewBox="0,0,60,60">
-                        <circle r = '26' cx="30" cy="30" stroke="#fff" fill="transparent" class="circle" stroke-width="3px"></circle>
+                        width="56"
+                        height="56"
+                        viewBox="0,0,55,55">
+                        <circle r = '25' cx="28" cy="28"
+                            stroke="#fff"
+                            fill="none"
+                            class="circle"
+                            stroke-width="2px"
+                            stroke-lineap="round"
+                        ></circle>
                     </svg>
                 </div>
-                <!-- <p class="loading__content--text">加载中···</p> -->
             </div>
         </div>
     </div>
@@ -23,6 +27,8 @@ export default {
     name: 'Loading',
     data: () => ({
         loading: true,
+        dashOffset: 0,
+        dashArray: 164
     }),
     methods: {
         start () {
@@ -60,13 +66,11 @@ export default {
             justify-content: space-between;
             align-items: center;
             &--svg{
-                animation: circle 1s linear infinite;
+                vertical-align: bottom;
+                animation: circle 3s linear infinite;
                 @keyframes circle {
                     0%{
                         transform: rotate(0deg);
-                    }
-                    50%{
-                        transform: rotate(180deg);
                     }
                     100%{
                         transform: rotate(360deg);
@@ -74,27 +78,20 @@ export default {
                 }
                 .circle{
                     stroke-dasharray: 164;
-                    stroke-dashoffset: 0;
-                    animation: rotate 2.3s ease-in-out infinite;
+                    animation: rotate 1.3s ease-in-out infinite;
                 }
                 @keyframes rotate {
                     0%{
+                        stroke-dasharray: 1, 200;
                         stroke-dashoffset: 0;
                     }
-                    20%{
-                        stroke-dashoffset: -100;
-                    }
-                    40%{
-                        stroke-dashoffset: -170;
-                    }
-                    60%{
-                        stroke-dashoffset: -240;
-                    }
-                    80%{
-                        stroke-dashoffset: -300;
+                    50%{
+                        stroke-dasharray: 130, 170;
+                        stroke-dashoffset: -49;
                     }
                     100%{
-                        stroke-dashoffset: -330;
+                        stroke-dasharray: 130, 170;
+                        stroke-dashoffset: -165;
                     }
                 }
             }

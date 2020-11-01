@@ -61,5 +61,11 @@ export default {
     },
     privateRuntimeConfig: {
         baseURL: '${PUBLIC_URL}${BASE_URL}'
+    },
+    server: {
+        port: '7000',
+        timing: {
+            total: true, // 是否开始服务端渲染计时
+        }
     }
 }
