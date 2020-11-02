@@ -1,10 +1,24 @@
+// licheng 
+const fs = require('fs')
 const path = require('path')
 const { merge } = require('webpack-merge')
+
 // 业务模块
 const meta = require('./config/meta')
 const projectConfig = require('./config/project')
 
 const resolve = src => path.join(__dirname, src)
+
+const rootDir = fs.readdirSync(__dirname, {
+    encoding: 'utf8',
+    withFileTypes: true, // http://nodejs.cn/api/fs.html#fs_fs_readdirsync_path_options 返回Dirent对象
+}).filter( dir=> {
+    if (dir.isDirectory()) {
+        return dir.name
+    }
+})
+
+console.log(rootDir)
 
 export default {
     build: {
@@ -13,7 +27,8 @@ export default {
             let { alias } = config.resolve
             alias = merge(alias, {
                 assets: resolve('assets'),
-                components: resolve('components')
+                components: resolve('components'),
+                
             })
         }
     },
