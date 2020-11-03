@@ -9,27 +9,28 @@ const projectConfig = require('./config/project')
 
 const resolve = src => path.join(__dirname, src)
 
+// 获取项目中的所有文件夹 unless( dist 和node_modules )
 const rootDir = fs.readdirSync(__dirname, {
     encoding: 'utf8',
     withFileTypes: true, // http://nodejs.cn/api/fs.html#fs_fs_readdirsync_path_options 返回Dirent对象
 }).filter( dir=> {
     if (dir.isDirectory()) {
-        return dir.name
+        return dir.name != 'dist' && dir.name != 'node_modules'
     }
 })
 
-console.log(rootDir)
 
+const aliasObj = rootDir.reduce(v => {
+    
+}, {})
+
+console.log(aliasObj)
 export default {
     build: {
         analyze: false, // 编译的时候显示构建包的大小 // https://zh.nuxtjs.org/api/configuration-build/
         extend (config, ctx) {
             let { alias } = config.resolve
-            alias = merge(alias, {
-                assets: resolve('assets'),
-                components: resolve('components'),
-                
-            })
+            alias = merge(alias, aliasObj)
         }
     },
     buildDir: './dist',
