@@ -8,6 +8,10 @@ export default {
     },
     buildDir: './dist',
     // ssr: false,
+    css: [
+        '~/assets/scss/common.scss'
+    ],
+    components: true, // 2.13+ // 自动注册组件 https://github.com/nuxt/components
     router: {
         extendRoutes (routes, resolve) {
             for (let i = routes.length; i--;) {
@@ -37,13 +41,10 @@ export default {
             }
         ]
     },
-    css: [
-        '~/assets/scss/common.scss'
-    ],
+    
     plugins: [
         '~/plugins/axios'
     ],
-    components: true, // 2.13+ // 自动注册组件 https://github.com/nuxt/components
     buildModules: [
         // Doc: https://github.com/nuxt-community/eslint-module
         '@nuxtjs/eslint-module'
