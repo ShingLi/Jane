@@ -20,7 +20,7 @@ const rootDir = fs.readdirSync(__dirname, {
 })
 
 
-const aliasObj = rootDir.reduce(v => {
+const aliasObj = rootDir.reduce( => {
     
 }, {})
 
