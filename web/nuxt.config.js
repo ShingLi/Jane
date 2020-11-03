@@ -1,15 +1,26 @@
-
+const path = require('path')
+const { merge } = require('webpack-merge')
+// 业务模块
 const meta = require('./config/meta')
 const projectConfig = require('./config/project')
 
+const resolve = src => path.join(__dirname, src)
+
 export default {
     build: {
-        analyze: true, // 编译的时候显示构建包的大小 // https://zh.nuxtjs.org/api/configuration-build/
+        analyze: false, // 编译的时候显示构建包的大小 // https://zh.nuxtjs.org/api/configuration-build/
+        extend (config, ctx) {
+            let { alias } = config.resolve
+            alias = merge(alias, {
+                assets: resolve('assets'),
+                components: resolve('components')
+            })
+        }
     },
     buildDir: './dist',
     // ssr: false,
     css: [
-        '~/assets/scss/common.scss'
+        'assets/scss/common.scss'
     ],
     components: true, // 2.13+ // 自动注册组件 https://github.com/nuxt/components
     router: {
@@ -43,7 +54,8 @@ export default {
     },
     
     plugins: [
-        '~/plugins/axios'
+        '~/plugins/axios',
+        '~/plugins/terminal'
     ],
     buildModules: [
         // Doc: https://github.com/nuxt-community/eslint-module
@@ -55,7 +67,7 @@ export default {
     axios: {
 
     },
-    loading: '~/components/loading', // 全局加载loading
+    loading: 'components/loading/loading.vue', // 全局加载loading
     // 运行时配置 https://zh.nuxtjs.org/blog/moving-from-nuxtjs-dotenv-to-runtime-config/
     publicRuntimeConfig: {
         baseURL: process.env.baseURL
