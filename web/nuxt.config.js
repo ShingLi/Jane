@@ -18,19 +18,25 @@ const rootDir = fs.readdirSync(__dirname, {
         return dir.name != 'dist' && dir.name != 'node_modules'
     }
 })
-
-
-const aliasObj = rootDir.reduce( => {
-    
+console.log(rootDir)
+const aliasObj = [1,2].reduce((accumuator, item)=> {
+    console.log(item.name)
+    if (item) {
+        return accumuator[item] = item
+    }
+    console.log('accumuator', accumuator)
 }, {})
 
-console.log(aliasObj)
+console.log('aliasObj', aliasObj)
 export default {
     build: {
         analyze: false, // 编译的时候显示构建包的大小 // https://zh.nuxtjs.org/api/configuration-build/
         extend (config, ctx) {
             let { alias } = config.resolve
-            alias = merge(alias, aliasObj)
+            alias = merge(alias, {
+                assets: resolve('assets'),
+                components: resolve('components')
+            })
         }
     },
     buildDir: './dist',
