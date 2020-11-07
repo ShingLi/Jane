@@ -26,7 +26,7 @@
 export default {
     name: 'Loading',
     data: () => ({
-        loading: true,
+        loading: false,
         dashOffset: 0,
         dashArray: 164
     }),
