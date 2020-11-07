@@ -15,7 +15,7 @@ const rootDir = fs.readdirSync(__dirname, {
     withFileTypes: true, // http://nodejs.cn/api/fs.html#fs_fs_readdirsync_path_options 返回Dirent对象
 }).filter( dir=> {
     if (dir.isDirectory()) {
-        return dir.name != 'dist' && dir.name != 'node_modules'
+        return dir.name != 'dist' && dir.name != 'node_modules' && dir.name != 'servermock'
     }
 })
 
