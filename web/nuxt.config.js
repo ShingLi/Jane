@@ -95,5 +95,8 @@ export default {
         timing: {
             total: true, // 是否开始服务端渲染计时
         }
-    }
+    },
+    serverMiddleware: [
+        '~/middleware/server'
+    ]
 }

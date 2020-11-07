@@ -3,16 +3,17 @@ export default function ({ $axios, redirect }, inject) {
     -------------------------- */
     $axios.setHeader('Authorization', 'jane')
 
-    $axios.onRequset(config => {
+    $axios.onRequest(config => {
         if (process.env.NODE_ENV  == 'development') {
             // 从本地读取json
         }
+        return config
     })
 
     $axios.onResponse(response => {
-        
+        return response
     })
-    
+
     $axios.onError(error => {
         if (error == 9999) {
             redirect('status')
