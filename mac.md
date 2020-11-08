@@ -1,5 +1,7 @@
 # mac
 
+## 笔记
+
 + macos 命令行
 
     ```js
@@ -16,6 +18,7 @@
 
 + brew list 查看安装的软件
 + brew install xx (brew install git)
+
 + brew 已经移除`mongodb` [查看](https://juejin.im/post/6844903962525728782)
 
 ### 编辑Hosts (mac)
@@ -24,6 +27,7 @@
   + 背景: 命令行安装 oh-my-zsh。报错显示`curl: (7) Failed to connect to raw.github.com port 443: Connection refused`
   + 解释: git 被墙了
   + 解决：不要挂代理，打开[https://www.ipaddress.com/](https://www.ipaddress.com/) 输入 `raw.github.com` 得到ip地址 然后编辑Host文件
+  + 目的: zsh 主题随机
 
     ```js
         sudo vim /etc/hosts
@@ -31,3 +35,13 @@
         ex : 199.232.68.133 raw.github.com
         最后 esc  :wq 保存退出编辑
     ```
+
+### 苹果妙控鼠标
+
++ 移动速度慢
+  + defaults read -g com.apple.mouse.scaling
+  + defaults write -g com.apple.mouse.scaling 9
+
+### mongodb
+
++ brew services start mongodb-community
