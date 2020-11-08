@@ -23,7 +23,20 @@ export default {
             ]
         }
     },
-    
+    async asyncData ({ $axios }) {
+        try {
+            const res = await $axios.post('http://localhost:4000/admin/sign')
+            console.log(res)
+        } catch (error) {
+            console.log(error)
+        }
+    },
+    async fetch () {
+        
+    },
+    async mounted () {
+        
+    }
 }
 </script>
 <style lang="scss" scoped>
