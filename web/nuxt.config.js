@@ -91,5 +91,10 @@ export default {
     },
     serverMiddleware: [
         '~/middleware/server'
-    ]
+    ],
+    vue: {
+        config: {
+            productionTip: false
+        }
+    }
 }
