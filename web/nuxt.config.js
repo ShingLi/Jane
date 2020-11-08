@@ -4,7 +4,7 @@ const path = require('path')
 const { merge } = require('webpack-merge')
 
 // 业务模块
-const meta = require('./config/meta')
+const globalHead = require('./config/head')
 const projectConfig = require('./config/project')
 
 const resolve = src => path.join(__dirname, src)
@@ -56,16 +56,9 @@ export default {
         }
     },
     target: 'server', // default server
-    head: {
+    head: { // https://vue-meta.nuxtjs.org/api/#htmlattrs
         title: process.env.npm_package_name || projectConfig.title,
-        meta,
-        link: [
-            {
-                rel: 'icon',
-                type: 'image/x-icon',
-                href: '/favicon.ico'
-            }
-        ]
+        ...globalHead
     },
     
     plugins: [
@@ -82,7 +75,7 @@ export default {
     axios: {
 
     },
-    loading: 'components/loading/loading.vue', // 全局加载loading
+    loading: 'components/loading', // 全局加载loading
     // 运行时配置 https://zh.nuxtjs.org/blog/moving-from-nuxtjs-dotenv-to-runtime-config/
     publicRuntimeConfig: {
         baseURL: process.env.baseURL
