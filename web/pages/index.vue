@@ -25,7 +25,7 @@ export default {
     },
     async asyncData ({ $axios }) {
         try {
-            const res = await $axios.post('http://localhost:4000/admin/sign')
+            const res = await $axios.post('/web/sign')
             console.log(res)
         } catch (error) {
             console.log(error)
