@@ -92,7 +92,7 @@ export default {
         }
     },
     serverMiddleware: [
-        '~/middleware/server'
+        '~servermock/server'
     ],
     vue: {
         config: {

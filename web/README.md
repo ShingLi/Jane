@@ -22,3 +22,8 @@
         * ~/components/loading/loading.vue in ./dist/App.js 
     问题定位： nuxt 项目有默认别名不能直接覆盖自己定义的别名要merge进去  
 ```
+
+>2020/11/10
+
+    + 将服务端中间件放到`middleware` 文件夹里面，`servermiddleware`中引入，对应的服务端中间件JS中引入fs模块，结果报错
+    + servermiddle 中间件里面无法使用`process.server`

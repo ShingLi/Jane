@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.2",
+    "fs": "0.0.1-security",
     "nuxt": "^2.14.6",
     "sass": "^1.27.0",
     "sass-loader": "^10.0.4"
