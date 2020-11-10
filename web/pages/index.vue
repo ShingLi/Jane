@@ -24,18 +24,23 @@ export default {
         }
     },
     async asyncData ({ $axios }) {
-        try {
-            const res = await $axios.post('/web/sign')
-            console.log(res)
-        } catch (error) {
-            console.log(error)
-        }
+        // try {
+        //     const res = await $axios.post('/web/sign')
+        //     console.log(res)
+        // } catch (error) {
+        //     console.log(error)
+        // }
     },
     async fetch () {
         
     },
     async mounted () {
-        
+        try {
+            const res = await this.$axios.post('/web/index')
+            console.log(res)
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
 </script>
