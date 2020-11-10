@@ -27,3 +27,12 @@
 
     + 将服务端中间件放到`middleware` 文件夹里面，`servermiddleware`中引入，对应的服务端中间件JS中引入fs模块，结果报错
     + servermiddle 中间件里面无法使用`process.server`
+
+>2020/11/11
+
+    + servermiddleware中间件`server.js` node 读取本地文件后`res.end(data)` 如果最后一部调用`nuxt()`, 会报错显示
+        ```js
+            Error: Can't set headers after they are sent to the client
+        ```
+        + 解决：最后本地mock解决数据不调用`nuxt()`
+        + 原因：待查找
