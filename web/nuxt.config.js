@@ -8,15 +8,15 @@ const globalHead = require('./config/head')
 const projectConfig = require('./config/project')
 
 const resolve = src => path.join(__dirname, src)
-const whiteSpce = ['dist', 'node_modules', 'servermock', 'assets', 'static']
+const whiteSpace = ['dist', 'node_modules', 'servermock', 'assets', 'static']
 
-// 获取项目中的所有文件夹 unless( dist 和node_modules 
+// 获取项目中的所有文件夹 unless( dist 和node_modules ）
 const rootDir = fs.readdirSync(__dirname, {
     encoding: 'utf8',
     withFileTypes: true, // http://nodejs.cn/api/fs.html#fs_fs_readdirsync_path_options 返回Dirent对象
 }).filter( dir=> {
     if (dir.isDirectory()) {
-        if (!whiteSpce.includes(dir.name)) {
+        if (!whiteSpace.includes(dir.name)) {
             return true
         }
     }
