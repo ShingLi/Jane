@@ -1,0 +1,19 @@
+.about{
+    width: 100vw;
+    height: 100vh;
+    background-color: #f5f5f5;
+    position: relative;
+    background-image: url('./assets/images//about/images.jpeg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    &__content{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80vw;
+        height: 80vh;
+        border-radius: 40px;
+        border: 1px solid red;
+    }
+}
