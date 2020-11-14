@@ -8,17 +8,20 @@ const globalHead = require('./config/head')
 const projectConfig = require('./config/project')
 
 const resolve = src => path.join(__dirname, src)
+const whiteSpce = ['dist', 'node_modules', 'servermock', 'assets', 'static']
 
-// 获取项目中的所有文件夹 unless( dist 和node_modules )
+// 获取项目中的所有文件夹 unless( dist 和node_modules 
 const rootDir = fs.readdirSync(__dirname, {
     encoding: 'utf8',
     withFileTypes: true, // http://nodejs.cn/api/fs.html#fs_fs_readdirsync_path_options 返回Dirent对象
 }).filter( dir=> {
     if (dir.isDirectory()) {
-        return dir.name != 'dist' && dir.name != 'node_modules' && dir.name != 'servermock'
+        if (!whiteSpce.includes(dir.name)) {
+            return true
+        }
     }
 })
-
+console.log(rootDir)
 const aliasObj = rootDir.reduce((accumuator, item)=> {
     accumuator[item.name] = resolve(item.name)
     return accumuator
@@ -62,8 +65,8 @@ export default {
     },
     
     plugins: [
-        '~/plugins/axios',
-        '~/plugins/terminal'
+        'plugins/axios',
+        'plugins/terminal'
     ],
     buildModules: [
         // Doc: https://github.com/nuxt-community/eslint-module

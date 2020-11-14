@@ -1,7 +1,9 @@
 <template>
     <div class="about">
         <div class="about__content">
-            <div class="userinfo"></div>
+            <div class="userinfo">
+                <img :src="avatar" alt="" class="avatar">
+            </div>
             <ul class="skill">
                 <li class="circle"></li>
             </ul>
@@ -25,6 +27,11 @@ export default {
                 content: 'shingli'
             }
         ]
+    },
+    data () {
+        return {
+            avatar: './assets/images/about/avatar.jpg'
+        }
     }
 }
 </script>
