@@ -1,7 +1,10 @@
 <template>
     <div class="about">
         <div class="about__content">
-            s
+            <div class="userinfo"></div>
+            <ul class="skill">
+                <li class="circle"></li>
+            </ul>
         </div>
     </div>
 </template>
