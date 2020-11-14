@@ -6,7 +6,7 @@
     background-image: url('./assets/images/about/bg2.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    opacity: .6;
+    // opacity: .6;
     &__content{
         position: absolute;
         top: 50%;
@@ -18,9 +18,10 @@
         border-radius: 40px;
         max-width: 1300px;
         max-height: 600px;
-        box-shadow: 1px 1px 1px 1px rgb(7,57,138), -1px -1px 1px 1px rgb(7,57,138);
+        box-shadow: 1px 1px 1px 1px rgba(7,57,138, .6), -1px -1px 1px 1px rgba(7,57,138, .6);
         display: flex;
         justify-content: space-between;
+        // opacity: .6;
         // overflow: hidden;
         .userinfo,.skill{
             height: 100%;
@@ -28,6 +29,7 @@
         .userinfo{
             width: 200px;
             flex: 0 0 200px;
+            padding: 16px;
             padding-top: 40px;
             .avatar{
                 width: 100px;
@@ -36,6 +38,21 @@
                 border-radius: 50%;
                 margin: auto;
                 display: block;
+                cursor: pointer;
+                transition: all 60s cubic-bezier(.39,.01,1,.59);
+                
+            }
+            .username {
+                font-size: 14px;
+                color: #000;
+                text-align: center;
+                margin-top: 15px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                line-height: 15px;
+                &:hover{
+                    
+                }
             }
         }
         .skill{
@@ -44,7 +61,7 @@
             border-radius: 40px;
             // border-color:  rgb(7,57,138);
             // border-left: 1px solid;
-            box-shadow: -1px 0px 0px 1px rgb(7,57,138);
+            box-shadow: -1px 0px 0px 1px rgba(7,57,138, .6);
             .circle{
                 position: absolute;
                 width: 100px;
@@ -55,6 +72,7 @@
                 // background-color: red;
                 box-shadow: -1px -1px 2px #000;
                 background-image: linear-gradient(135deg, rgb(61,173,195) 30%, rgb(23,89,143));
+                // opacity: .6;
             }
         }
     }

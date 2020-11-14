@@ -16,7 +16,7 @@ const globalHead = {
         }
     ],
     htmlAttrs: {
-        lang: 'ZH-CN'
+        lang: 'zh-CN'
     },
     link: [
         {

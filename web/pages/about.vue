@@ -2,7 +2,9 @@
     <div class="about">
         <div class="about__content">
             <div class="userinfo">
-                <img :src="avatar" alt="" class="avatar">
+                <img :src="avatar" class="avatar" id="avatar" v-if="avatar">
+                <span class="avatar" id="avatar" v-else></span>
+                <p class="username">{{ uname }}</p>
             </div>
             <ul class="skill">
                 <li class="circle"></li>
@@ -30,8 +32,34 @@ export default {
     },
     data () {
         return {
-            avatar: './assets/images/about/avatar.jpg'
+            avatar: '',
+            uname: '路过一片云'
         }
+    },
+    mounted () {
+        this.$nextTick(() => {
+            this.init()
+        })
+    },
+    destroyed () {
+        this.unbindEvent()
+    },
+    methods: {
+        init () {
+            this.bindEvent(document.getElementById('avatar'), 'mouseenter', (e) => {
+                const style = {
+                    cursor: 'pointer',
+                    transform: `rotate(1000turn)`
+                }
+                console.log(e.target)
+                e.target.style.cursor = 'pointer'
+                e.target.style.transform = `rotate(1000turn)`
+            })
+        },
+        bindEvent (dom, event, callback) {
+            dom.addEventListener(event, callback) 
+        },
+        unbindEvent () {}
     }
 }
 </script>

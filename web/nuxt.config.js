@@ -21,7 +21,7 @@ const rootDir = fs.readdirSync(__dirname, {
         }
     }
 })
-console.log(rootDir)
+
 const aliasObj = rootDir.reduce((accumuator, item)=> {
     accumuator[item.name] = resolve(item.name)
     return accumuator
