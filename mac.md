@@ -45,3 +45,8 @@
 ### mongodb
 
 + brew services start mongodb-community
+
+### 键盘对应键位
+
++ alt 对应 option
++ win 对应command
