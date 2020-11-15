@@ -58,32 +58,35 @@ export default {
         this.$nextTick(() => {
             this.init()
         })
+        
     },
     destroyed () {
-        this.unbindEvent(document.getElementById('avatar'), 'mouseenter')
-        this.unbindEvent(document.getElementById('avatar'), 'mouseleave')
+        this.unbindEvent(document.getElementById('avatar'), 'mouseenter', this.mouseenter)
+        this.unbindEvent(document.getElementById('avatar'), 'mouseleave', this.mouseleave)
     },
     methods: {
         init () {
-            this.bindEvent(document.getElementById('avatar'), 'mouseenter', (e) => {
-                const style = {
-                    cursor: 'pointer',
-                    transform: `rotate(1000turn)`
-                }
-                console.log(e.target)
-                e.target.style.cursor = 'pointer'
-                e.target.style.transform = `rotate(1000turn)`
-            })
+            this.bindEvent(document.getElementById('avatar'), 'mouseenter', this.mouseenter)
 
-            this.bindEvent(document.getElementById('avatar'), 'mouseleave', () => {
-                e.target.style.transform = ''
-            })
+            this.bindEvent(document.getElementById('avatar'), 'mouseleave', this.mouseleave)
+        },
+        mouseenter (e) {
+            const style = {
+                cursor: 'pointer',
+                transform: `rotate(1000turn)`
+            }
+            console.log(e.target)
+            e.target.style.cursor = 'pointer'
+            e.target.style.transform = `rotate(1000turn)`
+        },
+        mouseleave (e) {
+            e.target.style.transform = ''
         },
         bindEvent (dom, event, callback) {
             dom.addEventListener(event, callback) 
         },
-        unbindEvent (dom, event) {
-            dom.removeEventListener(event)
+        unbindEvent (dom, event, callback) {
+            dom.removeEventListener(event, callback)
         }
     }
 }
