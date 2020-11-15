@@ -32,9 +32,27 @@ export default {
     },
     data () {
         return {
-            avatar: '',
-            uname: '路过一片云'
+            
         }
+    },
+    asyncData ({ $axios, error }) {
+        return $axios({
+            method: 'post',
+            url: '/web/about'
+        }).then(({ data }) => {
+            const { responseCode, responseMsg, responseData } = data
+            if (responseCode == '0000') {
+                return {
+                    responseData,
+                    avatar: responseData.avatar,
+                    uname: responseData.uname
+                }
+            } else {
+                // 错误
+            }
+        }).catch(e => {
+            console.log(e)
+        })
     },
     mounted () {
         this.$nextTick(() => {
@@ -42,7 +60,8 @@ export default {
         })
     },
     destroyed () {
-        this.unbindEvent()
+        this.unbindEvent(document.getElementById('avatar'), 'mouseenter')
+        this.unbindEvent(document.getElementById('avatar'), 'mouseleave')
     },
     methods: {
         init () {
@@ -55,11 +74,17 @@ export default {
                 e.target.style.cursor = 'pointer'
                 e.target.style.transform = `rotate(1000turn)`
             })
+
+            this.bindEvent(document.getElementById('avatar'), 'mouseleave', () => {
+                e.target.style.transform = ''
+            })
         },
         bindEvent (dom, event, callback) {
             dom.addEventListener(event, callback) 
         },
-        unbindEvent () {}
+        unbindEvent (dom, event) {
+            dom.removeEventListener(event)
+        }
     }
 }
 </script>
