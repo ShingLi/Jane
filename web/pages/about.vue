@@ -64,6 +64,7 @@ export default {
         this.unbindEvent(document.getElementById('avatar'), 'mouseenter', this.mouseenter)
         this.unbindEvent(document.getElementById('avatar'), 'mouseleave', this.mouseleave)
     },
+    transition: 'side-about',
     methods: {
         init () {
             this.bindEvent(document.getElementById('avatar'), 'mouseenter', this.mouseenter)

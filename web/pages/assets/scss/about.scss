@@ -6,6 +6,8 @@
     background-image: url('./assets/images/about/bg2.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    transition: all 2s ease-in-out;
+    animation: side-left 2s ease-in-out;
     // opacity: .6;
     &__content{
         position: absolute;
@@ -75,5 +77,14 @@
                 // opacity: .6;
             }
         }
+    }
+}
+
+@keyframes side-left{
+    0%{
+        transform: translate3d(100%, 0, 0);
+    }
+    100%{
+        transform: translate3d(0, 0, 0);
     }
 }
