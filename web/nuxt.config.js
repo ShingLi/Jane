@@ -33,6 +33,18 @@ export default {
         extend (config, ctx) {
             let { alias } = config.resolve
             alias = merge(alias, aliasObj)
+
+            /* licheng 添加sourcemap (这里需要一个动态值)
+            -------------------------- */
+            if (ctx.isClient) {
+                config.devtool = "eval-source-map"
+            }
+            
+        },
+        loaders: {
+            imgUrl: {
+                limit: 100000
+            }
         }
     },
     buildDir: './dist',

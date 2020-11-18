@@ -88,3 +88,10 @@
         transform: translate3d(0, 0, 0);
     }
 }
+
+.side-about-enter-active{
+    transform: translateX(100%);
+}
+.side-about-leave-active{
+    transform: translate3d(0, 0, 100%);
+}
