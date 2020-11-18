@@ -43,14 +43,14 @@ export default {
         },
         loaders: {
             imgUrl: {
-                limit: 100000
+                limit: 10000000, // 转成base64 直接打包到css里面
             }
         }
     },
     buildDir: './dist',
     // ssr: false,
     css: [
-        'assets/scss/common.scss'
+        'assets/scss/index'
     ],
     components: true, // 2.13+ // 自动注册组件 https://github.com/nuxt/components
     router: {

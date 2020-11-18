@@ -1,0 +1,14 @@
+.app{
+    min-height: 100vh;
+    background-color: #98bf21;
+    animation: fade 0.4s ease-in-out;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}

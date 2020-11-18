@@ -7,7 +7,8 @@
     background-repeat: no-repeat;
     background-size: 100% 100%;
     transition: all 2s ease-in-out;
-    animation: side-left 2s ease-in-out;
+    animation: side-left 1.3s ease-in-out;
+    transform-style: preserve-3d;
     // opacity: .6;
     &__content{
         position: absolute;
@@ -83,15 +84,10 @@
 @keyframes side-left{
     0%{
         transform: translate3d(100%, 0, 0);
+        opacity: 0;
     }
     100%{
         transform: translate3d(0, 0, 0);
+        opacity: 1;
     }
-}
-
-.side-about-enter-active{
-    transform: translateX(100%);
-}
-.side-about-leave-active{
-    transform: translate3d(0, 0, 100%);
 }
