@@ -5,6 +5,19 @@
 </template>
 <script>
 export default {
-    name: 'layout'
+    name: 'layout',
+    mounted () {
+        const { $route, $nextTick } = this
+        $nextTick(() => {
+            this.setBgColor($route)
+        })
+    },
+    methods: {
+        setBgColor ({ name }) {
+            if (name == 'about') {
+                document.querySelector('.app').classList.add('about')
+            }
+        }
+    }
 }
 </script>
