@@ -92,7 +92,7 @@ export default {
             return status >= 200 && status <= 401 // 如果接口有问题 我会塞一个401
         }
     },
-    loading: 'components/loading', // 全局加载loading
+    loading: 'components/Loading', // 全局加载loading
     // 运行时配置 https://zh.nuxtjs.org/blog/moving-from-nuxtjs-dotenv-to-runtime-config/
     publicRuntimeConfig: {
         baseURL: process.env.baseURL
