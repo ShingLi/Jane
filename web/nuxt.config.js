@@ -8,7 +8,7 @@ const globalHead = require('./config/head')
 const projectConfig = require('./config/project')
 
 const resolve = src => path.join(__dirname, src)
-const whiteSpace = ['dist', 'node_modules', 'servermock', 'assets', 'static']
+const whiteSpace = ['dist', 'node_modules', 'servermock', 'assets', 'static', 'components']
 
 // 获取项目中的所有文件夹 unless( dist 和node_modules ）
 const rootDir = fs.readdirSync(__dirname, {
@@ -33,11 +33,11 @@ export default {
         extend (config, ctx) {
             let { alias } = config.resolve
             alias = merge(alias, aliasObj)
-
+            console.log(alias)
             /* licheng 添加sourcemap (这里需要一个动态值)
             -------------------------- */
             if (ctx.isClient) {
-                config.devtool = "eval-source-map"
+                config.devtool = 'source-map'
             }
             
         },
@@ -52,7 +52,6 @@ export default {
     css: [
         'assets/scss/index'
     ],
-    components: true, // 2.13+ // 自动注册组件 https://github.com/nuxt/components
     router: {
         extendRoutes (routes, resolve) {
             for (let i = routes.length; i--;) {
@@ -78,7 +77,11 @@ export default {
     
     plugins: [
         'plugins/axios',
-        'plugins/terminal'
+        'plugins/terminal',
+        {
+            src: 'plugins/loadscript',
+            mode: 'client'
+        }
     ],
     buildModules: [
         // Doc: https://github.com/nuxt-community/eslint-module
@@ -93,6 +96,7 @@ export default {
         }
     },
     loading: 'components/Loading', // 全局加载loading
+    components: true, // 2.13+ // 自动注册组件 https://github.com/nuxt/components
     // 运行时配置 https://zh.nuxtjs.org/blog/moving-from-nuxtjs-dotenv-to-runtime-config/
     publicRuntimeConfig: {
         baseURL: process.env.baseURL
