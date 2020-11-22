@@ -51,3 +51,14 @@
 
 + about 页面添加transition 属性 页面没有动画效果，需要用 nuxt-link 才能触发动画效果
 + 没定位问题
+
+> 2020/11/22
+
++ plugins/loadscript 通过别名components 引入文件，找不到文件
+
+    ```js
+        import load from 'components/utils/loader'
+        // 已经设置webpack 别名却在这个文件中不生效
+    ```
+
++ 解决 import load from '~~/components/utils/loader'

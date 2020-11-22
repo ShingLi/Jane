@@ -6,22 +6,8 @@
 <script>
 export default {
     name: 'Index',
-    data () {
-        return {
-            title: '首页'
-        }
-    },
-    head () {
-        return {
-            title: this.title,
-            meta: [
-                {
-                    hid: 'description',
-                    name: 'description',
-                    content: '李大锤博客的首页'
-                }
-            ]
-        }
+    async fetch () {
+        
     },
     async asyncData ({ $axios }) {
         // try {
@@ -31,8 +17,10 @@ export default {
         //     console.log(error)
         // }
     },
-    async fetch () {
-        
+    data () {
+        return {
+            title: '首页',
+        }
     },
     async mounted () {
         try {
@@ -41,7 +29,19 @@ export default {
         } catch (error) {
             console.log(error)
         }
-    }
+    },
+    head () {
+        return {
+            title: this.title,
+            meta: [
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: '李大锤博客的首页',
+                },
+            ],
+        }
+    },
 }
 </script>
 <style lang="scss" scoped>

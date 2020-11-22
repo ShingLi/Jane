@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-    name: 'layout',
+    name: 'Layout',
     mounted () {
         const { $route, $nextTick } = this
         $nextTick(() => {
@@ -17,7 +17,7 @@ export default {
             if (name == 'about') {
                 document.querySelector('.app').classList.add('about')
             }
-        }
-    }
+        },
+    },
 }
 </script>

@@ -4,7 +4,7 @@ export default function ({ $axios, redirect }, inject) {
     $axios.setHeader('Authorization', 'jane')
 
     $axios.onRequest(config => {
-        if (process.env.NODE_ENV  == 'development') {
+        if (process.env.NODE_ENV === 'development') {
             // 从本地读取json
         }
         return config

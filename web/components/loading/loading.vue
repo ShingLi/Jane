@@ -1,20 +1,24 @@
 <template>
-    <div class="loading" v-if="loading">
-        <div class="loading--pc" v-if="false"></div>
+    <div v-if="loading" class="loading">
+        <div v-if="false" class="loading--pc"></div>
         <div class="loading--wap">
             <div class="loading__content">
                 <div class="loading__content--svg">
-                    <svg xmlns="http://www.w3.org/2000/svg"
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
                         width="56"
                         height="56"
                         viewBox="0,0,55,55">
-                        <circle r = '25' cx="28" cy="28"
+                        <circle
+                            r = "25"
+                            cx="28"
+                            cy="28"
                             stroke="#fff"
                             fill="none"
                             class="circle"
                             stroke-width="2px"
-                            stroke-lineap="round"
-                        ></circle>
+                            stroke-lineap="round">
+                        </circle>
                     </svg>
                 </div>
             </div>
@@ -28,7 +32,7 @@ export default {
     data: () => ({
         loading: false,
         dashOffset: 0,
-        dashArray: 164
+        dashArray: 164,
     }),
     methods: {
         start () {
@@ -36,8 +40,8 @@ export default {
         },
         finish () {
             this.loading = false
-        }
-    }
+        },
+    },
 }
 </script>
 <style lang="scss" scoped>

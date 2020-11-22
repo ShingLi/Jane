@@ -7,10 +7,11 @@ export default function loader (src) {
         script.type = 'text/javascript'
         script.src = src
         script.onload = () => {
-            resolve ()
+            resolve()
         }
-        script.onerror = () => {
-            reject()
+        script.onerror = (err) => {
+            console.log(err)
+            reject(err)
         }
         document.body.appendChild(script)
     })

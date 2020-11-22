@@ -2,8 +2,16 @@
     <div class="about">
         <div class="about__content">
             <div class="userinfo">
-                <img :src="avatar" class="avatar" id="avatar" v-if="avatar">
-                <span class="avatar" id="avatar" v-else></span>
+                <img
+                    v-if="avatar"
+                    id="avatar"
+                    :src="avatar"
+                    class="avatar"
+                >
+                <span
+                    v-else
+                    id="avatar"
+                    class="avatar"></span>
                 <p class="username">{{ uname }}</p>
             </div>
             <ul class="skill">
@@ -15,37 +23,17 @@
 <script>
 export default {
     name: 'About',
-    head: {
-        title: '关于',
-        meta: [
-            {
-                hid: 'about__description',
-                name: 'description',
-                content: '李成的个人描述'
-            },
-            {
-                hid: 'author',
-                name: 'author',
-                content: 'shingli'
-            }
-        ]
-    },
-    data () {
-        return {
-            
-        }
-    },
     asyncData ({ $axios, error }) {
         return $axios({
             method: 'post',
-            url: '/web/about'
+            url: '/web/about',
         }).then(({ data }) => {
             const { responseCode, responseMsg, responseData } = data
             if (responseCode == '0000') {
                 return {
                     responseData,
                     avatar: responseData.avatar,
-                    uname: responseData.uname
+                    uname: responseData.uname,
                 }
             } else {
                 // 错误
@@ -54,11 +42,22 @@ export default {
             console.log(e)
         })
     },
+    data () {
+        return {
+            
+        }
+    },
+    created () {
+        if (process.client) {
+            this.$loadscript('~/assets/lib/iconfont.js').then(() => {
+                
+            })
+        }
+    },
     mounted () {
         this.$nextTick(() => {
             this.init()
         })
-        
     },
     destroyed () {
         this.unbindEvent(document.getElementById('avatar'), 'mouseenter', this.mouseenter)
@@ -74,7 +73,7 @@ export default {
         mouseenter (e) {
             const style = {
                 cursor: 'pointer',
-                transform: `rotate(1000turn)`
+                transform: `rotate(1000turn)`,
             }
             console.log(e.target)
             e.target.style.cursor = 'pointer'
@@ -88,8 +87,23 @@ export default {
         },
         unbindEvent (dom, event, callback) {
             dom.removeEventListener(event, callback)
-        }
-    }
+        },
+    },
+    head: {
+        title: '关于',
+        meta: [
+            {
+                hid: 'about__description',
+                name: 'description',
+                content: '李成的个人描述',
+            },
+            {
+                hid: 'author',
+                name: 'author',
+                content: 'shingli',
+            },
+        ],
+    },
 }
 </script>
 <style lang="scss" scoped>

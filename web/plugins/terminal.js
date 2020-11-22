@@ -1,4 +1,2 @@
 
-export default function ({ req }, inject) {
-    
-}
+export default function ({ req }, inject) {}
