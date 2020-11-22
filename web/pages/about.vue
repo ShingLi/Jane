@@ -13,9 +13,21 @@
                     id="avatar"
                     class="avatar"></span>
                 <p class="username">{{ uname }}</p>
+                <ol>
+                    <li
+                        v-for="(item, index) of userinfo"
+                        :key="index"
+                        class="userinfo__item">
+                        <svg-icon :icon-class="item.iconclass"/>
+                        <span>{{ item.description }}</span>
+                    </li>
+                </ol>
             </div>
             <ul class="skill">
                 <li class="circle"></li>
+                <div class="skill__content">
+                    hhehhehe
+                </div>
             </ul>
         </div>
     </div>
@@ -44,14 +56,32 @@ export default {
     },
     data () {
         return {
-            
-        }
-    },
-    created () {
-        if (process.client) {
-            this.$loadscript('~/assets/lib/iconfont.js').then(() => {
-                
-            })
+            userinfo: [
+                {
+                    iconclass: 'V',
+                    description: '男',
+                },
+                {
+                    iconclass: 'xingming',
+                    description: '李大锤.字伯鸾.号凤雏',
+                },
+                {
+                    iconclass: 'aihao',
+                    description: '漂亮MM，LOL，钓鱼',
+                },
+                {
+                    iconclass: 'zhifeiji',
+                    description: '安徽芜湖',
+                },
+                {
+                    iconclass: 'weixin1',
+                    description: 'qin0251313',
+                },
+                {
+                    iconclass: 'youxiang2',
+                    description: '74573545@qq.com',
+                },
+            ],
         }
     },
     mounted () {
@@ -101,6 +131,12 @@ export default {
                 hid: 'author',
                 name: 'author',
                 content: 'shingli',
+            },
+        ],
+        script: [
+            {
+                src: '//at.alicdn.com/t/font_2212935_g9uascawao7.js',
+                body: true,
             },
         ],
     },

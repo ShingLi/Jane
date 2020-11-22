@@ -1,5 +1,10 @@
 .index{
     position: relative;
-    height: 100%;
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
+    p{
+        &:hover{
+            color: red;
+        }
+    }
 }

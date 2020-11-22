@@ -1,7 +1,9 @@
 <template>
-    <svg aria-hidden="true" class="icon">
-        <use :xlink:href="iconName"></use>
-    </svg>
+    <div class="svg">
+        <svg aria-hidden="true" class="icon">
+            <use :xlink:href="iconName"></use>
+        </svg>
+    </div>
 </template>
 <script>
 export default {
@@ -9,20 +11,24 @@ export default {
     props: {
         iconClass: {
             type: String,
-            default: ''
-        }
+            default: '',
+        },
     },
     computed: {
         iconName () {
             return `#icon-${this.iconClass}`
-        }
-    }
+        },
+    },
 }
 </script>
 <style lang="scss" scoped>
+    .svg{
+        width: 20px;
+        height: 20px;
+    }
     .icon{
-        width: 1em;
-        height: 1em;
+        width: 20px;
+        height: 20px;
         vertical-align: -0.15em;
         fill: currentColor;
         overflow: hidden;
