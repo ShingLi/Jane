@@ -1,5 +1,5 @@
 <template>
-    <div class="container"></div>
+    <div class="container">错误</div>
 </template>
 <script>
 export default {

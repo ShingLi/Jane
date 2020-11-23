@@ -36,10 +36,7 @@ export default {
             console.log(alias)
             /* licheng 添加sourcemap (这里需要一个动态值)
             -------------------------- */
-            if (ctx.isClient) {
-                config.devtool = 'source-map'
-            }
-            
+            if (ctx.isClient) config.devtool = 'source-map'
         },
         loaders: {
             imgUrl: {
@@ -61,12 +58,9 @@ export default {
                     routes[i].path = routes[i].path + '.html'
                 }
             }
-            routes.push({
-                path: '/',
-                redirect: {
-                    path: '/index.html'
-                }
-            })
+            for (let i = 0, length = projectConfig.customRoutes.length; i < length; i++) {
+                routes.push(projectConfig.customRoutes[i])
+            }
         }
     },
     target: 'server', // default server
