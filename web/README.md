@@ -62,3 +62,15 @@
     ```
 
 + 解决 import load from '~~/components/utils/loader'
+
+> 2020/11/23
+
++ 因为我把路由页面加了后缀，比如`about`实际访问就是`about.html` 但是照顾之前的习惯配置了正则去匹配`about`开头的全部`redirect`到`about.html`
++ 结果想当然的
+
+  ```JS
+    extend (routes) {
+        routes.concat(customRoutes) // 想当然了 这里还是要routes.push()
+    }
+  ```
+
