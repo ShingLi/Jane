@@ -1,7 +1,21 @@
-# ASSETS
+# 资源文件夹
 
-**This directory is not required, you can delete it if you don't want to use it.**
+## fonts
 
-This directory contains your un-compiled assets such as LESS, SASS, or JavaScript.
+> 全局字体
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/guide/assets#webpacked).
+## images
+
+> 全局默认图片
+
+## lib
+
+> 第三方插件库
+
+## scss
+
+> 全局SCSS文件
+
+## svg
+
+> 全局svg
