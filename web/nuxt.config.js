@@ -37,10 +37,14 @@ export default {
             -------------------------- */
             if (ctx.isClient) {
                 config.devtool = 'source-map'
+                
+                const fileloader = config.module.rules.find(v => v.test.test('.svg'))
+                fileloader.exclude = resolve('assets/svg')
+
                 config.module.rules.push({
-                    test: /\.svg$/,
+                    test: /\.svg$/i,
                     loaders: 'svg-sprite-loader',
-                    include: 'assets/svg',
+                    include: resolve('assets/svg'),
                     options: {
                         symbolId: 'icon-[name]'
                     }
