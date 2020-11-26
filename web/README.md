@@ -73,3 +73,16 @@
         routes.concat(customRoutes) // 想当然了 这里还是要routes.push()
     }
   ```
+
+>2020/11/26
+
++ 背景: 使用`iconfont`, 做svg图片，痛点是增加一个svg就要替换下生成的js
++ 解决: 使用`svg-sprite-loader`制作svg雪碧图
++ 结果: 无法正确显示svg雪碧图
++ 解决: exclude排除掉
+
+```js
+    nuxt.config.js 默认使用file-loader 去处理svg文件，和svg-sprite-loader冲突
+    const fileloader = config.module.rules.find(rule => rule.test.test('.svg'))
+    fileloader.exclude = resole('assets') // 这里巨坑，不能使用webpack 别名，需要自己配置
+```
