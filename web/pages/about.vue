@@ -26,7 +26,10 @@
             <ul class="skill">
                 <li class="circle"></li>
                 <div class="skill__content">
-                    hhehhehe
+                    <h4 class="title">昨夜西风凋碧树，独上高楼，望尽天涯路</h4>
+                    <ul>
+                        
+                    </ul>
                 </div>
             </ul>
         </div>
@@ -67,7 +70,7 @@ export default {
                 },
                 {
                     iconclass: 'aihao',
-                    description: '漂亮MM，LOL，钓鱼',
+                    description: 'MM，LOL，钓鱼',
                 },
                 {
                     iconclass: 'zhifeiji',
@@ -131,12 +134,6 @@ export default {
                 hid: 'author',
                 name: 'author',
                 content: 'shingli',
-            },
-        ],
-        script: [
-            {
-                src: '//at.alicdn.com/t/font_2212935_g9uascawao7.js',
-                body: true,
             },
         ],
     },
