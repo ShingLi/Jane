@@ -160,7 +160,7 @@ export default {
                 if (index == colorlist.length) index = 0
                 index++
                 this.calcSty = colorlist[index]
-            }, 1000)
+            }, 3000)
         },
     },
     head: {

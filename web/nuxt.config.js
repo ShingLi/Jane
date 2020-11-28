@@ -41,6 +41,8 @@ export default {
                 ]
             ]
         },
+        cache: true,
+        parallel: true,
         extend (config, ctx) {
             let { alias } = config.resolve
             alias = merge(alias, aliasObj)
