@@ -29,6 +29,7 @@ module.exports = {
         'vue/singleline-html-element-content-newline': 'off',
         'vue/require-prop-types': 'off',
         'vue/no-spaces-around-equal-signs-in-attribute': 'off',
-        'vue/html-closing-bracket-spacing': 'off'
+        'vue/html-closing-bracket-spacing': 'off',
+        'curly': 'off'
     }
 }

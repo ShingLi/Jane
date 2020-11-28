@@ -27,15 +27,40 @@
                 <li class="circle"></li>
                 <div class="skill__content">
                     <h4 class="title">昨夜西风凋碧树，独上高楼，望尽天涯路</h4>
-                    <ul>
-                        
-                    </ul>
+                    <!-- <p>我什么时候才能达到人生的第二重境界? 衣带渐宽终不悔，唯一一人饮憔悴</p> -->
+                    <div class="progress">
+                        <code>Html</code>
+                        <el-progress :percentage="70"></el-progress>
+                        <code>Css</code>
+                        <el-progress :percentage="70" color="#8e71c7"></el-progress>
+                        <code>Jquery</code>
+                        <el-progress :percentage="60" color="#909399"></el-progress>
+                        <code>JavaScript</code>
+                        <el-progress :percentage="61" color="#F56C6C"></el-progress>
+                        <code>Mini program(微信小程序)</code>
+                        <el-progress :percentage="60" color="#2db7f5"></el-progress>
+                        <code>Vue</code>
+                        <el-progress :percentage="70" color="#19be6b"></el-progress>
+                        <code>Nuxt</code>
+                        <el-progress :percentage="50" color="#19be6b"></el-progress>
+                        <code>React</code>
+                        <el-progress :percentage="30" color="#19be6b"></el-progress>
+                        <code>Express</code>
+                        <el-progress :percentage="3" color="#F56C6C"></el-progress>
+                    </div>
+                    <div class="descript">
+                        <p :style="{ color: calcSty }">喜欢一个女孩，未必一定要得到，得不到才是最好的！</p>
+                        <div class="timeline">
+                            今天是<span class="year">{{ year }}</span>年<span class="month">{{ month }}</span>月<span class="day">{{ day }}</span>日
+                        </div>
+                    </div>
                 </div>
             </ul>
         </div>
     </div>
 </template>
 <script>
+
 export default {
     name: 'About',
     asyncData ({ $axios, error }) {
@@ -59,6 +84,10 @@ export default {
     },
     data () {
         return {
+            year: new Date().getFullYear(),
+            month: new Date().getMonth(),
+            day: new Date().getDate(),
+            calcSty: '#000',
             userinfo: [
                 {
                     iconclass: 'V',
@@ -87,6 +116,7 @@ export default {
             ],
         }
     },
+    
     mounted () {
         this.$nextTick(() => {
             this.init()
@@ -102,6 +132,8 @@ export default {
             this.bindEvent(document.getElementById('avatar'), 'mouseenter', this.mouseenter)
 
             this.bindEvent(document.getElementById('avatar'), 'mouseleave', this.mouseleave)
+
+            this.initColor()
         },
         mouseenter (e) {
             const style = {
@@ -120,6 +152,15 @@ export default {
         },
         unbindEvent (dom, event, callback) {
             dom.removeEventListener(event, callback)
+        },
+        initColor () {
+            const colorlist = ['#8e71c7', '#909399', '#F56C6C', '#2db7f5', '#98bf21']
+            let index = 0
+            setInterval(() => {
+                if (index == colorlist.length) index = 0
+                index++
+                this.calcSty = colorlist[index]
+            }, 1000)
         },
     },
     head: {

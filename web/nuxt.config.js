@@ -30,13 +30,24 @@ const aliasObj = rootDir.reduce((accumuator, item)=> {
 export default {
     build: {
         analyze: false, // 编译的时候显示构建包的大小 // https://zh.nuxtjs.org/api/configuration-build/
+        babel: {
+            plugins: [
+                [
+                    'component',
+                    {
+                        libraryName: "element-ui",
+                        styleLibraryName: "theme-chalk"
+                    }
+                ]
+            ]
+        },
         extend (config, ctx) {
             let { alias } = config.resolve
             alias = merge(alias, aliasObj)
             /* licheng 添加sourcemap (这里需要一个动态值)
             -------------------------- */
             if (ctx.isClient) {
-                config.devtool = 'source-map'
+                // config.devtool = 'source-map'
                 
                 const fileloader = config.module.rules.find(v => v.test.test('.svg'))
                 fileloader.exclude = resolve('assets/svg')
@@ -88,6 +99,10 @@ export default {
         'plugins/terminal',
         {
             src: 'plugins/loadscript',
+            mode: 'client'
+        },
+        {
+            src: 'plugins/elementui',
             mode: 'client'
         }
     ],
