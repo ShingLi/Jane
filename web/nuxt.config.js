@@ -41,8 +41,6 @@ export default {
                 ]
             ]
         },
-        cache: true,
-        parallel: true,
         extend (config, ctx) {
             let { alias } = config.resolve
             alias = merge(alias, aliasObj)
@@ -76,6 +74,7 @@ export default {
         'assets/scss/index'
     ],
     components: true, // 2.13+ // 自动注册组件 https://github.com/nuxt/components
+    loading: 'components/Loading/loading.vue', // 全局加载loading
     router: {
         extendRoutes (routes, resolve) {
             for (let i = routes.length; i--;) {
@@ -99,14 +98,11 @@ export default {
     plugins: [
         'plugins/axios',
         'plugins/terminal',
+        'plugins/elementui',
         {
             src: 'plugins/loadscript',
             mode: 'client'
         },
-        {
-            src: 'plugins/elementui',
-            mode: 'client'
-        }
     ],
     buildModules: [
         // Doc: https://github.com/nuxt-community/eslint-module
@@ -120,7 +116,6 @@ export default {
             return status >= 200 && status <= 401 // 如果接口有问题 我会塞一个401
         }
     },
-    loading: 'components/Loading', // 全局加载loading
     // 运行时配置 https://zh.nuxtjs.org/blog/moving-from-nuxtjs-dotenv-to-runtime-config/
     publicRuntimeConfig: {
         baseURL: process.env.baseURL

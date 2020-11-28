@@ -25,7 +25,7 @@
             </div>
             <ul class="skill">
                 <li class="circle"></li>
-                <div class="skill__content">
+                <li class="skill__content">
                     <h4 class="title">昨夜西风凋碧树，独上高楼，望尽天涯路</h4>
                     <!-- <p>我什么时候才能达到人生的第二重境界? 衣带渐宽终不悔，唯一一人饮憔悴</p> -->
                     <div class="progress">
@@ -37,16 +37,18 @@
                         <el-progress :percentage="60" color="#909399"></el-progress>
                         <code>JavaScript</code>
                         <el-progress :percentage="61" color="#F56C6C"></el-progress>
-                        <code>Mini program(微信小程序)</code>
+                        <code>Mini program</code>
                         <el-progress :percentage="60" color="#2db7f5"></el-progress>
                         <code>Vue</code>
-                        <el-progress :percentage="70" color="#19be6b"></el-progress>
+                        <el-progress :percentage="70" color="#F16F5C"></el-progress>
                         <code>Nuxt</code>
                         <el-progress :percentage="50" color="#19be6b"></el-progress>
                         <code>React</code>
-                        <el-progress :percentage="30" color="#19be6b"></el-progress>
+                        <el-progress :percentage="30" color="#E15CED"></el-progress>
                         <code>Express</code>
-                        <el-progress :percentage="3" color="#F56C6C"></el-progress>
+                        <el-progress :percentage="10" color="#F56C6C"></el-progress>
+                        <code>MongoDb</code>
+                        <el-progress :percentage="10" color="#000"></el-progress>
                     </div>
                     <div class="descript">
                         <p :style="{ color: calcSty }">喜欢一个女孩，未必一定要得到，得不到才是最好的！</p>
@@ -54,7 +56,7 @@
                             今天是<span class="year">{{ year }}</span>年<span class="month">{{ month }}</span>月<span class="day">{{ day }}</span>日
                         </div>
                     </div>
-                </div>
+                </li>
             </ul>
         </div>
     </div>
@@ -99,7 +101,7 @@ export default {
                 },
                 {
                     iconclass: 'aihao',
-                    description: 'MM，LOL，钓鱼',
+                    description: '某人，LOL，钓鱼',
                 },
                 {
                     iconclass: 'zhifeiji',

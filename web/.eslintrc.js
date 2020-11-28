@@ -30,6 +30,7 @@ module.exports = {
         'vue/require-prop-types': 'off',
         'vue/no-spaces-around-equal-signs-in-attribute': 'off',
         'vue/html-closing-bracket-spacing': 'off',
-        'curly': 'off'
+        'curly': 'off',
+        'handle-callback-err': 'off'
     }
 }
