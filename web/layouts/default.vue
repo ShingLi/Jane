@@ -7,12 +7,10 @@
 export default {
     name: 'Layout',
     mounted () {
-       
         const { $route, $nextTick } = this
         $nextTick(() => {
             this.setBgColor($route)
         })
-        
     },
     methods: {
         setBgColor ({ name }) {
