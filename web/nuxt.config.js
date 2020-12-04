@@ -60,6 +60,7 @@ export default {
                         symbolId: 'icon-[name]'
                     }
                 })
+
             }
         },
         loaders: {
@@ -106,7 +107,13 @@ export default {
     ],
     buildModules: [
         // Doc: https://github.com/nuxt-community/eslint-module
-        '@nuxtjs/eslint-module'
+    
+        [
+            '@nuxtjs/eslint-module',
+            {
+                fix: true, // 修复eslint 报错
+            }
+        ]
     ],
     modules: [
         '@nuxtjs/axios'
