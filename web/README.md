@@ -86,3 +86,7 @@
     const fileloader = config.module.rules.find(rule => rule.test.test('.svg'))
     fileloader.exclude = resole('assets') // 这里巨坑，不能使用webpack 别名，需要自己配置
 ```
+
+>2020/12/07
+
++ 使用loading组件 手动调用的时候，会触发页重新加载

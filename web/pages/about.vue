@@ -51,7 +51,8 @@
                         <el-progress :percentage="10" color="#000"></el-progress>
                     </div>
                     <div class="descript">
-                        <p :style="{ color: calcSty }">喜欢一个女孩，未必一定要得到，得不到才是最好的！</p>
+                        <p :style="{ color: calcSty }">喜欢一个女孩，未必一定要得到，得不到才是最好的！如果有一天我不在找你，那一定是你的问题.</p>
+                        
                         <div class="timeline">
                             今天是<span class="year">{{ year }}</span>年<span class="month">{{ month }}</span>月<span class="day">{{ day }}</span>日
                         </div>
@@ -118,17 +119,20 @@ export default {
             ],
         }
     },
-    
     mounted () {
         this.$nextTick(() => {
             this.init()
+            this.$nuxt.$loading.start()
+            setTimeout(() => {
+                this.$nuxt.$loading.finish()
+            }, 1800);
         })
     },
     destroyed () {
         this.unbindEvent(document.getElementById('avatar'), 'mouseenter', this.mouseenter)
         this.unbindEvent(document.getElementById('avatar'), 'mouseleave', this.mouseleave)
     },
-    transition: 'side-about',
+    // transition: 'side-about',
     methods: {
         init () {
             this.bindEvent(document.getElementById('avatar'), 'mouseenter', this.mouseenter)
