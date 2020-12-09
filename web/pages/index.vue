@@ -1,9 +1,6 @@
 <template>
     <div class="index">
-        <p>hahhahhahah</p>
-        <div>
-
-            
+        <div> 
         </div>
     </div>
 </template>
@@ -15,12 +12,13 @@ export default {
         
     },
     async asyncData ({ $axios }) {
-        // try {
-        //     const res = await $axios.post('/web/sign')
-        //     console.log(res)
-        // } catch (error) {
-        //     console.log(error)
-        // }
+        const { data } = await $axios({
+            url: '/web/index',
+            method: 'post'
+        })
+        return {
+            
+        }
     },
     data () {
         return {
@@ -28,11 +26,7 @@ export default {
         }
     },
     async mounted () {
-        try {
-            const res = await this.$axios.post('/web/index')
-        } catch (error) {
-            console.log(error)
-        }
+        
     },
     head () {
         return {
