@@ -39,8 +39,11 @@ export default {
                         styleLibraryName: "theme-chalk"
                     }
                 ]
-            ]
+            ],
+            cacheDirectory: true
         },
+        cache: true,
+        crossorigin: 'anonymous', // 跨域
         extend (config, ctx) {
             let { alias } = config.resolve
             alias = merge(alias, aliasObj)
@@ -67,6 +70,10 @@ export default {
             imgUrl: {
                 limit: 10000000, // 转成base64 直接打包到css里面
             }
+        },
+        optimization: {
+            minimize: true,
+            
         }
     },
     buildDir: './dist',

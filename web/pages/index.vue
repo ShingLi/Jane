@@ -5,7 +5,7 @@
     </div>
 </template>
 <script>
-import 'assets/svg/xingming.svg'
+
 export default {
     name: 'Index',
     async fetch () {
