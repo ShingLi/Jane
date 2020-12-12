@@ -65,6 +65,7 @@ export default {
                 })
                 // console.log(config.module.rules)
             }
+            config.module.unknownContextCritical = true
         },
         loaders: {
             imgUrl: {
@@ -124,7 +125,7 @@ export default {
         'plugins/axios',
         'plugins/terminal',
         'plugins/elementui',
-        'plugins/svg.server.js',
+        'plugins/svg.js',
         {
             src: 'plugins/loadscript',
             mode: 'client'
