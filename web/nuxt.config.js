@@ -2,6 +2,7 @@
 const fs = require('fs')
 const path = require('path')
 const { merge } = require('webpack-merge')
+const TerserPlugin = require("terser-webpack-plugin") // 压缩代码
 
 // 业务模块
 const globalHead = require('./config/head')
@@ -72,6 +73,23 @@ export default {
         },
         optimization: {
             minimize: true,
+            minimizer: [
+                // https://webpack.docschina.org/configuration/optimization/#optimizationminimize
+                new TerserPlugin(
+                    {
+                        cache: true,
+                        parallel: true,
+                        sourceMap: false, // 如果在生产环境中使用 source-maps，必须设置为 true
+                    }
+                ),
+            ],
+            splitChunks: {
+                // https://zh.nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#optimization
+                chunks: 'all',
+                automaticNameDelimiter: '.',
+                name: undefined,
+                cacheGroups: {}
+            }
         },
         parallel: true
     },

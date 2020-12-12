@@ -4,10 +4,11 @@
     min-height: 100vh;
     .curtain{
         position: relative;
-        width: 100%;
-        background-color: #98bf21;;
+        width: 100vw;
+        height: 100vh;
+        background-color: red;
     }
     ul{
-        height: 2000px;
+        height: 7000px;
     }
 }
