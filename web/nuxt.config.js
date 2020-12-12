@@ -124,6 +124,7 @@ export default {
         'plugins/axios',
         'plugins/terminal',
         'plugins/elementui',
+        'plugins/svg.server.js',
         {
             src: 'plugins/loadscript',
             mode: 'client'

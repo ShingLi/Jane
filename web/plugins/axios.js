@@ -15,6 +15,7 @@ export default function ({ $axios, redirect }, inject) {
     })
 
     $axios.onError(error => {
+        // 这里错误
         if (error == 9999) {
             redirect('status')
         }

@@ -90,3 +90,9 @@
 >2020/12/07
 
 + 使用loading组件 手动调用的时候，会触发页重新加载
+
+>2020/12/12
+
++ Critical dependency: require function is used in a way in which dependencies cannot be statically extracted
++ 问题发生位置： `plugins/svg.js`
++ 问题发生背景：想动态引入项目里面的所有svg文件，做到自动化处理
