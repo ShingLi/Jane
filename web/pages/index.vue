@@ -1,7 +1,8 @@
 <template>
     <div class="index">
-        <div> 
+        <div class="curtain"> 
         </div>
+        <ul></ul>
     </div>
 </template>
 <script>

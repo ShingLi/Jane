@@ -43,14 +43,13 @@ export default {
             cacheDirectory: true
         },
         cache: true,
-        crossorigin: 'anonymous', // 跨域
         extend (config, ctx) {
             let { alias } = config.resolve
             alias = merge(alias, aliasObj)
             /* licheng 添加sourcemap (这里需要一个动态值)
             -------------------------- */
             if (ctx.isClient) {
-                // config.devtool = 'source-map'
+                config.devtool = 'none'
                 
                 const fileloader = config.module.rules.find(v => v.test.test('.svg'))
                 fileloader.exclude = resolve('assets/svg')
@@ -63,7 +62,7 @@ export default {
                         symbolId: 'icon-[name]'
                     }
                 })
-
+                // console.log(config.module.rules)
             }
         },
         loaders: {
@@ -73,8 +72,8 @@ export default {
         },
         optimization: {
             minimize: true,
-            
-        }
+        },
+        parallel: true
     },
     buildDir: './dist',
     // ssr: false,
@@ -112,6 +111,9 @@ export default {
             mode: 'client'
         },
     ],
+    render: {
+        crossorigin: 'anonymous', // 跨域
+    },
     buildModules: [
         // Doc: https://github.com/nuxt-community/eslint-module
     
@@ -119,6 +121,13 @@ export default {
             '@nuxtjs/eslint-module',
             {
                 fix: true, // 修复eslint 报错
+                exclude: [
+                    'node_modules',
+                    'assets',
+                    'dist',
+                    'static',
+                    'servermock'
+                ]
             }
         ]
     ],
