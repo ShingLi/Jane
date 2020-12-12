@@ -9,6 +9,9 @@
         open ~/.zshrcs
 
         sudo mongod --dbpath=/Users/licheng/data
+
+        upgrade_oh_my_zsh 自动更新
+        omz update //  手动跟新 zsh
     ```
 
 + 显示隐藏的文件
