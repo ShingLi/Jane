@@ -28,6 +28,7 @@ const aliasObj = rootDir.reduce((accumuator, item)=> {
     return accumuator
 }, {})
 
+
 export default {
     build: {
         analyze: false, // 编译的时候显示构建包的大小 // https://zh.nuxtjs.org/api/configuration-build/
@@ -125,7 +126,7 @@ export default {
         'plugins/axios',
         'plugins/terminal',
         'plugins/elementui',
-        'plugins/svg.js',
+        'plugins/svg.client.js',
         {
             src: 'plugins/loadscript',
             mode: 'client'
