@@ -1,5 +1,5 @@
-/dist/*
-/assets/*
-/servermock/*
-/static/*
-/node_modules/*
+dist
+assets
+servermock
+static
+node_modules
