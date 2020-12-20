@@ -4,6 +4,7 @@ const path = require('path')
 const { merge } = require('webpack-merge')
 const TerserPlugin = require("terser-webpack-plugin") // 压缩代码
 
+
 // 业务模块
 const globalHead = require('./config/head')
 const projectConfig = require('./config/project')
@@ -126,7 +127,7 @@ export default {
         'plugins/axios',
         'plugins/terminal',
         'plugins/elementui',
-        'plugins/svg.client.js',
+        'plugins/svg.js',
         {
             src: 'plugins/loadscript',
             mode: 'client'

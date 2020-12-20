@@ -63,6 +63,9 @@
     </div>
 </template>
 <script>
+// import '../assets/svg/xingming.svg'
+// require('../assets/svg/xingming.svg')
+
 export default {
     name: 'About',
     asyncData ({ $axios, error }) {
