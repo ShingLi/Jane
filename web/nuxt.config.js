@@ -127,11 +127,8 @@ export default {
         'plugins/axios',
         'plugins/terminal',
         'plugins/elementui',
-        'plugins/svg.js',
-        {
-            src: 'plugins/loadscript',
-            mode: 'client'
-        },
+        'plugins/svg',
+        'plugins/loadscript.client'
     ],
     render: {
         crossorigin: 'anonymous', // 跨域
