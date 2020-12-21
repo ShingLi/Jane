@@ -63,8 +63,6 @@
     </div>
 </template>
 <script>
-// import '../assets/svg/xingming.svg'
-// require('../assets/svg/xingming.svg')
 
 export default {
     name: 'About',
@@ -95,7 +93,7 @@ export default {
             calcSty: '#000',
             userinfo: [
                 {
-                    iconclass: 'V',
+                    iconclass: 'v',
                     description: '男',
                 },
                 {

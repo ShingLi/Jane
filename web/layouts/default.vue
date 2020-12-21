@@ -4,7 +4,6 @@
     </div>
 </template>
 <script>
-require('../assets/svg/xingming.svg')
 export default {
     name: 'Layout',
     mounted () {
