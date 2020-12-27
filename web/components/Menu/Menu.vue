@@ -1,29 +1,46 @@
 <template>
     <div class="menu">
         <div class="Svg__content">
-            
+            <svg-icon :iconClass="className"/>
         </div>
         <transition>
-            <div class="mask"></div>
+            <div class="mask" v-if="false"></div>
         </transition>
     </div>
 </template>
 <script>
 export default {
     name: 'Menu',
+    computed: {
+        className () {
+            return 'menu--open'
+        }
+    },
     data () {
         return {
             isCollapse: true
         }
-    }
+    },
+
 }
 </script>
 <style lang="scss" scoped>
     .menu{
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        z-index: 1;
+        cursor: pointer;
         .Svg{
             &__content{
-                width: 50px;
-                height: 50px;
+                width: 100%;
+                height: 100%;
+                >>> .svg{
+                    width: 100%;
+                    height: 100%;
+                }
             }
         }
         .mask{

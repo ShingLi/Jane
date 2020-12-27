@@ -2,8 +2,8 @@
     min-height: 100vh;
     // background-color: #98bf21;
     animation: fade 0.4s ease-in-out;
+    position: relative;
     &.about{
-        // background-color: #98bf21;
         background-color: #CCCC33;
     }
 }
