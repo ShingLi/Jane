@@ -1,10 +1,10 @@
 <template>
     <div class="menu">
         <div class="Svg__content">
-            <svg-icon :iconClass="className"/>
+            <svg-icon :iconClass="className" @click.native="isCollapse = !isCollapse"/>
         </div>
-        <transition>
-            <div class="mask" v-if="false"></div>
+        <transition name="fadeIndown">
+            <div class="mask" v-show="isCollapse"></div>
         </transition>
     </div>
 </template>
@@ -13,15 +13,18 @@ export default {
     name: 'Menu',
     computed: {
         className () {
-            return 'menu--open'
+            let icon
+            if (!this.isCollapse) {
+                icon = 'menu--open'
+            } else icon = 'menu--close'
+            return icon
         }
     },
     data () {
         return {
-            isCollapse: true
+            isCollapse: false
         }
     },
-
 }
 </script>
 <style lang="scss" scoped>
@@ -29,27 +32,30 @@ export default {
         position: absolute;
         top: 20px;
         right: 20px;
-        width: 40px;
-        height: 40px;
-        z-index: 1;
+        width: 30px;
+        height: 30px;
+        z-index: 2;
         cursor: pointer;
         .Svg{
             &__content{
                 width: 100%;
                 height: 100%;
-                >>> .svg{
-                    width: 100%;
-                    height: 100%;
+                position: absolute;
+                z-index: 3;
+                ::v-deep .icon{
+                    width: 30px;
+                    height:30px;
                 }
             }
         }
         .mask{
             position: fixed;
             top: 0;
+            height: 100%;
             left: 0;
             width: 100%;
-            height: 100%;
-            background-color: #98bf21;
+            background: rgba(255, 255, 255, 0.5);
+            // backdrop-filter: blur(1px);
         }
     }
 </style>
