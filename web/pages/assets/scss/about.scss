@@ -25,6 +25,7 @@
         box-shadow: 1px 1px 1px 1px rgba(7,57,138, .6), -1px -1px 1px 1px rgba(7,57,138, .6);
         display: flex;
         justify-content: space-between;
+        // overflow: hidden;
         // opacity: .6;
         // overflow: hidden;
         .userinfo,.skill{
@@ -36,6 +37,8 @@
             flex: 0 0 200px;
             padding: 16px;
             padding-top: 40px;
+            display: flex;
+            flex-direction: column;
             .avatar{
                 width: 100px;
                 height: 100px;
@@ -45,6 +48,7 @@
                 display: block;
                 cursor: pointer;
                 transition: all 60s cubic-bezier(.39,.01,1,.59);
+                flex: 0 0 100px;
                 
             }
             .username {
@@ -56,14 +60,17 @@
                 text-overflow: ellipsis;
                 line-height: 15px;
                 cursor: pointer;
+                flex: 0 0 15px;
             }
             >ol{
-                margin-top: 20px;
+                flex: 1;
+                margin-top: 15px;
+                overflow-y: auto;
             }
             &__item{
                 display: flex;
                 align-items: center;
-                margin-bottom: 10px;
+                margin-bottom: 12px;
                 &:last-child{
                     margin-bottom: 0;
                 }
@@ -139,6 +146,8 @@
                 }
                 .progress{
                     width: 60%;
+                    height: 68%;
+                    overflow-y: auto;
                     code{
                         font-size: 14px;
                     }

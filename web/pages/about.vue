@@ -24,7 +24,9 @@
                 </ol>
             </div>
             <ul class="skill">
-                <li class="circle"></li>
+                <li class="circle">
+                    <svg-icon icon-class="molecule"/>
+                </li>
                 <li class="skill__content">
                     <h4 class="title">昨夜西风凋碧树，独上高楼，望尽天涯路</h4>
                     <!-- <p>我什么时候才能达到人生的第二重境界? 衣带渐宽终不悔，唯一一人饮憔悴</p> -->

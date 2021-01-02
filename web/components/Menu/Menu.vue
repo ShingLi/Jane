@@ -4,7 +4,11 @@
             <svg-icon :iconClass="className" @click.native="isCollapse = !isCollapse"/>
         </div>
         <transition name="fadeIndown">
-            <div class="mask" v-show="isCollapse"></div>
+            <div class="mask" v-show="isCollapse">
+                <div class="mask__container">
+                    
+                </div>
+            </div>
         </transition>
     </div>
 </template>
@@ -29,7 +33,7 @@ export default {
 </script>
 <style lang="scss" scoped>
     .menu{
-        position: absolute;
+        position: fixed;
         top: 20px;
         right: 20px;
         width: 30px;
@@ -42,6 +46,7 @@ export default {
                 height: 100%;
                 position: absolute;
                 z-index: 3;
+                
                 ::v-deep .icon{
                     width: 30px;
                     height:30px;
@@ -54,7 +59,12 @@ export default {
             height: 100%;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.5);
+            &__container{
+                position: relative;
+                width: 100%;
+                height: 100%;
+                background: rgba(255, 255, 255, 0.5);
+            }
             // backdrop-filter: blur(1px);
         }
     }
