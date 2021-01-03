@@ -37,10 +37,12 @@ export default {
     methods: {
         start () {
             this.loading = true
-            console.log('开始')
+            console.log('start')
         },
         finish () {
-            this.loading = false
+            setTimeout(() => {
+                this.loading = false
+            }, 1800)
         },
         fail (error) {},
     },
