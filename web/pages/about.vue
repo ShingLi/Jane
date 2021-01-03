@@ -177,7 +177,7 @@ export default {
             {
                 hid: 'about__description',
                 name: 'description',
-                content: '李成的个人描述',
+                content: '李成的个人描述,关于',
             },
             {
                 hid: 'author',

@@ -13,6 +13,11 @@ const globalHead = {
             hid: 'description',
             name: 'description',
             content: process.env.npm_package_description || 'shingli的web页面'
+        },
+        {
+            hid: 'keywords',
+            name: 'keywords',
+            content: 'nuxt, nuxtjs, 博客'
         }
     ],
     htmlAttrs: {

@@ -96,3 +96,11 @@
 + Critical dependency: require function is used in a way in which dependencies cannot be statically extracted
 + 问题发生位置： `plugins/svg.js`
 + 问题发生背景：想动态引入项目里面的所有svg文件，做到自动化处理
+
++ `解决` 问题原因使用姿势错误,`require.context` 是`webpack`私有方法只有运行时才能打印，`log`同步打印会报错, 解决时间 `2021年1月3日`
+
+>2021/01/03
+
++ 动画作用效果范围
++ 问题： `about`页面作用动画类名`side-about`， 页面切换动画的时候`index`页面收到影响
++ 待解决
