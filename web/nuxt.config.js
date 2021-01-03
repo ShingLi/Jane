@@ -174,6 +174,10 @@ export default {
     serverMiddleware: [
         '~servermock/server'
     ],
+    transition: {
+        name: 'side',
+        mode: 'out-in'
+    },
     vue: {
         config: {
             productionTip: false

@@ -42,7 +42,7 @@ export default {
         finish () {
             setTimeout(() => {
                 this.loading = false
-            }, 1800)
+            }, 2000)
         },
         fail (error) {},
     },
