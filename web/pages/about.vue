@@ -124,17 +124,17 @@ export default {
     mounted () {
         this.$nextTick(() => {
             this.init()
-            this.$nuxt.$loading.start()
-            setTimeout(() => {
-                this.$nuxt.$loading.finish()
-            }, 1800);
+            // this.$nuxt.$loading.start()
+            // setTimeout(() => {
+            //     this.$nuxt.$loading.finish()
+            // }, 1800);
         })
     },
     destroyed () {
         this.unbindEvent(document.getElementById('avatar'), 'mouseenter', this.mouseenter)
         this.unbindEvent(document.getElementById('avatar'), 'mouseleave', this.mouseleave)
     },
-    // transition: 'side-about',
+    transition: 'side-about',
     methods: {
         init () {
             this.bindEvent(document.getElementById('avatar'), 'mouseenter', this.mouseenter)
