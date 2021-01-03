@@ -9,17 +9,21 @@ import Menu from '../components/Menu/Menu.vue'
 export default {
     name: 'Layout',
     components: { Menu },
-    mounted () {
-        const { $route, $nextTick } = this
-        $nextTick(() => {
-            this.setBgColor($route)
-        })
+    watch: {
+        $route (val, oldVal) {
+            const { $route, $nextTick } = this
+            $nextTick(() => {
+                this.setBgColor(val, oldVal)
+            })
+        }
     },
     methods: {
-        setBgColor ({ name }) {
-            if (name == 'about') {
-                document.querySelector('.app').classList.add('about')
+        setBgColor ({ name }, oldVal) {
+            const dom = document.querySelector('.app')
+            if (dom.classList.contains(oldVal.name)) {
+                dom.classList.remove(oldVal.name)
             }
+            dom.classList.add(name)
         },
     },
 }
