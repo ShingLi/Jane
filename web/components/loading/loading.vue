@@ -37,7 +37,6 @@ export default {
     methods: {
         start () {
             this.loading = true
-            console.log('start')
         },
         finish () {
             setTimeout(() => {

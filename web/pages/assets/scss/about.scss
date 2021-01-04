@@ -6,10 +6,12 @@
     background-image: url('./assets/images/about/bg2.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    // animation: side-left 1.3s ease-in-out;
     transform-style: preserve-3d;
     // pointer-events: none;
     // opacity: .6;
+    &.refresh{
+        animation: side-left 1.3s ease-in-out;
+    }
     &__content{
         position: absolute;
         top: 50%;
@@ -162,13 +164,13 @@
     }
 }
 
-// @keyframes side-left{
-//     0%{
-//         transform: translate3d(100%, 0, 0);
-//         opacity: 0;
-//     }
-//     100%{
-//         transform: translate3d(0, 0, 0);
-//         opacity: 1;
-//     }
-// }
+@keyframes side-left{
+    0%{
+        transform: translate3d(100%, 0, 0);
+        opacity: 0;
+    }
+    100%{
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}

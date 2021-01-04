@@ -124,10 +124,9 @@ export default {
     mounted () {
         this.$nextTick(() => {
             this.init()
-            // this.$nuxt.$loading.start()
-            // setTimeout(() => {
-            //     this.$nuxt.$loading.finish()
-            // }, 1800);
+        })
+        window.addEventListener('beforeunload', e => {
+            
         })
     },
     destroyed () {
