@@ -9,7 +9,7 @@
                     <ul class="navbar">
                         <li v-for="(item, index) of navbar" :key="index">
                             <!-- <span :class="{ active: $route.name == item.routername }">{{ item.navtitle }}</span> -->
-                            <nuxt-link :to="item.path">{{ item.navtitle }}</nuxt-link>
+                            <nuxt-link :to="item.path" @click.native="menuClick(true)">{{ item.navtitle }}</nuxt-link>
                         </li>
                     </ul>
                 </div>
@@ -18,6 +18,8 @@
     </div>
 </template>
 <script>
+
+import { mapMutations } from 'vuex'
 export default {
     name: 'Menu',
     data () {
@@ -44,6 +46,11 @@ export default {
             return icon
         },
     },
+    methods: {
+        ...mapMutations({
+            menuClick: 'changeClick'
+        })
+    }
 }
 </script>
 <style lang="scss" scoped>

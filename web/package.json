@@ -11,10 +11,10 @@
     "lint": "yarn lint:js"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/axios": "^5.12.5",
     "esm": "^3.2.25",
     "fs": "0.0.1-security",
-    "nuxt": "^2.14.6",
+    "nuxt": "^2.14.12",
     "require-context": "^1.1.0",
     "sass": "^1.27.0",
     "sass-loader": "^10.0.4"

@@ -1,5 +1,5 @@
 <template>
-    <div class="about">
+    <div class="about" :class="{ refresh: !isAboutClick }">
         <div class="about__content">
             <div class="userinfo">
                 <img
@@ -65,7 +65,6 @@
     </div>
 </template>
 <script>
-
 export default {
     name: 'About',
     asyncData ({ $axios, error }) {
@@ -121,10 +120,26 @@ export default {
             ],
         }
     },
+    computed: {
+        isAboutClick () {
+            return this.$store.state.clicked
+        }
+    },
+    created () {
+        if (process.client) {
+            this.$nextTick(() => {
+                this.init()
+                /* licheng 刷新手动开启加载动画
+                -------------------------- */
+                if (!this.isAboutClick) {
+                    this.$nuxt.$loading.start()
+                    this.$nuxt.$loading.finish()
+                }
+            })
+        }
+    },
     mounted () {
-        this.$nextTick(() => {
-            this.init()
-        })
+        
         window.addEventListener('beforeunload', e => {
             
         })
