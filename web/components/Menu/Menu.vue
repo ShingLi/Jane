@@ -9,7 +9,7 @@
                     <ul class="navbar">
                         <li v-for="(item, index) of navbar" :key="index">
                             <!-- <span :class="{ active: $route.name == item.routername }">{{ item.navtitle }}</span> -->
-                            <nuxt-link :to="item.path" @click.native="menuClick(true)">{{ item.navtitle }}</nuxt-link>
+                            <nuxt-link :to="item.path" @click.native="navigator">{{ item.navtitle }}</nuxt-link>
                         </li>
                     </ul>
                 </div>
@@ -24,7 +24,7 @@ export default {
     name: 'Menu',
     data () {
         return {
-            isCollapse: true,
+            isCollapse: false,
             navbar: [
                 {
                     navtitle: '首页',
@@ -47,6 +47,10 @@ export default {
         },
     },
     methods: {
+        navigator () {
+            this.isCollapse = false
+            this.menuClick(true)
+        },
         ...mapMutations({
             menuClick: 'changeClick'
         })
