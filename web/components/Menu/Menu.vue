@@ -9,7 +9,10 @@
                     <ul class="navbar">
                         <li v-for="(item, index) of navbar" :key="index">
                             <!-- <span :class="{ active: $route.name == item.routername }">{{ item.navtitle }}</span> -->
-                            <nuxt-link :to="item.path" @click.native="navigator">{{ item.navtitle }}</nuxt-link>
+                            <template v-if="item.path != 'external'">
+                                <nuxt-link :to="item.path" @click.native="navigator">{{ item.navtitle }}</nuxt-link>
+                            </template>
+                            <a :href="item.href" v-else target="_blank">{{ item.navtitle }}</a>
                         </li>
                     </ul>
                 </div>
@@ -31,9 +34,18 @@ export default {
                     path: '/index.html',
                 },
                 {
+                    navtitle: '记录',
+                    path: '/record.html',
+                },
+                {
                     navtitle: '关于',
                     path: '/about.html',
                 },
+                {
+                    navtitle: 'GitHub',
+                    path: 'external',
+                    href: 'https://github.com/shingli'
+                }
             ],
         }
     },
