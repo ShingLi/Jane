@@ -45,7 +45,7 @@ export default {
             ],
             cacheDirectory: true, // babel 缓存，加快构建速度
         },
-        cache: true, // Enable cache of terser-webpack-plugin and cache-loader
+        cache: false, // Enable cache of terser-webpack-plugin and cache-loader， 这玩意开了速度变慢
         extend (config, ctx) {
             let { alias } = config.resolve
             alias = merge(alias, aliasObj)
