@@ -43,9 +43,9 @@ export default {
                     }
                 ]
             ],
-            cacheDirectory: true
+            cacheDirectory: true, // babel 缓存，加快构建速度
         },
-        cache: true,
+        cache: true, // Enable cache of terser-webpack-plugin and cache-loader
         extend (config, ctx) {
             let { alias } = config.resolve
             alias = merge(alias, aliasObj)
@@ -72,6 +72,9 @@ export default {
         loaders: {
             imgUrl: {
                 limit: 10000000, // 转成base64 直接打包到css里面
+            },
+            vue: {
+                prettify: false, // https://vue-loader.vuejs.org/zh/options.html#prettify
             }
         },
         optimization: {
@@ -94,7 +97,7 @@ export default {
                 cacheGroups: {}
             }
         },
-        parallel: true
+        parallel: true, // 多线程编译，加快编译速度
     },
     buildDir: './dist',
     // ssr: false,
