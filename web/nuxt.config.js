@@ -98,6 +98,7 @@ export default {
             }
         },
         parallel: true, // 多线程编译，加快编译速度
+        profile: true, // 显示编译时间
     },
     buildDir: './dist',
     // ssr: false,
