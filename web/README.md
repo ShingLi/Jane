@@ -105,3 +105,15 @@
 + 动画作用效果范围
 + 问题： `about`页面作用动画类名`side-about`， 页面切换动画的时候`index`页面收到到影响
 + 待解决
+
+>2021/02/15
+
++ `import()`和`Promise.resolve()`都是返回一个`Promise`对象
+
+  ```js
+    import(‘./a.js’).then(module => console.log(module))
+    
+  ```
+
++ require.resolve()
++ require.cache()
