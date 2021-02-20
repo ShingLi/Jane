@@ -1,7 +1,7 @@
 <template>
     <div class="menu">
         <div class="Svg__content">
-            <svg-icon :icon-class="className" @click.native="isCollapse = !isCollapse"/>
+            <svg-icon :icon-class="className" @click.native.stop="isCollapse = !isCollapse"/>
         </div>
         <transition name="fadeIndown">
             <div v-show="isCollapse" class="mask">

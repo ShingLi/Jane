@@ -1,12 +1,13 @@
 <template>
     <div class="index">
-        <div class="curtain"> 
+        <!-- <div class="curtain"> 
         </div>
-        <ul></ul>
+        <ul></ul> -->
+        <canvas class="canvas"></canvas>
     </div>
 </template>
 <script>
-
+import Canvas from '~/components/Canvas/Canvas.js'
 export default {
     name: 'Index',
     async fetch () {
@@ -15,7 +16,7 @@ export default {
     async asyncData ({ $axios }) {
         const { data } = await $axios({
             url: '/web/index',
-            method: 'post'
+            method: 'post',
         })
         return {
             
@@ -26,8 +27,8 @@ export default {
             title: '首页',
         }
     },
-    async mounted () {
-        
+    mounted () {
+        Canvas()
     },
     head () {
         return {
