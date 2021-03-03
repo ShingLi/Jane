@@ -14,3 +14,5 @@
 
 + permission.js
     + 没有验证token，只是单纯的判断有没有
+
+git reset --hard origin/master
