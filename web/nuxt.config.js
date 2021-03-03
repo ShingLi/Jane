@@ -179,7 +179,7 @@ export default function (configContext) {
         serverMiddleware: [
             '~servermock/server'
         ],
-        transition: {
+        pageTransition: {
             name: 'side',
             mode: 'out-in'
         },

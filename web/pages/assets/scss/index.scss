@@ -5,6 +5,16 @@
     .canvas{
         cursor: pointer;
     }
+    .tips{
+        font-size: 15px;
+        position: absolute;
+        top: 25px;
+        left: 30px;
+        p{
+            color: red;
+            margin-bottom: 15px;
+        }
+    }
     // min-height: 100vh;
     // .curtain{
     //     position: relative;

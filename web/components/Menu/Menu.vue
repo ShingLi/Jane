@@ -58,6 +58,9 @@ export default {
             if (!this.isCollapse) {
                 icon = 'menu--open'
             } else icon = 'menu--close'
+            
+            this.$store.commit('changeMenuState', this.isCollapse)
+
             return icon
         },
     },

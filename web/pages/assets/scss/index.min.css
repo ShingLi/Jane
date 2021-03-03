@@ -1,1 +1,1 @@
-.index{position:relative;width:100vw;height:100vh}.index .canvas{cursor:pointer}
+.index{position:relative;width:100vw;height:100vh}.index .canvas{cursor:pointer}.index .tips{font-size:15px;position:absolute;top:25px;left:30px}.index .tips p{color:red;margin-bottom:15px}
