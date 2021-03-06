@@ -1,0 +1,36 @@
+/* licheng 全局head
+-------------------------- */
+const globalHead = {
+    meat: [
+        {
+            charset: 'utf-8'
+        },
+        {
+            name: 'viewport',
+            content: 'width=device-width, initial-scale=1'
+        },
+        {
+            hid: 'description',
+            name: 'description',
+            content: process.env.npm_package_description || 'shingli的web页面'
+        },
+        {
+            hid: 'keywords',
+            name: 'keywords',
+            content: 'nuxt, nuxtjs, 博客'
+        }
+    ],
+    htmlAttrs: {
+        lang: 'zh-CN'
+    },
+    link: [
+        {
+            rel: 'icon',
+            type: 'image/x-icon',
+            href: '/favicon.ico'
+        }
+    ],
+    __dangerouslyDisableSanitizers: ['script'],
+}
+
+module.exports = globalHead

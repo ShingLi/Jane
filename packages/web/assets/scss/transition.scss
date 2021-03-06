@@ -1,0 +1,50 @@
+/* 淡入淡出 蒙
+-------------------------- */
+.fade-enter-active,.fade-leave-active{
+    transition: all 1.1s ease-in-out;
+    &.fast{
+        transition: all 0.5s ease-in-out;
+    }
+}
+
+.fade-enter, .fade-leave-to{
+    opacity: 0;
+}
+
+/* about 页面切换动画
+-------------------------- */
+.side-enter,.side-leave-active{
+    transform: translate3d(100%, 0, 0);
+    opacity: 0;
+}
+.side-enter-active,.side-leave-active{
+    transition: all 1s ease-in-out;
+}
+
+
+/* menu 菜单组件
+-------------------------- */
+.fadeIndown-enter-active,.fadeIndown-leave-active{
+    transition: all 500ms ease-in-out !important;
+}
+.fadeIndown-enter{
+    transform: translate3d(0, -100%, 0) !important;
+}
+.fadeIndown-leave-to{
+    transform: translate3d(0, -100%, 0);
+}
+
+/* 呼吸灯缩放动画
+-------------------------- */
+
+@keyframes suofang {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
