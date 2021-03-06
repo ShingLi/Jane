@@ -53,8 +53,7 @@
                         <el-progress :percentage="10" color="#000"></el-progress>
                     </div>
                     <div class="descript">
-                        <p :style="{ color: calcSty }">喜欢一个女孩，未必一定要得到，得不到才是最好的!</p>
-                        
+                        <p>写代码只是为了维持生计而已~~~~~~</p>
                         <div class="timeline">
                             今天是<span class="year">{{ year }}</span>年<span class="month">{{ month }}</span>月<span class="day">{{ day }}</span>日
                         </div>

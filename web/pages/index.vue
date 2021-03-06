@@ -3,7 +3,7 @@
         <div class="tips">
             <p>皖ICP备18000360号</p>
             <transition name="fade">
-                <h4 v-if="!isCollapse" class="copy fast">当不能在拥有的时候，唯一能做的就是不让自己忘记~ 1011</h4>
+                <h4 v-if="!isCollapse" class="copy fast">当不能在拥有的时候，唯一能做的就是不让自己忘记~ </h4>
             </transition>
         </div>
         <canvas class="canvas"></canvas>
@@ -38,7 +38,7 @@ export default {
     },
     mounted () {
         Canvas()
-        this.queue()
+        // this.queue()
     },
     methods: {
         queue () {

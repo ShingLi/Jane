@@ -82,13 +82,14 @@ export default function (configContext) {
                 minimize: true,
                 minimizer: [
                     // https://webpack.docschina.org/configuration/optimization/#optimizationminimize
-                    new TerserPlugin(
-                        {
-                            cache: true,
-                            parallel: true,
-                            sourceMap: false, // 如果在生产环境中使用 source-maps，必须设置为 true
-                        }
-                    ),
+                    // 2021.3.6 这玩意会导致开发环境编译过慢
+                    // new TerserPlugin(
+                    //     {
+                    //         cache: true,
+                    //         parallel: true,
+                    //         sourceMap: false, // 如果在生产环境中使用 source-maps，必须设置为 true
+                    //     }
+                    // ),
                 ],
                 splitChunks: {
                     // https://zh.nuxtjs.org/docs/2.x/configuration-glossary/configuration-build#optimization

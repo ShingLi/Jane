@@ -90,10 +90,10 @@ export default {
                 height: 100%;
                 position: absolute;
                 z-index: 3;
-                
                 ::v-deep .icon{
                     width: 30px;
                     height:30px;
+                    // animation: suofang 2s ease-in-out infinite;
                 }
             }
         }
