@@ -22,11 +22,16 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-    .icon{
-        width: 20px;
-        height: 20px;
-        vertical-align: -0.15em;
-        fill: currentColor;
-        overflow: hidden;
+    .svg{
+        position:relative;
+        width: 100%;
+        height: 100%;
+        .icon{
+            width: 20px;
+            height: 20px;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
     }
 </style>
