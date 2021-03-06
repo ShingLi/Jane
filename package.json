@@ -10,6 +10,9 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "dev": "node -r esm ./scripts/dev.js"
+  },
   "devDependencies": {
     "lerna": "^4.0.0"
   }
