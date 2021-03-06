@@ -139,23 +139,23 @@ export default function (configContext) {
         render: {
             crossorigin: 'anonymous', // 跨域
         },
-        buildModules: [
-            // Doc: https://github.com/nuxt-community/eslint-module
+        // buildModules: [
+        //     // Doc: https://github.com/nuxt-community/eslint-module
         
-            [
-                '@nuxtjs/eslint-module',
-                {
-                    fix: true, // 修复eslint 报错
-                    exclude: [
-                        'node_modules',
-                        'assets',
-                        'dist',
-                        'static',
-                        'servermock'
-                    ]
-                }
-            ]
-        ],
+        //     [
+        //         '@nuxtjs/eslint-module',
+        //         {
+        //             fix: true, // 修复eslint 报错
+        //             exclude: [
+        //                 'node_modules',
+        //                 'assets',
+        //                 'dist',
+        //                 'static',
+        //                 'servermock'
+        //             ]
+        //         }
+        //     ]
+        // ],
         modules: [
             '@nuxtjs/axios'
         ],

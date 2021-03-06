@@ -11,7 +11,7 @@
                 <span>亦或许可以给我一个机会, 让我重新开始! 倒计时 </span>
                 <i>{{ tickNum }}</i>
                 <span>&nbsp;s</span>
-                <b @click="pageStatusSwitch">{{ `(${pageStatus == 0 ? '暂停计时' : '重新开始' })` }}</b>
+                <b @click="pageStatusSwitch">{{ `( ${pageStatus == 0 ? '暂停计时' : '重新开始' })` }}</b>
             </div>
         </div>
     </div>
@@ -49,6 +49,9 @@ export default {
                 this.pageStatus = 1
             } else this.tickFn()
         }
+    },
+    asyncData () {
+
     },
     head () {
         return {
