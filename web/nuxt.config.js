@@ -141,7 +141,7 @@ export default function (configContext) {
         },
         // buildModules: [
         //     // Doc: https://github.com/nuxt-community/eslint-module
-        //         eslint-module 这玩意太坑了，扁丝速度是在是太慢了
+        //         eslint-module 这玩意太坑了，导致编译速度是在是太慢了
         
         //     [
         //         '@nuxtjs/eslint-module',
