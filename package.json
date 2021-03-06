@@ -1,0 +1,16 @@
+{
+  "name": "Jane",
+  "version": "1.0.0",
+  "description": "licheng 的博客",
+  "main": "index.js",
+  "repository": "https://github.com/ShingLi/Jane.git",
+  "author": "shingli <745573545@qq.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}
