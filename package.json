@@ -11,9 +11,12 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "node -r esm ./scripts/dev.js"
+    "dev:web": "node -r esm ./scripts/dev.js web"
   },
   "devDependencies": {
     "lerna": "^4.0.0"
+  },
+  "dependencies": {
+    "fs-extra": "^9.1.0"
   }
 }
