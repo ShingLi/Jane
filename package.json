@@ -2,7 +2,6 @@
   "name": "Jane",
   "version": "1.0.0",
   "description": "licheng 的博客",
-  "main": "index.js",
   "repository": "https://github.com/ShingLi/Jane.git",
   "author": "shingli <745573545@qq.com>",
   "license": "MIT",
@@ -11,11 +10,15 @@
     "packages/*"
   ],
   "scripts": {
-    "dev:web": "node -r esm ./scripts/dev.js web"
+    "dev": "nodemon -r esm ./scripts/dev.js --watch scripts"
   },
   "devDependencies": {
     "fs-extra": "^9.1.0",
     "lerna": "^4.0.0",
     "shelljs": "^0.8.4"
+  },
+  "dependencies": {
+    "inquirer": "^8.0.0",
+    "nodemon": "^2.0.7"
   }
 }
