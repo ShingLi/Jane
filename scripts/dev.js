@@ -4,12 +4,17 @@ import fs from 'fs-extra'
 import { resolve } from 'path'
 import inquirer from 'inquirer'
 
+const execweb = () => {
+    
+}
+
+const 
 
 const exec = () => {
     console.clear()
     inquirer.prompt([
         {
-            type:'list',
+            type:'checkbox',
             name: 'Jane',
             message: '请选择要启动的项目',
             choices: [
@@ -20,7 +25,7 @@ const exec = () => {
             default: 'web'
         }
     ]).then(answers => {
-        consola.info(answers)
+        
     }).catch(e => {
         consola.error(e)
     })
