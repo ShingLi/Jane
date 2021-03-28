@@ -1,5 +1,5 @@
 {
-  "name": "Jane",
+  "name": "jane",
   "version": "1.0.0",
   "description": "licheng 的博客",
   "repository": "https://github.com/ShingLi/Jane.git",
@@ -18,7 +18,7 @@
     "shelljs": "^0.8.4"
   },
   "dependencies": {
-    "inquirer": "^7.2.0",
+    "inquirer": "8.0.0",
     "nodemon": "^2.0.7"
   }
 }

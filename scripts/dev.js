@@ -4,32 +4,36 @@ import fs from 'fs-extra'
 import { resolve } from 'path'
 import inquirer from 'inquirer'
 
-const execweb = () => {
-    
-}
 
-const 
-
-const exec = () => {
-    console.clear()
-    inquirer.prompt([
+async function exec () {
+    const answer = await inquirer.prompt([
         {
-            type:'checkbox',
-            name: 'Jane',
-            message: '请选择要启动的项目',
-            choices: [
-                'web',
-                'admin',
-                'server'
-            ],
-            default: 'web'
-        }
-    ]).then(answers => {
-        
-    }).catch(e => {
-        consola.error(e)
-    })
+            type: 'confirm',
+            message: '启动',
+            name: 'server',
+            prefix: 'Jane/server'
+        },
+        {
+            type: 'confirm',
+            message: '是否启动',
+            name: 'web',
+            prefix: 'Jane/web'
+        },
+        {
+            type: 'confirm',
+            message: '是否启动',
+            name: 'admin',
+            prefix: 'Jane/admin',
+            default: false
+        },
+    ])
     
+    for (let k in answer) {
+        
+    }
 }
 
-exec()
+exec().catch(e => {
+    consola.error(e)
+    process.exit(1)
+})
