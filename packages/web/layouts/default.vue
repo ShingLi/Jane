@@ -5,10 +5,8 @@
     </div>
 </template>
 <script>
-import Menu from '../components/Menu/Menu.vue'
 export default {
     name: 'Layout',
-    components: { Menu },
     watch: {
         $route (val, oldVal) {
             const { $route, $nextTick } = this

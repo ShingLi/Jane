@@ -5,13 +5,13 @@
                 <svg-icon iconClass="error"/>
             </div>
             <ul class="descript">
-                <li>人生中很多人都是过客，错过了就是错过了，正如同这个页面一样，丢了就真的丢了。</li>
+                <li>人生中很多人都是过客，错过了就是错过了，珍惜眼前人! 爱你的总好过你爱的。</li>
             </ul>
             <div class="tickwrap">
                 <span>亦或许可以给我一个机会, 让我重新开始! 倒计时 </span>
                 <i>{{ tickNum }}</i>
-                <span>&nbsp;s</span>
-                <b @click="pageStatusSwitch">{{ `( ${pageStatus == 0 ? '暂停计时' : '重新开始' })` }}</b>
+                <span>&nbsp;s&nbsp;</span>
+                <b @click="pageStatusSwitch">{{ `${pageStatus == 0 ? '暂停计时' : '[ 重新开始 ]' }` }}</b>
             </div>
         </div>
     </div>
