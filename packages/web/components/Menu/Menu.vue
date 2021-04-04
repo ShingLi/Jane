@@ -78,8 +78,8 @@ export default {
 <style lang="scss" scoped>
     .menu{
         position: fixed;
-        top: 20px;
-        right: 20px;
+        top: 15px;
+        right: 15px;
         width: 30px;
         height: 30px;
         z-index: 2;

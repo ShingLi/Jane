@@ -1,0 +1,6 @@
+/* 简单覆盖下element样式，暂时不通过variable.scss 控制element 主题
+-------------------------- */
+
+.el-timeline-item__timestamp.is-top {
+    padding-bottom: 12px !important;
+}

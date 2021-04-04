@@ -1,4 +1,5 @@
 import Vue from 'vue'
-import { progress } from 'element-ui'
+import { Progress, Timeline, TimelineItem, Card } from 'element-ui'
 
-Vue.use(progress)
+
+Vue.use(Progress).use(Timeline).use(TimelineItem).use(Card)

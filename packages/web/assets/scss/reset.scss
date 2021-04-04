@@ -72,5 +72,15 @@
 
 html, body{
   height: 100%;
-  font-family: PingFangSC-Regular,"PingFang SC","Helvetica Neue",Helvetica,STHeiTi,sans-serif;
+  font-family: PingFangSC-Regular, PingFang SC,Helvetica Neue, Helvetica, STHeiTi, sans-serif;
+}
+
+@font-face {
+  font-family: PingFangSC-Regular;
+  src: url('../fonts/PingFangSC-Regular.ttf'),
+  local("../fonts/PingFangSC-Regular.ttf"),
+}
+
+h4{
+  font-family: PingFangSC-Regular;
 }
