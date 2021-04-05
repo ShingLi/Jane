@@ -24,6 +24,10 @@
 </template>
 <script>
 
+if (process.client) {
+    const CanvasNest = require('canvas-nest.js')
+}
+
 export default {
     name: 'Record',
     asyncData () {
@@ -77,6 +81,22 @@ export default {
     data () {
         return {
 
+        }
+    },
+    mounted () {
+        this.initNest()
+        
+    },
+    beforeDestroy () {
+        if (this.nest) this.nest.destroy()
+    },
+    methods: {
+        initNest () {
+            const config = {
+                color: '255,0,0',
+                count: 88,
+            }
+            this.nest = new CanvasNest(document.body, config)
         }
     }
 }

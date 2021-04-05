@@ -4,8 +4,13 @@
             <div class="errorpage">
                 <svg-icon iconClass="error"/>
             </div>
+            <div class="errorObj">
+                <label for="">「错误信息」</label>
+                <p>{{ `${error.message} ! ${error.statusCode}` }} </p>
+                <p v-if="error.path">{{ error.path }}</p>
+            </div>
             <ul class="descript">
-                <li>人生中很多人都是过客，错过了就是错过了，珍惜眼前人! 爱你的总好过你爱的。</li>
+                <li>人生中很多人都是过客，错过了就是错过了，珍惜眼前人， 爱你的总好过你爱的！</li>
             </ul>
             <div class="tickwrap">
                 <span>亦或许可以给我一个机会, 让我重新开始! 倒计时 </span>
@@ -80,8 +85,23 @@ export default {
                     height:100%;
                 }
             }
+            .errorObj {
+                display: flex;
+                align-items: center;
+                margin-top: 20px;
+                justify-content: flex-end;
+                label{
+                    font-size: 15px;
+                    margin-right: 14px;
+                    color: #E6A23C;
+                }
+                p{
+                    font-size: 15px;
+                    color:#F56C6C;
+                }
+            }
             .descript{
-                margin: 40px auto 0;
+                margin: 20px auto 0;
                 max-width: 70vw;
                 text-align: center;
                 li{

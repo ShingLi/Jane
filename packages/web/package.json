@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.5",
+    "canvas-nest.js": "^2.0.4",
     "esm": "^3.2.25",
     "nuxt": "^2.14.12",
     "sass": "^1.27.0",
