@@ -20,6 +20,9 @@
                 </el-timeline-item>
             </el-timeline>
         </div>
+        <div class="nest" ref="nest">
+
+        </div>
     </div>
 </template>
 <script>
@@ -92,12 +95,14 @@ export default {
             if (!window.CanvasNest) {
                 CanvasNest = require('canvas-nest.js')
             }
-            
+
             const config = {
                 color: '255,0,0',
                 count: 88,
             }
-            this.nest = new CanvasNest(document.body, config)
+            this.$nextTick(() => {
+                this.nest = new CanvasNest(this.$refs.nest, config)
+            })
         }
     }
 }

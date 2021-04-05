@@ -1,21 +1,19 @@
 .record{
-    .header{
-        position: fixed;
-        height: 50px;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1;
-        background-color: #fff;
-        &.line{
-            border-bottom: 1px solid #e8e8e8;
-        }
-    }
+    // .header{
+    //     position: fixed;
+    //     height: 50px;
+    //     top: 0;
+    //     left: 0;
+    //     width: 100%;
+    //     z-index: 1;
+    //     background-color: #fff;
+    //     &.line{
+    //         border-bottom: 1px solid #e8e8e8;
+    //     }
+    // }
     .content{
         padding-top: 100px;
-        // border: 1px solid red;
-        max-width: 1000px;
-        margin: 0 auto;
+        background: url('~assets/images/record__main.jpg') center top no-repeat;
         .card{
             width: 70%;
             cursor: pointer;
@@ -49,5 +47,15 @@
                 }
             }
         }
+    }
+    .nest{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        background: url('~assets/images/bg_1.jpg') center top;
+        background-repeat: no-repeat;
     }
 }
