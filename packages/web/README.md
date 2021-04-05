@@ -43,6 +43,8 @@
 + 无法加载本地图片
 + 没有定位问题
 
++ `2021/04/05` 解决此问题，通过require同步加载图片
+
 > 2020/11/15
 
 + 页面可见性
@@ -119,3 +121,32 @@
 + require.cache()
 
 + eslint-webpack-plugin 严重影响编译时间
+
+>2021/04/05
+
++ `window is undefined`
++ 问题背景: 加载第三方动画库 nest
++ 为什么会报错?
+  + `.vue文件会在服务端和客户端都执行一遍，服务端没有window`
++ 解决
+  + 方案一 客户端的插件通过`require`同步加载，优点只在当前文件中作用
+
+    ```js
+      mounted () {
+        let CanvasNest
+        if (!window.CanvasNest) {
+          CanvasNest = require('canvas-nest.js')
+        }
+        // 做一些事
+      }    
+    ```
+
+  + 方案二 通过`nuxt plugins`优点全局加载，优点也是缺点，全局加载意味着会打包到全局`app.js`中
+
+    ```nuxt.config.js
+      plugins: [
+        '~~/plugins/canvas-nest.client.js'
+      ]
+      // 做一些事
+      // 文档 https://zh.nuxtjs.org/docs/2.x/directory-structure/plugins/
+    ```
