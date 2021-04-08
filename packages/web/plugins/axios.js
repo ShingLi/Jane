@@ -11,13 +11,14 @@ export default function ({ $axios, redirect }, inject) {
     })
 
     $axios.onResponse(response => {
-        return response
+        const { data } = response
+        return data
     })
 
     $axios.onError(error => {
         // 这里错误
         if (error == 9999) {
-            redirect('status')
+            // redirect()
         }
     })
 }
