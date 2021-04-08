@@ -166,8 +166,9 @@ export default function (configContext) {
             }
         },
         // 运行时配置 https://zh.nuxtjs.org/blog/moving-from-nuxtjs-dotenv-to-runtime-config/
+        // 从$config 里面获取
         publicRuntimeConfig: {
-            baseURL: process.env.baseURL
+            baseURL: process.env.BASE_URL
         },
         privateRuntimeConfig: {
             baseURL: '${PUBLIC_URL}${BASE_URL}'
