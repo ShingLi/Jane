@@ -53,7 +53,7 @@
                         <el-progress :percentage="10" color="#000"></el-progress>
                     </div>
                     <div class="descript">
-                        <p>写代码只是为了维持生计而已~~~~~~</p>
+                        <p>写代码只是为了维持生计而已~~~~~~ 四流前端开发，下五流设计师</p>
                         <div class="timeline">
                             今天是<span class="year">{{ year }}</span>年<span class="month">{{ month }}</span>月<span class="day">{{ day }}</span>日
                         </div>
