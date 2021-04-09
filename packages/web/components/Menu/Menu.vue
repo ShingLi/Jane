@@ -82,7 +82,7 @@ export default {
         right: 15px;
         width: 30px;
         height: 30px;
-        z-index: 2;
+        z-index: 9;
         cursor: pointer;
         .Svg{
             &__content{
