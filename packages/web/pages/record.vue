@@ -3,32 +3,36 @@
         <div class="header line">
             
         </div>
-        <div class="content">
-            <el-timeline>
-                <el-timeline-item :timestamp="item.date" placement="top" color="hsl" type="danger" v-for="(item, index) of article" :key="item.id">
-                    <div class="card">
-                        <el-card>
-                            <div class="info">
-                                <img :src="item.imgsrc">
-                                <div class="desc">
-                                    <h4>{{ item.subtitle }}</h4>
-                                    <p>阅读</p>
+        <div class="record__container">
+            <div class="content">
+                <el-timeline>
+                    <el-timeline-item :timestamp="item.date" placement="top" color="hsl" type="info" v-for="(item, index) of article" :key="item.id">
+                        <div class="card">
+                            <el-card>
+                                <div class="info">
+                                    <img :src="item.imgsrc">
+                                    <div class="desc">
+                                        <h4>{{ item.subtitle }}</h4>
+                                        <p>阅读</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </el-card>
-                    </div>
-                </el-timeline-item>
-            </el-timeline>
+                            </el-card>
+                        </div>
+                    </el-timeline-item>
+                </el-timeline>
+            </div>
         </div>
         <div class="nest" ref="nest">
-
+            <div class="garden">
+                <!-- <img src="./assets/images/record/context.svg"> -->
+            </div>
         </div>
     </div>
 </template>
 <script>
 export default {
     name: 'Record',
-    asyncData () {
+    async asyncData ({ $axios }) {
         return {
             article: [
                 {
@@ -81,9 +85,8 @@ export default {
 
         }
     },
-    mounted () {
+    async mounted () {
         this.initNest()
-        
     },
     beforeDestroy () {
         if (this.nest) this.nest.destroy()
@@ -97,12 +100,22 @@ export default {
             }
 
             const config = {
-                color: '255,0,0',
-                count: 88,
+                color: '190,34,135',
+                pointColor: '126,19,49',
+                count: 120,
+                opacity: 1,
             }
             this.$nextTick(() => {
                 this.nest = new CanvasNest(this.$refs.nest, config)
             })
+        }
+    },
+    head () {
+        return {
+            title: '文章',
+            bodyAttrs: {
+                class: 'record'
+            }
         }
     }
 }

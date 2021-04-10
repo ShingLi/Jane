@@ -53,7 +53,7 @@
                         <el-progress :percentage="10" color="#000"></el-progress>
                     </div>
                     <div class="descript">
-                        <p>写代码只是为了维持生计而已~~~~~~ 四流前端开发，下五流设计师</p>
+                        <p>生活不止眼前的代码还有买房和娶媳妇~~~~~~ 四流前端开发,下九流设计师？</p>
                         <div class="timeline">
                             今天是<span class="year">{{ year }}</span>年<span class="month">{{ month }}</span>月<span class="day">{{ day }}</span>日
                         </div>
@@ -183,21 +183,26 @@ export default {
             }, 3000)
         },
     },
-    head: {
-        title: '关于',
-        meta: [
-            {
-                hid: 'about__description',
-                name: 'description',
-                content: '李成的个人描述,关于',
-            },
-            {
-                hid: 'author',
-                name: 'author',
-                content: 'shingli',
-            },
-        ],
-    },
+    head () {
+        return {
+            title: '关于',
+            meta: [
+                {
+                    hid: 'about__description',
+                    name: 'description',
+                    content: '关于李成，帅气的李大锤',
+                },
+                {
+                    hid: 'author',
+                    name: 'author',
+                    content: 'shingli',
+                },
+            ],
+            bodyAttrs: {
+                class: 'about'
+            }
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>
