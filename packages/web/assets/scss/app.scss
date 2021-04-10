@@ -4,9 +4,6 @@
     // background-color: #98bf21;
     animation: fade 0.4s ease-in-out;
     position: relative;
-    &.about{
-        background-color: #CCCC33;
-    }
 }
 
 @keyframes fade {
@@ -15,5 +12,17 @@
     }
     to{
         opacity: 1;
+    }
+}
+
+body{
+    &.index{
+        background-color: #fff;
+    }
+    &.record{
+        background-color: rgb(246,185,55);
+    }
+    &.about{
+        background-color: #CCCC33;
     }
 }
