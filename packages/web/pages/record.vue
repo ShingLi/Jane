@@ -1,83 +1,59 @@
 <template>
     <div class="record">
-        <div class="header line">
-            
-        </div>
+        <div class="header line"></div>
         <div class="record__container">
-            <div class="content">
-                <el-timeline>
-                    <el-timeline-item :timestamp="item.date" placement="top" color="hsl" type="info" v-for="(item, index) of article" :key="item.id">
-                        <div class="card">
-                            <el-card>
-                                <div class="info">
-                                    <img :src="item.imgsrc">
-                                    <div class="desc">
-                                        <h4>{{ item.subtitle }}</h4>
-                                        <p>阅读</p>
-                                    </div>
-                                </div>
-                            </el-card>
-                        </div>
-                    </el-timeline-item>
-                </el-timeline>
+            <div class="navbar">
+                <p>QQ音乐</p>
             </div>
+            <ul class="timeline">
+                <li class="timeline-item" v-for="n in 3">
+                    <h3 class="year">2021年</h3>
+                    <ul>
+                        <li class="timeline__item" v-for="n in 3">
+                            <div class="line"></div>
+                            <div class="point"></div>
+                            <div class="card">
+                                <div class="content" @click="jump(1)">
+                                    <div class="right">
+                                        <h4>CSS样ehddddddddddddddhah哈哈哈哈哈式</h4>
+                                        <p>这是描述性的文字哦哦哦哦哦哦哦哦hahhahah哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哦哦哦哦</p>
+                                        <div class="feedback">
+                                            <span>23 love</span>
+                                            <span>&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+                                            <span>54 read</span>
+                                        </div>
+                                    </div>
+                                    <img src="/assets/images/1.jpeg" class="img">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
+        <!-- 背景区域 -->
         <div class="nest" ref="nest">
             <div class="garden">
+                <div class="garden__main"></div>
                 <!-- <img src="./assets/images/record/context.svg"> -->
             </div>
+            <div class="timeaxes">
+                <div class="axescard">
+
+                </div>
+            </div>
         </div>
+        <!-- 文章详情 -->
+        <NuxtChild />
     </div>
 </template>
 <script>
 export default {
     name: 'Record',
     async asyncData ({ $axios }) {
+
         return {
-            article: [
-                {
-                    date: '2018/4/3',
-                    imgsrc: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
-                    subtitle: '副标题',
-                    desc: '简述',
-                    id: '12222'
-                },
-                {
-                    date: '2018/4/3',
-                    imgsrc: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
-                    subtitle: '副标题',
-                    desc: '简述',
-                    id: '12222'
-                },
-                {
-                    date: '2018/4/3',
-                    imgsrc: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
-                    subtitle: '副标题',
-                    desc: '简述',
-                    id: '12222'
-                },
-                {
-                    date: '2018/4/3',
-                    imgsrc: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
-                    subtitle: '副标题',
-                    desc: '简述',
-                    id: '12222'
-                },
-                {
-                    date: '2018/4/3',
-                    imgsrc: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
-                    subtitle: '副标题',
-                    desc: '简述',
-                    id: '12222'
-                },
-                {
-                    date: '2018/4/3',
-                    imgsrc: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
-                    subtitle: '副标题',
-                    desc: '简述',
-                    id: '12222'
-                }
-            ]
+               
         }
     },
     data () {
@@ -107,6 +83,11 @@ export default {
             }
             this.$nextTick(() => {
                 this.nest = new CanvasNest(this.$refs.nest, config)
+            })
+        },
+        jump () {
+            this.$router.push({
+                path: '/record/111111.html'
             })
         }
     },
