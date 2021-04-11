@@ -1,9 +1,13 @@
 /* licheng 全局head
 -------------------------- */
 const globalHead = {
-    meat: [
+    meta: [
         {
             charset: 'utf-8'
+        },
+        {
+            name: 'Jane',
+            content: '喜欢小珍珍~~~~'
         },
         {
             name: 'viewport',
@@ -18,10 +22,25 @@ const globalHead = {
             hid: 'keywords',
             name: 'keywords',
             content: 'nuxt, nuxtjs, 博客'
+        },
+        {
+            hid: 'siteapp',
+            content: 'no-siteapp',
+            'http-equiv': 'Cache-Control', // 防止Baidu转码增加广告
+        },
+        {
+            hid: 'renderer',
+            name: 'renderer',
+            content: 'webkit', // 国产双核浏览器
+        },
+        {
+            hid: 'google',
+            name: 'google',
+            value: 'notranslate'
         }
     ],
     htmlAttrs: {
-        lang: 'zh-CN'
+        lang: 'zh-cmn-Hans'
     },
     link: [
         {
