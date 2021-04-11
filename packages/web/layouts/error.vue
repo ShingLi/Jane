@@ -6,14 +6,14 @@
             </div>
             <div class="errorObj">
                 <label for="">「错误信息」</label>
-                <p>{{ `${error.message} ! ${error.statusCode}` }} </p>
+                <p>{{ `${error.message} ! 错误码 _ ${error.statusCode}` }} </p>
                 <p v-if="error.path">{{ error.path }}</p>
             </div>
             <ul class="descript">
-                <li>人生中很多人都是过客，错过了就是错过了，珍惜眼前人， 爱你的总好过你爱的！</li>
+                <li>人生中很多人都是过客，有的人错过了就是一辈子。珍惜眼前人，爱你的总好过你爱的！</li>
             </ul>
             <div class="tickwrap">
-                <span>亦或许可以给我一个机会, 让我重新开始! 倒计时 </span>
+                <span>亦或许可以重新来过, 让我们重新开始吧! 倒计时 </span>
                 <i>{{ tickNum }}</i>
                 <span>&nbsp;s&nbsp;</span>
                 <b @click="pageStatusSwitch">{{ `${pageStatus == 0 ? '暂停计时' : '[ 重新开始 ]' }` }}</b>
@@ -71,6 +71,7 @@ export default {
         width: 100vw;
         padding-top: 4vh;
         position: relative;
+        background-color: #fff;
         .center{
             position: absolute;
             top: 50%;
