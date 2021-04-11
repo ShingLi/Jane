@@ -1,7 +1,7 @@
 <template>
     <div class="index">
         <div class="tips">
-            <p>皖ICP备18000360号</p>
+            <p><a href="//beian.miit.gov.cn" target="_blank">皖ICP备18000360号</a></p>
             <transition name="fade">
                 <h4 v-if="!isCollapse" class="copy fast">当不能在拥有的时候，唯一能做的就是不让自己忘记~ </h4>
             </transition>
