@@ -111,16 +111,33 @@ export default function (configContext) {
         loading: 'components/Loading/loading.vue', // 全局加载loading
         router: {
             extendRoutes (routes, resolve) {
+                
                 for (let i = routes.length; i--;) {
+                    
                     if (routes[i].path == '/') {
                         routes[i].path = '/index.html'
                     } else {
+
                         routes[i].path = routes[i].path + '.html'
+
+                        // 修改子路由路径，避免出现 /xx.html/jane.html
+                        if (routes[i].children) {
+                            
+                            for (let v of routes[i].children) {
+                                if (v.path.includes(':id?')) {
+                                    // 强制路由是必选路由 https://www.nuxtjs.cn/guide/routing
+                                    v.path = `/${routes[i].name}/:id.html`
+                                } else {
+                                    v.path = `/${routes[i].name}/${v.path}.html`
+                                }
+                            }
+                        }
                     }
                 }
                 for (let i = 0, length = projectConfig.customRoutes.length; i < length; i++) {
                     routes.push(projectConfig.customRoutes[i])
                 }
+                
             }
         },
         target: 'server', // default server
