@@ -23,7 +23,7 @@
                                             <span>54 read</span>
                                         </div>
                                     </div>
-                                    <img src="/assets/images/1.jpeg" class="img">
+                                    <img src="/assets/images/3.jpeg" class="img">
                                 </div>
                             </div>
                         </li>
@@ -48,24 +48,39 @@
     </div>
 </template>
 <script>
+
 export default {
     name: 'Record',
     async asyncData ({ $axios }) {
-
-        return {
-               
-        }
+        const data = await $axios.post('/web/record')
+        
     },
     data () {
         return {
-
+            scrollTop: 0
+        }
+    },
+    watch: {
+        $route (to, from) {
+            if (to.name == 'record') {
+                // 反正滚动穿透
+                document.body.style.cssText = ''
+                document.documentElement.style.cssText = ''
+                // 回复之前预览的位置
+                // window.pageYOffset = this.scrollTop
+            } else if (true) {
+                
+            }
         }
     },
     async mounted () {
         this.initNest()
+        this.bindEvent('scroll', this.scroll)
     },
     beforeDestroy () {
         if (this.nest) this.nest.destroy()
+
+        this.unbindEvent('scroll', this.scroll)
     },
     methods: {
         initNest () {
@@ -84,6 +99,20 @@ export default {
             this.$nextTick(() => {
                 this.nest = new CanvasNest(this.$refs.nest, config)
             })
+        },
+        bindEvent (event, f) {
+            window.addEventListener(event, f, {
+                passive: true
+            })
+        },
+        unbindEvent (event, f) {
+            window.removeEventListener(event, f)
+        },
+        scroll (e) {
+            if (this.$route.name == 'record') {
+                this.scrollTop = window.scrollY
+                this.$store.commit('record/setScrollTop', window.pageYOffset)
+            }
         },
         jump () {
             this.$router.push({
