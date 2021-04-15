@@ -2,7 +2,7 @@
     <div class="article">
         <Processbar />
         <div class="back" @click="$router.go(-1)">
-            <svg-icon iconClass="back" />
+            <svg-icon iconClass="back_1" />
         </div>
         <div class="scrollWrap">
             <section>
@@ -89,8 +89,8 @@ export default {
             left: 50px;
             cursor: pointer;
             ::v-deep .icon{
-                width: 40px;
-                height: 40px;
+                width: 36px;
+                height: 36px;
             }
         }
         .scrollWrap{
