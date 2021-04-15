@@ -70,7 +70,7 @@ export default {
         return $axios({
             method: 'post',
             url: '/web/about',
-        }).then(({ data }) => {
+        }).then((data) => {
             const { responseCode, responseMsg, responseData } = data
             if (responseCode == '0000') {
                 return {
