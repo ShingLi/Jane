@@ -28,7 +28,7 @@
 <script>
 // circle  load progress
 export default {
-    name: 'Loading',
+    name: 'LoadProcess',
     data: () => ({
         loading: false,
         dashOffset: 0,
@@ -38,10 +38,11 @@ export default {
         start () {
             this.loading = true
         },
-        finish () {
-            setTimeout(() => {
+        finish (timer = 2000) {
+            if (this.timer) clearTimeout(this.timer)
+            this.timer = setTimeout(() => {
                 this.loading = false
-            }, 2000)
+            }, timer)
         },
         fail (error) {},
     },
