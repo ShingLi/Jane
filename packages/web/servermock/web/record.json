@@ -1,0 +1,65 @@
+{
+    "responseCode": "0000",
+    "responseMsg": "请求成功",
+    "responseData": {
+        "totalCount": 40,
+        "pageBgColor": "#CC9999",
+        "nestColor": "",
+        "articleList": [
+            {
+                "id": 1,
+                "year": "2021",
+                "img": "/assets/images/1.jpeg",
+                "title": "Css的传说呵呵呵呵",
+                "desc": "简述zzzzzzzzzzzzzzzzzzzzzzzhehehehhehe",
+                "likes": 100,
+                "read": 9
+            },
+            {
+                "id": 2,
+                "year": "2021",
+                "img": "/assets/images/1.jpeg",
+                "title": "Css的传说呵呵呵呵",
+                "desc": "简述zzzzzzzzzzzzzzzzzzzzzzzhehehehhehe",
+                "likes": 100,
+                "read": 9
+            },
+            {
+                "id": 3,
+                "year": "2021",
+                "img": "/assets/images/3.jpeg",
+                "title": "Css的传说呵呵呵呵",
+                "desc": "简述zzzzzzzzzzzzzzzzzzzzzzzhehehehhehe",
+                "likes": 100,
+                "read": 9
+            },
+            {
+                "id": 4,
+                "year": "2021",
+                "img": "/assets/images/1.jpeg",
+                "title": "Css的传说呵呵呵呵",
+                "desc": "简述zzzzzzzzzzzzzzzzzzzzzzzhehehehhehe",
+                "likes": 100,
+                "read": 9
+            },
+            {
+                "id": 5,
+                "year": "2021",
+                "img": "/assets/images/3.jpeg",
+                "title": "Css的传说呵呵呵呵",
+                "desc": "简述zzzzzzzzzzzzzzzzzzzzzzzhehehehhehe",
+                "likes": 100,
+                "read": 9
+            },
+            {
+                "id": 6,
+                "year": "2021",
+                "img": "/assets/images/2.png",
+                "title": "Css的传说呵呵呵呵",
+                "desc": "简述zzzzzzzzzzzzzzzzzzzzzzzhehehehhehe",
+                "likes": 100,
+                "read": 10
+            }
+        ]
+    }
+}
