@@ -17,6 +17,16 @@
                 <div class="content">
 
                 </div>
+                <div class="comments">
+                    <div class="userInfo">
+                        <input type="text" placeholder="Name">
+                        <input type="text" placeholder="Email">
+                    </div>
+                    <textarea class="textarea" :placeholder="textPlaceholder"></textarea>
+                    <div class="confirm-box">
+                        
+                    </div>
+                </div>
             </section>
         </div>
     </div>
@@ -26,7 +36,8 @@ export default {
     name: 'essay',
     data () {
         return {
-            isBgColor: false
+            isBgColor: false,
+            textPlaceholder: '纵使诗和远方不在眼前！每一天都要开开心心的，不是吗？'
         }
     },
     created () {
@@ -41,6 +52,10 @@ export default {
             this.$nuxt.$loading.start()
             this.$nuxt.$loading.finish(800)
         })
+    },
+    beforeDestroy () {
+        this.$nuxt.$loading.start()
+        this.$nuxt.$loading.finish(500)
     },
     methods: {
         initScrollTop () {
@@ -80,7 +95,7 @@ export default {
         &.bgColor{
             .scrollWrap{
                 background-color: #fff;
-                transition: all .3s ease-in-out;
+                transition: all .4s ease-in-out;
             }
         }
         .back{
@@ -96,9 +111,11 @@ export default {
         .scrollWrap{
             background-color: #f4f4f4;
             min-height: 100vh;
+            padding-bottom: 50px;
             section{
                 width: 800px;
                 margin: auto;
+
                 h1{
                     padding: 130px 0 25px;
                     font-size: 32px;
@@ -117,7 +134,61 @@ export default {
                     }
                 }
                 .content{
-                    // min-height: 3000px;
+                    margin-top: 45px;
+                    min-height: 300px;
+                    
+                }
+                .comments{
+                    margin-top: 35px;
+                    
+                    border-radius: 5px;
+                    padding: 15px 12px 22px;
+                    border: 1px solid #ebebeb;
+                    .userInfo{
+                        display: flex;
+                        margin-bottom: 15px;
+                        input{
+                            width: 300px;
+                            outline: none;
+                            padding-left: 7px;
+                            font-size: 15px;
+                            height: 28px;
+                            line-height: 27px;
+                            background-color: transparent;
+                            border-bottom: 1px dashed #f0f0f0;
+                            transition: all .3s linear;
+                            font-family: "PingFang Medium";
+                            &:last-child{
+                                margin-left: 30px;
+                            }
+                            &::-webkit-input-placeholder{
+                                color: #bbb;
+                            }
+                            &:focus{
+                                border-bottom: 1px dashed #b9b9b9;
+                            }
+                        }
+                    }
+                    .textarea{
+                        position:relative;
+                        height: 200px;
+                        width: 100%;
+                        outline: none;
+                        resize: none;
+                        padding: 16px;
+                        border-radius: 4px;
+                        color: #333;
+                        font-size: 14px;
+                        border: 1px dashed #eee;
+                        background-color: transparent;
+                        transition: all .3s ease-in-out;
+                        &::-webkit-input-placeholder{
+                            color: #bbb;
+                        }
+                        &:focus{
+                            border: 1px dashed #b9b9b9;
+                        }
+                    }
                 }
             }
         }
