@@ -150,3 +150,23 @@
       // 做一些事
       // 文档 https://zh.nuxtjs.org/docs/2.x/directory-structure/plugins/
     ```
+
++ `子路由刷新不执行transtion动画`
+  + 为什么不执行？
+    + 没有找到问题根本原因
+
+    ```js
+      transition: {
+        name: 'back',
+        afterEnter (el) {
+            console.log(el)
+            // 这里竟然无法访问当前组件实例
+            setTimeout(() => {
+                el.classList.add('bgColor')
+            }, 400);
+        },
+      }
+    ```
+
+  + 待解决
+  
