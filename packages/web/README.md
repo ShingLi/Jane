@@ -169,4 +169,35 @@
     ```
 
   + 待解决
+
+>2021/04/18
+
++ ```js
+  <!-- 报错 -->
+    Module build failed (from /Users/licheng/Code/Nuxt/Jane/node_modules/css-loader/dist/cjs.js):
+  ValidationError: Invalid options object. CSS Loader has been initialized using an options object that does not match the API schema.
+  - options.modules has an unknown property 'compileType'. These properties are valid:
+    object { auto?, mode?, exportGlobals?, localIdentName?, localIdentRegExp?, context?, hashPrefix?, getLocalIdent? }
+      at validate (/Users/licheng/Code/Nuxt/Jane/node_modules/css-loader/node_modules/schema-utils/dist/validate.js:98:11)
+      at Object.loader (/Users/licheng/Code/Nuxt/Jane/node_modules/css-loader/dist/index.js:36:28)
+                                                                                friendly-errors 20:54:48
+  @ /Users/licheng/Code/Nuxt/Jane/node_modules/thread-loader/dist/cjs.js??ref--7-oneOf-1-0!/Users/licheng/Code/Nuxt/Jane/node_modules/vue-style-loader??ref--7-oneOf-1-1!/Users/licheng/Code/Nuxt/Jane/node_modules/css-loader/dist/cjs.js??ref--7-oneOf-1-2!/Users/licheng/Code/Nuxt/Jane/node_modules/vue-loader/lib/loaders/stylePostLoader.js!/Users/licheng/Code/Nuxt/Jane/node_modules/postcss-loader/src??ref--7-oneOf-1-3!/Users/licheng/Code/Nuxt/Jane/node_modules/sass-loader/dist/cjs.js??ref--7-oneOf-1-4!/Users/licheng/Code/Nuxt/Jane/node_modules/vue-loader/lib??vue-loader-options!./layouts/error.vue?vue&type=style&index=0&id=d5ea9138&lang=scss&scoped=true& 4:14-421 15:3-20:5 16:22-429
+  @ ./layouts/error.vue?vue&type=style&index=0&id=d5ea9138&lang=scss&scoped=true&
+  @ ./layouts/error.vue
+  @ ./dist/index.js
+  @ ./dist/client.js
+  @ multi /Users/licheng/Code/Nuxt/Jane/node_modules/eventsource-polyfill/dist/browserify-eventsource.js (webpack)-hot-middleware/client.js?reload=true&timeout=30000&ansiColors=&overlayStyles=&path=%2F__webpack_hmr%2Fclient&name=client ./dist/client.js
+  ```
+
++ 问题背景: 更新`nuxt版本到2.15.4`
++ 为什么会报错？
+  + `nuxt2.15.4`版本修改了[css-loader type](https://github.com/nuxt/nuxt.js/pull/9088)，见[#9014](https://github.com/nuxt/nuxt.js/pull/9014), 主要是css-loader 升级了导致nuxt更随着升级
++ 解决
+  + 方案一 `yarn`全局更新`css-loader`
+
+    + ```sh
+        yarn add css-loader -W
+      ```
+
+  + 方案二 没想好
   
