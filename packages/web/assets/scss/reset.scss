@@ -72,7 +72,8 @@
 
 html, body{
   height: 100%;
-  font-family: PingFangSC-Regular,eafont, Hiragino Sans GB,Hiragino Sans GB W3,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+  -webkit-overflow-scrolling:touch;
+  font-family: -apple-system, BlinkMacSystemFont, PingFangSC-Regular,eafont, Hiragino Sans GB,Hiragino Sans GB W3,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
   
 }
 
