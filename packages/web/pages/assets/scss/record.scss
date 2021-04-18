@@ -3,7 +3,7 @@
     .record__container{
         position: relative;
         z-index: 2;
-        width: 25vw;
+        width: 375px;
         margin-left: auto;
         padding: 0 12px 0;
         .navbar{
@@ -23,7 +23,6 @@
             }
         }
         .timeline{
-            min-height: 200vh;
             position: relative;
             margin-top: 48px;
             &-item{
@@ -135,7 +134,7 @@
         height: 100%;
         display: flex;
         .garden{
-            flex: 0 0 74vw;
+            flex: 1;
             height: 100%;
             position: relative;
             z-index: -2;
@@ -157,7 +156,8 @@
             }
         }
         .timeaxes{
-            flex: 0 0 26vw;
+            flex: 0 0 380px;
+            width: 380px;
             height: 100%;
             position: relative;
             z-index: -2;
