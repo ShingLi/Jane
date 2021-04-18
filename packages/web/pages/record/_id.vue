@@ -24,7 +24,8 @@
                     </div>
                     <textarea class="textarea" :placeholder="textPlaceholder"></textarea>
                     <div class="confirm-box">
-                        
+                        <el-button size="medium" icon="el-icon-s-promotion">SUBMIT</el-button>
+                        <p class="desc"></p>
                     </div>
                 </div>
             </section>
@@ -37,7 +38,8 @@ export default {
     data () {
         return {
             isBgColor: false,
-            textPlaceholder: '纵使诗和远方不在眼前！每一天都要开开心心的，不是吗？'
+            loading: false, // 评论发送
+            textPlaceholder: '纵使诗和远方不在眼前！每一天都要开开心心，不是吗？'
         }
     },
     created () {
@@ -52,6 +54,14 @@ export default {
             this.$nuxt.$loading.start()
             this.$nuxt.$loading.finish(800)
         })
+        
+        // 刷新页面不执行transition动画，所以这里手动判断下
+        setTimeout(() => {
+            const rootDom = document.querySelector('.article')
+            if (!rootDom.classList.contains('bgColor')) {
+                rootDom.classList.add('bgColor')
+            }
+        }, 800)
     },
     beforeDestroy () {
         this.$nuxt.$loading.start()
@@ -74,6 +84,7 @@ export default {
     transition: {
         name: 'back',
         afterEnter (el) {
+            console.log(el)
             // 这里竟然无法访问当前组件实例
             setTimeout(() => {
                 el.classList.add('bgColor')
@@ -139,10 +150,10 @@ export default {
                     
                 }
                 .comments{
+                    position: relative;
                     margin-top: 35px;
-                    
                     border-radius: 5px;
-                    padding: 15px 12px 22px;
+                    padding: 16px 12px 16px;
                     border: 1px solid #ebebeb;
                     .userInfo{
                         display: flex;
@@ -187,6 +198,23 @@ export default {
                         }
                         &:focus{
                             border: 1px dashed #b9b9b9;
+                        }
+                    }
+                    .confirm-box{
+                        margin-top: 15px;
+                        display: flex;
+                        align-items: center;
+                    }
+                    .desc{
+                        font-size: 14px;
+                        color: #F56C6C;
+                    }
+                    .chahua{
+                        position: absolute;
+                        bottom: 40px;
+                        ::v-deep .icon{
+                            width: 50px;
+                            height: 50px;
                         }
                     }
                 }
