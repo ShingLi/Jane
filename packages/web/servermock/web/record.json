@@ -9,7 +9,7 @@
             {
                 "id": 1,
                 "year": "2021",
-                "img": "/assets/images/1.jpeg",
+                "imgSrc": "/assets/images/1.jpeg",
                 "title": "Css的传说呵呵呵呵",
                 "desc": "简述zzzzzzzzzzzzzzzzzzzzzzzhehehehhehe",
                 "likes": 100,
@@ -17,8 +17,8 @@
             },
             {
                 "id": 2,
-                "year": "2021",
-                "img": "/assets/images/1.jpeg",
+                "year": "2020",
+                "imgSrc": "/assets/images/1.jpeg",
                 "title": "Css的传说呵呵呵呵",
                 "desc": "简述zzzzzzzzzzzzzzzzzzzzzzzhehehehhehe",
                 "likes": 100,
@@ -26,8 +26,8 @@
             },
             {
                 "id": 3,
-                "year": "2021",
-                "img": "/assets/images/3.jpeg",
+                "year": "2009",
+                "imgSrc": "/assets/images/3.jpeg",
                 "title": "Css的传说呵呵呵呵",
                 "desc": "简述zzzzzzzzzzzzzzzzzzzzzzzhehehehhehe",
                 "likes": 100,
@@ -36,7 +36,7 @@
             {
                 "id": 4,
                 "year": "2021",
-                "img": "/assets/images/1.jpeg",
+                "imgSrc": "/assets/images/1.jpeg",
                 "title": "Css的传说呵呵呵呵",
                 "desc": "简述zzzzzzzzzzzzzzzzzzzzzzzhehehehhehe",
                 "likes": 100,
@@ -45,7 +45,7 @@
             {
                 "id": 5,
                 "year": "2021",
-                "img": "/assets/images/3.jpeg",
+                "imgSrc": "/assets/images/3.jpeg",
                 "title": "Css的传说呵呵呵呵",
                 "desc": "简述zzzzzzzzzzzzzzzzzzzzzzzhehehehhehe",
                 "likes": 100,
@@ -54,7 +54,7 @@
             {
                 "id": 6,
                 "year": "2021",
-                "img": "/assets/images/2.png",
+                "imgSrc": "/assets/images/2.png",
                 "title": "Css的传说呵呵呵呵",
                 "desc": "简述zzzzzzzzzzzzzzzzzzzzzzzhehehehhehe",
                 "likes": 100,
