@@ -7,10 +7,6 @@ import {
     Button
 } from 'element-ui'
 
-
-Vue
-    .use(Progress)
-    .use(Timeline)
-    .use(TimelineItem)
-    .use(Card)
-    .use(Button)
+export default () => {
+    Vue.use(Progress).use(Timeline).use(TimelineItem).use(Card).use(Button)
+}
