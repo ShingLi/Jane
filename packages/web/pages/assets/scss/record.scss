@@ -3,9 +3,9 @@
     .record__container{
         position: relative;
         z-index: 2;
-        width: 375px;
+        width: 372px;
         margin-left: auto;
-        padding: 0 12px 0;
+        padding: 0 13px 0 15px;
         .navbar{
             height: 48px;
             display: flex;
@@ -156,8 +156,8 @@
             }
         }
         .timeaxes{
-            flex: 0 0 380px;
-            width: 380px;
+            flex: 0 0 375px;
+            width: 375px;
             height: 100%;
             position: relative;
             z-index: -2;

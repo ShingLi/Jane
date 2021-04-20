@@ -58,6 +58,8 @@
  body {
    -webkit-text-size-adjust: none;
    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+   -webkit-font-smoothing: antialiased; // 字体更清晰
+   -moz-osx-font-smoothing: grayscale;
  }
 
 * {
@@ -84,8 +86,24 @@ html, body{
 }
 @font-face {
   font-family: Jane;
-  src: url('../fonts/DINNextLTPro-Medium.ttf')
+  src: url('../fonts/DINNextLTPro-Medium.ttf');
 }
+
+@font-face {
+  font-family: fang;
+  src: url('../fonts/AiDeMuGuangWuSuoBuZai-2.ttf');
+}
+
+@font-face {
+  font-family: qing;
+  src: url('../fonts/FZKATJW.TTF'); // 卡通字体 方正
+}
+
+@font-face {
+  font-family: xiu;
+  src: url('../fonts/Energetic-Script-Limited-2.otf')
+}
+
 
 h4{
   font-family: PingFangSC-Regular;
