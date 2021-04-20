@@ -50,7 +50,7 @@ export default function (configContext) {
             extend (config, ctx) {
                 let { alias } = config.resolve
                 alias = merge(alias, aliasObj)
-                /* licheng 添加sourcemap (这里需要一个动态值)
+                /* 添加sourcemap (这里需要一个动态值)
                 -------------------------- */
                 if (ctx.isClient) {
                     config.devtool = 'none'
@@ -108,7 +108,7 @@ export default function (configContext) {
             'assets/scss/index'
         ],
         components: true, // 2.13+ // 自动注册组件 https://github.com/nuxt/components
-        loading: 'components/Loading/loading.vue', // 全局加载loading
+        loading: 'components/Loading/Jane.vue', // 全局加载loading
         router: {
             extendRoutes (routes, resolve) {
                 
