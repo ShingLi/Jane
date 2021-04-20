@@ -6,13 +6,15 @@
         </div>
         <div class="scrollWrap">
             <section>
-                <h1 class="title">新的一年快快乐乐</h1>
-                <div class="stuff">
-                    <span>2021年/04/14</span>
-                    <span>阅读 500</span>
-                    <span>字数 20000</span>
-                    <span>评论 4</span>
-                    <span>喜欢24</span>
+                <div class="header">
+                    <h1 class="title">新的一年快快乐乐</h1>
+                    <div class="stuff">
+                        <span>2021年/04/14</span>
+                        <span>阅读 500</span>
+                        <span>字数 20000</span>
+                        <span>评论 4</span>
+                        <span>喜欢24</span>
+                    </div>
                 </div>
                 <div class="content">
 
@@ -27,7 +29,9 @@
                         <el-button size="medium" icon="el-icon-s-promotion">SUBMIT</el-button>
                         <p class="desc"></p>
                     </div>
+
                 </div>
+                <Comment class="comment"/>
             </section>
         </div>
     </div>
@@ -121,54 +125,59 @@ export default {
         }
         .scrollWrap{
             background-color: #f4f4f4;
-            min-height: 100vh;
-            padding-bottom: 50px;
             section{
                 width: 800px;
                 margin: auto;
-
-                h1{
-                    padding: 130px 0 25px;
-                    font-size: 32px;
-                    font-weight: bold;
-                    color: #333;
-                }
-                .stuff{
-                    margin-top: 5px;
-                    display: flex;
-                    align-items: center;
-                    span{
-                        font-size: 13px;
-                        color: #6a737d;
-                        line-height: 22px;
-                        margin-right: 10px;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                padding-bottom: 30px;
+                .header{
+                    h1{
+                        padding: 80px 0 25px;
+                        font-size: 36px;
+                        font-weight: bold;
+                        color: #333;
+                        font-family: fang;
+                    }
+                    .stuff{
+                        margin-top: 5px;
+                        display: flex;
+                        align-items: center;
+                        span{
+                            font-size: 13px;
+                            color: #6a737d;
+                            line-height: 22px;
+                            margin-right: 10px;
+                        }
                     }
                 }
                 .content{
                     margin-top: 45px;
-                    min-height: 300px;
-                    
+                    flex: 1;
                 }
                 .comments{
                     position: relative;
                     margin-top: 35px;
                     border-radius: 5px;
-                    padding: 16px 12px 16px;
+                    padding: 16px 12px 10px;
                     border: 1px solid #ebebeb;
                     .userInfo{
                         display: flex;
                         margin-bottom: 15px;
+                        font-size: 0;
                         input{
                             width: 300px;
                             outline: none;
                             padding-left: 7px;
-                            font-size: 15px;
+                            font-size: 18px;
                             height: 28px;
                             line-height: 27px;
                             background-color: transparent;
                             border-bottom: 1px dashed #f0f0f0;
                             transition: all .3s linear;
-                            font-family: "PingFang Medium";
+                            font-family: fang;
+                            font-weight: 500;
                             &:last-child{
                                 margin-left: 30px;
                             }
@@ -178,30 +187,40 @@ export default {
                             &:focus{
                                 border-bottom: 1px dashed #b9b9b9;
                             }
+                            &:focus::-webkit-input-placeholder{
+                                color: #888;
+                            }
                         }
                     }
                     .textarea{
                         position:relative;
-                        height: 200px;
+                        height: 180px;
                         width: 100%;
                         outline: none;
                         resize: none;
                         padding: 16px;
                         border-radius: 4px;
                         color: #333;
-                        font-size: 14px;
+                        font-size: 18px;
                         border: 1px dashed #eee;
                         background-color: transparent;
                         transition: all .3s ease-in-out;
+                        font-family: fang;
+                        // background-image: url('~assets/images/hui.jpeg');
+                        background-position: bottom right;
+                        background-repeat: no-repeat;
                         &::-webkit-input-placeholder{
                             color: #bbb;
                         }
                         &:focus{
                             border: 1px dashed #b9b9b9;
                         }
+                        &:focus::-webkit-input-placeholder{
+                            color: #888;
+                        }
                     }
                     .confirm-box{
-                        margin-top: 15px;
+                        margin-top: 10px;
                         display: flex;
                         align-items: center;
                     }
@@ -217,6 +236,9 @@ export default {
                             height: 50px;
                         }
                     }
+                }
+                .comment{
+                    margin-top: 60px;
                 }
             }
         }
