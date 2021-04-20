@@ -53,7 +53,9 @@
                         <el-progress :percentage="10" color="#000"></el-progress>
                     </div>
                     <div class="descript">
-                        <p>生活不止眼前的代码还有买房和娶媳妇~~~~~~ 四流前端开发,下九流设计师？</p>
+                        <!-- <p>关于我？其实也没什么好说的，四流前端开发,下九流设计师</p> -->
+                        <br>
+                        <p>生活不止眼前的代码还有买房和娶媳妇~~~~~~ </p>
                         <div class="timeline">
                             今天是<span class="year">{{ year }}</span>年<span class="month">{{ month }}</span>月<span class="day">{{ day }}</span>日
                         </div>
