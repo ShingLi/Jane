@@ -56,7 +56,9 @@ fs.readdirSync(routesdir, 'utf-8').forEach(dir => {
 	if (fs.statSync(dir).isDirectory()) {
 		fs.readdirSync(dir).forEach(route => {
 			route = route.replace(/\.js$/, '')
-			require(`${dir}/${route}`)(app, router, global['models'])
+			if (require(`${dir}/${route}`)) {
+				require(`${dir}/${route}`)(app, router, global['models'])
+			}
 		})
 	}
 })

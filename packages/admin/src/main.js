@@ -9,7 +9,7 @@ import './permission.js'
 import http from 'config/http'
 
 import 'element-ui/lib/theme-chalk/index.css'
-import './assets/sass/index.scss'
+import './assets/scss/index.scss'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)

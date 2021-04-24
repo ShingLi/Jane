@@ -1,7 +1,7 @@
 <template>
     <div class="layout">
         <div class="layout__main">
-            <Sidebar />
+            <!-- <Sidebar /> -->
             <div class="layout__content">
                 <router-view class="router"/>
             </div>
@@ -9,12 +9,12 @@
     </div>
 </template>
 <script>
-import Sidebar from 'components/sidebar/Sidebar'
+// import Sidebar from 'components/sidebar/Sidebar'
 
 export default {
     name: 'Layout',
     components: {
-        Sidebar
+        // Sidebar
     }
 }
 </script>

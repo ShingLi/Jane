@@ -1,5 +1,5 @@
 import axios from 'axios'
-import urls from 'config/urls'
+import urls from 'config/http-url'
 import router from '../permission'
 
 import { getCookie, removeCookie } from 'utils/cookie'

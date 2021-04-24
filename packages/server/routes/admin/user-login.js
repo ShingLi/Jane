@@ -36,7 +36,7 @@ module.exports = (app, router, { User }) => {
 		})
 		
 		User.find(info, (err, doc) => {
-			console.log('用户查询--doc', doc)
+			console.log('用户查询--user', doc)
 			console.log('用户查询--err')
 			if (err) {
 				res.json({
