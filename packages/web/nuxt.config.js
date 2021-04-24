@@ -108,7 +108,7 @@ export default function (configContext) {
             'assets/scss/index'
         ],
         components: true, // 2.13+ // 自动注册组件 https://github.com/nuxt/components
-        loading: 'components/Loading/Jane.vue', // 全局加载loading
+        loading: 'components/Load/Load.vue', // 全局加载loading
         router: {
             extendRoutes (routes, resolve) {
                 

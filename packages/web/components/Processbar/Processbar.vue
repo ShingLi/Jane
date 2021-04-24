@@ -3,7 +3,7 @@
 </template>
 <script>
 export default {
-    name: 'processbar',
+    name: 'ProcessBar',
     props: {
         scrollHeight: {
             type: Number,

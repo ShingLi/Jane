@@ -28,7 +28,7 @@
 <script>
 // circle  load progress
 export default {
-    name: 'LoadProcess',
+    name: 'Load',
     data: () => ({
         loading: false,
         dashOffset: 0,
