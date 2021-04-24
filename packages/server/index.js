@@ -1,10 +1,11 @@
-const fs = require('fs')
-const http = require('http')
+import fs from 'fs'
+import http from 'http'
 
-const express = require('express')
-const cors = require('cors')
-const bodyParser = require('body-parser')
-const expressJWT = require('express-jwt')
+import express from 'express'
+import cors from 'cors'
+
+import bodyParser from 'body-parser'
+import expressJWT from 'express-jwt'
 
 const app = express()
 const router = express.Router()
