@@ -5,8 +5,8 @@
   "description": "express服务器",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "nodemon --inspect index.js"
+    "exit": "",
+    "serve": "nodemon -r esm index.js --exitcrash"
   },
   "author": "licheng",
   "license": "ISC",

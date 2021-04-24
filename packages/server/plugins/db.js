@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const consola = require('consola')
 
 module.exports = () => {
 	mongoose.connect('mongodb://127.0.0.1/runoob', { 
@@ -9,10 +10,9 @@ module.exports = () => {
 		bufferCommands: false,
 	}).then(
 		() => {
-			console.log('~连接数据库成功～')
+			consola.success('~连接数据库成功～')
 		},
 		err => {
-			console.error(err || '~连接数据库失败～')
 		}
 	)
 }
