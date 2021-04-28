@@ -40,16 +40,17 @@ instance.interceptors.response.use(
             })
             // token失效或者不正确
             if (responseCode == '5015') {
-                removeCookie('token')
-                // 登录之后要回到原来的页面
-                router.replace({
-                    path: '/login',
-                    query: {
-                        oldpath: router.currentRoute.fullpath
-                    }
-                })
+                setTimeout(() => {
+                    removeCookie('token')
+                    // 登录之后要回到原来的页面
+                    router.replace({
+                        path: '/login',
+                        query: {
+                            oldpath: router.currentRoute.fullpath
+                        }
+                    })
+                }, 2100)
             }
-            return Promise.reject(new Error('错误'))
         } else {
             if (responseMsg) {
                 Message({

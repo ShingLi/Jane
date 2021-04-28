@@ -37,3 +37,17 @@ git reset --hard origin/master
       .add('') // 这里的路径是你项目中的绝对路径，还有不要忘记移除原版loader里面处理svg的模块
       .end()
   ```
+
++ 补充(2021/04/28)
+  + `svgIcon`组件采用jsx编写，这里由于知识链断层写了一个bug
+
+    ```js
+      <!-- xlink:href 在jsx中不被识别 需要用xlinkHref -->
+      render () {
+        return (
+          <svg>
+            <use xlinkHref={ xxx }></use>
+          </svg>
+        )
+      }
+    ```
