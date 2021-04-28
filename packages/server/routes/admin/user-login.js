@@ -32,7 +32,7 @@ module.exports = (app, router, { User }) => {
 		// 生成token
 		const token = jwt.sign(info, 'jane', {
 			issuer: 'shingli',
-			expiresIn: '30m', // 过期时间30分钟
+			expiresIn: '10m', // 过期时间10分钟
 		})
 		
 		User.find(info, (err, doc) => {
