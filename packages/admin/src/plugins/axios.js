@@ -1,6 +1,7 @@
 import axios from 'axios'
-import urls from 'config/http-url'
-import router from '../permission'
+
+import urls from './interface'
+import store from 'store'
 
 import { getCookie, removeCookie } from 'utils/cookie'
 import { Message } from 'element-ui'
@@ -38,17 +39,10 @@ instance.interceptors.response.use(
                 type: 'error',
                 duration: 2000,
             })
-            // token失效或者不正确
+            // token失效或者不正确 (退出登陆)
             if (responseCode == '5015') {
                 setTimeout(() => {
-                    removeCookie('token')
-                    // 登录之后要回到原来的页面
-                    router.replace({
-                        path: '/login',
-                        query: {
-                            oldpath: router.currentRoute.fullpath
-                        }
-                    })
+                    store.dispatch('user/signout')
                 }, 2100)
             }
         } else {
