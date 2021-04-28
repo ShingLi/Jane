@@ -21,7 +21,7 @@ export default {
     render () {
         return (
             <svg class="icon" aria-hidden="true" style={ { ...style } }>
-                <use xlink:href={ this.iconClass } ></use>
+                <use xlinkHref={ this.iconClass } ></use>
             </svg>
         )
     }
