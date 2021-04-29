@@ -70,7 +70,7 @@ export default {
                     this.$store.dispatch('user/signout')
                     this.$message({
                         type: 'success',
-                        message: '已',
+                        message: '已退出登录',
                     })
                 })
                 .catch(() => {
