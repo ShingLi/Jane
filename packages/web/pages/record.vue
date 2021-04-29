@@ -115,6 +115,7 @@ export default {
         this.bindEvent('scroll', this.scroll)
     },
     beforeDestroy () {
+        
         if (this.nest) this.nest.destroy()
 
         this.unbindEvent('scroll', this.scroll)

@@ -28,7 +28,7 @@
                     <svg-icon icon-class="molecule"/>
                 </li>
                 <li class="skill__content">
-                    <h4 class="title">人生若只如初见!&nbsp;&nbsp;</h4>
+                    <h4 class="title">!&nbsp;&nbsp;</h4>
                     <!-- <p>我什么时候才能达到人生的第二重境界? 衣带渐宽终不悔，唯一一人饮憔悴</p> -->
                     <div class="progress">
                         <code>Html</code>
