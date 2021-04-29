@@ -28,7 +28,7 @@ app.use((err, req, res, next) => {
 	if (err.name == 'UnauthorizedError') {
 		res.status(401).send({
 			responseCode: '5015',
-			responseMsg: 'token失效'
+			responseMsg: '登录失效，请重新鞥登陆！'
 		})
 	} else {
 		// 活跃用户token过期无感刷新
