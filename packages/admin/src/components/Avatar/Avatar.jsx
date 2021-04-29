@@ -1,12 +1,15 @@
 const style = {
     avatar: {
-        width: '80px',
-        height: '80px',
+        cursor: 'pointer',
+    },
+    img: {
+        width: '100%',
+        height: '100%',
         borderRadius: '50%',
         display: 'block',
-        cursor: 'pointer'
     }
 }
+
 export default {
     name: 'Avatar',
     functional: true,
@@ -14,7 +17,7 @@ export default {
         const { props, data } = ctx
         return (
             <div style={ { ...style.avatar } } class={ data.staticClass }>
-                <img src={ props.src } alt="头像" style={ { ...style.avatar } }/>
+                <img src={ props.src } style={ { ...style.avatar, ...style.img } }/>
             </div>
         )
     },
