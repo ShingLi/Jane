@@ -28,5 +28,6 @@ module.exports = {
         }],
         'no-unused-vars': 'off',
         'curly': ['error', 'multi-line'],
+        'space-before-function-paren': 'off'
     }
 }
