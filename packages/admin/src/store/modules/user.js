@@ -1,5 +1,6 @@
-import http from 'config/http'
-import { setCookie, getCookie } from 'utils/cookie'
+import http from 'plugins/axios'
+import { setCookie, getCookie, removeCookie } from 'utils/cookie'
+import router from '@/permission'
 
 const state = {
     token: getCookie('token') || '', // token
@@ -12,6 +13,16 @@ const mutations = {
     SETTOKEN (state, token) {
         state.token = token
         setCookie('token', token, 1 / 48)
+    },
+    REMOVETOKEN () {
+        removeCookie('token')
+
+        router.replace({
+            path: '/login',
+            query: {
+                oldpath: router.currentRoute.fullpath
+            }
+        })
     }
 }
 
@@ -29,6 +40,10 @@ const actions = {
                 reject(err)
             })
         })
+    },
+    // 退出登陆
+    signout ({ commit }) {
+        commit('REMOVETOKEN')
     },
     // 获取用户信息
     userInfo ({ commit, state: { token } }) {
