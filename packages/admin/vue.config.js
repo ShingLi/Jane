@@ -1,8 +1,14 @@
 const path = require('path')
 const fs = require('fs-extra')
+const consola = require('consola')
 
 const resolve = dir => path.resolve(__dirname, dir)
+const devServer = require('./src/servermock/server')
 
+process.on('unhandledRejection', (err, p) => {
+    consola.error(err)
+    consola.info(p)
+})
 
 const config = {
     configureWebpack: config => {
@@ -45,9 +51,14 @@ const config = {
                 })
                 .end()
 
-                console.log(config.toString())
+                // console.log(config.toString())
     },
-    productionSourceMap: false, // 去掉生产sourcemap
+    productionSourceMap: false,
+    devServer: {
+        after (app, server, compiler) {
+            devServer(app, server, compiler)
+        }
+    }
 }
 
 module.exports = config
