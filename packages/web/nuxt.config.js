@@ -32,6 +32,10 @@ const aliasObj = rootDir.reduce((accumuator, item)=> {
 export default function (configContext) {
     console.log('configContext', configContext)
     return {
+        alias: {
+            // 之前没有别名选项，后续nuxt升级增加该配置
+            config: resolve('config')
+        },
         build: {
             analyze: false, // 编译的时候显示构建包的大小 // https://zh.nuxtjs.org/api/configuration-build/
             babel: {
@@ -42,7 +46,9 @@ export default function (configContext) {
                             libraryName: "element-ui",
                             styleLibraryName: "theme-chalk"
                         }
-                    ]
+                    ],
+                    '@babel/plugin-proposal-optional-chaining', // 可选链
+                    '@babel/plugin-proposal-nullish-coalescing-operator'
                 ],
                 cacheDirectory: true, // babel 缓存，加快构建速度
             },
@@ -100,7 +106,7 @@ export default function (configContext) {
                 }
             },
             parallel: true, // 多线程编译，加快编译速度
-            profile: true, // 显示编译时间
+            profile: false, // 显示编译时间
         },
         buildDir: './dist',
         // ssr: false,
