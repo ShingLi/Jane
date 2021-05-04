@@ -51,3 +51,16 @@ git reset --hard origin/master
         )
       }
     ```
+
+>2021/05/03
+
++ `mockserver` 无法正确读取文件
++ 为什么会有这样的问题？
++ `dev`环境使用`mock`数据来接近真实开发环境，但是读取不到路径
++ 解决
+
+  ```js
+    // axios baseUrl 会自动拼一个'/'开头 导致path.resolve() 直接返回了
+    let reqUrl = req.originalUrl,  /admin/login
+        newUrl = reqUrl.slice(1)
+  ```
