@@ -156,6 +156,9 @@
                     code{
                         font-size: 14px;
                     }
+                    ::v-deep .el-progress-bar__outer{
+                        background-color: transparent !important;
+                    }
                 }
             }
         }

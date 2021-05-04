@@ -18,8 +18,8 @@
                         v-for="(item, index) of userinfo"
                         :key="index"
                         class="userinfo__item">
-                        <svg-icon :icon-class="item.iconclass"/>
-                        <span>{{ item.description }}</span>
+                        <svg-icon :icon-class="item.iconclass" :class="{ heartbeat : item.iconclass == 'zhifeiji' }"/>
+                        <span v-html="item.description"></span>
                     </li>
                 </ol>
             </div>
@@ -55,17 +55,24 @@
                     <div class="descript">
                         <!-- <p>关于我？其实也没什么好说的，四流前端开发,下九流设计师</p> -->
                         <br>
-                        <p>生活不止眼前的代码还有买房和娶媳妇~~~~~~ </p>
+                        <p>一个人走过无人问津的日子，方才觉得，生活不止眼前的代码还有远方~~~~~~ </p>
                         <div class="timeline">
-                            今天是<span class="year">{{ year }}</span>年<span class="month">{{ month }}</span>月<span class="day">{{ day }}</span>日
+                            今天是<span class="year">{{ year }}</span>年<span class="month">{{ month }}</span>月<span class="day">{{ day }}</span>日 ___
+                            <span style="display: inline-block; width: 90px; text-align:left">{{ timerString }}</span>
                         </div>
                     </div>
                 </li>
             </ul>
         </div>
+        <!-- 定位不准没意义 -->
+        <!-- <Overlay>
+            <div id="container"></div>
+        </Overlay> -->
     </div>
 </template>
 <script>
+import host from 'config/host'
+
 export default {
     name: 'About',
     asyncData ({ $axios, error }) {
@@ -73,15 +80,10 @@ export default {
             method: 'post',
             url: '/web/about',
         }).then((data) => {
-            const { responseCode, responseMsg, responseData } = data
-            if (responseCode == '0000') {
-                return {
-                    responseData,
-                    avatar: responseData.avatar,
-                    uname: responseData.uname,
-                }
-            } else {
-                // 错误
+            console.log(data)
+            return {
+                avatar: data?.avatar ?? '',
+                uname: data?.uname ?? '一片云'
             }
         }).catch(e => {
             console.log(e)
@@ -92,6 +94,7 @@ export default {
             year: new Date().getFullYear(),
             month: (new Date().getMonth() + 1 - 0) < 10 ?  '0' + (new Date().getMonth() + 1) : new Date().getMonth() + 1,
             day: new Date().getDate() < 10 ? '0' + new Date().getDate() : new Date().getDate(),
+            timerString: new Date().toLocaleTimeString(),
             calcSty: '#000',
             userinfo: [
                 {
@@ -108,7 +111,7 @@ export default {
                 },
                 {
                     iconclass: 'zhifeiji',
-                    description: '安徽芜湖',
+                    description: '安徽芜湖 ⇄ <span style="color: red" id="workspace">江苏南京</span>',
                 },
                 {
                     iconclass: 'weixin1',
@@ -119,6 +122,7 @@ export default {
                     description: '74573545@qq.com',
                 },
             ],
+            visible: false,
         }
     },
     computed: {
@@ -140,10 +144,12 @@ export default {
         }
     },
     mounted () {
-        
-        window.addEventListener('beforeunload', e => {
-            
+        this.$nextTick(() => {
+            this.bindEvent(document.getElementById('workspace'), 'click', () => {
+                this.visible = true
+            })
         })
+        // this.setAMAP()
     },
     destroyed () {
         this.unbindEvent(document.getElementById('avatar'), 'mouseenter', this.mouseenter)
@@ -156,7 +162,34 @@ export default {
             this.bindEvent(document.getElementById('avatar'), 'mouseleave', this.mouseleave)
 
             this.initColor()
+            this.calcTime()
         },
+
+        setAMAP () {
+            this.map = new AMap.Map('container', {
+                resizeEnable: true,
+            })
+
+            this.map.plugin('AMap.Geolocation', () => {
+                const geolocation = new AMap.Geolocation({
+                    enableHighAccuracy: true,//是否使用高精度定位，默认:true
+                    timeout: 10000,          //超过10秒后停止定位，默认：无穷大
+                    maximumAge: 0,           //定位结果缓存0毫秒，默认：0
+                    convert: false,           //自动偏移坐标，偏移后的坐标为高德坐标，默认：true
+                    showButton: true,        //显示定位按钮，默认：true
+                    buttonPosition: 'LB',    //定位按钮停靠位置，默认：'LB'，左下角
+                    buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+                    showMarker: true,        //定位成功后在定位到的位置显示点标记，默认：true
+                    showCircle: true,        //定位成功后用圆圈表示定位精度范围，默认：true
+                    panToLocation: true,     //定位成功后将定位到的位置作为地图中心点，默认：true
+                    zoomToAccuracy:true      //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+                })
+                
+                this.map.addControl(geolocation)
+                geolocation.getCurrentPosition()
+            })
+        },
+
         mouseenter (e) {
             const style = {
                 cursor: 'pointer',
@@ -166,15 +199,19 @@ export default {
             e.target.style.cursor = 'pointer'
             e.target.style.transform = `rotate(1000turn)`
         },
+
         mouseleave (e) {
             e.target.style.transform = ''
         },
+
         bindEvent (dom, event, callback) {
             dom.addEventListener(event, callback) 
         },
+
         unbindEvent (dom, event, callback) {
             dom.removeEventListener(event, callback)
         },
+
         initColor () {
             const colorlist = ['#8e71c7', '#909399', '#F56C6C', '#2db7f5', '#98bf21']
             let index = 0
@@ -184,6 +221,12 @@ export default {
                 this.calcSty = colorlist[index]
             }, 3000)
         },
+
+        calcTime () {
+            setInterval(() => {
+                this.timerString = new Date().toLocaleTimeString()
+            }, 1000)
+        }
     },
     head () {
         return {
@@ -202,7 +245,13 @@ export default {
             ],
             bodyAttrs: {
                 class: 'about'
-            }
+            },
+            script: [
+                {
+                    src: host.amap,
+                    pbody: true
+                }
+            ]
         }
     }
 }
