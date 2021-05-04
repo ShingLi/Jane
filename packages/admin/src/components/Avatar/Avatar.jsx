@@ -15,9 +15,12 @@ export default {
     functional: true,
     render (h, ctx) {
         const { props, data } = ctx
+
+        const defaultUrl = require('assets/images/avatar.jpeg')
+
         return (
             <div style={ { ...style.avatar } } class={ data.staticClass }>
-                <img src={ props.src } style={ { ...style.avatar, ...style.img } }/>
+                <img src={ props.src || defaultUrl } style={ { ...style.avatar, ...style.img } }/>
             </div>
         )
     },
