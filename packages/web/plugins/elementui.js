@@ -4,9 +4,10 @@ import {
     Timeline,
     TimelineItem,
     Card,
-    Button
+    Button,
+    Dialog
 } from 'element-ui'
 
 export default () => {
-    Vue.use(Progress).use(Timeline).use(TimelineItem).use(Card).use(Button)
+    Vue.use(Progress).use(Timeline).use(TimelineItem).use(Card).use(Button).use(Dialog)
 }
