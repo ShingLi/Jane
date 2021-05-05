@@ -10,3 +10,7 @@
     cursor: pointer;
     font-size: 0; // 防止svgicon 不垂直居中
 }
+
+* {
+    transition: all .3s ease-in-out;
+}
