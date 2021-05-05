@@ -3,12 +3,13 @@
         <div class="layout__main">
             <div class="sidebar">
                 <!-- <div class="radius"></div> -->
+                <SideBar/>
             </div>
             <div class="content">
                 <div class="navbar">
                     <div class="tools">
-                        <i class="icon full--screen">
-                            <svg-icon iconName="full--screen" />
+                        <i class="icon full--screen" @click="toggleScreen">
+                            <svg-icon :iconName="!screen ? 'full--screen' : 'scale--screen'" />
                         </i>
                     </div>
                     <div class="userinfo">
@@ -51,35 +52,50 @@
 </template>
 <script>
 import Avatar from 'components/Avatar/Avatar'
-import SvgIcon from 'components/SvgIcon/SvgIcon.jsx'
+import SvgIcon from 'components/SvgIcon/SvgIcon'
+import SideBar from 'components/SideBar/SideBar'
 
 export default {
     name: 'Layout',
     components: {
         Avatar,
         SvgIcon,
+        SideBar
     },
+    data () {
+        return {
+            screen: false
+        }
+    },
+    mounted () {
+        this.init()
+    },
+
     methods: {
-        signout() {
-            this.$confirm('是否要退出登录？', '提示', {
-                confirmButtonText: '确定',
-                cancelButtonText: '取消',
-                type: 'warning',
-            })
-                .then(() => {
-                    this.$store.dispatch('user/signout')
-                    this.$message({
-                        type: 'success',
-                        message: '已退出登录',
-                    })
-                })
-                .catch(() => {
-                    this.$message({
-                        type: 'info',
-                        message: '已取消退出',
-                    })
-                })
+        init () {
+            // 监听全屏事件
+            document.documentElement.onfullscreenchange = () => {
+                setTimeout(() => {
+                    if (!document.fullscreenElement) this.screen = false
+                }, 28)
+            }
         },
+
+        signout() {
+            this.$store.dispatch('user/signout')
+        },
+
+        toggleScreen () {
+            if (!document.fullscreenElement) {
+                this.screen = true
+                document.documentElement.requestFullscreen()
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen()
+                    this.screen = false
+                }
+            }
+        }
     },
 }
 </script>
@@ -97,18 +113,27 @@ export default {
         min-width: 800px;
         height: 85vh;
         overflow: hidden;
-        border-radius: 12px;
+        border-radius: 20px;
         display: flex;
-        background-color: #0e8bff;
-        box-shadow: 0 4px 6px #d2d2d2, 0 -2px 10px #d2d2d2;
+        background: #0e8bff;
+        box-shadow: 0 5px 40px #d2eaff;
         position: relative;
         transition: all 0.3s ease-in-out;
+        @media only screen and (min-width : 1500px) {
+            height: 70vh;
+            max-width: 1300px;
+        }
+        @media only screen and (max-width : 1366px) {
+            width: 1100px;
+        }
     }
     .sidebar {
         position: relative;
         width: 230px;
         height: 100%;
-        // background-color: #0e8bff;
+        @media only screen and (max-width : 1366px) {
+            width: 200px;
+        }
         .radius {
             position: absolute;
             width: 50px;
@@ -129,12 +154,13 @@ export default {
     .content {
         flex: 1;
         background-color: #fff;
-        border-radius: 10px;
+        border-radius: 18px;
         overflow: hidden;
-        border: 1px solid #ccc;
         border-left: none;
+        display: flex;
+        flex-direction: column;
         .router {
-            padding: 15px;
+            padding: 20px;
             overflow-y: auto;
         }
         .navbar {
