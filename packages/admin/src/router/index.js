@@ -29,6 +29,20 @@ export const constantRoutes = [
             }
         ]
     },
+    {
+        path: '/article',
+        component: Layout,
+        children: [
+            {
+                name: 'Article',
+                path: '/article',
+                component: () => import('views/article/article'),
+                meta: {
+                    title: '文章'
+                }
+            }
+        ]
+    },
 ]
 
 // 动态挂载路由需要权限的账号才能访问的
