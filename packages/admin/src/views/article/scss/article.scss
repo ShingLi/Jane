@@ -1,3 +1,32 @@
 .article{
     flex: 1;
+    .articlewrap{
+        margin-top: 40px;
+        .title{
+            width: 60%;
+            ::v-deep .el-input__inner{
+                border-left: none;
+                border-top: none;
+                border-right: none;
+            }
+        }
+        .markdown{
+            margin-top: 50px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            ::v-deep .markdown-body{
+                height: 55vh;;
+            }
+
+        }
+    }
+}
+
+@media only screen and (max-width: 1366px) {
+    .markdown{
+        margin-top: 25px !important;
+    }
+    .articlewrap{
+        margin-top: 20px !important;
+    }
 }
