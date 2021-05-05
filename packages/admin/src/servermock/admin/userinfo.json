@@ -1,0 +1,8 @@
+{
+    "responseCode": "0000",
+    "responseMsg": "用户信息查询成功",
+    "responseData": {
+        "avatar": "",
+        "uname": "小珍珍"
+    }
+}

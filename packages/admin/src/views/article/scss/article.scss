@@ -1,5 +1,8 @@
 .article{
     flex: 1;
+    padding: 30px !important;
+    padding-top: 35px !important;
+    // padding-bottom: 30px;
     .articlewrap{
         margin-top: 40px;
         .title{
@@ -18,6 +21,43 @@
                 height: 55vh;;
             }
 
+        }
+        .uploadArea{
+            display: flex;
+            align-items: center;
+            margin-top: 40px;
+            li{
+                &:last-child{
+                    margin-left: 40px;
+                }
+                .icon--music, .icon--fengmian{
+                    width: 45px;
+                    height: 45px;
+                    color: #d81e06;
+                }
+                .icon--text{
+                    color: #d81e06;
+                    font-size: 14px;
+                    margin-top: 10px;
+                }
+                .icon--fengmian + .icon--text{
+                    color: #9899cc;
+                }
+            }
+            ::v-deep{
+                .el-upload-dragger{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    &:hover{
+                        .icon--music,.icon--text{
+                            color: #409EFF;
+                            transition: all .3s ease-in-out;
+                        }
+                    }
+                }
+            }
         }
     }
 }

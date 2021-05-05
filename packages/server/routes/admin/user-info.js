@@ -1,6 +1,6 @@
 module.exports = (app, router) => {
 
-    router.post('/userinfo', async (req, res) => {
+    router.post('/userInfo', async (req, res) => {
         res.json({
             responseCode: '0000',
             responseMsg: ''

@@ -1,0 +1,7 @@
+{
+    "responseCode": "0000",
+    "responseMsg": "登录成功",
+    "responseData": {
+        "token": "test--token"
+    }
+}
