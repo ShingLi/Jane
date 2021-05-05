@@ -6,7 +6,7 @@
 </template>
 <script>
 export default {
-    name: 'Switch'
+    name: 'LcSitch'
 }
 </script>
 <style lang="scss" scoped>
