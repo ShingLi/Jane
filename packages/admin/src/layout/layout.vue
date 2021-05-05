@@ -52,14 +52,12 @@
 </template>
 <script>
 import Avatar from 'components/Avatar/Avatar'
-import SvgIcon from 'components/SvgIcon/SvgIcon'
 import SideBar from 'components/SideBar/SideBar'
 
 export default {
     name: 'Layout',
     components: {
         Avatar,
-        SvgIcon,
         SideBar
     },
     data () {
