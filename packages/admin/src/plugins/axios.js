@@ -32,7 +32,7 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
     response => {
-        const { data: { responseCode, responseMsg } } = response
+        const { data: { responseCode, responseMsg, responseData } } = response
         if (responseCode != '0000') {
             Message({
                 message: responseMsg || '返回值错误',
@@ -53,7 +53,7 @@ instance.interceptors.response.use(
                     duration: 2500,
                 })
             }
-            return response.data
+            return responseData ?? {}
         }
     },
     err => {

@@ -1,6 +1,6 @@
 const urls = {
     login: '/login',
     signup: '/signup',
-    userinfo: '/userInfo'
+    userinfo: '/userinfo'
 }
 export default urls
