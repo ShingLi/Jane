@@ -16,11 +16,7 @@ export default function ({ $axios, redirect, error }, inject) {
         if (responseCode == '0000') {
             return responseData
         } else {
-            if (process.client) {
-                consola.info('axios--服务端请求')
-            } else {
-                consola.info('axios--客户端请求')
-            }
+            
         }
     })
 
