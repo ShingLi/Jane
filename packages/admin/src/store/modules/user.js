@@ -1,12 +1,12 @@
 import http from 'plugins/axios'
 import { setCookie, getCookie, removeCookie } from 'utils/cookie'
+import { Message, MessageBox } from 'element-ui'
 import router from '@/permission'
 
 const state = {
     token: getCookie('token') || '', // token
     roles: [], // 权限
-    avatar: '', // 头像
-    username: '路过一片云', // 用户名
+    userInfo: {}
 }
 
 const mutations = {
@@ -23,6 +23,9 @@ const mutations = {
                 oldpath: router.currentRoute.fullpath
             }
         })
+    },
+    SETUSERINFO (state, info) {
+        state.userInfo = info
     }
 }
 
@@ -43,12 +46,30 @@ const actions = {
     },
     // 退出登陆
     signout ({ commit }) {
-        commit('REMOVETOKEN')
+        MessageBox.confirm('是否要退出登录？', '提示', {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            type: 'warning',
+        })
+            .then(() => {
+                commit('REMOVETOKEN')
+                Message({
+                    type: 'success',
+                    message: '已退出登录',
+                })
+            })
+            .catch(() => {
+                Message({
+                    type: 'info',
+                    message: '已取消退出',
+                })
+            })
     },
     // 获取用户信息
     userInfo ({ commit, state: { token } }) {
         http.post('userinfo').then(res => {
-            console.log(res)
+            console.log('vuex__act--userinfo', res)
+            commit('SETUSERINFO', res)
         })
     }
 }
