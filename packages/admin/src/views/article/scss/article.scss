@@ -18,14 +18,15 @@
             border: 1px solid #eee;
             border-radius: 5px;
             ::v-deep .markdown-body{
-                height: 55vh;;
+                height: 55vh;
             }
 
         }
         .uploadArea{
             display: flex;
             align-items: center;
-            margin-top: 40px;
+            padding-top: 35px;
+            padding-bottom: 25px;
             li{
                 &:last-child{
                     margin-left: 40px;
@@ -41,7 +42,7 @@
                     margin-top: 10px;
                 }
                 .icon--fengmian + .icon--text{
-                    color: #9899cc;
+                    color: #1296db;
                 }
             }
             ::v-deep{
@@ -52,11 +53,27 @@
                     align-items: center;
                     &:hover{
                         .icon--music,.icon--text{
-                            color: #409EFF;
+                            // color: #409EFF;
                             transition: all .3s ease-in-out;
                         }
                     }
                 }
+            }
+        }
+        .extraInput{
+            padding-top: 25px;
+            width: 60%;
+            overflow: hidden;
+        }
+        .switch--box{
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            font-size: 0;
+            span{
+                font-size: 14px;
+                margin-left: 10px;
+                color: #909399;
             }
         }
     }

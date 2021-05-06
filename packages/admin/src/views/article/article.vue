@@ -1,43 +1,69 @@
 <template>
     <div class="article">
         <Tag :text="text"/>
-        <div class="articlewrap">
-            <el-input placeholder="请输入文章标题"
-                clearable
-                prefix-icon="el-icon-paperclip"
-                class="title"
-                type=”text“
-                v-model="formData.title"
-            />
-            <div class="markdown">
-                <mavon-editor
-                    v-model="formData.value"
-                    :subfield="false"
+        <el-form :model="formData">
+            <div class="articlewrap">
+                <el-input placeholder="请输入文章标题"
+                    clearable
+                    prefix-icon="el-icon-paperclip"
+                    class="title"
+                    type=”text“
+                    v-model="formData.title"
                 />
+                <div class="markdown">
+                    <mavon-editor
+                        v-model="formData.value"
+                        :subfield="false"
+                    />
+                </div>
+                <el-collapse-transition>
+                    <div v-show="!isInternal">
+                        <div class="extraInput">
+                            <el-form-item label="背景音乐">
+                                <el-input v-model="formData.extraMusicLink" placeholder="请输入背景音乐地址"/>
+                            </el-form-item>
+                            <el-form-item label="封面图片">
+                                <el-input v-model="formData.extraMusicLink" placeholder="请输入封面图片地址"/>
+                            </el-form-item>
+                        </div>
+                    </div>
+                </el-collapse-transition>
+                <el-collapse-transition>
+                    <div v-show="isInternal">
+                        <ul class="uploadArea">
+                            <li>
+                                <el-upload
+                                    drag
+                                    :action="formData.internalMusicLink"
+                                >
+                                    <div class="icon--music">
+                                        <svg-icon iconName="music"/>
+                                    </div>
+                                    <p class="icon--text">背景音乐</p>
+                                </el-upload>
+                            </li>
+                            <li>
+                                <el-upload
+                                    drag
+                                    :action="formData.internalImgLink"
+                                >
+                                    <div class="icon--fengmian">
+                                        <svg-icon iconName="fengmian"/>
+                                    </div>
+                                    <p class="icon--text">封面图片</p>
+                                </el-upload>
+                            </li>
+                        </ul>
+                    </div>
+                </el-collapse-transition>
+                <div class="switch--box">
+                    <lc-switch v-model="isInternal"/>
+                    <span>使用本地文件上传</span>
+                </div>
+
+                <el-button type="primary" size="medium" icon="el-icon-check">确认</el-button>
             </div>
-            <ul class="uploadArea">
-                <li>
-                    <el-upload
-                        drag
-                    >
-                        <div class="icon--music">
-                            <svg-icon iconName="music"/>
-                        </div>
-                        <p class="icon--text">背景音乐</p>
-                    </el-upload>
-                </li>
-                <li>
-                    <el-upload
-                        drag
-                    >
-                        <div class="icon--fengmian">
-                            <svg-icon iconName="fengmian"/>
-                        </div>
-                        <p class="icon--text">封面图片</p>
-                    </el-upload>
-                </li>
-            </ul>
-        </div>
+        </el-form>
     </div>
 </template>
 <script>
@@ -51,9 +77,13 @@ export default {
     data () {
         return {
             text: '夜泊秦淮近酒家，商女不知亡国恨',
+            isInternal: true,
             formData: {
                 title: '',
-                value: ''
+                value: '',
+                extraMusicLink: '',
+                internalMusicLink: '',
+                internalImgLink: ''
             }
         }
     }
