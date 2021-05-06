@@ -17,15 +17,11 @@
                 @click="gopage(v)"
             >{{ v.title }}</li>
         </ol>
-        <div class="switch">
-            <lc-switch />
-        </div>
     </div>
 </template>
 <script>
 
 import Avatar from 'components/Avatar/Avatar'
-import LcSwitch from 'components/Switch/Switch'
 
 import { mapState } from 'vuex'
 
@@ -33,7 +29,6 @@ export default {
     name: 'SideBar',
     components: {
         Avatar,
-        LcSwitch
     },
     data () {
         return {
@@ -96,6 +91,7 @@ export default {
         padding: 30px 0 16px 16px;
         display: flex;
         flex-direction: column;
+        overflow: auto;
         .IMGWRAP{
             margin: auto;
             padding-right: 16px;
