@@ -14,7 +14,7 @@
             }
         }
         .markdown{
-            margin-top: 50px;
+            margin-top: 25px;
             border: 1px solid #eee;
             border-radius: 5px;
             ::v-deep .markdown-body{
@@ -75,6 +75,16 @@
                 margin-left: 10px;
                 color: #909399;
             }
+        }
+    }
+}
+
+// element-ui
+.articlewrap{
+    .el-form-item{
+        margin-bottom: 28px;
+        ::v-deep .el-form-item__error{
+            padding-top: 10px;
         }
     }
 }

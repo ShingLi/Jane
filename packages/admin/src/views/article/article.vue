@@ -1,21 +1,26 @@
 <template>
     <div class="article">
         <Tag :text="text"/>
-        <el-form :model="formData">
+        <el-form :model="formData" :rules="rules" ref="ruleForm" status-icon>
             <div class="articlewrap">
-                <el-input placeholder="请输入文章标题"
-                    clearable
-                    prefix-icon="el-icon-paperclip"
-                    class="title"
-                    type=”text“
-                    v-model="formData.title"
-                />
-                <div class="markdown">
+                <el-form-item prop="title">
+                    <el-input placeholder="请输入文章标题"
+
+                        prefix-icon="el-icon-paperclip"
+                        class="title"
+                        type=”text“
+                        props="title"
+                        v-model="formData.title"
+                    />
+                </el-form-item>
+                <el-form-item prop="value">
+                    <div class="markdown">
                     <mavon-editor
                         v-model="formData.value"
                         :subfield="false"
                     />
                 </div>
+                </el-form-item>
                 <el-collapse-transition>
                     <div v-show="!isInternal">
                         <div class="extraInput">
@@ -61,7 +66,7 @@
                     <span>使用本地文件上传</span>
                 </div>
 
-                <el-button type="primary" size="medium" icon="el-icon-check">确认</el-button>
+                <el-button type="primary" size="medium" icon="el-icon-check" @click.native="submit">确认</el-button>
             </div>
         </el-form>
     </div>
@@ -78,6 +83,30 @@ export default {
         return {
             text: '夜泊秦淮近酒家，商女不知亡国恨',
             isInternal: true,
+            rules: {
+                title: [
+                    {
+                        trigger: 'blur',
+                        required: true,
+                        validator: (rule, value, callback) => {
+                            console.log(value)
+                            if (!value) {
+                                callback(new Error('哦？你好像没输入文章标题呀。'))
+                            } else if (/[\u4e00-\u9fa5]/gm.test(value)) {
+                                callback()
+                            } else {
+                                callback(new Error('你好像在乱输入，文章标题为中文汉字哦'))
+                            }
+                        }
+                    }
+                ],
+                value: [
+                    {
+                        required: true,
+                        message: '请开始编辑内容'
+                    }
+                ]
+            },
             formData: {
                 title: '',
                 value: '',
@@ -85,6 +114,18 @@ export default {
                 internalMusicLink: '',
                 internalImgLink: ''
             }
+        }
+    },
+    
+    methods: {
+        
+        submit () {
+            this.$refs.ruleForm.validate((valid) => {
+                console.log(valid)
+                if (valid) {
+
+                }
+            })
         }
     }
 }
