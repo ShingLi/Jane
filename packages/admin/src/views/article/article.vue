@@ -50,7 +50,13 @@
                             <li>
                                 <el-upload
                                     drag
+                                    with-credentials
+                                    name="fengmian"
                                     :action="formData.internalImgLink"
+                                    :auto-upload="true"
+                                    :show-file-list="false"
+                                    :before-upload="beforeAvatarUpload"
+                                    :on-success="handleAvatarSuccess"
                                 >
                                     <div class="icon--fengmian">
                                         <svg-icon iconName="fengmian"/>
@@ -89,7 +95,6 @@ export default {
                         trigger: 'blur',
                         required: true,
                         validator: (rule, value, callback) => {
-                            console.log(value)
                             if (!value) {
                                 callback(new Error('哦？你好像没输入文章标题呀。'))
                             } else if (/[\u4e00-\u9fa5]/gm.test(value)) {
@@ -103,7 +108,11 @@ export default {
                 value: [
                     {
                         required: true,
-                        message: '请开始编辑内容'
+                        validator: (rule, value, callback) => {
+                            if (!value) {
+                                callback(new Error('请开始编辑文章内容'))
+                            } else callback()
+                        }
                     }
                 ]
             },
@@ -112,13 +121,26 @@ export default {
                 value: '',
                 extraMusicLink: '',
                 internalMusicLink: '',
-                internalImgLink: ''
+                internalImgLink: 'https://jsonplaceholder.typicode.com/posts/'
             }
         }
     },
     
     methods: {
-        
+        beforeAvatarUpload (file) {
+            console.log(file)
+            const defaulType = ['image/jpeg', 'image/png', 'image/jpg']
+            if (!defaulType.includes(file.type)) {
+                this.$message.error('请上传jpeg/png/jpg 类型的图片')
+                return false
+            }
+        },
+
+        handleAvatarSuccess (response, file, fileist) {
+            console.log(response)
+            console.log(file)
+        },
+
         submit () {
             this.$refs.ruleForm.validate((valid) => {
                 console.log(valid)
@@ -126,7 +148,8 @@ export default {
 
                 }
             })
-        }
+        },
+        
     }
 }
 </script>
