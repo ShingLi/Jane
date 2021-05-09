@@ -37,7 +37,7 @@ module.exports = (app, router, { User }) => {
 		
 		User.find(info, (err, doc) => {
 			console.log('用户查询--user', doc)
-			console.log('用户查询--err')
+			console.log('用户查询--err', err)
 			if (err) {
 				res.json({
 					responseCode: "9999",
@@ -53,7 +53,9 @@ module.exports = (app, router, { User }) => {
 					res.json({
 						responseCode: '0000',
 						responseMsg: '登录成功',
-						token
+						responseData: {
+							token
+						}
 					})
 				}
 			}
