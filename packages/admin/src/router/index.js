@@ -43,6 +43,20 @@ export const constantRoutes = [
             }
         ]
     },
+    {
+        path: '/setting',
+        component: Layout,
+        children: [
+            {
+                name: 'Setting',
+                path: '/setting',
+                component: () => import('views/setting/setting'),
+                meta: {
+                    title: '设置'
+                }
+            }
+        ]
+    }
 ]
 
 // 动态挂载路由需要权限的账号才能访问的
