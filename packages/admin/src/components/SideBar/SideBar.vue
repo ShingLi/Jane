@@ -51,7 +51,7 @@ export default {
                 },
                 {
                     title: '设置',
-                    path: ''
+                    path: '/setting'
                 },
                 {
                     title: '退出',
