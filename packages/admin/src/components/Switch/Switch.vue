@@ -8,7 +8,7 @@
 </template>
 <script>
 export default {
-    name: 'LcSitch',
+    name: 'LcSwitch',
     props: ['value'],
 }
 </script>
