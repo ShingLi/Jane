@@ -1,27 +1,35 @@
 import multer from 'multer'
 import fse from 'fs-extra'
+import path from 'path'
+import consola from 'consola'
+
 
 const upload = multer({
-	storage: function (req, file, cb) {
-        console.log('上传文件--stroage__req', req)
-        console.log('上传文件--stroage', file)
-        const uploadDir = '../../public/assets/images/upload'
-
-        fse.ensureDir(uploadDir, err => {
-            if (err) {
-                throw new Error('创建文件夹失败')
-            } else {
-                cb(null, uploadDir)
-            }
-        })
-	},
-	storage: function (req, file, cb) {
-        cb(null, file.fieldname + '-' + Date.now())
-	}
+	storage: multer.diskStorage({
+        destination: (req, file, cb) => {
+            
+            console.log('上传文件--stroage', file)
+            const uploadDir = path.join(__dirname, '../../', 'public/assets/images/upload')
+    
+            fse.ensureDir(uploadDir, err => {
+                if (err) {
+                    throw new Error('创建文件夹失败')
+                } else {
+                    cb(null, uploadDir)
+                }
+            })
+        },
+        filename: (req, file, cb) => {
+            // 这里应该要加一个时间戳的
+            cb(null, file.originalname)
+        }
+    })
 })
 
-module.exports = (app, router) => {
+module.exports = (app, router, { Upload }) => {
 
+    /*  用户信息
+    -------------------------- */
     router.post('/userInfo', async (req, res) => {
         res.json({
             responseCode: '0000',
@@ -33,8 +41,21 @@ module.exports = (app, router) => {
     -------------------------- */
     router.post('/upload', upload.single('janeAvatar'), async (req, res, next) => {
         console.log('上传头像--req__file', req.file)
-        res.send({
-            responseCode: '0000'
+        const IMG = new Upload({
+            filename: req.file.filename,
+            imgUrl: req.file.path
+        })
+        IMG.save((err, img) => {
+            if (err) {
+                consola.error(err)
+            }else {
+                res.send({
+                    responseCode: '0000',
+                    responseData: {
+                        imgUrl: req.file.path
+                    }
+                })
+            }
         })
     })
 
