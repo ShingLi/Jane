@@ -158,8 +158,9 @@ export default {
         display: flex;
         flex-direction: column;
         .router {
-            padding: 20px;
+            padding: 30px;
             overflow-y: auto;
+            padding-top: 35px;
         }
         .navbar {
             position: relative;
