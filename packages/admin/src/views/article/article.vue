@@ -55,7 +55,9 @@
                                     :action="formData.internalImgLink"
                                     :auto-upload="true"
                                     :show-file-list="false"
+                                    :limit="1"
                                     :before-upload="beforeAvatarUpload"
+                                    :on-exceed="handleAvatarExceed"
                                     :on-success="handleAvatarSuccess"
                                 >
                                     <div class="icon--fengmian">
@@ -78,13 +80,8 @@
     </div>
 </template>
 <script>
-import Tag from 'components/Tag/Tag'
-
 export default {
     name: 'Article',
-    components: {
-        Tag
-    },
     data () {
         return {
             text: '夜泊秦淮近酒家，商女不知亡国恨',
@@ -128,7 +125,6 @@ export default {
     
     methods: {
         beforeAvatarUpload (file) {
-            console.log(file)
             const defaulType = ['image/jpeg', 'image/png', 'image/jpg']
             if (!defaulType.includes(file.type)) {
                 this.$message.error('请上传jpeg/png/jpg 类型的图片')
@@ -139,6 +135,10 @@ export default {
         handleAvatarSuccess (response, file, fileist) {
             console.log(response)
             console.log(file)
+        },
+
+        handleAvatarExceed (files, fileList) {
+            this.$message.warning(`当前限制选择 1 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`)
         },
 
         submit () {

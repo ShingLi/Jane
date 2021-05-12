@@ -1,6 +1,6 @@
 <template>
     <div class="setting">
-        <Tag text="网站信息修改"/>
+        <Tag text="信息修改"/>
         <el-form :model="formData" class="formData">
             <el-form-item label="头像">
                 <el-upload
@@ -19,9 +19,22 @@
                     <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                 </el-upload>
             </el-form-item>
+
             <el-form-item label="昵称">
-                <el-input v-model="formData.uname" placeholder="请输入昵称"/>
+                <el-input v-model="formData.uname" placeholder="输入昵称" class="custom__input small"/>
             </el-form-item>
+
+            <el-form-item label="账号">
+                <el-input v-model="formData.account" placeholder="输入管理员账号" class="custom__input"/>
+            </el-form-item>
+
+            <el-form-item label="密码">
+                <el-input v-model="formData.password" placeholder="输入管理员密码" class="custom__input"/>
+            </el-form-item>
+
+            <div class="btnwrap">
+                <el-button type="primary" class="custom__btn">保存</el-button>
+            </div>
         </el-form>
     </div>
 </template>
@@ -32,7 +45,9 @@ export default {
     data() {
         return {
             formData: {
-                name: ''
+                name: '',
+                account: '',
+                password: ''
             },
             imageUrl: '',
             token: `Bearer ${getCookie('token')}`,
