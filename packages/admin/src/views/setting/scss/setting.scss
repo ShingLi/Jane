@@ -1,6 +1,14 @@
 .setting{
     .formData{
         margin-top: 30px;
+        .el-form-item{
+            ::v-deep{
+                .el-form-item__label{
+                    width: 50px;
+                    text-align: left;
+                }
+            }
+        }
     }
     .avatar-uploader{
         display: block;
@@ -33,5 +41,24 @@
             text-align: center;
         }
     }
+    .custom__input{
+        width: 40%;
+        &.small{
+            width: 30%;
+        }
+        ::v-deep{
+            .el-input__inner{
+                border-top: none;
+                border-left: none;
+                border-right: none;
+            }
+        }
+    }
+    .btnwrap{
+        .custom__btn{
+            width: 100px;
+        }
+    }
 
 }
+
