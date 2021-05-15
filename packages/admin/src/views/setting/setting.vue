@@ -1,6 +1,7 @@
 <template>
     <div class="setting">
         <Tag text="信息修改"/>
+
         <el-form :model="formData" class="formData">
             <el-form-item label="头像">
                 <el-upload
@@ -32,10 +33,10 @@
                 <el-input v-model="formData.password" placeholder="输入管理员密码" class="custom__input"/>
             </el-form-item>
 
-            <div class="btnwrap">
-                <el-button type="primary" class="custom__btn">保存</el-button>
-            </div>
         </el-form>
+        <div class="btnwrap">
+            <el-button type="primary" class="custom__btn">保存</el-button>
+        </div>
     </div>
 </template>
 <script>
