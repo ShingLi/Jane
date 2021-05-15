@@ -46,7 +46,7 @@ export default {
                     path: ''
                 },
                 {
-                    title: '关于',
+                    title: 'web',
                     path: ''
                 },
                 {
