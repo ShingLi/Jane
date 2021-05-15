@@ -47,7 +47,7 @@ export default {
                 },
                 {
                     title: 'web',
-                    path: ''
+                    path: '/web'
                 },
                 {
                     title: '设置',
