@@ -4,12 +4,15 @@ import path from 'path'
 import consola from 'consola'
 
 
+const domain = `//${process.env.HOST}:${process.env.PORT}`
+
+const presetDir = 'public/assets/images/upload'
+
 const upload = multer({
 	storage: multer.diskStorage({
         destination: (req, file, cb) => {
             
-            console.log('上传文件--stroage', file)
-            const uploadDir = path.join(__dirname, '../../', 'public/assets/images/upload')
+            const uploadDir = path.join(__dirname, '../../', presetDir)
     
             fse.ensureDir(uploadDir, err => {
                 if (err) {
@@ -28,36 +31,34 @@ const upload = multer({
 
 module.exports = (app, router, { Upload }) => {
 
-    /*  用户信息
-    -------------------------- */
-    router.post('/userInfo', async (req, res) => {
-        res.json({
-            responseCode: '0000',
-            responseMsg: ''
-        })
-    })
-
-    /*  上传头像
+    /*  上传
     -------------------------- */
     router.post('/upload', upload.single('janeAvatar'), async (req, res, next) => {
         console.log('上传头像--req__file', req.file)
+
         const IMG = new Upload({
-            filename: req.file.filename,
+            filename: req.file.filename, // *./jpe?g/
             imgUrl: req.file.path
         })
+
+
         IMG.save((err, img) => {
             if (err) {
                 consola.error(err)
-            }else {
+                res.json({
+                    responseCode: "9999",
+                    responseMsg: err
+                })
+            } else {
                 res.send({
                     responseCode: '0000',
                     responseData: {
-                        imgUrl: req.file.path
+                        imgUrl: `${domain}/${presetDir}/${req.file.filename}`
                     }
                 })
             }
         })
     })
-
     app.use('/admin', router)
+
 }
