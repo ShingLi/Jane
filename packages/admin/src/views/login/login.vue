@@ -174,9 +174,9 @@ export default {
                             this.$store.dispatch('user/login', Data)
                                 .then((token) => {
                                     if (token) {
-                                        if (this.$route.query.oldpath) {
+                                        if (this.$route.query.originUrl) {
                                             this.$router.push({
-                                                path: this.$route.query.oldpath
+                                                path: decodeURIComponent(this.$route.query.originUrl)
                                             })
                                         } else {
                                             this.$router.push({ path: '/' })
