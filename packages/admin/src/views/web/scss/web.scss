@@ -1,0 +1,30 @@
+.web{
+    .main{
+        margin-top: 40px;
+        .formData{
+            padding-top: 15px;
+            padding-bottom: 15px;
+            width: 60%;
+            ::v-deep{
+                .el-input__inner{
+                    border-top-color: transparent;
+                    border-left-color: transparent;
+                    border-right-color: transparent;
+                    border-radius: 0;
+                }
+            }
+        }
+        .aboutFormData{
+            width: 60%;
+            .el-form-item{
+                display: flex;
+                align-items: flex-end;
+                ::v-deep{
+                    .el-form-item__content{
+                        flex: 1;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -52,7 +52,7 @@ export default {
                 name: '',
                 account: '',
                 password: '',
-                authId: '芳 '
+                authId: 'Jane '
             },
             imageUrl: '',
             rules: {
