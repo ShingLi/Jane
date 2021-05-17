@@ -110,7 +110,8 @@ export default {
         max-width: 1250px;
         min-width: 800px;
         height: 85vh;
-        overflow: hidden;
+        overflow-y: hidden;
+        overflow-x: auto;
         border-radius: 20px;
         display: flex;
         background: #0e8bff;
@@ -161,11 +162,13 @@ export default {
             padding: 30px;
             overflow-y: auto;
             padding-top: 35px;
+            flex: 1;
         }
         .navbar {
             position: relative;
             width: 100%;
             height: 60px;
+            flex: 0 0 59px;
             display: flex;
             justify-content: flex-end;
             padding: 10px 20px;
