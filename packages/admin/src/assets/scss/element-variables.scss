@@ -4,4 +4,11 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
 
 $--color-danger: #d81e06 !default;
 
+/* Slider
+-------------------------- */
+
+$--slider-height: 5px !default;
+$--slider-border-radius: 7px !default;
+$--slider-margin: 16px 0 !default;
+
 @import "~element-ui/packages/theme-chalk/src/index";
