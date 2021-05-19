@@ -19,10 +19,26 @@
             .el-form-item{
                 display: flex;
                 align-items: flex-end;
+                padding-top: 15px;
                 ::v-deep{
                     .el-form-item__content{
                         flex: 1;
+                        
                     }
+                    .el-form-item__label{
+                        width: 120px;
+                        text-align: left;
+                        font-family: DIN;
+                        font-size: 15px;
+                    }
+                }
+            }
+            .btnwrap{
+                .el-button + .el-button{
+                    margin-left: 13px;
+                }
+                .danger{
+                    color: #F56C6C;
                 }
             }
         }

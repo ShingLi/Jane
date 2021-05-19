@@ -19,9 +19,13 @@
             </el-form>
             <el-divider content-position="right" class="small">关于</el-divider>
             <el-form :model="aboutFormData" class="aboutFormData">
-                <el-form-item label="HTML" label-position="left" label-width="40px">
+                <el-form-item :label="`HTML ${aboutFormData.html} %`" label-position="left">
                     <el-slider v-model="aboutFormData.html"></el-slider>
                 </el-form-item>
+                <div class="btnwrap">
+                    <el-button type="text" class="danger" disabled>取消</el-button>
+                    <el-button type="text">保存</el-button>
+                </div>
             </el-form>
         </div>
     </div>
@@ -37,7 +41,8 @@ export default {
                 indexDesc: '', // 首页文案
             },
             aboutFormData: {
-                html: 60
+                html: 60,
+                
             }
         }
     }
