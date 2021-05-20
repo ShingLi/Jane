@@ -74,7 +74,9 @@
                     <span>使用本地文件上传</span>
                 </div>
 
-                <el-button type="primary" size="medium" icon="el-icon-check" @click.native="submit">确认</el-button>
+                <div class="btnwrap">
+                    <el-button type="primary" size="medium" icon="el-icon-check" @click.native="submit" class="custom__btn">确认</el-button>
+                </div>
             </div>
         </el-form>
     </div>
@@ -93,11 +95,11 @@ export default {
                         required: true,
                         validator: (rule, value, callback) => {
                             if (!value) {
-                                callback(new Error('哦？你好像没输入文章标题呀。'))
+                                callback(new Error('哦？你好像没输入文章标题呀!'))
                             } else if (/[\u4e00-\u9fa5]/gm.test(value)) {
                                 callback()
                             } else {
-                                callback(new Error('你好像在乱输入，文章标题为中文汉字哦'))
+                                callback(new Error('你好像在乱输入，文章标题为中文汉字哦!'))
                             }
                         }
                     }
@@ -107,7 +109,7 @@ export default {
                         required: true,
                         validator: (rule, value, callback) => {
                             if (!value) {
-                                callback(new Error('请开始编辑文章内容'))
+                                callback(new Error('请开始编辑文章内容!'))
                             } else callback()
                         }
                     }
