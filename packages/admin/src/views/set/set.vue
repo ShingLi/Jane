@@ -22,15 +22,15 @@
             </el-form-item>
 
             <el-form-item label="昵称" prop="name">
-                <el-input v-model="formData.uname" placeholder="输入昵称" class="custom__input small"/>
+                <el-input v-model="formData.uname" placeholder="输入要修改的昵称" class="custom__input small"/>
             </el-form-item>
 
             <el-form-item label="账号" prop="account">
-                <el-input v-model="formData.account" placeholder="输入管理员账号" class="custom__input"/>
+                <el-input v-model="formData.account" placeholder="输入要修改的管理员账号" class="custom__input"/>
             </el-form-item>
 
             <el-form-item label="密码" prop="password">
-                <el-input v-model="formData.password" placeholder="输入管理员密码" class="custom__input"/>
+                <el-input v-model="formData.password" placeholder="输入要修改的管理员密码" class="custom__input"/>
             </el-form-item>
 
             <el-form-item label="标识" class="validator__placeholder">

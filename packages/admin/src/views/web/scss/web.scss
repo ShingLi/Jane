@@ -1,18 +1,18 @@
 .web{
     .main{
         margin-top: 40px;
+        ::v-deep{
+            .el-input__inner{
+                border-top-color: transparent;
+                border-left-color: transparent;
+                border-right-color: transparent;
+                border-radius: 0;
+            }
+        }
         .formData{
             padding-top: 15px;
             padding-bottom: 15px;
             width: 60%;
-            ::v-deep{
-                .el-input__inner{
-                    border-top-color: transparent;
-                    border-left-color: transparent;
-                    border-right-color: transparent;
-                    border-radius: 0;
-                }
-            }
         }
         .aboutFormData{
             width: 60%;
@@ -26,12 +26,18 @@
                         
                     }
                     .el-form-item__label{
-                        width: 120px;
+                        width: 140px;
                         text-align: left;
                         font-family: DIN;
                         font-size: 15px;
+                        text-transform: capitalize;
                     }
                 }
+            }
+            .custom_slider{
+                margin-bottom: 3px;
+                padding-top: 3px;
+                
             }
             .btnwrap{
                 .el-button + .el-button{
