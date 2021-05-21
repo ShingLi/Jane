@@ -45,7 +45,9 @@
                         </el-dropdown>
                     </div>
                 </div>
-                <router-view class="router" />
+                <transition name="pageIn" mode="out-in">
+                    <router-view class="router" />
+                </transition>
             </div>
         </div>
     </div>
