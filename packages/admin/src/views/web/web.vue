@@ -32,6 +32,7 @@
                     class="custom_slider"
                 >
                     <el-slider v-model="aboutFormData[item]"></el-slider>
+                    <el-color-picker v-model="color" show-alpha></el-color-picker>
                 </el-form-item> 
                 <div class="btnwrap">
                     <el-button type="text" class="danger">取消</el-button>
@@ -64,7 +65,8 @@ export default {
                 mongodb: 10,
             },
             abourpre: '',
-            aboutDesc: ''
+            aboutDesc: '',
+            color: 'rgba(19, 206, 102, 0.8)'
         }
     }
 }

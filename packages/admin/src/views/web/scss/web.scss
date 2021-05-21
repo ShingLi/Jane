@@ -23,7 +23,24 @@
                 ::v-deep{
                     .el-form-item__content{
                         flex: 1;
-                        
+                        display: flex;
+                        align-items: center;
+                        .el-slider{
+                            flex: 1;
+                        }
+                        .el-color-picker{
+                            width: 22px;
+                            height: 22px;
+                            margin-left: 6px;
+                            .el-color-picker__trigger{
+                                width: 22px;
+                                height: 22px;
+                                padding: 0;
+                                border-radius: 50%;
+                                overflow: hidden;
+                                
+                            }
+                        }
                     }
                     .el-form-item__label{
                         width: 140px;
