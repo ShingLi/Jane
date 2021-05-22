@@ -7,6 +7,7 @@ const style = {
         height: '100%',
         borderRadius: '50%',
         display: 'block',
+        boxShadow: '0 2px 12px 0 rgba(0, 0, 0, 0.1)'
     }
 }
 
