@@ -3,7 +3,7 @@
         <div class="layout__main">
             <div class="sidebar">
                 <!-- <div class="radius"></div> -->
-                <SideBar/>
+                <SideBar />
             </div>
             <div class="content">
                 <div class="navbar">
@@ -15,7 +15,7 @@
                     <div class="userinfo">
                         <Avatar
                             class="avatar"
-                            :src="require('@/assets/images/avatar.jpeg')"
+                            :src="require('@/assets/images/WechatIMG31.jpeg')"
                         />
                         <el-dropdown>
                             <div class="el-dropdown-link">

@@ -3,7 +3,7 @@
         <div id="avatar">
             <div class="IMGWRAP">
                 <div class="moon">
-                    <Avatar src="" class="custom--avatar avatar"/>
+                    <Avatar :src="avatar" class="custom--avatar avatar"/>
                 </div>
             </div>
             <p class="username">{{ userInfo.uname }}</p>
@@ -51,13 +51,14 @@ export default {
                 },
                 {
                     title: '设置',
-                    path: '/setting'
+                    path: '/set'
                 },
                 {
                     title: '退出',
                     path: '/exit'
                 }
-            ]
+            ],
+            avatar: require('../../assets/images/WechatIMG31.jpeg')
         }
     },
     computed: {
