@@ -1,0 +1,6 @@
+**/dist
+**/assets
+**/servermock
+static
+public
+node_modules
