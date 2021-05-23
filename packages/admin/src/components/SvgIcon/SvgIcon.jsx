@@ -1,3 +1,4 @@
+/* eslint-disable */
 const style = {
     fill: 'currentColor',
     overflow: 'hidden',
