@@ -39,7 +39,7 @@
                         <el-progress :percentage="60" color="#909399"></el-progress>
                         <code>JavaScript</code>
                         <el-progress :percentage="61" color="#F56C6C"></el-progress>
-                        <code>Mini program</code>
+                        <code>Mini Program</code>
                         <el-progress :percentage="60" color="#2db7f5"></el-progress>
                         <code>Vue</code>
                         <el-progress :percentage="70" color="#F16F5C"></el-progress>
