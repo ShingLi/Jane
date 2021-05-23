@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-    name: '404'
+    name: 'Error'
 }
 </script>
 <style lang="scss" scoped>
