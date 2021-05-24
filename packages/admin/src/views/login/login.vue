@@ -131,7 +131,7 @@ export default {
             this.bubbles = className
         },
         calcStyle (item) {
-            const sizeArr = [30, 40, 75, 60, 50], style = {}
+            const sizeArr = [30, 40, 65, 60, 50], style = {}
             const size = sizeArr[Math.floor(Math.random() * sizeArr.length)]
             switch (item) {
                 case 'circle':

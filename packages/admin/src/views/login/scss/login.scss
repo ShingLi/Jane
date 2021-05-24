@@ -39,44 +39,44 @@
             &.circle{
                 border-radius: 50%;  
             }
-            &.star-five{
-                // bottom: -100%;
-                width: 0;
-                height: 0;
-                position: relative;
-                display: block;
-                border-left: 70px solid transparent;
-                border-right: 70px solid transparent;
-                border-bottom: 40px solid #53E3A6;
-                transform: rotate(35deg);
-                background-color: transparent;
-                &:before{
-                    width: 0;
-                    height: 0;
-                    border-left: 24px solid transparent;
-                    border-right: 24px solid transparent;
-                    border-bottom: 80px solid #53E3A6;
-                    position: absolute;
-                    top: -45px;
-                    left: -45px;
-                    display: block;
-                    transform: rotate(-35deg);
-                    content: "";
-                }
-                &:after{
-                    width: 0;
-                    height: 0;
-                    display: block;
-                    position: absolute;
-                    top: 3px;
-                    left: -75px;
-                    border-left: 70px solid transparent;
-                    border-right: 70px solid transparent;
-                    border-bottom: 40px solid #53E3A6;
-                    content: "";
-                    transform: rotate(-70deg);
-                }
-            }
+            // &.star-five{
+            //     // bottom: -100%;
+            //     width: 0;
+            //     height: 0;
+            //     position: relative;
+            //     display: block;
+            //     border-left: 70px solid transparent;
+            //     border-right: 70px solid transparent;
+            //     border-bottom: 40px solid #53E3A6;
+            //     transform: rotate(35deg);
+            //     background-color: transparent;
+            //     &:before{
+            //         width: 0;
+            //         height: 0;
+            //         border-left: 24px solid transparent;
+            //         border-right: 24px solid transparent;
+            //         border-bottom: 80px solid #53E3A6;
+            //         position: absolute;
+            //         top: -45px;
+            //         left: -45px;
+            //         display: block;
+            //         transform: rotate(-35deg);
+            //         content: "";
+            //     }
+            //     &:after{
+            //         width: 0;
+            //         height: 0;
+            //         display: block;
+            //         position: absolute;
+            //         top: 3px;
+            //         left: -75px;
+            //         border-left: 70px solid transparent;
+            //         border-right: 70px solid transparent;
+            //         border-bottom: 40px solid #53E3A6;
+            //         content: "";
+            //         transform: rotate(-70deg);
+            //     }
+            // }
             &.triangle{
                 width: 0;
                 height: 0;
@@ -286,7 +286,7 @@
     margin: 15vh auto;
     border-radius: 30px;
     position: relative;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+    // box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
     .rose{
         position: absolute;
         width: 280px;
