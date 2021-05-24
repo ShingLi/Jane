@@ -2,7 +2,13 @@
     <div class="setting">
         <Tag text="信息修改"/>
 
-        <el-form :model="formData" class="formData" :rules="rules" label-width="60px">
+        <el-form
+            label-width="60px"
+            class="formData"
+            ref="formData"
+            :model="formData"
+            :rules="rules"
+        >
             <el-form-item label="头像" class="validator__placeholder">
                 <el-upload
                     ref="avatar"
@@ -12,16 +18,17 @@
                     :headers="{
                         Authorization: token
                     }"
-                    :limit="1"
                     :show-file-list="false"
+                    :auto-upload="false"
+                    :on-change="onChange"
                     :on-success="handleAvatarSuccess"
-                    :before-upload="beforeAvatarUpload">
-                    <img v-if="imageUrl" :src="imageUrl" class="avatar">
+                >
+                    <img v-if="uploadFile.imageUrl" :src="uploadFile.imageUrl" class="avatar">
                     <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                 </el-upload>
             </el-form-item>
 
-            <el-form-item label="昵称" prop="name">
+            <el-form-item label="昵称">
                 <el-input v-model="formData.uname" placeholder="输入要修改的昵称" class="custom__input small"/>
             </el-form-item>
 
@@ -38,7 +45,8 @@
             </el-form-item>
         </el-form>
         <div class="btnwrap">
-            <el-button type="primary" class="custom__btn">保存</el-button>
+            <el-button type="danger" @click="cancel">取 消</el-button>
+            <el-button type="primary" :loading="loadFlag" @click="submit">保 存</el-button>
         </div>
     </div>
 </template>
@@ -54,7 +62,11 @@ export default {
                 password: '',
                 authId: 'Jane '
             },
-            imageUrl: '',
+            uploadFile: {
+                imageUrl: '',
+                file: null
+            },
+            loadFlag: false,
             rules: {
                 name: [
                     {
@@ -101,20 +113,53 @@ export default {
     },
     
     methods: {
-        beforeAvatarUpload (file) {
+        onChange ({ raw: file }) {
             const defaulType = ['image/jpeg', 'image/png', 'image/jpg']
             if (!defaulType.includes(file.type)) {
                 this.$message.error('请上传jpeg/png/jpg 类型的图片')
                 return false
+            } else {
+                this.revokeUrl()
+
+                const temporaryUrl = URL.createObjectURL(file)
+
+                this.uploadFile.imageUrl = temporaryUrl
             }
         },
 
         handleAvatarSuccess (res, file) {
             if (res.responseCode == '0000') {
-                this.imageUrl = res.responseData.imgUrl
+                this.uploadFile.imageUrl = res.responseData.imgUrl
             }
         },
 
+        cancel () {
+            this.$refs.formData.clearValidate()
+            this.$refs.formData.resetFields()
+
+            for (const k in this.formData) {
+                if (k != 'authId') {
+                    this.formData[k] = ''
+                }
+            }
+
+            this.revokeUrl()
+
+            this.uploadFile.imageUrl = ''
+            this.uploadFile.file = null
+        },
+        
+        revokeUrl () {
+            if (this.uploadFile.imageUrl) URL.revokeObjectURL(this.uploadFile.imageUrl)
+        },
+
+        submit () {
+            this.$refs.formData.validate((valid) => {
+                if (valid) {
+                    
+                }
+            })
+        }
     }
 }
 </script>
