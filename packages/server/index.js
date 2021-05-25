@@ -9,10 +9,13 @@ import expressJWT from 'express-jwt'
 
 const app = express()
 const router = express.Router()
+
 const port = process.env.PORT || 4000
 const host = process.env.HOST || 'localhost'
 
+
 app.use(cors())
+app.use('/public', express.static('public')) // 静态文件访问
 app.use(bodyParser.json())
 
 // 验证token
@@ -36,6 +39,8 @@ app.use((err, req, res, next) => {
 	}
 })
 
+if (!process.env.HOST) process.env.HOST = host
+if (!process.env.PORT) process.env.PORT = port
 
 const presetdir = ['models', 'plugins']
 const routesdir = __dirname + '/routes'
