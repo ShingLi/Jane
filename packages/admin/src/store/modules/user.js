@@ -12,15 +12,14 @@ const state = {
 const mutations = {
     SETTOKEN (state, token) {
         state.token = token
-        setCookie('token', token, 1 / 48)
+        setCookie('token', token, 1) // 默认cookie过期一天
     },
     REMOVETOKEN () {
         removeCookie('token')
-
         router.replace({
             path: '/login',
             query: {
-                oldpath: router.currentRoute.fullpath
+                originUrl: encodeURIComponent(router.currentRoute.fullPath)
             }
         })
     },
