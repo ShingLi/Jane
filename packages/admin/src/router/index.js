@@ -44,18 +44,36 @@ export const constantRoutes = [
         ]
     },
     {
-        path: '/setting',
+        path: '/web',
         component: Layout,
         children: [
             {
-                name: 'Setting',
-                path: '/setting',
-                component: () => import('views/setting/setting'),
+                name: 'Web',
+                path: '/web',
+                component: () => import('views/web/web'),
+                meta: {
+                    title: 'web'
+                }
+            }
+        ]
+    },
+    {
+        path: '/set',
+        component: Layout,
+        children: [
+            {
+                name: 'Set',
+                path: '/set',
+                component: () => import('views/set/set'),
                 meta: {
                     title: '设置'
                 }
             }
         ]
+    },
+    {
+        path: '*',
+        component: () => import('views/404/404')
     }
 ]
 
