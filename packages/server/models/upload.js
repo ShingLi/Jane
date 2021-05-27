@@ -7,7 +7,7 @@ const uploadSchema = new mongoose.Schema({
     filename: String,
     path: String,
     date: {
-        type: Date,
+        type: String,
         default: new Date().toLocaleString()
     }
 })
