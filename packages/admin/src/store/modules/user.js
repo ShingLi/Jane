@@ -5,7 +5,7 @@ import router from '@/permission'
 
 const state = {
     token: getCookie('token') || '', // token
-    roles: [], // 权限
+    roles: '', // 权限
     userInfo: {}
 }
 
@@ -24,7 +24,7 @@ const mutations = {
         })
     },
     SETUSERINFO (state, info) {
-        state.userInfo = info
+        state.roles = info.roles ?? ''
     }
 }
 
@@ -66,9 +66,9 @@ const actions = {
     },
     // 获取用户信息
     userInfo ({ commit, state: { token } }) {
-        http.post('userinfo').then(res => {
-            console.log('vuex__act--userinfo', res)
-            commit('SETUSERINFO', res)
+        http.post('userinfo').then((userInfo) => {
+            console.log('vuex__act--userinfo', userInfo)
+            commit('SETUSERINFO', userInfo)
         })
     }
 }
