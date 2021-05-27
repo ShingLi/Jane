@@ -8,7 +8,7 @@ export default {
     name: 'Index',
     data () {
         return {
-            text: '花有重开日'
+            text: '岁月从不败美人'
         }
     },
     beforeRouteEnter (to, from, next) {
