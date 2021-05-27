@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const consola = require('consola')
 
+const { spawn } = require('child_process')
+
 process.on('unhandledRejection', (err, p) => {
     consola.error(err)
     consola.info(p)
@@ -18,7 +20,7 @@ module.exports = () => {
 			consola.success('~连接数据库成功～')
 		},
 		err => {
-			consola.error(err)
+			
 		}
 	)
 }

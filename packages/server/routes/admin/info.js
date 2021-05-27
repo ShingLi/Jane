@@ -6,7 +6,10 @@ module.exports = (app, router, { Upload }) => {
     router.post('/userInfo', async (req, res) => {
         res.json({
             responseCode: '0000',
-            responseMsg: ''
+            responseMsg: '',
+            responseData: {
+                roles: 'Jane'
+            }
         })
     })
 
