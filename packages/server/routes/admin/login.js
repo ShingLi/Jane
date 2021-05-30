@@ -64,20 +64,44 @@ module.exports = (app, router, { User }) => {
 
 	router.post('/signup', async(req, res) => {
 		const { account, password } = req.body
-		const len = await User.find().countDocuments()
-		if (len) {
+
+		const info = {
+			account,
+			password,
+			admin: false,
+		}
+
+		const namespace = [ 'jane' ]
+
+		if (typeof account == 'string' && namespace.includes(account.toLowerCase())) {
+			// 管理员
+			info.admin = true
+		}
+
+		let len = await User.find({ admin: false }).countDocuments(),
+			count = 1
+			
+		if (info.admin) {
+			len = await User.find({ admin: true }).countDocuments()
+			count = namespace.length
+		}
+
+		console.log('注册账号前账号数---', len)
+
+		if (len == count) {
+
 			res.send({
 				responseCode: '9999',
 				responseMsg: '请勿重复注册',
 			})
-		} else {
-			const info = {
-				account,
-				password,
-			}
 
+		} else {
+			
 			User.create(info, (err, doc) => {
 				if (doc) {
+
+					console.log('注册成功后账号数---', len + 1)
+		
 					res.json({
 						responseCode: '0000',
 						responseMsg: '注册成功',
