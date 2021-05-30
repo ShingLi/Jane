@@ -8,7 +8,7 @@ export default {
     name: 'Index',
     data () {
         return {
-            text: '岁月从不败美人'
+            text: '若是气质藏于身，岁月从不败美人'
         }
     },
     beforeRouteEnter (to, from, next) {
