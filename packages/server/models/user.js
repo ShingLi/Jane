@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
 		required: true,
 		validate: {
 			validator: pwd => {
-				return pwd.length > 6
+				return pwd.length > 5
 			},
 			message: '密码不少于6位!'
 		}
@@ -25,7 +25,12 @@ const userSchema = new mongoose.Schema({
 		type: String,
 	},
 	username: {
-		type: String
+		type: String,
+		default: '一片云'
+	},
+	admin: {
+		type: Boolean,
+		default: false,
 	}
 })
 

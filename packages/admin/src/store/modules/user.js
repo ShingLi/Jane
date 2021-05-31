@@ -66,7 +66,11 @@ const actions = {
     },
     // 获取用户信息
     userInfo ({ commit, state: { token } }) {
-        http.post('userinfo').then((userInfo) => {
+        http.post('userinfo', {}, {
+            headers: {
+                noTips: true,
+            }
+        }).then((userInfo) => {
             console.log('vuex__act--userinfo', userInfo)
             commit('SETUSERINFO', userInfo)
         })

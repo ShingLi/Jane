@@ -28,7 +28,7 @@ module.exports = (app, router, { User }) => {
 			account,
 			password
 		}
-		console.log('登录账号数据', info)
+		console.log('登录账号数据---', info)
 		// 生成token
 		const token = jwt.sign(info, 'jane', {
 			issuer: 'shingli',
@@ -36,8 +36,8 @@ module.exports = (app, router, { User }) => {
 		})
 		
 		User.find(info, (err, doc) => {
-			console.log('用户查询--user', doc)
-			console.log('用户查询--err', err)
+			console.log('用户查询---user', doc)
+			console.log('用户查询---err', err)
 			if (err) {
 				res.json({
 					responseCode: "9999",
@@ -80,7 +80,7 @@ module.exports = (app, router, { User }) => {
 
 		let len = await User.find({ admin: false }).countDocuments(),
 			count = 1
-			
+
 		if (info.admin) {
 			len = await User.find({ admin: true }).countDocuments()
 			count = namespace.length
@@ -98,14 +98,20 @@ module.exports = (app, router, { User }) => {
 		} else {
 			
 			User.create(info, (err, doc) => {
+				if (err) {
+					
+					return res.status(500).json({
+						error: err.message
+					})
+				}
 				if (doc) {
 
 					console.log('注册成功后账号数---', len + 1)
-		
 					res.json({
 						responseCode: '0000',
 						responseMsg: '注册成功',
 					})
+					
 				} else {
 					let message, { errors } = err
 					for (let k in errors) {
