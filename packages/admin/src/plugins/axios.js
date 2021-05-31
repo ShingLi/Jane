@@ -32,7 +32,7 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
     response => {
-        const { data: { responseCode, responseMsg, responseData } } = response
+        const { data: { responseCode, responseMsg, responseData }, config: { headers: { noTips } } } = response
         if (responseCode != '0000') {
             Message({
                 message: responseMsg || '返回值错误',
@@ -46,7 +46,7 @@ instance.interceptors.response.use(
                 }, 2100)
             }
         } else {
-            if (responseMsg) {
+            if (responseMsg && !noTips) {
                 Message({
                     message: responseMsg,
                     type: 'success',
