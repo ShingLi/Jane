@@ -53,3 +53,8 @@
 
 + alt 对应 option
 + win 对应command
+
+### ._开头文件删除
+
++ `alias sweep="find . -name .DS_Store -type f -delete ; find . -type d | xargs dot_clean -m"`
++ 在要删除的文件夹中运行`sweep`
