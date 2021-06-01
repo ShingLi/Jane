@@ -27,8 +27,8 @@ export default {
         width: 100%;
         height: 100%;
         .icon{
-            width: 20px;
-            height: 20px;
+            width: 100%;
+            height: 100%;
             vertical-align: -0.15em;
             fill: currentColor;
             overflow: hidden;
