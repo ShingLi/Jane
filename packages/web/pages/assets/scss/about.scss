@@ -68,7 +68,10 @@
                 display: flex;
                 align-items: center;
                 margin-bottom: 12px;
-
+                .svg{
+                    width: 21px;
+                    height: 21px;
+                }
                 &:last-child{
                     margin-bottom: 0;
                 }

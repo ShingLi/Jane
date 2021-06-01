@@ -5,7 +5,7 @@
             <div class="navbar">
                 <p>QQ音乐</p>
             </div>
-            <ul class="timeline">
+            <ul class="timeline" v-if="articleList.length">
                 <li class="timeline-item" v-for="list of articleList" :key="list.year">
                     <h3 class="year">{{ list.year }}年</h3>
                     <ul>
@@ -23,13 +23,26 @@
                                             <span>{{ item.read }} read</span>
                                         </div>
                                     </div>
-                                    <img :src="item.imgSrc" class="img">
+                                    <img :src="item.imgSrc" class="img" v-if="item.imgSrc">
                                 </div>
                             </div>
                         </li>
                     </ul>
                 </li>
             </ul>
+            <ul class="timeline" v-else :style="{ marginTop: 0 }">
+                <div class="nodata">
+                    <i class="icon--gongshi">
+                        <svg-icon iconClass="gongshi" />
+                    </i>
+                    <p>~~ 暂 无 数 据 ~~</p>
+                </div>
+            </ul>
+            <div class="daodil" v-if="loading">
+                <div class="line"></div>
+                <div class="text">到底了</div>
+                <div class="line"></div>
+            </div>
         </div>
         <!-- 背景区域 -->
         <div class="nest" ref="nest">
@@ -44,7 +57,8 @@
             </div>
         </div>
         <!-- 文章详情 -->
-        <NuxtChild />
+        <!-- 不使用子路由改成动态路由 -->
+        <!-- <NuxtChild /> -->
     </div>
 </template>
 <script>
@@ -83,31 +97,35 @@ export default {
     name: 'Record',
     async asyncData ({ $axios }) {
         const data = await $axios.post('/web/record')
-        const articleList = dealwithData(data.articleList)
+        
+        let articleList
+
+        if (data.totalCount - 0 > 0) {
+            articleList = dealwithData(data?.articleList)
+        }
 
         return {
             pageData: data,
-            articleList
+            articleList: articleList ?? []
         }
         
     },
     data () {
         return {
-            scrollTop: 0,
-            
+            loading: false
         }
     },
     watch: {
         $route (to, from) {
-            if (to.name == 'record') {
-                // 反正滚动穿透
-                document.body.style.cssText = ''
-                document.documentElement.style.cssText = ''
-                // 回复之前预览的位置
-                // window.pageYOffset = this.scrollTop
-            } else if (true) {
+            // if (to.name == 'record') {
+            //     // 反正滚动穿透
+            //     document.body.style.cssText = ''
+            //     document.documentElement.style.cssText = ''
+            //     // 回复之前预览的位置
+            //     // window.pageYOffset = this.scrollTop
+            // } else if (true) {
                 
-            }
+            // }
         }
     },
     async mounted () {
@@ -158,7 +176,7 @@ export default {
 
         jump () {
             this.$router.push({
-                path: '/record/111111.html'
+                path: ''
             })
         },
         

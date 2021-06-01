@@ -3,9 +3,12 @@
     .record__container{
         position: relative;
         z-index: 2;
-        width: 372px;
+        width: 368px;
         margin-left: auto;
-        padding: 0 13px 0 15px;
+        padding: 0 13px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
         .navbar{
             height: 48px;
             display: flex;
@@ -25,6 +28,7 @@
         .timeline{
             position: relative;
             margin-top: 48px;
+            flex: 1;
             &-item{
                 margin-bottom: 20px;
                 .year{
@@ -33,7 +37,7 @@
                     color: #333;
                     margin-bottom: 20px;
                     position: relative;
-                    left: -8px;
+                    left: -1px;
                 }
                 >ul{
                     .timeline__item{
@@ -62,9 +66,9 @@
                                     transform: scale(1.05) translateX(-15px);
                                 }
                                 .img{
-                                    width: 70px;
+                                    width: 80px;
                                     border-radius: 3px;
-                                    flex: 0 0 70px;
+                                    flex: 0 0 80px;
                                 }
                                 .right{
                                     flex: 1;
@@ -124,6 +128,41 @@
                 }
             }
         }
+        .nodata{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            margin-top: -48px;
+            .icon--gongshi{
+                display: block;
+                width: 150px;
+                height: 150px;
+            }
+            
+            p{
+                text-align: center;
+                font-size: 15px;
+                font-family: xiu;
+            }
+        }
+        .daodil{
+            height: 50px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .line{
+                width: 101px;
+                height: 1px;
+                background-color: #CCCCCC;
+            }
+            .text{
+                font-size: 15px;
+                font-family: xiu;
+                margin: 0 15px;
+            }
+        }
     }
 
     .nest{
@@ -156,8 +195,8 @@
             }
         }
         .timeaxes{
-            flex: 0 0 375px;
-            width: 375px;
+            flex: 0 0 370px;
+            width: 370px;
             height: 100%;
             position: relative;
             z-index: -2;
