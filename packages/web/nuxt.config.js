@@ -127,6 +127,7 @@ export default function (configContext) {
                         routes[i].path = routes[i].path + '.html'
 
                         // 修改子路由路径，避免出现 /xx.html/jane.html
+                        // 2021、06、01 文章页不用子路由，改为动态路由，子路由 seo 爬虫抓不到
                         if (routes[i].children) {
                             
                             for (let v of routes[i].children) {
@@ -140,6 +141,9 @@ export default function (configContext) {
                         }
                     }
                 }
+
+                console.info(JSON.stringify(routes, null, '  '))
+
                 for (let i = 0, length = projectConfig.customRoutes.length; i < length; i++) {
                     routes.push(projectConfig.customRoutes[i])
                 }
