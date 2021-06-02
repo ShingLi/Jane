@@ -5,7 +5,7 @@ import router from '@/permission'
 
 const state = {
     token: getCookie('token') || '', // token
-    roles: '', // 权限
+    roles: 'guest', // 权限 guest 访客 admin 管理员
     userInfo: {}
 }
 
@@ -24,7 +24,7 @@ const mutations = {
         })
     },
     SETUSERINFO (state, info) {
-        state.roles = info.roles ?? ''
+        state.roles = info?.roles ?? 'guest'
     }
 }
 
