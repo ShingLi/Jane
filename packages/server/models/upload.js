@@ -1,15 +1,16 @@
-const mongoose = require('mongoose')
+module.exports = (Schema, model) => {
+    
+    const uploadSchema = new Schema({
+        fieldname: String,
+        originalname: String,
+        mimetype: String,
+        filename: String,
+        path: String,
+        date: {
+            type: String,
+            default: new Date().toLocaleString()
+        }
+    })
 
-const uploadSchema = new mongoose.Schema({
-	fieldname: String,
-    originalname: String,
-    mimetype: String,
-    filename: String,
-    path: String,
-    date: {
-        type: String,
-        default: new Date().toLocaleString()
-    }
-})
-
-module.exports = mongoose.model('upload', uploadSchema)
+    return model('Upload', uploadSchema)
+}
