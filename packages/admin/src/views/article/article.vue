@@ -13,11 +13,24 @@
                         v-model="formData.title"
                     />
                 </el-form-item>
-                <el-form-item prop="value">
+                <el-form-item>
+                    <el-input placeholder="请输入SEO关键字"
+
+                        prefix-icon="el-icon-paperclip"
+                        class="title"
+                        type=”text“
+                        props="title"
+                        v-model="formData.seo"
+                    />
+                </el-form-item>
+
+                <el-form-item prop="content">
                     <div class="markdown">
                     <mavon-editor
-                        v-model="formData.value"
+                        v-model="formData.content"
                         :subfield="false"
+                        fontSize="15px"
+                        codeStyle="monokai"
                     />
                 </div>
                 </el-form-item>
@@ -75,7 +88,7 @@
                 </div>
 
                 <div class="btnwrap">
-                    <el-button type="primary" size="medium" icon="el-icon-check" @click.native="submit" class="custom__btn">确认</el-button>
+                    <el-button type="primary" size="medium" @click.native="submit">确认</el-button>
                 </div>
             </div>
         </el-form>
@@ -104,7 +117,7 @@ export default {
                         }
                     }
                 ],
-                value: [
+                content: [
                     {
                         required: true,
                         validator: (rule, value, callback) => {
@@ -116,11 +129,12 @@ export default {
                 ]
             },
             formData: {
-                title: '',
-                value: '',
-                extraMusicLink: '',
-                internalMusicLink: '',
-                internalImgLink: 'https://jsonplaceholder.typicode.com/posts/'
+                title: '', // 文章标题
+                seo: '', // seo 关键字
+                content: '', // 文章内容
+                extraMusicLink: '', // 外部音乐连接
+                internalMusicLink: '', // 内部音乐地址
+                internalImgLink: 'https://jsonplaceholder.typicode.com/posts/', // 图片上传地址
             }
         }
     },
@@ -145,9 +159,14 @@ export default {
 
         submit () {
             this.$refs.ruleForm.validate((valid) => {
-                console.log(valid)
                 if (valid) {
+                    const data = {
+                        ...this.formData
+                    }
 
+                    this.$http.post('saveArticle').then(data => {
+                        
+                    })
                 }
             })
         },
