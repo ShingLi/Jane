@@ -10,8 +10,8 @@ const instance = axios.create({
     baseURL: process.env.VUE_APP_BASEURL,
     timeout: 5000,
     validateStatus: status => {
-        // 处理下token错误的返回状态码 否则axios直接reject
-        return status >= 200 && status <= 401
+        // 处理下token错误的返回状态码 否则axios直接reject  登录失效 401  客户端错误422
+        return status >= 200 && status <= 500
     }
 })
 
