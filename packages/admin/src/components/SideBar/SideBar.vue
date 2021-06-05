@@ -15,7 +15,10 @@
                 @mouseenter="mousetoggle"
                 @mouseleave="mousetoggle"
                 @click="gopage(v)"
-            >{{ v.title }}</li>
+            >
+                <i class="icon--menu" :class="v.icon"></i>
+                {{ v.title }}
+            </li>
         </ol>
     </div>
 </template>
@@ -35,27 +38,33 @@ export default {
             menuList: [
                 {
                     title: '首页',
-                    path: '/index'
+                    path: '/index',
+                    icon: 'el-icon-sunny'
                 },
                 {
                     title: '文章',
-                    path: '/article'
+                    path: '/article',
+                    icon: 'el-icon-magic-stick'
                 },
                 {
                     title: '评论',
-                    path: ''
+                    path: '/comments',
+                    icon: 'el-icon-chat-round'
                 },
                 {
                     title: 'web',
-                    path: '/web'
+                    path: '/web',
+                    icon: 'el-icon-umbrella'
                 },
                 {
                     title: '设置',
-                    path: '/set'
+                    path: '/set',
+                    icon: 'el-icon-setting'
                 },
                 {
                     title: '退出',
-                    path: '/exit'
+                    path: '/exit',
+                    icon: 'el-icon-switch-button'
                 }
             ],
             avatar: require('../../assets/images/WechatIMG31.jpeg')
@@ -140,6 +149,12 @@ export default {
                 height: 35px;
                 display: flex;
                 align-items: center;
+                .icon--menu{
+                    display: inline-block;
+                    font-size: 18px;
+                    margin-right: 10px;
+                    // color: #ccc;
+                }
                 &.hover{
                     color: #409EFF;
                     background-color: #fff;
