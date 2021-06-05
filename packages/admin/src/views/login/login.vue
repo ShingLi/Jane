@@ -25,12 +25,13 @@
                             <p class="sign__tips">欢迎你～～～</p>
                             <div class="sign__content">
                                 <el-form-item class="username custom__form--item" prop="username">
-                                    <el-input v-model="formData.username" ref="l_uname" placeholder="请输入账号" autofocus/>
+                                    <el-input v-model="formData.username" ref="l_uname" placeholder="请输入账号" autofocus class="no--border"/>
                                     <img src="./images/greeting.png" alt="" width="120" height="114">
                                 </el-form-item>
                                 <el-form-item class="custom__form--item password" prop="password">
                                     <el-input v-model="formData.password"
                                         placeholder="请输入密码"
+                                        class="no--border"
                                         @keyup.enter.native="sign"
                                     />
                                     <img src="./images/blindfold.png" alt="" width="103" height="84">
@@ -55,10 +56,10 @@
                             <p>注册账号</p>
                             <div class="sign__content">
                                 <el-form-item class="username custom__form--item" prop="username">
-                                    <el-input v-model="formData.username" ref="r_uname" placeholder="请输入账号"/>
+                                    <el-input v-model="formData.username" ref="r_uname" placeholder="请输入账号" class="no--border"/>
                                 </el-form-item>
                                 <el-form-item class="custom__form--item password" prop="password">
-                                    <el-input v-model="formData.password" placeholder="请输入密码" @keyup.enter.native="sign"/>
+                                    <el-input v-model="formData.password" placeholder="请输入密码" @keyup.enter.native="sign" class="no--border"/>
                                 </el-form-item>
                             </div>
                             <div class="sign__btn">

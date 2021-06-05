@@ -294,3 +294,15 @@
         bottom: 12vh;
     }
 }
+
+.no--border{
+    ::v-deep{
+        .el-input__inner {
+            border-radius: 0;
+            border-left: none;
+            border-top: none;
+            border-right: none;
+            background-color: rgba(255, 255, 255, 0);
+        }
+    }
+}
