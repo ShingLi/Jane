@@ -54,10 +54,12 @@
                                     drag
                                     :action="formData.internalMusicLink"
                                 >
-                                    <div class="icon--music">
-                                        <svg-icon iconName="music"/>
+                                    <div class="tips">
+                                        <div class="icon--music">
+                                            <svg-icon iconName="music"/>
+                                        </div>
+                                        <p class="icon--text">背景音乐</p>
                                     </div>
-                                    <p class="icon--text">背景音乐</p>
                                 </el-upload>
                             </li>
                             <li>
@@ -66,17 +68,18 @@
                                     with-credentials
                                     name="fengmian"
                                     :action="formData.internalImgLink"
-                                    :auto-upload="true"
+                                    :auto-upload="false"
                                     :show-file-list="false"
-                                    :limit="1"
-                                    :before-upload="beforeAvatarUpload"
-                                    :on-exceed="handleAvatarExceed"
+                                    :on-change="onChangeIMG"
                                     :on-success="handleAvatarSuccess"
                                 >
-                                    <div class="icon--fengmian">
-                                        <svg-icon iconName="fengmian"/>
+                                    <img :src="formData.internalImgLink" v-if="formData.internalImgLink" class="preview">
+                                    <div class="tips" v-else>
+                                        <div class="icon--fengmian">
+                                            <svg-icon iconName="fengmian"/>
+                                        </div>
+                                        <p class="icon--text">封面图片</p>
                                     </div>
-                                    <p class="icon--text">封面图片</p>
                                 </el-upload>
                             </li>
                         </ul>
@@ -109,10 +112,8 @@ export default {
                         validator: (rule, value, callback) => {
                             if (!value) {
                                 callback(new Error('哦？你好像没输入文章标题呀!'))
-                            } else if (/[\u4e00-\u9fa5]/gm.test(value)) {
-                                callback()
                             } else {
-                                callback(new Error('你好像在乱输入，文章标题为中文汉字哦!'))
+                                callback()
                             }
                         }
                     }
@@ -134,18 +135,28 @@ export default {
                 content: '', // 文章内容
                 extraMusicLink: '', // 外部音乐连接
                 internalMusicLink: '', // 内部音乐地址
-                internalImgLink: 'https://jsonplaceholder.typicode.com/posts/', // 图片上传地址
+                internalImgLink: '', // 图片上传地址
             }
         }
     },
     
     methods: {
-        beforeAvatarUpload (file) {
+        onChangeIMG ({ raw: file }) {
             const defaulType = ['image/jpeg', 'image/png', 'image/jpg']
             if (!defaulType.includes(file.type)) {
                 this.$message.error('请上传jpeg/png/jpg 类型的图片')
                 return false
+            } else {
+                this.revokeUrl()
+
+                const temporaryUrl = URL.createObjectURL(file)
+
+                this.formData.internalImgLink = temporaryUrl
             }
+        },
+
+        revokeUrl () {
+            if (this.formData.internalImgLink) URL.revokeObjectURL(this.formData.internalImgLink)
         },
 
         handleAvatarSuccess (response, file, fileist) {
@@ -164,8 +175,10 @@ export default {
                         ...this.formData
                     }
 
-                    this.$http.post('saveArticle').then(data => {
-                        
+                    this.$http.post('saveArticle', data).then(data => {
+                        if (data.isOk) {
+                            this.$refs.ruleForm.resetFields()
+                        }
                     })
                 }
             })

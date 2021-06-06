@@ -1,0 +1,21 @@
+.comment{
+    .main{
+        margin-top: 40px;
+        .custom__table{
+            flex: 1;
+            ::v-deep .text-ellipsis{
+                .cell{
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display:-webkit-box;
+                    -webkit-box-orient:vertical;
+                    -webkit-line-clamp:3;
+                }
+            }
+        }
+        .footer{
+            margin-top: 23px;
+            text-align: right;
+        }
+    }
+}
