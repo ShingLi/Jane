@@ -29,6 +29,13 @@ const config = {
     },
     chainWebpack: config => {
         
+        if (process.env.use_analyzer) {
+            // 打包分析包的大小
+            config.plugin('webpack-bundle-analyzer')
+                .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
+                .end()
+        }
+
         config.module.rule('svg').exclude.add(resolve('src/assets/svg'))
 
         config
@@ -50,14 +57,15 @@ const config = {
                     symbolId: 'icon-[name]'
                 })
                 .end()
-
+                
                 // console.log(config.toString())
     },
     productionSourceMap: false,
     devServer: {
         after (app, server, compiler) {
             devServer(app, server, compiler)
-        }
+        },
+        disableHostCheck: true,
     }
 }
 
