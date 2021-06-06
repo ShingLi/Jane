@@ -114,6 +114,9 @@ export default function (configContext) {
             'assets/scss/index'
         ],
         components: true, // 2.13+ // 自动注册组件 https://github.com/nuxt/components
+        env: {
+            NODE_ENV: process.env.NODE_ENV, // 为什么这里又要赋值一遍？ 不是在package.json 里面用cross-env 设置了吗？不设置有的地方取得变量不正确
+        },
         loading: 'components/Load/Load.vue', // 全局加载loading
         router: {
             extendRoutes (routes, resolve) {
@@ -190,16 +193,17 @@ export default function (configContext) {
         axios: {
             validateStatus: function (status) {
                 return status >= 200 && status <= 401 // 如果接口有问题 我会塞一个401
-            }
+            },
+            // baseURL 在 plugins/axios 设置
         },
         // 运行时配置 https://zh.nuxtjs.org/blog/moving-from-nuxtjs-dotenv-to-runtime-config/
         // 从$config 里面获取
-        publicRuntimeConfig: {
-            baseURL: process.env.BASE_URL
-        },
-        privateRuntimeConfig: {
-            baseURL: '${PUBLIC_URL}${BASE_URL}'
-        },
+        // publicRuntimeConfig: {
+        //     baseURL: process.env.BASE_URL
+        // },
+        // privateRuntimeConfig: {
+        //     baseURL: '${PUBLIC_URL}${BASE_URL}'
+        // },
         server: {
             port: '7000',
             timing: {
