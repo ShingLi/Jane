@@ -4,6 +4,8 @@ const path = require('path')
 const { merge } = require('webpack-merge')
 const TerserPlugin = require("terser-webpack-plugin") // 压缩代码
 
+import BASE_URL from './config/env'
+
 
 // 业务模块
 const globalHead = require('./config/head')
@@ -195,6 +197,7 @@ export default function (configContext) {
                 return status >= 200 && status <= 401 // 如果接口有问题 我会塞一个401
             },
             // baseURL 在 plugins/axios 设置
+            baseURL: BASE_URL,
         },
         // 运行时配置 https://zh.nuxtjs.org/blog/moving-from-nuxtjs-dotenv-to-runtime-config/
         // 从$config 里面获取
