@@ -78,7 +78,7 @@ export default {
             left: 50%;
             transform: translate(-50%, -50%);
             .errorpage{
-                width: 50vw;
+                width: 50.1vw;
                 height: 50vh;
                 margin: auto;
                 ::v-deep .icon{
