@@ -201,3 +201,12 @@
 
   + 方案二 没想好
   
+>2021/06/07
+
++ 页面报错显示`connect ECONNREFUSED 127.0.0.1:80`
++ 背景: 区分环境接口走不同的请求地址，结果页面报错
++ 为什么会有这个错误？
+  + 在`plugins/axios.js` 这个js里面设置`baseURL` 使用`$axios.setBaseURL()` 设置请求的基础路径，然后页面直接挂了
++ 解决
+  + 在`nuxt.config.js`的`axios`属性里面设置`baseURL`解决, 一定要填写完整的路径如`http://localhost:4000` 不能省略协议
++ 待阅读源码知道原因所在
