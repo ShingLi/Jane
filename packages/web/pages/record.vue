@@ -176,7 +176,7 @@ export default {
 
         jump () {
             this.$router.push({
-                path: ''
+                path: '/essays/1.html'
             })
         },
         

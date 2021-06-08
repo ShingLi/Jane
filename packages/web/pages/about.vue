@@ -78,7 +78,7 @@ export default {
     asyncData ({ $axios, error }) {
         return $axios({
             method: 'post',
-            url: '/web/about',
+            url: 'about',
         }).then((data) => {
             console.log(data)
             return {

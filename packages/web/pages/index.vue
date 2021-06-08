@@ -3,7 +3,7 @@
         <div class="tips">
             <p><a href="//beian.miit.gov.cn" target="_blank">皖ICP备18000360号</a></p>
             <transition name="fade">
-                <h4 v-if="!isCollapse" class="copy fast">那个菇凉，她好像从没主动找你聊过日常。一切好像曾开始过，但！陌生到陌生或许是你和她所有的故事</h4>
+                <h4 v-if="!isCollapse" class="copy fast">皆是风景，幸会！</h4>
             </transition>
         </div>
         <canvas class="canvas"></canvas>
@@ -19,12 +19,9 @@ export default {
     },
     async asyncData ({ $axios }) {
         const { data } = await $axios({
-            url: '/web/index',
+            url: 'index',
             method: 'post',
         })
-        return {
-            
-        }
     },
     data () {
         return {
@@ -38,6 +35,10 @@ export default {
     },
     mounted () {
         Canvas()
+        // this.$axios({
+        //     url: 'index',
+        //     method: 'post',
+        // })
         // this.queue()
     },
     methods: {

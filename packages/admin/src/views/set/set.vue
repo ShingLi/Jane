@@ -15,9 +15,6 @@
                     class="avatar-uploader"
                     name="janeAvatar"
                     action="http://localhost:4000/admin/upload"
-                    :headers="{
-                        Authorization: token
-                    }"
                     :show-file-list="false"
                     :auto-upload="false"
                     :on-change="onChange"

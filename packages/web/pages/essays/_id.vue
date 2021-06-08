@@ -113,11 +113,12 @@ export default {
         height: 100%;
         overflow-y: scroll;
         z-index: 9;
-        transition: all .4s ease-in-out;
+        background-color: #fff;
+        transition: all 10s ease-in-out;
         &.bgColor{
             .scrollWrap{
-                background-color: #fff;
-                transition: all .4s ease-in-out;
+                // background-color: #fff;
+                // transition: all .4s ease-in-out;
             }
         }
         .back{
@@ -131,7 +132,7 @@ export default {
             }
         }
         .scrollWrap{
-            background-color: #f4f4f4;
+            background-color: #fff;
             section{
                 width: 800px;
                 margin: auto;
