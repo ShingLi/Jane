@@ -23,6 +23,8 @@ instance.interceptors.request.use(
         }
         // 判断是相对路径还是绝对路径，以此区分是否走本地url地址
         config.url = config.url.includes('://') ? config.url : urls[config.url]
+        // 因为基础baseURL是 //localhost:4000/admin web端接口白名单是/web 这里需要修正下请求URl
+        // console.log(config)
         return config
     },
     err => {
@@ -34,8 +36,8 @@ instance.interceptors.response.use(
     response => {
         const { data: { responseCode, responseMsg, responseData }, config: { headers: { noTips } } } = response
         if (responseCode != '0000') {
-            Message({
-                message: responseMsg || '返回值错误',
+            responseMsg && Message({
+                message: responseMsg,
                 type: 'error',
                 duration: 2000,
             })
