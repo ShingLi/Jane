@@ -12,4 +12,5 @@ module.exports = (app, router, { Upload }) => {
     })
 
     app.use('/admin', router)
+    
 }

@@ -31,7 +31,7 @@ const upload = multer({
 
 module.exports = (app, router, { Upload }) => {
 
-    /*  上传
+    /*  admin--上传
     -------------------------- */
     router.post('/upload', upload.single('janeAvatar'), async (req, res, next) => {
         console.log('上传头像--req__file', req.file)
@@ -59,6 +59,7 @@ module.exports = (app, router, { Upload }) => {
             }
         })
     })
+
     app.use('/admin', router)
 
 }
