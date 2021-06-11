@@ -14,7 +14,7 @@
                     <el-input v-model="indexFormData.indexDesc" placeholder="请输入首页文案"></el-input>
                 </el-form-item>
                 <div class="btnwrap">
-                    <el-button type="text">保存</el-button>
+                    <el-button type="text" @click="saveIndex">保存</el-button>
                 </div>
             </el-form>
             <el-divider content-position="right" class="small">关于</el-divider>
@@ -67,6 +67,19 @@ export default {
             abourpre: '',
             aboutDesc: '',
             color: 'rgba(19, 206, 102, 0.8)'
+        }
+    },
+    created () {
+        
+    },
+    methods: {
+        async saveIndex () {
+            const DATA = {
+                ...this.indexFormData,
+                outer: true,
+            }
+
+            const res = await this.$http.post('saveIndex', DATA) 
         }
     }
 }

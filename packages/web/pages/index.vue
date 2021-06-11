@@ -35,11 +35,6 @@ export default {
     },
     mounted () {
         Canvas()
-        // this.$axios({
-        //     url: 'index',
-        //     method: 'post',
-        // })
-        // this.queue()
     },
     methods: {
         queue () {
