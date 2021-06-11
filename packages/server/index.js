@@ -3,6 +3,8 @@ import http from 'http'
 
 import express from 'express'
 import cors from 'cors'
+import consola from 'console'
+import { Schema, model } from 'mongoose'
 
 import bodyParser from 'body-parser'
 import expressJWT from 'express-jwt'
@@ -23,7 +25,7 @@ app.use(expressJWT({
 	secret: 'jane', // 密钥
 	algorithms: ['HS256'], // 算法 rs256 有问题 https://stackoverflow.com/questions/39874731/unauthorizederror-invalid-algorithm-express-jwt
 }).unless({
-	path: ['/admin/login', '/admin/signup'], // 不经过Token 解析
+	path: [ '/admin/login', '/admin/signup', /\/web\/\w*/], // 不经过Token 解析
 }))
 
 // token 错误自定义 和 token 过期自动刷新
@@ -50,7 +52,7 @@ const global = fs.readdirSync(__dirname, 'utf-8').filter((dir) => presetdir.incl
 		if (/\.js/.test(item)) {
 			let name = item.replace(/.\js/, '')
 			if (cur === 'models') name = name.replace(/\S/, s => s.toUpperCase())
-			total[cur][name] = require(`${__dirname}/${cur}/${name}`)
+			total[cur][name] = require(`${__dirname}/${cur}/${name}`)(Schema, model)
 		}
 	})
 	return total
@@ -62,7 +64,7 @@ fs.readdirSync(routesdir, 'utf-8').forEach(dir => {
 		fs.readdirSync(dir).forEach(route => {
 			route = route.replace(/\.js$/, '')
 			if (require(`${dir}/${route}`)) {
-				require(`${dir}/${route}`)(app, router, global['models'])
+				require(`${dir}/${route}`)(app, router, global['models'], consola)
 			}
 		})
 	}
