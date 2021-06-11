@@ -1,10 +1,5 @@
 module.exports = (Schema, model) => {
     const aritcleSchema = new Schema ({
-        // 文章id
-        id: {
-            type: Number,
-            default: 0,
-        },
         // 文章标题
         title: {
             type: String,
@@ -42,12 +37,17 @@ module.exports = (Schema, model) => {
         updatedTime: {
             type: String,
             default: '',
-            required: true
         },
         // 阅读数
-        readNum: Number,
+        readNum: {
+            type: Number,
+            default: 0,
+        },
         // 喜欢数
-        likeNum: Number,
+        likeNum: {
+            type: Number,
+            default: 0,
+        },
     })
 
     return model('Article', aritcleSchema)
