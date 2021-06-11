@@ -1,15 +1,17 @@
 import consola from 'consola'
+import BASE_URL from 'config/env'
+
 export default function ({ $axios, redirect, error }, inject) {
-    /* axios 全局处理
+    /* axios 全局处理 请求头带上token
     -------------------------- */
     $axios.setHeader('Authorization', 'jane')
+    // 
+    // $axios.defaults.baseURL = BASE_URL
 
-    // $axios.onRequest(config => {
-    //     if (process.env.NODE_ENV === 'development') {
-    //         // 从本地读取json
-    //     }
-    //     return config
-    // })
+    $axios.onRequest(config => {
+        consola.info(config)
+        return config
+    })
 
     $axios.onResponse(response => {
         const { data: { responseCode, responseMsg, responseData } } = response
@@ -20,8 +22,18 @@ export default function ({ $axios, redirect, error }, inject) {
         }
     })
 
-    $axios.onError(error => {
+    $axios.onError(err => {
         // 这里错误
-        consola.error('axios--onerror函数', error)
+        if (err) {
+            
+            console.log('exec===> error')
+            console.dir(err)
+            error({
+                statusCode: err?.response?.status ?? 500,
+                messgae: err?.response?.statusText + '' + err?.response?.data.responseMsg ?? ''
+            })
+        }
+        return Promise.resolve(false)
+        
     })
 }
