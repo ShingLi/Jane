@@ -1,10 +1,15 @@
 module.exports = (Schema, model) => {
     
     const indexSchema = new Schema({
-        recordNumber: String,
+        id: {
+            type: Number,
+            default: 1
+        },
+        ICPNumber: String,
         ICPwebsit: String,
-        indexDesc: String,
+        IndexDesc: String,
+        CreateTime: String,
     })
 
-    return model('Index', indexSchema)
+    return model('home', indexSchema)
 }

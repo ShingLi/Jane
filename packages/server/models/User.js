@@ -34,5 +34,5 @@ module.exports = (Schema, model) => {
 		}
 	})
 
-	return model('User', userSchema)
+	return model('user', userSchema)
 }

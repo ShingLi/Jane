@@ -12,5 +12,5 @@ module.exports = (Schema, model) => {
         }
     })
 
-    return model('Upload', uploadSchema)
+    return model('upload', uploadSchema)
 }

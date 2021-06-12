@@ -50,5 +50,5 @@ module.exports = (Schema, model) => {
         },
     })
 
-    return model('Article', aritcleSchema)
+    return model('article', aritcleSchema)
 }
