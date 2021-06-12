@@ -9,6 +9,9 @@ process.on('unhandledRejection', (err, p) => {
 })
 
 module.exports = () => {
+
+	mongoose.set('useFindAndModify', false) // model.findOneAndUpdate() 使用回报警告废弃提示 https://mongoosejs.com/docs/deprecations.html#findandmodify
+
 	mongoose.connect('mongodb://127.0.0.1/runoob', { 
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
