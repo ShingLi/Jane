@@ -1,9 +1,11 @@
 <template>
     <div class="index">
         <div class="tips">
-            <p><a href="//beian.miit.gov.cn" target="_blank">皖ICP备18000360号</a></p>
+            <p>
+                <a :href="ICPWebsit" target="_blank">{{ ICPNumber }}</a>
+            </p>
             <transition name="fade">
-                <h4 v-if="!isCollapse" class="copy fast">皆是风景，幸会！</h4>
+                <h4 v-if="!isCollapse" class="copy fast">{{ IndexDesc }}</h4>
             </transition>
         </div>
         <canvas class="canvas"></canvas>
@@ -14,14 +16,24 @@ import { mapState } from 'vuex'
 import Canvas from '~/components/Canvas/Canvas.js'
 export default {
     name: 'Index',
-    async fetch () {
-        
-    },
     async asyncData ({ $axios }) {
-        const { data } = await $axios({
+        const  responseData  = await $axios({
             url: 'index',
             method: 'post',
         })
+
+        console.log('data === >', responseData)
+
+        const presetData = {
+            ICPNumber: '皖ICP备18000360号',
+            IndexDesc: '皆是风景，幸会！',
+            ICPWebsit: '//beian.miit.gov.cn',
+        }
+
+        return {
+            ...presetData,
+            IndexDesc: responseData?.IndexDesc ?? '皆是风景，幸会！'
+        }
     },
     data () {
         return {
