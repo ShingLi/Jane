@@ -9,12 +9,13 @@ import { Schema, model } from 'mongoose'
 import bodyParser from 'body-parser'
 import expressJWT from 'express-jwt'
 
+import { fn } from './utils'
+
 const app = express()
 const router = express.Router()
 
 const port = process.env.PORT || 4000
 const host = process.env.HOST || 'localhost'
-
 
 app.use(cors())
 app.use('/public', express.static('public')) // 静态文件访问
@@ -64,7 +65,7 @@ fs.readdirSync(routesdir, 'utf-8').forEach(dir => {
 		fs.readdirSync(dir).forEach(route => {
 			route = route.replace(/\.js$/, '')
 			if (require(`${dir}/${route}`)) {
-				require(`${dir}/${route}`)(app, router, global['models'], consola)
+				require(`${dir}/${route}`)(app, router, global['models'], fn)
 			}
 		})
 	}
