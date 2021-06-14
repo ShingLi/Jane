@@ -48,6 +48,10 @@ module.exports = (Schema, model) => {
             type: Number,
             default: 0,
         },
+        year: {
+            type: String,
+            default: ''
+        }
     })
 
     return model('article', aritcleSchema)

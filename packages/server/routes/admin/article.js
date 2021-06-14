@@ -4,6 +4,7 @@ module.exports = (app, router, { Article }) => {
 
         const postData = req.body ? Object.assign({}, req.body, {
             createTime: + new Date(),
+            year: new Date().getFullYear()
         }) : req.body
 
         console.log('postData---', postData)
