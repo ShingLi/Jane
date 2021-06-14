@@ -44,25 +44,34 @@ const actions = {
         })
     },
     // 退出登陆
-    signout ({ commit }) {
-        MessageBox.confirm('是否要退出登录？', '提示', {
-            confirmButtonText: '确定',
-            cancelButtonText: '取消',
-            type: 'warning',
-        })
-            .then(() => {
-                commit('REMOVETOKEN')
-                Message({
-                    type: 'success',
-                    message: '已退出登录',
-                })
+    signout ({ commit }, signoutType = 'normal') {
+        if (signoutType === 'normal') {
+            MessageBox.confirm('是否要退出登录？', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning',
             })
-            .catch(() => {
-                Message({
-                    type: 'info',
-                    message: '已取消退出',
+                .then(() => {
+                    commit('REMOVETOKEN')
+                    Message({
+                        type: 'success',
+                        message: '已退出登录',
+                    })
                 })
+                .catch(() => {
+                    Message({
+                        type: 'info',
+                        message: '已取消退出',
+                    })
+                })
+        } else {
+            // 登录失效自动退出登录状态
+            commit('REMOVETOKEN')
+            Message({
+                type: 'success',
+                message: '已退出登录',
             })
+        }
     },
     // 获取用户信息
     userInfo ({ commit, state: { token } }) {
@@ -71,7 +80,7 @@ const actions = {
                 noTips: true,
             }
         }).then((userInfo) => {
-            console.log('vuex__act--userinfo', userInfo)
+            // console.log('vuex__act--userinfo', userInfo)
             commit('SETUSERINFO', userInfo)
         })
     }
