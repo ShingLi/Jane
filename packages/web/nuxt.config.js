@@ -1,7 +1,9 @@
 // licheng 
 const fs = require('fs')
 const path = require('path')
-const { merge } = require('webpack-merge')
+const {
+    merge
+} = require('webpack-merge')
 const TerserPlugin = require("terser-webpack-plugin") // 压缩代码
 
 import BASE_URL from './config/env'
@@ -18,7 +20,7 @@ const whiteSpace = ['dist', 'node_modules', 'servermock', 'assets', 'static', 'c
 const rootDir = fs.readdirSync(__dirname, {
     encoding: 'utf8',
     withFileTypes: true, // http://nodejs.cn/api/fs.html#fs_fs_readdirsync_path_options 返回Dirent对象
-}).filter( dir=> {
+}).filter(dir => {
     if (dir.isDirectory()) {
         if (!whiteSpace.includes(dir.name)) {
             return true
@@ -26,7 +28,7 @@ const rootDir = fs.readdirSync(__dirname, {
     }
 })
 
-const aliasObj = rootDir.reduce((accumuator, item)=> {
+const aliasObj = rootDir.reduce((accumuator, item) => {
     accumuator[item.name] = resolve(item.name)
     return accumuator
 }, {})
@@ -55,17 +57,22 @@ export default function (configContext) {
                 cacheDirectory: true, // babel 缓存，加快构建速度
             },
             cache: false, // Enable cache of terser-webpack-plugin and cache-loader， 这玩意开了速度变慢
-            extend (config, ctx) {
-                let { alias } = config.resolve
+            extend(config, ctx) {
+                let {
+                    alias
+                } = config.resolve
                 alias = merge(alias, aliasObj)
                 /* 添加sourcemap (这里需要一个动态值)
                 -------------------------- */
                 if (ctx.isClient) {
-                    config.devtool = 'none'
-                    
+
+                    if (configContext.dev) {
+                        config.devtool = 'eval-source-map'
+                    } else config.devtool = 'none'
+
                     const fileloader = config.module.rules.find(v => v.test.test('.svg'))
                     fileloader.exclude = resolve('assets/svg')
-    
+
                     config.module.rules.push({
                         test: /\.svg$/i,
                         loaders: 'svg-sprite-loader',
@@ -74,7 +81,7 @@ export default function (configContext) {
                             symbolId: 'icon-[name]'
                         }
                     })
-                    // console.log(config.module.rules)
+
                 }
                 config.module.unknownContextCritical = true
             },
@@ -121,10 +128,10 @@ export default function (configContext) {
         },
         loading: 'components/Load/Load.vue', // 全局加载loading
         router: {
-            extendRoutes (routes, resolve) {
-                
+            extendRoutes(routes, resolve) {
+
                 for (let i = routes.length; i--;) {
-                    
+
                     if (routes[i].path == '/') {
                         routes[i].path = '/index.html'
                     } else {
@@ -134,7 +141,7 @@ export default function (configContext) {
                         // 修改子路由路径，避免出现 /xx.html/jane.html
                         // 2021、06、01 文章页不用子路由，改为动态路由，子路由 seo 爬虫抓不到
                         if (routes[i].children) {
-                            
+
                             for (let v of routes[i].children) {
                                 if (v.path.includes(':id?')) {
                                     // 强制路由是必选路由 https://www.nuxtjs.cn/guide/routing
@@ -152,7 +159,7 @@ export default function (configContext) {
                 for (let i = 0, length = projectConfig.customRoutes.length; i < length; i++) {
                     routes.push(projectConfig.customRoutes[i])
                 }
-                
+
             }
         },
         target: 'server', // default server
@@ -160,7 +167,7 @@ export default function (configContext) {
             title: process.env.npm_package_name || projectConfig.title,
             ...globalHead
         },
-        
+
         plugins: [
             'plugins/axios',
             'plugins/terminal',
@@ -174,7 +181,7 @@ export default function (configContext) {
         // buildModules: [
         //     // Doc: https://github.com/nuxt-community/eslint-module
         //         eslint-module 这玩意太坑了，导致编译速度是在是太慢了
-        
+
         //     [
         //         '@nuxtjs/eslint-module',
         //         {
@@ -190,7 +197,7 @@ export default function (configContext) {
         //     ]
         // ],
         modules: [
-            '@nuxtjs/axios'
+            '@nuxtjs/axios',
         ],
         axios: {
             validateStatus: function (status) {
@@ -224,6 +231,6 @@ export default function (configContext) {
             config: {
                 productionTip: false
             }
-        }
+        },
     }
 }
