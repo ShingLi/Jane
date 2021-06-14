@@ -75,7 +75,7 @@ import host from 'config/host'
 
 export default {
     name: 'About',
-    asyncData ({ $axios, error }) {
+    async asyncData ({ $axios }) {
         return $axios({
             method: 'post',
             url: 'about',

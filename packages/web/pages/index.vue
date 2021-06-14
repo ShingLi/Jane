@@ -17,10 +17,7 @@ import Canvas from '~/components/Canvas/Canvas.js'
 export default {
     name: 'Index',
     async asyncData ({ $axios }) {
-        const  responseData  = await $axios({
-            url: 'index',
-            method: 'post',
-        })
+        const  responseData  = await $axios.post('index')
 
         console.log('data === >', responseData)
 
