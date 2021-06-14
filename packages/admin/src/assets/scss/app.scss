@@ -56,3 +56,14 @@
         }
     }
 }
+
+.el-form-item__content{
+    .el-input{
+        &.disabled{
+            .el-input__inner{
+                background-color: transparent;
+                color: #67C23A;
+            }
+        }
+    }
+}
