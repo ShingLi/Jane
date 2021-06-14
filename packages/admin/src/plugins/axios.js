@@ -44,8 +44,8 @@ instance.interceptors.response.use(
             // token失效或者不正确 (退出登陆)
             if (responseCode == '5015') {
                 setTimeout(() => {
-                    store.dispatch('user/signout')
-                }, 2100)
+                    store.dispatch('user/signout', 'autosignouts')
+                }, 2500)
             }
         } else {
             if (responseMsg && !noTips) {
