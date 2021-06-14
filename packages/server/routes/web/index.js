@@ -1,13 +1,6 @@
 
-const f = (res, code, message, responseData = []) => {
-    const Obj = {
-        responseCode: code,
-        responseMsg: message,
-        responseData: responseData
-    }
-    res.json(Obj)
-}
-module.exports = (app, router, { Index }) => {
+
+module.exports = (app, router, { Index }, { f }) => {
 
     /*  admin web保存
     -------------------------- */
@@ -15,21 +8,35 @@ module.exports = (app, router, { Index }) => {
         
         const postData =  req.body
 
-        console.log('postData ===> ', postData)
+        console.log('postData ===> ', JSON.stringify(postData, null, 4))
 
         if (!Object.keys(postData).length) {
             res.status(422)
             f(res, 422, '参数丢失')
         } else {
-            Index.create({
-                ...postData
-            }, async (err, doc) => {
-                if (err) {
-                    f(res, '9999', err)
-                } else {
-                    f(res, '0000', '保存成功')
+            // 创建并修改
+            Index.findOneAndUpdate(
+                {
+                    id: 1
+                },
+                {
+                    ...postData
+                },
+                {
+                    new: true,
+                    upsert: true
+                },
+                async (err, doc) => {
+                    console.log('err ===>', err)
+                    console.log('doc ===>', doc)
+
+                    if (err) {
+                        f(res, '9999', err)
+                    } else {
+                        f(res, '0000', '保存成功', { isOk: true })
+                    }
                 }
-            })
+            )
         }
     })
 
@@ -37,14 +44,17 @@ module.exports = (app, router, { Index }) => {
     -------------------------- */
     router.post('/index', async (req, res) => {
 
-        // 先查询数据库是否有数据
-        const DOCS = await Index.find()
-
-
-
-        res.json({
-            res: '00000'
-        })
+        const doc = await Index.findOne()
+        console.log('doc ===>', doc)
+        if (doc) {
+            f(res, '0000', '', { 
+                ICPNumber: doc.ICPNumber,
+                ICPwebsit: doc.ICPwebsit,
+                IndexDesc: doc.IndexDesc
+            })
+        } else {
+            res.end()
+        }
     })
 
     app.use('/web', router)
