@@ -17,8 +17,6 @@ export default function ({ $axios, redirect, error }, inject) {
         const { data: { responseCode, responseMsg, responseData } } = response
         if (responseCode == '0000') {
             return responseData
-        } else {
-            
         }
     })
 

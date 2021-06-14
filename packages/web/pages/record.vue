@@ -3,9 +3,9 @@
         <div class="header line"></div>
         <div class="record__container">
             <div class="navbar">
-                <p>QQ音乐</p>
+                <p>{{ title }}</p>
             </div>
-            <ul class="timeline" v-if="articleList.length">
+            <ul class="timeline" v-if="articleList && articleList.length">
                 <li class="timeline-item" v-for="list of articleList" :key="list.year">
                     <h3 class="year">{{ list.year }}年</h3>
                     <ul>
@@ -13,14 +13,14 @@
                             <div class="line"></div>
                             <div class="point"></div>
                             <div class="card">
-                                <div class="content" @click="jump(1)">
+                                <div class="content" @click="jump(item)">
                                     <div class="right">
                                         <h4>{{ item.title }}</h4>
                                         <p>{{ item.desc }}</p>
                                         <div class="feedback">
-                                            <span>{{ item.likes }} love</span>
-                                            <span>&nbsp;&nbsp;/&nbsp;&nbsp;</span>
-                                            <span>{{ item.read }} read</span>
+                                            <span v-if="item.likeNum">{{ item.likeNum }} love</span>
+                                            <span v-if="item.likeNum">&nbsp;&nbsp;/&nbsp;&nbsp;</span>
+                                            <span v-if="item.readNum">{{ item.readNum }} read</span>
                                         </div>
                                     </div>
                                     <img :src="item.imgSrc" class="img" v-if="item.imgSrc">
@@ -96,8 +96,10 @@ const dealwithData = (originalData) => {
 export default {
     name: 'Record',
     async asyncData ({ $axios }) {
-        const data = await $axios.post('/web/record')
+        const data = await $axios.post('findArticle')
         
+        console.log('data===>', data)
+
         let articleList
 
         if (data.totalCount - 0 > 0) {
@@ -112,20 +114,8 @@ export default {
     },
     data () {
         return {
-            loading: false
-        }
-    },
-    watch: {
-        $route (to, from) {
-            // if (to.name == 'record') {
-            //     // 反正滚动穿透
-            //     document.body.style.cssText = ''
-            //     document.documentElement.style.cssText = ''
-            //     // 回复之前预览的位置
-            //     // window.pageYOffset = this.scrollTop
-            // } else if (true) {
-                
-            // }
+            loading: false,
+            title: '标题'
         }
     },
     async mounted () {
@@ -174,9 +164,12 @@ export default {
             }
         },
 
-        jump () {
+        jump (item) {
+            // 不使用vuex vuex 数据存在内存中，刷新丢失，就算用vuex 持久化，如果直接通过链接进来，还是会丢失数据
+            // this.$store.dispatch('record/saveArticle', item)
+
             this.$router.push({
-                path: '/essays/1.html'
+                path: `/essays/${item._id}.html`
             })
         },
         

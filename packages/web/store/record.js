@@ -1,10 +1,16 @@
 
 export const state = () => ({
-    scrollTop: 0
+    article: {}
 })
 
 export const mutations = {
-    setScrollTop (state, distance) {
-        state.scrollTop = distance
+    STOREARTICLE (state, article) {
+        state.article = article
+    }
+}
+
+export const actions = {
+    saveArticle ( { commit }, currentArticle ) {
+        commit('STOREARTICLE', currentArticle)
     }
 }

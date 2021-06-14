@@ -1,23 +1,23 @@
 <template>
     <div class="article">
-        <Processbar />
-        <div class="back" @click="$router.go(-1)">
+        <!-- <Processbar /> -->
+        <div class="back" @click="$router.push({ path: '/record.html' })">
             <svg-icon iconClass="back_1" />
         </div>
         <div class="scrollWrap">
             <section>
                 <div class="header">
-                    <h1 class="title">新的一年快快乐乐</h1>
+                    <h1 class="title">{{ title }}</h1>
                     <div class="stuff">
                         <span>2021年/04/14</span>
-                        <span>阅读 500</span>
-                        <span>字数 20000</span>
-                        <span>评论 4</span>
-                        <span>喜欢24</span>
+                        <span v-if="readNum">阅读 {{ readNum }}</span>
+                        <span v-if="true">字数 {{ 111 }}</span>
+                        <span>评论 {{ comment }}</span>
+                        <span>喜欢{{ likeNum }}</span>
                     </div>
                 </div>
                 <div class="content">
-
+                    <div v-html="rendered"></div>
                 </div>
                 <div class="comments">
                     <div class="userInfo">
@@ -37,11 +37,26 @@
     </div>
 </template>
 <script>
+
+import markdown from "~/plugins/markdown"
+
 export default {
     name: 'essay',
 
-    async asyncData ({ }) {
+    async asyncData ({ $axios, params }) {
+        const responseData = await $axios.get('getArticle', {
+            params:{
+                id: params.id
+            }
+        })
 
+        console.log('responseData===>', responseData)
+        let rendered = markdown.render(responseData.content)
+        return {
+            ...responseData,
+            comment: '',
+            rendered
+        }
     },
 
     data () {
@@ -51,76 +66,37 @@ export default {
             textPlaceholder: '纵使诗和远方不在眼前！每一天都要开开心心，不是吗？'
         }
     },
-
+    
     mounted () {
-        this.$nextTick(() => {
-            this.$nuxt.$loading.start()
-            this.$nuxt.$loading.finish(800)
-        })
         
-        // 刷新页面不执行transition动画，所以这里手动判断下
-        setTimeout(() => {
-            const rootDom = document.querySelector('.article')
-            if (!rootDom.classList.contains('bgColor')) {
-                rootDom.classList.add('bgColor')
-            }
-        }, 800)
-    },
-
-    beforeDestroy () {
-        this.$nuxt.$loading.start()
-        this.$nuxt.$loading.finish(500)
     },
 
     methods: {
-        initScrollTop () {
-            const style = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                overflow: hidden
-            `
-            document.body.style.cssText = style
-            document.documentElement.style.cssText = style
-        }
+        
     },
     
-    transition: {
-        name: 'back',
-        afterEnter (el) {
-            console.log(el)
-            // 这里竟然无法访问当前组件实例
-            setTimeout(() => {
-                el.classList.add('bgColor')
-            }, 400)
-        },
-    },
+    // transition: {
+    //     name: 'back',
+    //     afterEnter (el) {
+    //         console.log(el)
+    //         // 这里竟然无法访问当前组件实例
+    //         setTimeout(() => {
+    //             el.classList.add('bgColor')
+    //         }, 400)
+    //     },
+    // },
 
-    validate ({ params, }) {
-        // 必须是数字，这里的检验是为了 /essays/.html 这种场景， 因为 :id? 可选。强制必选
-        return /^\d+$/.test(params.id)
-    }
+    // validate ({ params, }) {
+    //     // 必须是数字，这里的检验是为了 /essays/.html 这种场景， 因为 :id? 可选。强制必选
+    //     return /^\d+$/.test(params.id)
+    // }
 }
 </script>
 <style lang="scss" scoped>
     .article{
-        position: fixed; // 为什么使用fixed 而不是用absolute 因为absolute导致子路由页面滚动条计算不正确，原因未知
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow-y: scroll;
-        z-index: 9;
         background-color: #fff;
-        transition: all 10s ease-in-out;
-        &.bgColor{
-            .scrollWrap{
-                // background-color: #fff;
-                // transition: all .4s ease-in-out;
-            }
-        }
+        transition: all .4s ease-in-out;
+
         .back{
             position: fixed;
             top: 40px;
@@ -143,10 +119,10 @@ export default {
                 .header{
                     h1{
                         padding: 80px 0 25px;
-                        font-size: 36px;
+                        font-size: 45px;
                         font-weight: bold;
                         color: #333;
-                        font-family: fang;
+                        // font-family: fang;
                     }
                     .stuff{
                         margin-top: 5px;
@@ -157,12 +133,19 @@ export default {
                             color: #6a737d;
                             line-height: 22px;
                             margin-right: 10px;
+                            // font-family: jane;
                         }
                     }
                 }
                 .content{
                     margin-top: 45px;
                     flex: 1;
+                    div, p {
+                        // font-family: Fang;
+                        font-size: 20px;
+                        // font-weight: 600;
+                        line-height: 25px;
+                    }
                 }
                 .comments{
                     position: relative;
@@ -178,14 +161,14 @@ export default {
                             width: 300px;
                             outline: none;
                             padding-left: 7px;
-                            font-size: 18px;
+                            font-size: 20px;
                             height: 28px;
                             line-height: 27px;
                             background-color: transparent;
                             border-bottom: 1px dashed #f0f0f0;
                             transition: all .3s linear;
-                            font-family: fang;
-                            font-weight: 500;
+                            // font-family: fang;
+                            font-weight: 700;
                             &:last-child{
                                 margin-left: 30px;
                             }
@@ -209,11 +192,12 @@ export default {
                         padding: 16px;
                         border-radius: 4px;
                         color: #333;
-                        font-size: 18px;
+                        font-size: 20px;
                         border: 1px dashed #eee;
                         background-color: transparent;
                         transition: all .3s ease-in-out;
-                        font-family: fang;
+                        // font-family: fang;
+                        font-weight: 500;
                         // background-image: url('~assets/images/hui.jpeg');
                         background-position: bottom right;
                         background-repeat: no-repeat;
