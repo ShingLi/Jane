@@ -9,7 +9,6 @@ export default function ({ $axios, redirect, error }, inject) {
     // $axios.defaults.baseURL = BASE_URL
 
     $axios.onRequest(config => {
-        consola.info(config)
         return config
     })
 
