@@ -12,6 +12,8 @@ module.exports = (app, router, { Article }, { f }) => {
                     totalCount: total,
                     articleList: articleDocs
                 })
+            } else {
+                f (res, '0000', '')
             }
         } catch (error) {
             console.log('error===>', error)
