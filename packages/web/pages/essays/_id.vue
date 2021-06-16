@@ -21,12 +21,12 @@
                 </div>
                 <div class="comments">
                     <div class="userInfo">
-                        <input type="text" placeholder="Name">
-                        <input type="text" placeholder="Email">
+                        <input type="text" placeholder="Name" v-model="uname">
+                        <input type="text" placeholder="Email" v-model="uemail">
                     </div>
-                    <textarea class="textarea" :placeholder="textPlaceholder"></textarea>
+                    <textarea class="textarea" :placeholder="textPlaceholder" v-model="textarea"></textarea>
                     <div class="confirm-box">
-                        <el-button size="medium" icon="el-icon-s-promotion">SUBMIT</el-button>
+                        <el-button size="medium" icon="el-icon-s-promotion" @click="submit">SUBMIT</el-button>
                         <p class="desc"></p>
                     </div>
 
@@ -55,7 +55,8 @@ export default {
         return {
             ...responseData,
             comment: '',
-            rendered
+            rendered,
+            articleId: params?.id ?? ''
         }
     },
 
@@ -63,7 +64,10 @@ export default {
         return {
             isBgColor: false,
             loading: false, // 评论发送
-            textPlaceholder: '纵使诗和远方不在眼前！每一天都要开开心心，不是吗？'
+            textPlaceholder: '纵使诗和远方不在眼前！每一天都要开开心心，不是吗？',
+            uname: '',
+            uemail: '',
+            textarea: ''
         }
     },
     
@@ -72,7 +76,14 @@ export default {
     },
 
     methods: {
-        
+        async submit () {
+            const DATA = {
+                uname: this.uname,
+                content: this.textarea,
+                articleId: this.articleId
+            }
+            const responseData = await this.$axios.post('/submitComment', DATA)
+        }
     },
     
     // transition: {
@@ -120,7 +131,6 @@ export default {
                     h1{
                         padding: 80px 0 25px;
                         font-size: 45px;
-                        font-weight: bold;
                         color: #333;
                         // font-family: fang;
                     }
@@ -161,14 +171,13 @@ export default {
                             width: 300px;
                             outline: none;
                             padding-left: 7px;
-                            font-size: 20px;
+                            font-size: 16px;
                             height: 28px;
                             line-height: 27px;
                             background-color: transparent;
                             border-bottom: 1px dashed #f0f0f0;
                             transition: all .3s linear;
-                            // font-family: fang;
-                            font-weight: 700;
+                            font-style: italic;
                             &:last-child{
                                 margin-left: 30px;
                             }
@@ -192,13 +201,10 @@ export default {
                         padding: 16px;
                         border-radius: 4px;
                         color: #333;
-                        font-size: 20px;
+                        font-size: 15px;
                         border: 1px dashed #eee;
                         background-color: transparent;
                         transition: all .3s ease-in-out;
-                        // font-family: fang;
-                        font-weight: 500;
-                        // background-image: url('~assets/images/hui.jpeg');
                         background-position: bottom right;
                         background-repeat: no-repeat;
                         &::-webkit-input-placeholder{
