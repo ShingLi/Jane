@@ -4,7 +4,7 @@ import Prism from 'prismjs'
 import 'prismjs/themes/prism-okaidia.css'
 
 const md = new MarkdownIt({
-
+    breaks: true
 })
 
 // 代码块中增加类名
