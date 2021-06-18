@@ -85,22 +85,6 @@ export default {
             const responseData = await this.$axios.post('/submitComment', DATA)
         }
     },
-    
-    // transition: {
-    //     name: 'back',
-    //     afterEnter (el) {
-    //         console.log(el)
-    //         // 这里竟然无法访问当前组件实例
-    //         setTimeout(() => {
-    //             el.classList.add('bgColor')
-    //         }, 400)
-    //     },
-    // },
-
-    // validate ({ params, }) {
-    //     // 必须是数字，这里的检验是为了 /essays/.html 这种场景， 因为 :id? 可选。强制必选
-    //     return /^\d+$/.test(params.id)
-    // }
 }
 </script>
 <style lang="scss" scoped>
@@ -150,6 +134,9 @@ export default {
                 .content{
                     margin-top: 45px;
                     flex: 1;
+                    ::v-deep pre{
+                        font-size: 15px;
+                    }
                     div, p {
                         // font-family: Fang;
                         font-size: 20px;
