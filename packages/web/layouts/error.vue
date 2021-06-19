@@ -58,6 +58,9 @@ export default {
     asyncData () {
 
     },
+    beforeDestroy () {
+        this.timer && clearInterval(this.timer)
+    },
     head () {
         return {
             title: '页面找不到了，可能丢了~~'

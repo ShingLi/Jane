@@ -38,7 +38,7 @@ export default {
         start () {
             this.loading = true
         },
-        finish (timer = 2000) {
+        finish (timer = 1600) {
             if (this.timer) clearTimeout(this.timer)
             this.timer = setTimeout(() => {
                 this.loading = false
