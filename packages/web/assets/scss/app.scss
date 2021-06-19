@@ -12,6 +12,9 @@
     &.about{
         background-color: #CCCC33;
     }
+    &.essays-id{
+        background-color: #CCFFFF;
+    }
 }
 
 @keyframes fade {
@@ -32,5 +35,8 @@ body{
     }
     &.about{
         background-color: #CCCC33;
+    }
+    &.essays-id{
+        background-color: #ccc;
     }
 }

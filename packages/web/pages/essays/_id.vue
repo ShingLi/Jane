@@ -90,7 +90,7 @@ export default {
 <style lang="scss" scoped>
     .article{
         background-color: #fff;
-        transition: all .4s ease-in-out;
+        // transition: all .4s ease-in-out;
 
         .back{
             position: fixed;
