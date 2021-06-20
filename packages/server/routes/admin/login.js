@@ -98,12 +98,12 @@ module.exports = (app, router, { User }) => {
 		} else {
 			
 			User.create(info, (err, doc) => {
-				if (err) {
+				// if (err) {
 					
-					return res.status(500).json({
-						error: err.message
-					})
-				}
+				// 	return res.status(500).json({
+				// 		error: err.message
+				// 	})
+				// }
 				if (doc) {
 
 					console.log('注册成功后账号数---', len + 1)

@@ -2,9 +2,8 @@ const mongoose = require('mongoose')
 module.exports = (Schema, model) => {
 	const commentSchema = new Schema({
 		comment_blog_id: {
-			type: ObjectId,
+			type: Schema.Types.ObjectId,
 			required: true,
-			default: '',
 			validate: {
 				validator: val => mongoose.isValidObjectId(val),
 				message: '文章id不能为空！'
@@ -19,9 +18,9 @@ module.exports = (Schema, model) => {
 			default: '',
 			required: true,
 			validate: {
-				validator: val => val.length != '' 
+				validator: val => val.length != '',
+				message: '用户名不能为空!'
 			},
-			message: '用户名不能为空!'
 		},
 		comment_user_email: {
 			type: String,
@@ -29,17 +28,19 @@ module.exports = (Schema, model) => {
 		},
 		comment_user_id: String,
 		comment_user_avatar: String,
-		comment_user_name: String,
 		comment_user_ip: String,
 		comment_user_content: {
 			type: String,
 			required: true,
 			validate: {
-				validator: val => val.length != '' 
+				validator: val => val.length != '',
+				message: '评论内容不能为空！'
 			},
-			message: '评论内容不能为空！'
 		},
-		comment_responses: Array,
+		comment_responses: {
+			type: Array,
+			default: () => []
+		}
 	})
 
 	return model('comment', commentSchema)
