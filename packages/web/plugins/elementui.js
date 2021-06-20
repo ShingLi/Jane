@@ -1,11 +1,12 @@
 import Vue from 'vue'
-import { 
+import {
     Progress,
     Timeline,
     TimelineItem,
     Card,
     Button,
-    Dialog
+    Dialog,
+    Message
 } from 'element-ui'
 
 export default () => {
