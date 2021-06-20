@@ -5,6 +5,9 @@
     &.fast{
         transition: all 0.5s ease-in-out;
     }
+    &.sfast{
+        transition: all .4s ease-in-out;
+    }
 }
 
 .fade-enter, .fade-leave-to{
