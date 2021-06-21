@@ -38,7 +38,8 @@ export default function (configContext) {
     return {
         alias: {
             // 之前没有别名选项，后续nuxt升级增加该配置
-            config: resolve('config')
+            config: resolve('config'),
+            plugins: resolve('plugins')
         },
         build: {
             analyze: false, // 编译的时候显示构建包的大小 // https://zh.nuxtjs.org/api/configuration-build/
