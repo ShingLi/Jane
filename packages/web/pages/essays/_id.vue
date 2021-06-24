@@ -1,9 +1,5 @@
 <template>
     <div class="article">
-        <!-- <Processbar /> -->
-        <div class="back" @click="$router.push({ path: '/record.html' })">
-            <svg-icon iconClass="back_1" />
-        </div>
         <div class="scrollWrap">
             <section>
                 <div class="header">
@@ -26,19 +22,20 @@
                     </div>
                     <textarea class="textarea" :placeholder="textPlaceholder" v-model="textarea"></textarea>
                     <div class="confirm-box">
-                        <el-button size="medium" icon="el-icon-s-promotion" @click="submit">SUBMIT</el-button>
+                        <el-button size="medium" icon="el-icon-s-promotion" @click="submit" :loading="loading">SUBMIT</el-button>
                         <p class="desc"></p>
                     </div>
 
                 </div>
-                <Comment class="comment"/>
+                <Comment class="comment" :commentList="commentList"/>
             </section>
         </div>
     </div>
 </template>
 <script>
 
-import markdown from "~/plugins/markdown"
+import markdown from "plugins/markdown"
+import utils from 'plugins/utils'
 
 export default {
     name: 'essay',
@@ -50,7 +47,11 @@ export default {
             }
         })
 
-        console.log('responseData===>', responseData)
+        delete responseData.__v
+        delete responseData._id
+
+        // console.log('responseData===>', responseData)
+
         let rendered = markdown.render(responseData.content)
         return {
             ...responseData,
@@ -60,6 +61,16 @@ export default {
         }
     },
 
+    async fetch ()  {
+        const  { commentList }  = await this.$axios.get('/getComment', {
+            params: {
+                articleId: this.articleId ?? ''
+            }
+        })
+        
+        this.commentList = commentList
+    },
+
     data () {
         return {
             isBgColor: false,
@@ -67,24 +78,62 @@ export default {
             textPlaceholder: '纵使诗和远方不在眼前！每一天都要开开心心，不是吗？',
             uname: '',
             uemail: '',
-            textarea: ''
+            textarea: '',
+            commentList: [], // 评论
         }
     },
-    
+
     mounted () {
+        utils.bindEvent('scroll', () => {
+            let scrollTop = (document.documentElement || document.body).scrollTop
+            this.$store.commit('record/UPDATE_SCROLL_TOP', scrollTop)
+        })
         
+        this.initPageHeight()
     },
 
     methods: {
         async submit () {
+            this.loading = true
             const DATA = {
                 uname: this.uname,
+                uemail: this.uemail,
                 content: this.textarea,
                 articleId: this.articleId
             }
-            const responseData = await this.$axios.post('/submitComment', DATA)
+            const { isOk } = await this.$axios.post('/submitComment', DATA)
+            setTimeout(() => {
+                this.loading = false
+            }, 500)
+            if (isOk) {
+                this.uname = ''
+                this.uemail = ''
+                this.textarea = ''
+                
+                this.$fetch()
+                this.initPageHeight()
+            }
+        },
+        initPageHeight () {
+            
+            setTimeout(() => {
+                if (process.client) {
+                    this.$nextTick(() => {
+                        this.$store.commit('record/UPDATE_PAGE_SCROLLHEIGHT', document.querySelector('.scrollWrap').scrollHeight)
+                    })
+                }
+            }, 36)
         }
+        
     },
+    head () {
+        return {
+            title: this.title,
+            bodyAttrs: {
+                class: 'essays-id'
+            }
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>
@@ -92,16 +141,6 @@ export default {
         background-color: #fff;
         // transition: all .4s ease-in-out;
 
-        .back{
-            position: fixed;
-            top: 40px;
-            left: 50px;
-            cursor: pointer;
-            ::v-deep .icon{
-                width: 36px;
-                height: 36px;
-            }
-        }
         .scrollWrap{
             background-color: #fff;
             section{
