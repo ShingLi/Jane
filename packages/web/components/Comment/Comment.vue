@@ -3,30 +3,47 @@
         <div class="commentlist">
             Comment List
         </div>
-        <ul>
-            <li v-for="n in 1">
+        <ul v-if="commentList.length">
+            <li v-for="(item, index) of commentList" :key="index">
                 <div class="avatar">
                     <img src="/assets/images/3.jpeg">
                 </div>
                 <div class="info">
                     <div class="time">
                         <div class="reply"></div>
-                        <p>18:00 Aug 08 2021</p>
+                        <!-- <p>18:00 Aug 08 2021</p> -->
+                        <p>{{ format(item.comment_create_time - 0) }}</p>
                     </div>
-                    <h3 class="name">李大锤</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem sed !</p>
+                    <h3 class="name">{{ item.comment_user_name }}</h3>
+                    <p>{{ item.comment_user_content }}</p>
                 </div>
             </li>
         </ul>
+        <div class="nodata" v-else>
+            <i class="icon--nodata">
+                <svg-icon iconClass="nodata" />
+            </i>
+            <p>&nbsp;暂无评论，欢迎抢沙发~~</p>
+        </div>
     </div>
 </template>
 <script>
+import SvgIcon from '../SvgIcon/SvgIcon.vue'
 export default {
+    components: { SvgIcon },
     name: 'Comment',
     props: {
-        listData: {
-            type: Object,
+        commentList: {
+            type: Array,
             default: () => {[]}
+        }
+    },
+    methods: {
+        format (timestamp) {
+            let hours = new Date(timestamp).getHours(),
+                minutes = new Date(timestamp).getMinutes(), 
+                toDateString = new Date(timestamp).toDateString().split(' ').splice(1).join(' ')
+            return `${hours}:${minutes} ${toDateString}`
         }
     }
 }
@@ -51,6 +68,7 @@ export default {
                 padding: 20px 0 33px 0;
                 position: relative;
                 display: flex;
+                cursor: pointer;
                 .avatar{
                     border: 1px solid #ddd;
                     border-radius: 4px;
@@ -95,6 +113,14 @@ export default {
                         }
                     }
                 }
+            }
+        }
+        .nodata{
+            
+            p{
+                text-align: center;
+                font-size: 14px;
+                color: #bbb;
             }
         }
     }
