@@ -99,7 +99,7 @@ export default {
                         font-size: 13px;
                         line-height: 22px;
                         color: #303030;
-                        
+                        word-break: break-all;
                     }
                     .time{
                         position: absolute;
