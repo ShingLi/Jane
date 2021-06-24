@@ -38,7 +38,7 @@ module.exports = (app, router, { Article }, { f }) => {
                 })
             }
         } catch (error) {
-            f(res, '9999', '', err)
+            f(res, '9999', '', error)
         }
     })
 
