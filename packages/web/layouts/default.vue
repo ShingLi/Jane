@@ -1,12 +1,22 @@
 <template>
     <div class="app">
-        <Menu/>
+        <Menu
+            :scrollTop="scrollTop"
+            :scrollHeight="scrollHeight"
+        />
         <Nuxt />
     </div>
 </template>
 <script>
+import { mapState } from 'vuex'
 export default {
     name: 'Layout',
+    computed: {
+        ...mapState({
+            scrollTop: state => state.record.scrollTop,
+            scrollHeight: state => state.record.scrollHeight
+        })
+    },
     watch: {
         $route (val, oldVal) {
             const { $route, $nextTick } = this

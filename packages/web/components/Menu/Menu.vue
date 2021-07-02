@@ -1,6 +1,6 @@
 <template>
     <div class="menu">
-        <div class="fixed--top">
+        <div class="fixed--top" :class="{ bg: wide }">
             <transition name="fade">
                 <div class="left sfast" v-if="wide">
                     <div class="back" @click="$router.push({ path: '/record.html' })">
@@ -147,6 +147,9 @@ export default {
             display: flex;
             align-items: center;
             padding: 0 22px;
+            &.bg{
+                background-color: rgba(255, 255, 255, 1);
+            }
             // backdrop-filter: blur(0px);
             .line{
                 height: 1px;

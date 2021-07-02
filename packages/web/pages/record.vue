@@ -16,7 +16,7 @@
                                 <div class="content" @click="jump(item)">
                                     <div class="right">
                                         <h4>{{ item.title }}</h4>
-                                        <p>{{ item.desc }}</p>
+                                        <p v-if="item.desc">{{ item.desc }}</p>
                                         <div class="feedback">
                                             <span v-if="item.likeNum">{{ item.likeNum }} love</span>
                                             <span v-if="item.likeNum">&nbsp;&nbsp;/&nbsp;&nbsp;</span>
