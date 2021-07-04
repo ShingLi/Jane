@@ -80,7 +80,6 @@ export default {
             method: 'post',
             url: 'about',
         }).then((data) => {
-            console.log(data)
             return {
                 avatar: data?.avatar ?? '',
                 uname: data?.uname ?? '一片云'

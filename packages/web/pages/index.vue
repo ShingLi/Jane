@@ -19,8 +19,6 @@ export default {
     async asyncData ({ $axios }) {
         const  responseData  = await $axios.post('index')
 
-        console.log('data === >', responseData)
-
         const presetData = {
             ICPNumber: '皖ICP备18000360号',
             IndexDesc: '皆是风景，幸会！',

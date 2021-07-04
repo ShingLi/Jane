@@ -98,8 +98,6 @@ export default {
     async asyncData ({ $axios }) {
         const data = await $axios.post('findArticle')
         
-        console.log('data===>', data)
-
         let articleList
 
         if (data.totalCount - 0 > 0) {
