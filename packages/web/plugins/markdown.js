@@ -3,9 +3,10 @@ import prism from 'prismjs'
 
 import 'prismjs/themes/prism-okaidia.css'
 
-import loadLanguages from 'prismjs/components/index'
+// import loadLanguages from 'prismjs/components/index'
 
-loadLanguages(['markup', 'css', 'javascript','jq', 'php', 'scss', 'jsx'])
+// loadLanguages(['markup', 'css', 'javascript','jq', 'php', 'scss', 'jsx'])
+// loadLanguages(['markup', 'css', 'javascript'])
 
 function wrap(code, lang) {
     if (lang === 'text') {
