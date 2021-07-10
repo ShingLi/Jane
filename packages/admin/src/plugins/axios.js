@@ -45,7 +45,7 @@ instance.interceptors.response.use(
             if (responseCode == '5015') {
                 setTimeout(() => {
                     store.dispatch('user/signout', 'autosignouts')
-                }, 2500)
+                }, 2000)
             }
         } else {
             if (responseMsg && !noTips) {
