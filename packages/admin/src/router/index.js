@@ -44,19 +44,33 @@ export const constantRoutes = [
         ]
     },
     {
-        path: '/comments',
+        path: '/list',
         component: Layout,
         children: [
             {
-                name: 'Comments',
-                path: '/comments',
-                component: () => import('views/comment/comment'),
+                name: 'List',
+                path: '/list',
+                component: () => import('views/list/list'),
                 meta: {
-                    title: '评论'
+                    title: '列表'
                 }
             }
         ]
     },
+    // {
+    //     path: '/comments',
+    //     component: Layout,
+    //     children: [
+    //         {
+    //             name: 'Comments',
+    //             path: '/comments',
+    //             component: () => import('views/comment/comment'),
+    //             meta: {
+    //                 title: '评论'
+    //             }
+    //         }
+    //     ]
+    // },
     {
         path: '/web',
         component: Layout,

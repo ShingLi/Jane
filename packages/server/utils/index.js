@@ -1,6 +1,6 @@
 import f from './f'
 import consola from 'consola'
-
+import mongoose from 'mongoose'
 
 const parseQuery = (req) => {
     return new Promise((resolve, reject) => {
@@ -24,7 +24,9 @@ const parseQuery = (req) => {
 const fn = {
     f,
     consola,
-    parseQuery
+    mongoose,
+    parseQuery,
+    
 }
 
 const utils = {

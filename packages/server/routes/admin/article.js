@@ -1,4 +1,5 @@
-module.exports = (app, router, { Article }) => {
+
+module.exports = (app, router, { Article }, { f, mongoose }) => {
 
     router.post('/saveArticle', async (req, res, next) => {
 
@@ -37,14 +38,48 @@ module.exports = (app, router, { Article }) => {
         })
     })
 
-    router.post('deleteArticle', async (req, res) => {
+    try {
+        router.post('/deleteArticle', async (req, res) => {
+            const postData = req.body
+            console.log('删除文章__postData===>', postData)
+            if (postData.id && mongoose.Types.ObjectId.isValid(postData.id)) {
+                const ret = await Article.findByIdAndDelete(postData.id)
+                
+                if (ret && ret._id == postData.id) {
+                    f(res, '0000', '删除成功', {
+                        isOk: true
+                    })
+                } else {
+                    f(res, '9999', '删除失败')
+                }
+            }
+            
+        })
 
-    })
+        router.post('updateArticle', async (req, res) => {
 
-    router.post('updateArticle', async (req, res) => {
+        })
 
-    })
-    
+        router.post('/findArticle', async (req, res) => {
+            const [ total, articleDocs ] = await Promise.all([ Article.countDocuments(), Article.find() ])
+            // console.log('web/article---articleDocs===>', articleDocs)
+            // console.log('web/article---total===>', total)
+
+            if (articleDocs.length) {
+                f(res, '0000', '', {
+                    totalCount: total,
+                    articleList: articleDocs
+                })
+            } else {
+                f (res, '0000', '')
+            }
+        })
+
+    } catch (error) {
+        console.log('error===>', error)
+        f(res, '0000', error)
+    }
+
     app.use('/admin', router)
 
 }
