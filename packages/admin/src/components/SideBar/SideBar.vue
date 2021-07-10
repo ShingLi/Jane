@@ -47,9 +47,9 @@ export default {
                     icon: 'el-icon-magic-stick'
                 },
                 {
-                    title: '评论',
-                    path: '/comments',
-                    icon: 'el-icon-chat-round'
+                    title: '列表',
+                    path: '/list',
+                    icon: 'el-icon-reading'
                 },
                 {
                     title: 'web',
