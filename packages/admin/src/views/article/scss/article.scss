@@ -8,9 +8,10 @@
         .title{
             width: 60%;
             ::v-deep .el-input__inner{
-                border-left: none;
-                border-top: none;
-                border-right: none;
+                border-top: 1px solid transparent;
+                border-left: 1px solid transparent;
+                border-right: 1px solid transparent;
+                border-radius: 0;
             }
         }
         .markdown{
@@ -74,6 +75,14 @@
             padding-top: 25px;
             width: 60%;
             overflow: hidden;
+            ::v-deep{
+                .el-input__inner{
+                    border-top: 1px solid transparent;
+                    border-left: 1px solid transparent;
+                    border-right: 1px solid transparent;
+                    border-radius: 0;
+                }
+            }
         }
         .switch--box{
             margin-bottom: 10px;

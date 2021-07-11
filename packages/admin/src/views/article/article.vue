@@ -4,8 +4,7 @@
         <el-form :model="formData" :rules="rules" ref="ruleForm" status-icon>
             <div class="articlewrap">
                 <el-form-item prop="title">
-                    <el-input placeholder="请输入文章标题"
-
+                    <el-input placeholder="输入文章标题"
                         prefix-icon="el-icon-paperclip"
                         class="title"
                         type=”text“
@@ -14,9 +13,8 @@
                     />
                 </el-form-item>
                 <el-form-item>
-                    <el-input placeholder="请输入SEO关键字"
-
-                        prefix-icon="el-icon-paperclip"
+                    <el-input placeholder="输入SEO关键字"
+                        prefix-icon="el-icon-lollipop"
                         class="title"
                         type=”text“
                         props="title"
@@ -38,10 +36,10 @@
                     <div v-show="!isInternal">
                         <div class="extraInput">
                             <el-form-item label="背景音乐">
-                                <el-input v-model="formData.extraMusicLink" placeholder="请输入背景音乐地址"/>
+                                <el-input v-model="formData.extraMusicLink" placeholder="输入背景音乐地址"/>
                             </el-form-item>
                             <el-form-item label="封面图片">
-                                <el-input v-model="formData.extraMusicLink" placeholder="请输入封面图片地址"/>
+                                <el-input v-model="formData.extraImgLink" placeholder="输入封面图片地址"/>
                             </el-form-item>
                         </div>
                     </div>
@@ -103,7 +101,7 @@ export default {
     data () {
         return {
             text: '夜泊秦淮近酒家，商女不知亡国恨',
-            isInternal: true,
+            isInternal: false,
             rules: {
                 title: [
                     {
@@ -134,6 +132,7 @@ export default {
                 seo: '', // seo 关键字
                 content: '', // 文章内容
                 extraMusicLink: '', // 外部音乐连接
+                extraImgLink: '',
                 internalMusicLink: '', // 内部音乐地址
                 internalImgLink: '', // 图片上传地址
             }
