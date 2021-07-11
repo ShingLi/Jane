@@ -139,7 +139,14 @@ export default {
             }
         }
     },
-    
+    created () {
+        const { params } = this.$route
+        if (Object.keys(params).length) {
+            this.formData.title = params.title ?? ''
+            this.formData.seo = params.seo ?? ''
+            this.formData.content = params.content ?? ''
+        }
+    },
     methods: {
         onChangeIMG ({ raw: file }) {
             const defaulType = ['image/jpeg', 'image/png', 'image/jpg']
@@ -172,7 +179,10 @@ export default {
             this.$refs.ruleForm.validate((valid) => {
                 if (valid) {
                     const data = {
-                        ...this.formData
+                        ...this.formData,
+                    }
+                    if (this.$route.params._id) {
+                        data._id = this.$route.params._id
                     }
 
                     this.$http.post('saveArticle', data).then(data => {
