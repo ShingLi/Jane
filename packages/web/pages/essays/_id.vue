@@ -5,9 +5,9 @@
                 <div class="header">
                     <h1 class="title">{{ title }}</h1>
                     <div class="stuff">
-                        <span>2021年/04/14</span>
+                        <span>{{ calcTimer(createTime) }}</span>
                         <span v-if="readNum">阅读 {{ readNum }}</span>
-                        <span v-if="true">字数 {{ 111 }}</span>
+                        <span v-if="true">字数 {{ length }}</span>
                         <span>评论 {{ comment }}</span>
                         <span>喜欢{{ likeNum }}</span>
                     </div>
@@ -53,10 +53,13 @@ export default {
         // console.log('responseData===>', responseData)
 
         let rendered = markdown.render(responseData.content)
+        
+        
         return {
             ...responseData,
-            comment: '',
+            comment: 0,
             rendered,
+            length: 0,
             articleId: params?.id ?? ''
         }
     },
@@ -123,6 +126,18 @@ export default {
                     })
                 }
             }, 36)
+        },
+        calcTimer (timerstamp) {
+            timerstamp = timerstamp - 0
+            const year = new Date(timerstamp).getFullYear(),
+                month = (new Date(timerstamp).getMonth() + 1) - 0  < 10
+                    ? '0' + (new Date(timerstamp).getMonth() + 1)
+                    : new Date(timerstamp).getMonth() + 1,
+                date = new Date(timerstamp).getDate() - 0 < 10
+                    ? '0' + new Date(timerstamp).getDate()
+                    : new Date(timerstamp).getDate()
+            return `${year}/${month}/${date}`
+
         }
         
     },

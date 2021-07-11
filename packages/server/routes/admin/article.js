@@ -13,12 +13,13 @@ module.exports = (app, router, { Article }, { f, mongoose }) => {
                 
                 const Query = await Article.findByIdAndUpdate(id, {
                     ...postData,
-                    updatedTime: + new Date()
+                    updatedTime: + new Date(),
+                    picUrl: postData.extraImgLink
                 }, {
                     new : true
                 })
-                console.log('query===>', Query)
-                f(res, '0000', {
+                console.log('修改后query===>', Query)
+                f(res, '0000', '', {
                     isOk: true
                 })
             } else {

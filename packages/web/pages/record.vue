@@ -16,14 +16,14 @@
                                 <div class="content" @click="jump(item)">
                                     <div class="right">
                                         <h4>{{ item.title }}</h4>
-                                        <p v-if="item.desc">{{ item.desc }}</p>
+                                        <p v-if="item.content">{{ item.content }}</p>
                                         <div class="feedback">
                                             <span v-if="item.likeNum">{{ item.likeNum }} love</span>
                                             <span v-if="item.likeNum">&nbsp;&nbsp;/&nbsp;&nbsp;</span>
                                             <span v-if="item.readNum">{{ item.readNum }} read</span>
                                         </div>
                                     </div>
-                                    <img :src="item.imgSrc" class="img" v-if="item.imgSrc">
+                                    <img :src="item.picUrl" class="img" v-if="item.picUrl">
                                 </div>
                             </div>
                         </li>
