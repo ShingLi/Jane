@@ -1,44 +1,61 @@
 
 module.exports = (app, router, { Article }, { f, mongoose }) => {
+    try {
 
-    router.post('/saveArticle', async (req, res, next) => {
+        router.post('/saveArticle', async (req, res, next) => {
 
-        const postData = req.body ? Object.assign({}, req.body, {
-            createTime: + new Date(),
-            year: new Date().getFullYear()
-        }) : req.body
-
-        console.log('postData---', postData)
-
-        Article.create({
-            ...postData
-        }, (err, doc) => {
-            if (doc) {
-                res.json({
-                    responseCode: '0000',
-                    responseMsg: '保存成功',
-                    responseData: {
-                        isOk: true
-                    }
+           
+            let postData = req.body, id = postData._id
+            delete postData._id
+            console.log('postData===>', postData)
+            
+            if (mongoose.Types.ObjectId.isValid(id)) {
+                
+                const Query = await Article.findByIdAndUpdate(id, {
+                    ...postData,
+                    updatedTime: + new Date()
+                }, {
+                    new : true
+                })
+                console.log('query===>', Query)
+                f(res, '0000', {
+                    isOk: true
                 })
             } else {
-                if (!Object.keys(postData).length) {
-                    res.status(422).json({
-                        responseCode: '9999',
-                        responseMsg: err.message
-                    })
-                } else {
-                    res.status(500).json({
-                        responseCode: '9999',
-                        responseMsg: err
-                    })
-                }
+                postData = { ...postData, ...{
+                    createTime: + new Date(),
+                    year: new Date().getFullYear()
+                }}
                 
+                Article.create({
+                    ...postData
+                }, (err, doc) => {
+                    if (doc) {
+                        res.json({
+                            responseCode: '0000',
+                            responseMsg: '保存成功',
+                            responseData: {
+                                isOk: true
+                            }
+                        })
+                    } else {
+                        if (!Object.keys(postData).length) {
+                            res.status(422).json({
+                                responseCode: '9999',
+                                responseMsg: err.message
+                            })
+                        } else {
+                            res.status(500).json({
+                                responseCode: '9999',
+                                responseMsg: err
+                            })
+                        }
+                        
+                    }
+                })
             }
         })
-    })
 
-    try {
         router.post('/deleteArticle', async (req, res) => {
             const postData = req.body
             console.log('删除文章__postData===>', postData)
