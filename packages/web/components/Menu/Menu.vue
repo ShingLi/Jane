@@ -4,7 +4,7 @@
             <transition name="fade">
                 <div class="left sfast" v-if="wide">
                     <div class="back" @click="$router.push({ path: '/record.html' })">
-                        <svg-icon iconClass="back2" />
+                        <svg-icon iconClass="back" />
                     </div>
                 </div>
             </transition>

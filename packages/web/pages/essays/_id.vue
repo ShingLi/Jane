@@ -1,5 +1,12 @@
 <template>
     <div class="article">
+        <div class="tools">
+            <template>
+                <div class="icon--heart" @click="dolike" :class="{ bounce : like }">
+                    <svg-icon :iconClass="like ? 'heart2' : 'heart1'"/>
+                </div>
+            </template>
+        </div>
         <div class="scrollWrap">
             <section>
                 <div class="header">
@@ -36,8 +43,10 @@
 
 import markdown from "plugins/markdown"
 import utils from 'plugins/utils'
+import SvgIcon from '../../components/SvgIcon/SvgIcon.vue'
 
 export default {
+    components: { SvgIcon },
     name: 'essay',
 
     async asyncData ({ $axios, params }) {
@@ -53,7 +62,6 @@ export default {
         // console.log('responseData===>', responseData)
 
         let rendered = markdown.render(responseData.content)
-        
         
         return {
             ...responseData,
@@ -83,6 +91,7 @@ export default {
             uemail: '',
             textarea: '',
             commentList: [], // 评论
+            like: false
         }
     },
 
@@ -138,6 +147,10 @@ export default {
                     : new Date(timerstamp).getDate()
             return `${year}/${month}/${date}`
 
+        },
+        dolike () {
+            this.like = !this.like
+            
         }
         
     },
@@ -280,6 +293,33 @@ export default {
                     margin-top: 60px;
                 }
             }
+        }
+        .tools{
+            position: absolute;
+            left: 5vw;
+            top: 80px;
+            .icon--heart{
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+                &.bounce{
+                    animation: bounce .3s ease-in-out;
+                }
+            }
+        }
+    }
+    @keyframes bounce {
+        10% {
+            transform: translateY(-3px) scale(0.8);
+        }
+        40%{
+            transform: translateY(-10px) scale(1.2);
+        }
+        80%{
+            transform: translateY(3px) scale(1.1);
+        }
+        100%{
+            transform: translateY(0px) scale(1);
         }
     }
 </style>
