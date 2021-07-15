@@ -4,8 +4,8 @@ module.exports = (app, router, { Article }, { f }) => {
         
         try {
             const [ total, articleDocs ] = await Promise.all([ Article.countDocuments(), Article.find() ])
-            console.log('web/article---articleDocs===>', articleDocs)
-            console.log('web/article---total===>', total)
+            console.log('web/findArticle---articleDocs===>', articleDocs)
+            console.log('web/findArticle---total===>', total)
 
             if (articleDocs.length) {
                 f(res, '0000', '', {
@@ -19,16 +19,17 @@ module.exports = (app, router, { Article }, { f }) => {
             console.log('error===>', error)
             f(res, '0000', error)
         }
+
     })
 
     router.get('/getArticle', async (req, res) => {
 
         try {
             const params = req.query
-            console.log('web/article---params===>', params)
+            console.log('web/getArticle---params===>', params)
             if (params.id) {
                 const articleDoc = await Article.findById(params.id)
-                console.log('web/article---articleDoc', articleDoc)
+                console.log('web/getArticle---articleDoc', articleDoc)
                 f(res, '0000', '', articleDoc)
             } else {
                 res.status(422)
@@ -39,6 +40,25 @@ module.exports = (app, router, { Article }, { f }) => {
             }
         } catch (error) {
             f(res, '9999', '', error)
+        }
+        
+    })
+
+    router.post('/like', async (req, res) => {
+        const postData = req.body
+        console.log('web/like---postData==>', postData)
+
+        const Query = await Article.findByIdAndUpdate(postData._id, {
+            $inc: { likeNum: postData.num }
+        }, {
+            new: true
+        })
+        console.log('/like/query===>', Query)
+        if (Query) {
+            f(res, '0000', '', {
+                isOk: true,
+                likeNum: Query.likeNum
+            })
         }
     })
 
