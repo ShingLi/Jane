@@ -40,8 +40,12 @@ export default {
     },
     methods: {
         format (timestamp) {
-            let hours = new Date(timestamp).getHours(),
-                minutes = new Date(timestamp).getMinutes(), 
+            let hours = new Date(timestamp).getHours() - 0 < 10
+                    ? '0' + new Date(timestamp).getHours()
+                    : new Date(timestamp).getHours(),
+                minutes = new Date(timestamp).getMinutes() - 0 < 10
+                    ? '0' + new Date(timestamp).getMinutes()
+                    : new Date(timestamp).getMinutes(), 
                 toDateString = new Date(timestamp).toDateString().split(' ').splice(1).join(' ')
             return `${hours}:${minutes} ${toDateString}`
         }

@@ -14,8 +14,8 @@
                     <div class="stuff">
                         <span>{{ calcTimer(createTime) }}</span>
                         <span v-if="readNum">阅读 {{ readNum }}</span>
-                        <span v-if="true">字数 {{ length }}</span>
-                        <span>评论 {{ comment }}</span>
+                        <!-- <span v-if="true">字数 {{ length }}</span> -->
+                        <span>评论 {{ commentList.length }}</span>
                         <span>喜欢{{ likeNum }}</span>
                     </div>
                 </div>
@@ -91,7 +91,7 @@ export default {
             uemail: '',
             textarea: '',
             commentList: [], // 评论
-            like: false
+            like: false,
         }
     },
 
@@ -150,7 +150,16 @@ export default {
         },
         dolike () {
             this.like = !this.like
-            
+            let num = this.like ? 1 : -1
+            this.$axios.post('like', {
+                num,
+                _id: this.articleId
+            }).then((data) => {
+                if (data.isOk) {
+                    console.log(this.$data)
+                    this.likeNum = data.likeNum
+                }
+            })
         }
         
     },
@@ -159,7 +168,12 @@ export default {
             title: this.title,
             bodyAttrs: {
                 class: 'essays-id'
-            }
+            },
+            // script: [
+            //     {
+            //         src: 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.js'
+            //     }
+            // ]
         }
     }
 }
