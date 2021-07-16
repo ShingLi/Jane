@@ -217,7 +217,7 @@
   + 为什么会报错？
 
     ```js
-      gasp.to(this.$data, {})
+      gsap.to(this.$data, {})
 
-      <!-- this.$data --> gasp 无法转成数组报错
+      <!-- this.$data --> gsap 无法转成数组报错
     ```
