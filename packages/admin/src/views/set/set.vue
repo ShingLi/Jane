@@ -13,7 +13,7 @@
                 <el-upload
                     ref="avatar"
                     class="avatar-uploader"
-                    name="janeAvatar"
+                    name="uploadIMG"
                     action="http://localhost:4000/admin/upload"
                     :show-file-list="false"
                     :auto-upload="false"

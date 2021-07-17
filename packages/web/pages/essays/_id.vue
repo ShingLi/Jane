@@ -59,8 +59,6 @@ export default {
         delete responseData.__v
         delete responseData._id
 
-        // console.log('responseData===>', responseData)
-
         let rendered = markdown.render(responseData.content)
         
         return {
@@ -145,7 +143,7 @@ export default {
                 date = new Date(timerstamp).getDate() - 0 < 10
                     ? '0' + new Date(timerstamp).getDate()
                     : new Date(timerstamp).getDate()
-            return `${year}/${month}/${date}`
+            return `${year}年/${month}月/${date}日`
 
         },
         dolike () {

@@ -70,8 +70,9 @@
                                     :show-file-list="false"
                                     :on-change="onChangeIMG"
                                     :on-success="handleAvatarSuccess"
+                                    :class="{ unormalImgSize, unormalImgSize }"
                                 >
-                                    <img :src="formData.internalImgLink" v-if="formData.internalImgLink" class="preview">
+                                    <img :src="formData.internalImgLink" v-if="formData.internalImgLink" class="preview" ref="previewImg">
                                     <div class="tips" v-else>
                                         <div class="icon--fengmian">
                                             <svg-icon iconName="fengmian"/>
@@ -135,7 +136,9 @@ export default {
                 extraImgLink: '',
                 internalMusicLink: '', // 内部音乐地址
                 internalImgLink: '', // 图片上传地址
-            }
+                internalImgFile: '',
+            },
+            unormalImgSize: false,
         }
     },
     created () {
@@ -154,10 +157,17 @@ export default {
                 return false
             } else {
                 this.revokeUrl()
-
+                
                 const temporaryUrl = URL.createObjectURL(file)
 
                 this.formData.internalImgLink = temporaryUrl
+                this.$nextTick(() => {
+                    console.log(this.$refs.previewImg.width)
+                    if ((this.$refs.previewImg.width / this.$refs.previewImg.height) < 2) {
+                        this.unormalImgSize = true
+                    }
+                    this.formData.internalImgFile = file
+                })
             }
         },
 
@@ -177,9 +187,26 @@ export default {
         submit () {
             this.$refs.ruleForm.validate((valid) => {
                 if (valid) {
-                    const data = {
+                    let data = {
                         ...this.formData,
                     }
+                    /*  判断是否为本地上传
+                    -------------------------- */
+                    if (this.isInternal) {
+                        const formData = new FormData()
+                        formData.append('uploadIMG', this.formData.internalImgFile)
+                        
+                        delete this.formData.internalImgFile
+
+                        for (const key in this.formData) {
+                            if (key != 'internalImgLink' && key != 'internalMusicLink') {
+                                formData.append(key, this.formData[key])
+                            }
+                        }
+                        data = formData
+                    }
+                    /*  是否是编辑模式
+                    -------------------------- */
                     if (this.$route.params._id) {
                         data._id = this.$route.params._id
                     }
